@@ -7,3 +7,10 @@ dist/
 *.log
 .DS_Store
 Thumbs.db
+
+# Archivos innecesarios — no subir al repo
+visioncode-COMPLETO/
+visioncode-COMPLETO.zip
+VIDEO PARA HERO/
+logo.jpg
+PRODUCTOS/
