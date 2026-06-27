@@ -1,0 +1,114 @@
+---
+---
+<nav class="navbar fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+    <!-- Logo -->
+    <a href="#inicio" class="flex items-center gap-3 group">
+      <img src="/images/logo.png" alt="Vision Code" class="h-10 w-auto" />
+      <span class="font-body font-semibold text-white tracking-widest text-sm uppercase">
+        Vision<span class="text-brand-red">Code</span>
+      </span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <ul class="hidden md:flex items-center gap-10 list-none m-0 p-0">
+      <li><a href="#servicios" class="nav-link">Servicios</a></li>
+      <li><a href="#planes" class="nav-link">Planes</a></li>
+      <li><a href="#proceso" class="nav-link">Proceso</a></li>
+      <li><a href="#contacto" class="nav-link">Contacto</a></li>
+    </ul>
+
+    <!-- CTA -->
+    <a href="#contacto" class="hidden md:inline-flex items-center gap-2 bg-brand-red hover:bg-brand-red-light text-white font-body font-semibold text-sm px-6 py-3 transition-all duration-200 tracking-wide">
+      Cotizar proyecto
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <!-- Mobile hamburger -->
+    <button class="md:hidden flex flex-col gap-1.5 p-2" id="hamburger" aria-label="Menú">
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu hidden md:hidden bg-brand-dark border-t border-brand-gray px-6 pb-6" id="mobile-menu">
+    <ul class="flex flex-col gap-4 pt-4 list-none m-0 p-0">
+      <li><a href="#servicios" class="mobile-nav-link">Servicios</a></li>
+      <li><a href="#planes" class="mobile-nav-link">Planes</a></li>
+      <li><a href="#proceso" class="mobile-nav-link">Proceso</a></li>
+      <li><a href="#contacto" class="mobile-nav-link">Contacto</a></li>
+      <li>
+        <a href="#contacto" class="block bg-brand-red text-white font-semibold text-sm px-6 py-3 text-center tracking-wide mt-2">
+          Cotizar proyecto
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    background: transparent;
+  }
+  .navbar.scrolled {
+    background: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(139, 26, 43, 0.2);
+  }
+  .nav-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: #8B1A2B; }
+  .mobile-nav-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .ham-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: white;
+    transition: all 0.3s;
+  }
+</style>
+
+<script>
+  // Scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+</script>

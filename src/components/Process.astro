@@ -1,0 +1,79 @@
+---
+const steps = [
+  {
+    num: "01",
+    title: "Primera reunión",
+    desc: "Conversamos sobre tu negocio, tus objetivos y qué tipo de sitio necesitas. Sin compromisos, sin tecnicismos.",
+  },
+  {
+    num: "02",
+    title: "Propuesta y diseño",
+    desc: "Enviamos una propuesta con diseño visual, tecnologías a usar y plazo de entrega. Todo por escrito.",
+  },
+  {
+    num: "03",
+    title: "Desarrollo con IA",
+    desc: "Construimos tu sitio usando IA para optimizar imágenes, textos y diseño. Tú ves el avance en tiempo real.",
+  },
+  {
+    num: "04",
+    title: "Revisión y ajustes",
+    desc: "Revisamos juntos el resultado, hacemos los ajustes necesarios y aseguramos que todo funcione perfecto.",
+  },
+  {
+    num: "05",
+    title: "Lanzamiento",
+    desc: "Publicamos tu sitio con hosting y dominio configurado. Recibas capacitación para administrarlo tú mismo.",
+  },
+  {
+    num: "06",
+    title: "Soporte continuo",
+    desc: "30 o 60 días de soporte técnico incluido. Además, planes de mantenimiento mensual disponibles.",
+  },
+];
+---
+
+<section id="proceso" class="py-28 bg-brand-black relative">
+  <!-- Decorative red stripe -->
+  <div class="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-brand-red/30 to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
+      <!-- Left: sticky header -->
+      <div class="lg:sticky lg:top-32 reveal">
+        <span class="accent-line"></span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-6">
+          Así trabajamos<br /><span class="text-brand-red">contigo</span>
+        </h2>
+        <p class="font-body text-white/60 text-lg leading-relaxed mb-8">
+          Un proceso claro, transparente y humano. Sin jerga técnica, con resultados que puedes ver y tocar.
+        </p>
+        <a href="#contacto" class="inline-flex items-center gap-2 font-body font-semibold text-sm text-brand-red border-b border-brand-red pb-px hover:text-white hover:border-white transition-colors">
+          Iniciar mi proyecto
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Right: steps -->
+      <div class="space-y-0">
+        {steps.map((step, i) => (
+          <div class={`process-step flex gap-6 py-8 border-b border-white/8 reveal reveal-delay-${(i % 4) + 1}`}>
+            <div class="step-num font-display text-5xl font-bold text-brand-red/20 leading-none flex-shrink-0 w-16 select-none">
+              {step.num}
+            </div>
+            <div class="pt-2">
+              <h3 class="font-display text-xl font-semibold text-white mb-2">{step.title}</h3>
+              <p class="font-body text-white/55 text-sm leading-relaxed">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-step:last-child { border-bottom: none; }
+  .process-step:hover .step-num { color: rgba(139, 26, 43, 0.6); }
+  .border-white\/8 { border-color: rgba(255,255,255,0.08); }
+</style>

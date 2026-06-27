@@ -1,0 +1,233 @@
+---
+---
+<section id="productos" class="py-28 bg-[#0f0f0f] relative overflow-hidden">
+  <!-- BG decoration -->
+  <div class="absolute top-0 left-0 w-1/2 h-full opacity-5" style="background: radial-gradient(ellipse at 20% 50%, #8B1A2B 0%, transparent 70%);"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <!-- Header -->
+    <div class="text-center mb-16 reveal">
+      <span class="accent-line mx-auto"></span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-5">
+        Nuestros <span class="text-brand-red">productos</span>
+      </h2>
+      <p class="font-body text-white/50 text-lg max-w-2xl mx-auto">
+        Cada solución está diseñada y desarrollada a medida. Mirá el tipo de sitio que podemos construir para tu negocio.
+      </p>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- Landing Básica -->
+      <div class="product-card reveal">
+        <div class="product-image-wrap">
+          <img
+            src="/images/productos/lading-basica.png"
+            alt="Landing Básica — Vision Code"
+            class="product-img"
+            loading="lazy"
+          />
+          <div class="product-overlay">
+            <span class="product-badge">Desde $58.000 CLP</span>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-line"></div>
+          <h3 class="font-display text-xl font-bold text-white mb-2">Landing Básica</h3>
+          <p class="font-body text-white/50 text-sm leading-relaxed">
+            Página de aterrizaje profesional, rápida y responsive. Perfecta para presentar tu negocio o captar leads.
+          </p>
+          <div class="product-tags">
+            <span class="tag">Diseño responsive</span>
+            <span class="tag">SEO básico</span>
+            <span class="tag">Formulario</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Landing + Sitio Web -->
+      <div class="product-card reveal reveal-delay-1">
+        <div class="product-image-wrap">
+          <img
+            src="/images/productos/lading-sitioweb.png"
+            alt="Landing + Sitio Web — Vision Code"
+            class="product-img"
+            loading="lazy"
+          />
+          <div class="product-overlay">
+            <span class="product-badge popular">⭐ Más popular — $80.000 CLP</span>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-line"></div>
+          <h3 class="font-display text-xl font-bold text-white mb-2">Landing + Sitio Web</h3>
+          <p class="font-body text-white/50 text-sm leading-relaxed">
+            Tu presencia digital completa: landing de ventas + sitio corporativo con secciones, blog y múltiples páginas.
+          </p>
+          <div class="product-tags">
+            <span class="tag">Multi-página</span>
+            <span class="tag">Blog</span>
+            <span class="tag">SEO avanzado</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Landing + E-Commerce -->
+      <div class="product-card reveal reveal-delay-2">
+        <div class="product-image-wrap">
+          <img
+            src="/images/productos/lading-ecommerce.png"
+            alt="Landing + E-Commerce — Vision Code"
+            class="product-img"
+            loading="lazy"
+          />
+          <div class="product-overlay">
+            <span class="product-badge">Desde $150.000 CLP</span>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-line"></div>
+          <h3 class="font-display text-xl font-bold text-white mb-2">Landing + E-Commerce</h3>
+          <p class="font-body text-white/50 text-sm leading-relaxed">
+            Tu tienda online lista para vender: catálogo de productos, carrito, pasarela de pago y gestión de pedidos.
+          </p>
+          <div class="product-tags">
+            <span class="tag">Tienda online</span>
+            <span class="tag">Pagos online</span>
+            <span class="tag">Inventario</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- E-Commerce + ERP -->
+      <div class="product-card reveal reveal-delay-3">
+        <div class="product-image-wrap">
+          <img
+            src="/images/productos/lading-ecommerce-erp.png"
+            alt="E-Commerce + ERP — Vision Code"
+            class="product-img"
+            loading="lazy"
+          />
+          <div class="product-overlay">
+            <span class="product-badge complete">🏆 Más completo — $300.000 CLP</span>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-line"></div>
+          <h3 class="font-display text-xl font-bold text-white mb-2">E-Commerce + ERP</h3>
+          <p class="font-body text-white/50 text-sm leading-relaxed">
+            La solución empresarial completa: tienda online integrada con sistema de gestión (ventas, clientes, reportes).
+          </p>
+          <div class="product-tags">
+            <span class="tag">Panel admin</span>
+            <span class="tag">ERP integrado</span>
+            <span class="tag">Reportes</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-16 reveal">
+      <a href="#contacto" class="font-body font-semibold text-sm uppercase tracking-widest text-white border border-brand-red px-10 py-4 inline-block hover:bg-brand-red transition-all duration-300">
+        Solicitar cotización
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .accent-line {
+    display: block;
+    width: 3px;
+    height: 32px;
+    background: #8B1A2B;
+    margin-bottom: 1.5rem;
+  }
+  .product-card {
+    background: #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.06);
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+  }
+  .product-card:hover {
+    border-color: rgba(139,26,43,0.4);
+    transform: translateY(-4px);
+  }
+  .product-image-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 240px;
+  }
+  .product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.6s ease;
+  }
+  .product-card:hover .product-img {
+    transform: scale(1.04);
+  }
+  .product-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(15,15,15,0.95) 0%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+  }
+  .product-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.8);
+    background: rgba(139,26,43,0.85);
+    padding: 0.25rem 0.75rem;
+    border: 1px solid rgba(139,26,43,0.6);
+  }
+  .product-badge.popular {
+    background: rgba(139,26,43,1);
+    color: #fff;
+  }
+  .product-badge.complete {
+    background: rgba(45,45,45,0.95);
+    border-color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.9);
+  }
+  .product-info {
+    padding: 1.5rem;
+  }
+  .product-line {
+    width: 0;
+    height: 2px;
+    background: #8B1A2B;
+    margin-bottom: 1rem;
+    transition: width 0.4s ease;
+  }
+  .product-card:hover .product-line {
+    width: 48px;
+  }
+  .product-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.2rem 0.6rem;
+  }
+</style>
