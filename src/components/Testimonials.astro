@@ -1,0 +1,97 @@
+---
+const testimonials = [
+  {
+    name: "Sebastián Valdés",
+    role: "Director Comercial, Grupo Retail",
+    text: "La migración de nuestro sistema e-commerce fue impecable. Vision Code entendió exactamente la arquitectura corporativa que necesitábamos para escalar sin caídas de servidor."
+  },
+  {
+    name: "Valentina Rojas",
+    role: "Gerente de Operaciones, Logistics Chile",
+    text: "El desarrollo del ERP interno nos permitió reducir un 40% del trabajo manual. Es raro encontrar una firma tecnológica que cumpla con los plazos exactos."
+  },
+  {
+    name: "Ignacio Soto",
+    role: "CEO, Inmobiliaria Austral",
+    text: "Diseño de altísimo nivel. El portal web que construyeron proyecta la confianza exacta que nuestro mercado inmobiliario exige."
+  },
+  {
+    name: "Catalina Undurraga",
+    role: "Directora de Innovación",
+    text: "Integrar soluciones automatizadas siempre es un riesgo, pero el equipo de Vision Code demostró una maestría técnica que superó nuestras expectativas."
+  },
+  {
+    name: "Felipe Echeverría",
+    role: "Founder, FinTech Latam",
+    text: "Arquitectura sólida, código limpio y una comunicación directa. Es nuestra consultora de desarrollo de cabecera para proyectos críticos."
+  }
+];
+---
+
+<section id="clientes" class="py-32 relative z-10 border-t border-white/5 bg-black/40">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    
+    <div class="mb-16 fade-up">
+      <div class="flex items-center gap-4 mb-4">
+        <div class="h-px bg-white/20 w-12"></div>
+        <div class="saas-badge border-none text-white/50 tracking-widest text-[0.65rem] px-0">Confianza Corporativa</div>
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white">
+        Respaldados por <br/><span class="text-white/40">quienes lideran.</span>
+      </h2>
+    </div>
+
+    <!-- Carrusel Horizontal (Scroll Snap) -->
+    <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-8 scrollbar-hide fade-up cursor-grab active:cursor-grabbing" id="testimonial-slider">
+      {testimonials.map((t, i) => (
+        <article class="snap-start flex-shrink-0 w-[85vw] md:w-[400px] bento-card p-8 md:p-10 flex flex-col justify-between">
+          <div class="mb-8">
+            <svg class="text-[#8B1A2B] opacity-50 mb-6" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="text-white/80 font-light leading-relaxed text-sm md:text-base">"{t.text}"</p>
+          </div>
+          <div>
+            <div class="font-bold text-white text-sm">{t.name}</div>
+            <div class="text-xs text-white/40 mt-1">{t.role}</div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Ocultar barra de scroll para el carrusel */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<script>
+  // Simple drag-to-scroll para desktop
+  const slider = document.getElementById('testimonial-slider');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  if (slider) {
+    slider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener('mouseleave', () => { isDown = false; });
+    slider.addEventListener('mouseup', () => { isDown = false; });
+    slider.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2; // velocidad de arrastre
+      slider.scrollLeft = scrollLeft - walk;
+    });
+  }
+</script>

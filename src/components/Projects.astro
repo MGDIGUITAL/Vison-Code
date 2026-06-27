@@ -1,82 +1,82 @@
 ---
 const projects = [
   {
-    title: "Wave Project Gym",
-    category: "Plataforma web",
-    url: "https://www.waveproject.cl/",
+    title: "Plataforma E-commerce Global",
+    category: "Retail Tech",
+    url: "#",
     status: "published",
+    image: "/images/proyectos/ecommerce.png"
+  },
+  {
+    title: "Portal Corporativo de Inversiones",
+    category: "FinTech",
+    url: "#",
+    status: "updating",
     image: "/images/proyectos/web.png"
   },
   {
-    title: "Bock Surf Academy",
-    category: "Sitio web",
-    url: "",
-    status: "updating",
-    image: "/images/proyectos/ecommerce.png"
-  },
-  {
-    title: "Proyecto E-commerce",
-    category: "Retail",
-    url: "",
-    status: "updating",
-    image: "/images/proyectos/ecommerce.png"
-  },
-  {
-    title: "Sistema ERP",
-    category: "Administración",
-    url: "",
+    title: "Sistema ERP para Logística",
+    category: "Administración / SaaS",
+    url: "#",
     status: "updating",
     image: "/images/proyectos/erp.png"
+  },
+  {
+    title: "Arquitectura Web Institucional",
+    category: "Corporate",
+    url: "#",
+    status: "published",
+    image: "/images/proyectos/web.png"
   }
 ];
 ---
 
-<section id="proyectos" class="py-24 relative z-10">
+<section id="proyectos" class="py-32 relative z-10">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
     
-    <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-16 fade-up">
+    <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-20 fade-up">
       <div>
-        <div class="saas-badge mb-4">Casos de Éxito</div>
+        <div class="saas-badge mb-4">Portafolio Confidencial</div>
         <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">
-          Proyectos <span class="text-white/40">destacados.</span>
+          Casos de estudio <span class="text-white/40">corporativos.</span>
         </h2>
       </div>
-      <a href="#contacto" class="btn-secondary">
-        Ver todos los proyectos
+      <a href="#contacto" class="btn-secondary text-sm">
+        Solicitar credenciales de acceso
       </a>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {projects.map((p, i) => (
-        <article class="bento-card group flex flex-col fade-up" style={`transition-delay: ${i * 0.1}s`}>
+        <article class="bento-card group flex flex-col fade-up overflow-hidden border-white/10" style={`transition-delay: ${i * 0.1}s`}>
           
-          <!-- Image SaaS Style -->
-          <div class="w-full aspect-[16/10] bg-[#030303] relative overflow-hidden border-b border-white/5">
-            <img src={p.image} alt={p.title} class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" loading="lazy" />
+          <!-- Image Corporate Style -->
+          <div class="w-full aspect-[16/10] bg-[#030303] relative border-b border-white/5">
+            <img src={p.image} alt={p.title} class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" loading="lazy" />
             
-            <div class="absolute inset-0 bg-gradient-to-t from-[var(--saas-bg)] to-transparent opacity-80"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[var(--saas-bg)] to-transparent opacity-90 group-hover:opacity-60 transition-opacity"></div>
             
-            <div class="absolute top-4 left-4 right-4 flex justify-between items-center z-10">
-              <span class="saas-badge border-none bg-white/10 backdrop-blur-md text-[0.65rem]">
+            <div class="absolute top-6 left-6 right-6 flex justify-between items-center z-10">
+              <span class="saas-badge border border-white/20 bg-black/40 backdrop-blur-md text-[0.65rem] px-3 py-1">
                 {p.category}
               </span>
-              <span class={`w-2 h-2 rounded-full ${p.status === 'published' ? 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]' : 'bg-white/20'}`}></span>
+              <span class={`w-2 h-2 rounded-full ${p.status === 'published' ? 'bg-[#8B1A2B] shadow-[0_0_15px_rgba(139,26,43,0.8)]' : 'bg-white/30'}`}></span>
             </div>
           </div>
 
           <!-- Content -->
-          <div class="p-6 md:p-8 flex items-center justify-between">
+          <div class="p-8 flex items-center justify-between">
             <div>
-              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-[#8B1A2B] transition-colors">{p.title}</h3>
-              <p class="text-sm text-white/50">{p.status === 'published' ? 'Disponible online' : 'Vista en actualización'}</p>
+              <h3 class="text-xl font-bold text-white mb-2 group-hover:text-[#8B1A2B] transition-colors">{p.title}</h3>
+              <p class="text-xs font-semibold text-white/50 uppercase tracking-widest">{p.status === 'published' ? 'Despliegue Activo' : 'Fase de Arquitectura'}</p>
             </div>
             {p.status === 'published' ? (
-              <a href={p.url} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:bg-[#8B1A2B] hover:text-white hover:border-[#8B1A2B] transition-all">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <a href={p.url} class="w-12 h-12 rounded bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:bg-[#8B1A2B] hover:text-white hover:border-[#8B1A2B] transition-all">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
             ) : (
-              <span class="w-10 h-10 rounded-full border border-white/5 flex items-center justify-center text-white/10">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              <span class="w-12 h-12 rounded border border-white/5 flex items-center justify-center text-white/20">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
               </span>
             )}
           </div>

@@ -2,91 +2,90 @@
 const products = [
   {
     img: "/images/productos/lading-basica.png",
-    name: "Landing Básica",
+    name: "Landing Institucional",
     price: "$58.000 CLP",
-    desc: "Sitio de una página optimizado para conversión. Ideal para captar leads rápidamente.",
-    tags: ["Formulario", "Diseño Responsive"],
+    desc: "Presencia digital de alta conversión. Ideal para captar leads corporativos.",
+    tags: ["Formulario", "Optimizada SEO"],
     popular: false,
   },
   {
     img: "/images/productos/lading-sitioweb.png",
-    name: "Landing + Sitio Corporativo",
+    name: "Portal Corporativo",
     price: "$80.000 CLP",
-    desc: "Tu presencia digital completa con secciones internas, blog y posicionamiento SEO.",
-    tags: ["Multi-página", "Google Analytics"],
+    desc: "Arquitectura multi-página para empresas establecidas. Presencia integral y escalable.",
+    tags: ["Multi-página", "Analytics"],
     popular: true,
   },
   {
     img: "/images/productos/lading-ecommerce.png",
-    name: "E-Commerce",
+    name: "Plataforma E-Commerce",
     price: "$150.000 CLP",
-    desc: "Tienda online completa. Catálogo, carrito de compras y pasarela de pago integrada.",
-    tags: ["Pagos Online", "Inventario"],
+    desc: "Comercio electrónico transaccional seguro con pasarela de pago y sincronización de stock.",
+    tags: ["Transaccional", "Inventario"],
     popular: false,
   },
   {
     img: "/images/productos/lading-ecommerce-erp.png",
     name: "E-Commerce + ERP",
     price: "$300.000 CLP",
-    desc: "La suite definitiva. Tienda conectada a un sistema de gestión de ventas y clientes.",
-    tags: ["Panel Admin", "Reportes"],
+    desc: "La suite definitiva. Tienda conectada a un sistema de gestión centralizado para ventas y clientes.",
+    tags: ["Sistema Interno", "Reportes"],
     popular: false,
   },
 ];
 ---
 
-<section id="productos" class="py-24 relative z-10">
+<section id="productos" class="py-32 relative z-10">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
     
-    <div class="text-center mb-16 fade-up">
-      <div class="saas-badge mb-4 mx-auto">Nuestros Productos</div>
+    <div class="mb-20 fade-up">
+      <div class="flex items-center gap-4 mb-4">
+        <div class="h-px bg-white/20 w-12"></div>
+        <div class="saas-badge border-none text-white/50 tracking-widest text-[0.65rem] px-0">Soluciones Empaquetadas</div>
+      </div>
       <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-        Soluciones listas <br/><span class="text-white/40">para implementar.</span>
+        Arquitectura lista <br/><span class="text-white/40">para despliegue.</span>
       </h2>
-      <p class="text-sm text-white/50 max-w-lg mx-auto">Selecciona el paquete tecnológico que mejor se adapte a tu fase de crecimiento comercial.</p>
     </div>
 
-    <!-- 2x2 Bento Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Corporate Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {products.map((p, i) => (
-        <article class="bento-card group flex flex-col sm:flex-row h-auto sm:h-[300px] fade-up" style={`transition-delay: ${i * 0.1}s`}>
+        <article class="bento-card group flex flex-col sm:flex-row h-auto sm:h-[280px] fade-up overflow-hidden" style={`transition-delay: ${i * 0.1}s`}>
           
           <!-- Image Section -->
-          <div class="w-full sm:w-2/5 h-48 sm:h-full bg-[#030303] relative overflow-hidden flex-shrink-0">
-            <img src={p.img} alt={p.name} class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-[var(--saas-surface)] hidden sm:block"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-[var(--saas-bg)] to-transparent sm:hidden"></div>
+          <div class="w-full sm:w-[40%] h-48 sm:h-full bg-black relative border-r border-white/5">
+            <img src={p.img} alt={p.name} class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" loading="lazy" />
             
             {p.popular && (
-              <div class="absolute top-4 left-4 z-10">
-                <span class="saas-badge bg-[#8B1A2B] border-[#8B1A2B] text-white shadow-[0_0_15px_rgba(139,26,43,0.4)]">
-                  Más Solicitado
+              <div class="absolute top-0 right-0 z-10">
+                <span class="bg-[#8B1A2B] text-white text-[0.55rem] font-bold uppercase tracking-widest px-3 py-1.5 shadow-lg">
+                  Estándar Industria
                 </span>
               </div>
             )}
           </div>
 
           <!-- Content Section -->
-          <div class="w-full sm:w-3/5 p-6 sm:p-8 flex flex-col justify-center z-10 relative">
-            <div class="mb-4">
-              <h3 class="text-2xl font-bold text-white mb-1">{p.name}</h3>
-              <div class="text-[#8B1A2B] font-bold tracking-tight">{p.price}</div>
+          <div class="w-full sm:w-[60%] p-8 flex flex-col justify-between relative z-10 bg-black/40">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-1 group-hover:text-[#8B1A2B] transition-colors">{p.name}</h3>
+              <div class="text-[#8B1A2B] font-bold tracking-tight text-lg mb-4">{p.price}</div>
+              <p class="text-xs text-white/60 leading-relaxed font-light">
+                {p.desc}
+              </p>
             </div>
             
-            <p class="text-sm text-white/60 leading-relaxed mb-6 flex-1">
-              {p.desc}
-            </p>
-            
-            <div class="flex items-center justify-between mt-auto">
+            <div class="flex items-center justify-between mt-6">
               <div class="flex gap-2">
                 {p.tags.map(tag => (
-                  <span class="text-[0.65rem] font-bold uppercase tracking-wider text-white/30 border border-white/10 px-2 py-1 rounded-md">
+                  <span class="text-[0.6rem] uppercase tracking-widest text-white/40">
                     {tag}
                   </span>
                 ))}
               </div>
-              <a href="#contacto" class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 group-hover:bg-[#8B1A2B] group-hover:text-white group-hover:border-[#8B1A2B] transition-colors">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <a href="#contacto" class="text-xs text-white hover:text-[#8B1A2B] transition-colors flex items-center gap-2">
+                Cotizar <span class="font-serif">→</span>
               </a>
             </div>
           </div>

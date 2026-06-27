@@ -1,52 +1,42 @@
 ---
 const steps = [
-  { num: "01", title: "Reunión Inicial", desc: "Conversamos sobre tu negocio y definimos objetivos comerciales." },
-  { num: "02", title: "Análisis & Arquitectura", desc: "Diseñamos la estructura de datos y el flujo de la plataforma." },
-  { num: "03", title: "Propuesta Técnica", desc: "Validamos el alcance, tecnologías y tiempos de entrega." },
-  { num: "04", title: "Desarrollo Activo", desc: "Construcción de la plataforma con actualizaciones en tiempo real." },
-  { num: "05", title: "Testing & QA", desc: "Pruebas de rendimiento, seguridad y responsividad multiplataforma." },
-  { num: "06", title: "Lanzamiento", desc: "Despliegue a producción y capacitación de tu equipo." },
+  { num: "01", title: "Consultoría Estratégica", desc: "Auditoría técnica y definición de la arquitectura comercial." },
+  { num: "02", title: "Prototipado", desc: "Diseño de interfaces bajo estándares UX/UI corporativos." },
+  { num: "03", title: "Ingeniería de Software", desc: "Desarrollo del código fuente con actualizaciones semanales." },
+  { num: "04", title: "Quality Assurance", desc: "Auditoría de seguridad, rendimiento y estrés de servidores." },
+  { num: "05", title: "Despliegue a Producción", desc: "Lanzamiento oficial y capacitación técnica al equipo interno." },
 ];
 ---
 
-<section id="proceso" class="py-24 relative z-10">
-  <div class="max-w-4xl mx-auto px-6 lg:px-10">
+<section id="proceso" class="py-32 relative z-10 border-t border-white/5">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
     
-    <div class="text-center mb-20 fade-up">
-      <div class="saas-badge mb-4 mx-auto">Workflow</div>
-      <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-        Proceso de <br/><span class="text-white/40">despliegue.</span>
-      </h2>
+    <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-24 fade-up">
+      <div>
+        <div class="saas-badge mb-4">Metodología de Trabajo</div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">
+          Fases de <span class="text-white/40">Ingeniería.</span>
+        </h2>
+      </div>
     </div>
 
-    <!-- Timeline estilo Workflow SaaS -->
-    <div class="relative">
-      <!-- Línea central brillante -->
-      <div class="absolute left-[27px] md:left-1/2 top-4 bottom-4 w-px bg-gradient-to-b from-transparent via-[#8B1A2B]/50 to-transparent md:-translate-x-1/2"></div>
-      
-      <div class="space-y-12 relative z-10">
-        {steps.map((step, i) => (
-          <div class={`flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-12 fade-up ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`} style={`transition-delay: ${i * 0.1}s`}>
-            
-            <!-- Espacio vacío para alternar -->
-            <div class="hidden md:block w-full md:w-1/2"></div>
-
-            <!-- Nodo / Botón Central -->
-            <div class="absolute left-0 md:left-1/2 md:-translate-x-1/2 w-14 h-14 rounded-full bg-[var(--saas-bg)] border-4 border-[var(--saas-bg)] flex items-center justify-center z-10 shadow-[0_0_20px_rgba(139,26,43,0.15)] group">
-               <div class="w-full h-full rounded-full bg-white/5 border border-white/10 flex items-center justify-center font-bold text-xs text-[#8B1A2B] group-hover:bg-[#8B1A2B] group-hover:text-white transition-colors">
-                 {step.num}
-               </div>
-            </div>
-
-            <!-- Contenido del paso -->
-            <div class="w-full md:w-1/2 pl-20 md:pl-0 bento-card p-6">
-              <h3 class="text-lg font-bold text-white mb-2">{step.title}</h3>
-              <p class="text-sm text-white/60 leading-relaxed">{step.desc}</p>
-            </div>
-            
+    <!-- Corporate Timeline -->
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+      {steps.map((step, i) => (
+        <div class="flex flex-col fade-up relative" style={`transition-delay: ${i * 0.1}s`}>
+          <!-- Línea conectora (oculta en el último) -->
+          {i !== steps.length - 1 && (
+            <div class="hidden md:block absolute top-6 left-12 right-[-2rem] h-px bg-white/10"></div>
+          )}
+          
+          <div class="w-12 h-12 rounded border border-white/20 bg-black/50 backdrop-blur-md flex items-center justify-center font-bold text-lg text-white mb-6 relative z-10">
+             {step.num}
           </div>
-        ))}
-      </div>
+
+          <h3 class="text-lg font-bold text-white mb-3 pr-4">{step.title}</h3>
+          <p class="text-sm text-white/50 leading-relaxed font-light pr-4">{step.desc}</p>
+        </div>
+      ))}
     </div>
 
   </div>

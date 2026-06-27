@@ -5,8 +5,8 @@ export interface Props {
 }
 
 const { 
-  title = "Vision Code — Plataforma de Soluciones Digitales",
-  description = "Desarrollo web, E-commerce y sistemas integrados con IA para empresas."
+  title = "Vision Code — Consultora de Ingeniería y Desarrollo",
+  description = "Soluciones tecnológicas corporativas, sistemas de gestión y plataformas e-commerce de alto rendimiento."
 } = Astro.props;
 ---
 
@@ -20,7 +20,7 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#8B1A2B" />
+    <meta name="theme-color" content="#030303" />
     <link rel="icon" type="image/png" href="/images/logo.png" />
     <title>{title}</title>
     <!-- Google Fonts -->
@@ -30,12 +30,11 @@ const {
     <!-- Global Styles -->
     <style is:global>
       :root {
-        --saas-bg: #070709;
+        --saas-bg: #030303;
         --saas-surface: rgba(255, 255, 255, 0.02);
-        --saas-border: rgba(255, 255, 255, 0.06);
-        --saas-border-hover: rgba(255, 255, 255, 0.15);
+        --saas-border: rgba(255, 255, 255, 0.08);
+        --saas-border-hover: rgba(255, 255, 255, 0.2);
         --saas-brand: #8B1A2B;
-        --saas-brand-glow: rgba(139, 26, 43, 0.25);
       }
 
       *, *::before, *::after { box-sizing: border-box; }
@@ -49,43 +48,35 @@ const {
         overflow-x: hidden;
       }
       
-      ::selection { background: rgba(139,26,43,0.5); color: #fff; }
+      /* Fondo IA Corporativo */
+      .bg-ai-corporate {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: url('/images/bg-corporate.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.25;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      ::selection { background: var(--saas-brand); color: #fff; }
       ::-webkit-scrollbar { width: 6px; }
       ::-webkit-scrollbar-track { background: var(--saas-bg); }
-      ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
-      ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+      ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
 
-      /* ── Background Radials (SaaS Style) ── */
-      .bg-radial-lights {
-        position: relative;
-      }
-      .bg-radial-lights::before, .bg-radial-lights::after {
-        content: '';
-        position: absolute;
-        width: 600px;
-        height: 600px;
-        border-radius: 50%;
-        filter: blur(120px);
-        z-index: 0;
-        pointer-events: none;
-        opacity: 0.4;
-      }
-      .bg-radial-lights::before {
-        top: -100px; left: -100px;
-        background: radial-gradient(circle, rgba(139,26,43,0.15), transparent 70%);
-      }
-      .bg-radial-lights::after {
-        bottom: -200px; right: -100px;
-        background: radial-gradient(circle, rgba(255,255,255,0.03), transparent 70%);
-      }
-
-      /* ── Bento Box & Glassmorphism ── */
+      /* ── Corporate Cards ── */
       .bento-card {
-        background: var(--saas-surface);
+        background: rgba(0, 0, 0, 0.4);
         border: 1px solid var(--saas-border);
-        border-radius: 1.5rem; /* rounded-3xl base */
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        border-radius: 0.75rem; /* rounded-xl (más afilado y serio) */
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         position: relative;
         overflow: hidden;
@@ -93,34 +84,35 @@ const {
       }
       .bento-card:hover {
         border-color: var(--saas-border-hover);
-        background: rgba(255, 255, 255, 0.03);
-        transform: translateY(-2px);
+        background: rgba(10, 10, 10, 0.6);
       }
       
-      /* Inner soft glow line on top of cards */
+      /* Luz sutil superior */
       .bento-card::after {
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0;
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
         opacity: 0;
         transition: opacity 0.4s ease;
       }
       .bento-card:hover::after { opacity: 1; }
 
-      /* ── Badges y Botones ── */
+      /* ── Badges y Botones Corporativos ── */
       .saas-badge {
         display: inline-flex;
         align-items: center;
         gap: 0.375rem;
         padding: 0.375rem 0.75rem;
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 9999px;
-        font-size: 0.75rem;
-        font-weight: 500;
-        color: rgba(255,255,255,0.8);
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 0.25rem;
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: rgba(255,255,255,0.7);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
       
       .btn-primary {
@@ -130,19 +122,15 @@ const {
         gap: 0.5rem;
         background: var(--saas-brand);
         color: white;
-        font-weight: 500;
+        font-weight: 600;
         font-size: 0.875rem;
-        padding: 0.75rem 1.5rem;
-        border-radius: 9999px;
-        border: 1px solid rgba(255,255,255,0.1);
-        box-shadow: 0 4px 14px 0 rgba(139, 26, 43, 0.2);
+        padding: 0.75rem 2rem;
+        border-radius: 0.25rem;
         transition: all 0.3s ease;
         text-decoration: none;
       }
       .btn-primary:hover {
-        background: #9d1e31;
-        box-shadow: 0 6px 20px rgba(139, 26, 43, 0.3);
-        transform: translateY(-1px);
+        background: #a81c33;
       }
       
       .btn-secondary {
@@ -152,24 +140,24 @@ const {
         gap: 0.5rem;
         background: rgba(255,255,255,0.05);
         color: white;
-        font-weight: 500;
+        font-weight: 600;
         font-size: 0.875rem;
-        padding: 0.75rem 1.5rem;
-        border-radius: 9999px;
-        border: 1px solid rgba(255,255,255,0.1);
+        padding: 0.75rem 2rem;
+        border-radius: 0.25rem;
+        border: 1px solid rgba(255,255,255,0.15);
         transition: all 0.3s ease;
         text-decoration: none;
       }
       .btn-secondary:hover {
         background: rgba(255,255,255,0.1);
-        border-color: rgba(255,255,255,0.2);
+        border-color: rgba(255,255,255,0.3);
       }
 
       /* ── Reveal Animations ── */
       .fade-up {
         opacity: 0;
         transform: translateY(20px);
-        transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .fade-up.in-view { opacity: 1; transform: translateY(0); }
       
@@ -183,7 +171,8 @@ const {
       }
     </style>
   </head>
-  <body class="bg-radial-lights">
+  <body>
+    <div class="bg-ai-corporate"></div>
     <slot />
     
     <script>

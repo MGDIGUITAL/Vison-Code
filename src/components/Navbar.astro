@@ -1,28 +1,26 @@
 ---
 const links = [
   { text: "Inicio", href: "#inicio" },
-  { text: "Servicios", href: "#servicios" },
-  { text: "Proyectos", href: "#proyectos" },
-  { text: "Productos", href: "#productos" },
-  { text: "Planes", href: "#planes" },
+  { text: "Soluciones", href: "#servicios" },
+  { text: "Casos de Estudio", href: "#proyectos" },
+  { text: "Clientes", href: "#clientes" },
+  { text: "Inversión", href: "#planes" },
 ];
 ---
 
-<header class="fixed w-full top-6 z-50 transition-transform duration-300 px-6" id="navbar">
-  <div class="max-w-5xl mx-auto bento-card rounded-full px-6 py-3 flex justify-between items-center shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+<header class="fixed w-full top-0 z-50 transition-all duration-300 border-b border-transparent" id="navbar">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
     
     <!-- Logo -->
-    <a href="#" class="flex items-center gap-3 group relative z-10">
-      <div class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center p-1.5 group-hover:bg-[#8B1A2B]/20 group-hover:border-[#8B1A2B]/50 transition-colors">
-         <img src="/images/logo.png" alt="VC Logo" class="w-full h-full object-contain drop-shadow-lg" />
-      </div>
-      <span class="font-bold tracking-tight text-white text-sm">Vision<span class="text-[#8B1A2B]">Code</span></span>
+    <a href="#" class="flex items-center gap-4 group relative z-10">
+      <img src="/images/logo.png" alt="VC Logo" class="w-7 h-7 object-contain opacity-90 group-hover:opacity-100 transition-opacity" />
+      <span class="font-bold tracking-widest text-white text-xs uppercase">Vision<span class="text-white/50">Code</span></span>
     </a>
 
     <!-- Desktop Menu -->
-    <nav class="hidden md:flex items-center gap-1">
+    <nav class="hidden md:flex items-center gap-8">
       {links.map(link => (
-        <a href={link.href} class="text-xs font-semibold text-white/60 hover:text-white hover:bg-white/5 px-4 py-2 rounded-full transition-colors">
+        <a href={link.href} class="text-[0.7rem] font-bold uppercase tracking-widest text-white/60 hover:text-white transition-colors">
           {link.text}
         </a>
       ))}
@@ -30,14 +28,14 @@ const links = [
 
     <!-- Desktop CTA -->
     <div class="hidden md:block">
-      <a href="#contacto" class="btn-primary text-xs py-2 px-4 shadow-none border-none">
-        Empezar
+      <a href="#contacto" class="text-[0.7rem] font-bold uppercase tracking-widest text-white border-b border-white/30 hover:border-white pb-1 transition-all">
+        Contactar Ejecutivo
       </a>
     </div>
 
     <!-- Mobile Menu Button -->
-    <button class="md:hidden w-8 h-8 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white" id="mobile-btn" aria-label="Menu">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    <button class="md:hidden text-white/70 hover:text-white" id="mobile-btn" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
   </div>
 </header>
@@ -49,8 +47,19 @@ const links = [
   window.addEventListener('scroll', () => {
     if(!navbar) return;
     const currentScroll = window.pageYOffset;
-    if (currentScroll > lastScroll && currentScroll > 100) {
-      navbar.style.transform = 'translateY(-150%)';
+    
+    // Background and border on scroll
+    if (currentScroll > 50) {
+      navbar.classList.add('bg-black/70', 'backdrop-blur-md', 'border-white/10');
+      navbar.classList.remove('border-transparent');
+    } else {
+      navbar.classList.remove('bg-black/70', 'backdrop-blur-md', 'border-white/10');
+      navbar.classList.add('border-transparent');
+    }
+
+    // Hide on scroll down
+    if (currentScroll > lastScroll && currentScroll > 200) {
+      navbar.style.transform = 'translateY(-100%)';
     } else {
       navbar.style.transform = 'translateY(0)';
     }
