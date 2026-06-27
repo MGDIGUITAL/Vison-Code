@@ -1,77 +1,45 @@
 ---
+const year = new Date().getFullYear();
 ---
-<footer class="bg-brand-black border-t border-white/8 pt-16 pb-8">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-      <!-- Brand -->
-      <div>
-        <a href="#inicio" class="flex items-center gap-3 mb-4">
-          <img src="/images/logo.png" alt="Vision Code" class="h-10 w-auto" />
-          <span class="font-body font-semibold text-white tracking-widest text-sm uppercase">
-            Vision<span class="text-brand-red">Code</span>
-          </span>
-        </a>
-        <p class="font-body text-sm text-white/45 leading-relaxed max-w-xs">
-          Desarrollo web profesional para negocios en Chile. Diseño con IA, hosting incluido y soporte real.
-        </p>
-      </div>
 
-      <!-- Links -->
-      <div>
-        <h4 class="font-body text-xs font-semibold uppercase tracking-widest text-white/40 mb-5">Servicios</h4>
-        <ul class="space-y-3 list-none m-0 p-0">
-          <li><a href="#planes" class="footer-link">Landing Page</a></li>
-          <li><a href="#planes" class="footer-link">Sitio Web Completo</a></li>
-          <li><a href="#planes" class="footer-link">E-Commerce</a></li>
-          <li><a href="#planes" class="footer-link">ERP / CRM</a></li>
-          <li><a href="#planes" class="footer-link">Mantenimiento Web</a></li>
-        </ul>
-      </div>
+<footer class="relative z-10 pt-20 pb-8 px-6 lg:px-10 overflow-hidden">
+  
+  <!-- Separador superior con glow central -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-[#8B1A2B]/20 blur-[100px] rounded-full pointer-events-none"></div>
 
-      <!-- Contact -->
-      <div>
-        <h4 class="font-body text-xs font-semibold uppercase tracking-widest text-white/40 mb-5">Contacto</h4>
-        <ul class="space-y-3 list-none m-0 p-0">
-          <li>
-            <a href="tel:+5629645522" class="footer-link flex items-center gap-2">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 3.5a1.5 1.5 0 011.5-1.5h.75a.5.5 0 01.5.5l.75 2.25a.5.5 0 01-.12.52L4.4 6.25a6.75 6.75 0 003.35 3.35l.98-.98a.5.5 0 01.52-.12L11.5 9.25a.5.5 0 01.5.5v.75A1.5 1.5 0 0110.5 12h-.25C5.19 12 2 8.81 2 4.75V3.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
-              +56 2 9645522
-            </a>
-          </li>
-          <li>
-            <a href="mailto:Vision.code.vs@gmail.com" class="footer-link flex items-center gap-2">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="3" width="12" height="8" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M1 5l6 4 6-4" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
-              Vision.code.vs@gmail.com
-            </a>
-          </li>
-          <li class="footer-link flex items-center gap-2 cursor-default">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5C5.07 1.5 3.5 3.07 3.5 5c0 2.63 3.5 7.5 3.5 7.5S10.5 7.63 10.5 5c0-1.93-1.57-3.5-3.5-3.5zM7 6.25a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5z" stroke="currentColor" stroke-width="1.2"/></svg>
-            Región de Valparaíso, Chile
-          </li>
-        </ul>
+  <div class="max-w-7xl mx-auto flex flex-col items-center">
+    
+    <div class="mb-12 flex flex-col items-center">
+      <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center p-2 mb-4">
+         <img src="/images/logo.png" alt="VC Logo" class="w-full h-full object-contain" />
       </div>
+      <h3 class="text-2xl font-bold tracking-tight text-white mb-2">VisionCode</h3>
+      <p class="text-sm text-white/50 text-center max-w-sm">
+        Arquitectura digital y tecnología enfocada en resultados escalables.
+      </p>
     </div>
 
-    <!-- Bottom bar -->
-    <div class="border-t border-white/8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="font-body text-xs text-white/30">
-        © {new Date().getFullYear()} Vision Code. Todos los derechos reservados.
-      </p>
-      <p class="font-body text-xs text-white/20">
-        Desarrollado con <span class="text-brand-red">♥</span> en Valparaíso
-      </p>
+    <!-- Navegación Footer -->
+    <div class="flex flex-wrap justify-center gap-6 md:gap-10 text-sm font-semibold text-white/60 mb-12">
+      <a href="#inicio" class="hover:text-white transition-colors">Inicio</a>
+      <a href="#servicios" class="hover:text-white transition-colors">Soluciones</a>
+      <a href="#proyectos" class="hover:text-white transition-colors">Casos de Éxito</a>
+      <a href="#planes" class="hover:text-white transition-colors">Planes</a>
+    </div>
+
+    <div class="w-full flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-white/5">
+      <div class="text-xs text-white/40">
+        &copy; {year} Vision Code. All rights reserved.
+      </div>
+      <div class="flex gap-4">
+        <a href="#" class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all" aria-label="LinkedIn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 </footer>
-
-<style>
-  .footer-link {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.5);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-link:hover { color: #8B1A2B; }
-  .border-white\/8 { border-color: rgba(255,255,255,0.08); }
-</style>

@@ -7,15 +7,13 @@ const plans = [
     monthly: "$10.000 CLP/mes",
     popular: false,
     features: [
-      "1 página landing profesional",
+      "1 página landing",
       "Hosting + dominio (1 año)",
       "Logo creado con IA",
-      "Imágenes optimizadas con IA",
-      "Soporte técnico 30 días",
-      "Diseño responsive",
-      "Formulario de contacto",
+      "Imágenes optimizadas",
+      "Soporte 30 días",
+      "Formulario contacto",
     ],
-    cta: "Empezar ahora",
   },
   {
     name: "Landing + Sitio Web",
@@ -23,36 +21,29 @@ const plans = [
     usd: "$83 USD",
     monthly: "$15.000 CLP/mes",
     popular: true,
-    badge: "Más popular",
     features: [
-      "Landing + 6 páginas internas",
+      "Landing + 6 páginas",
       "Hosting + dominio (1 año)",
       "Logo creado con IA",
-      "Imágenes optimizadas con IA",
-      "Soporte técnico 30 días",
-      "Diseño responsive",
-      "Blog o sección de noticias",
       "Google Analytics",
+      "Soporte 30 días",
+      "Blog/Noticias",
     ],
-    cta: "Elegir este plan",
   },
   {
-    name: "Landing + E-Commerce",
+    name: "E-Commerce",
     price: "$150.000",
     usd: "$156 USD",
     monthly: "$20.000 CLP/mes",
     popular: false,
     features: [
-      "Landing + tienda online",
+      "Tienda online completa",
       "Hosting + dominio (1 año)",
-      "Logo + imágenes con IA",
-      "Soporte técnico 30 días",
-      "Carrito de compras",
-      "Mercado Pago / Webpay",
       "Panel de administración",
+      "Mercado Pago / Webpay",
+      "Soporte 30 días",
       "Hasta 50 productos",
     ],
-    cta: "Empezar ahora",
   },
   {
     name: "E-Commerce + ERP",
@@ -60,202 +51,104 @@ const plans = [
     usd: "$312 USD",
     monthly: "$30.000 CLP/mes",
     popular: false,
-    badge: "Más completo",
     features: [
-      "Todo lo del plan E-Commerce",
-      "Sistema ERP / CRM interno",
-      "Gestión de inventario y ventas",
-      "Panel de clientes y proveedores",
-      "Reportes y estadísticas",
-      "Roles y permisos de usuarios",
-      "Soporte técnico 60 días",
-      "Capacitación incluida",
+      "Suite E-commerce total",
+      "Sistema ERP interno",
+      "Gestión de inventario",
+      "Reportes de ventas",
+      "Roles de usuario",
+      "Capacitación",
     ],
-    cta: "Contactar",
   },
 ];
 
 const extras = [
-  { name: "Sitio en 2 idiomas", price: "desde $38.000" },
-  { name: "SEO avanzado", price: "desde $48.000" },
-  { name: "Integración redes sociales", price: "desde $24.000" },
-  { name: "Email corporativo (5 cuentas)", price: "desde $29.000" },
-  { name: "Sesión de fotos con IA", price: "desde $34.000" },
-  { name: "Dashboard de métricas", price: "desde $58.000" },
-  { name: "Más de 50 productos", price: "desde $29.000" },
+  { name: "Sitio bilingüe", price: "desde $38.000" },
+  { name: "SEO Técnico", price: "desde $48.000" },
+  { name: "Email corporativo (5)", price: "desde $29.000" },
+  { name: "Dashboard Métricas", price: "desde $58.000" },
 ];
 ---
 
-<section id="planes" class="py-32 bg-[#0d0d0d] relative overflow-hidden">
-  <!-- Glow top center -->
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] pointer-events-none" style="background: radial-gradient(ellipse at 50% 0%, rgba(139,26,43,0.08) 0%, transparent 70%);"></div>
-  <!-- Dot grid -->
-  <div class="absolute inset-0 dot-grid pointer-events-none"></div>
-
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
-    <!-- Section header -->
-    <div class="text-center mb-20 reveal">
-      <div class="section-eyebrow justify-center">
-        <span class="eyebrow-num">04</span>
-        <span class="eyebrow-line"></span>
-        <span class="eyebrow-label">Planes</span>
-      </div>
-      <h2 class="font-display text-5xl md:text-6xl font-bold text-white mb-5">
-        Planes y <span class="text-brand-red">precios</span>
+<section id="planes" class="py-24 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    
+    <div class="text-center mb-20 fade-up">
+      <div class="saas-badge mb-4 mx-auto">Planes Comerciales</div>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+        Inversión <span class="text-white/40">transparente.</span>
       </h2>
-      <p class="font-body text-white/50 text-lg max-w-xl mx-auto leading-relaxed">
-        Inversión única, sin sorpresas. Todos los planes incluyen hosting y dominio por 1 año.
-      </p>
+      <p class="text-sm text-white/50 max-w-lg mx-auto">Pago único por desarrollo. Todos los planes incluyen hosting, dominio y SSL por el primer año.</p>
     </div>
 
-    <!-- Plans grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mb-16">
+    <!-- Grid Pricing -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-16">
       {plans.map((plan, i) => (
-        <div class={`pricing-card reveal reveal-delay-${i + 1} ${plan.popular ? 'pricing-featured' : ''}`}>
-          {plan.badge && (
-            <div class={`plan-badge ${plan.popular ? 'badge-popular' : 'badge-complete'}`}>
-              {plan.badge}
-            </div>
+        <div class={`bento-card flex flex-col relative fade-up ${plan.popular ? 'border-[#8B1A2B]/40 shadow-[0_0_30px_rgba(139,26,43,0.1)]' : ''}`} style={`transition-delay: ${i * 0.1}s`}>
+          
+          {plan.popular && (
+             <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#8B1A2B] to-transparent"></div>
           )}
-          <div class="p-7 flex flex-col h-full">
-            <h3 class="font-display text-lg font-bold text-white mb-4">{plan.name}</h3>
 
-            <!-- Price block -->
-            <div class="mb-1">
-              <span class={`font-display text-4xl font-bold ${plan.popular ? 'text-white glow-price' : 'text-white'}`}>{plan.price}</span>
-              <span class="font-body text-white/35 text-sm ml-1">CLP</span>
-            </div>
-            <div class="font-body text-brand-red text-sm font-semibold mb-1">{plan.usd}</div>
-            <div class="font-body text-white/30 text-xs mb-6 pb-5 border-b border-white/[0.06]">
-              Mantenimiento: {plan.monthly}
+          <div class="p-8 flex flex-col h-full relative z-10">
+            {plan.popular && (
+              <div class="saas-badge self-start bg-[#8B1A2B]/20 border-[#8B1A2B]/40 text-[#8B1A2B] mb-4 text-[0.65rem]">
+                Recomendado
+              </div>
+            )}
+            
+            <h3 class="text-xl font-bold text-white mb-2">{plan.name}</h3>
+            
+            <div class="mb-6 pb-6 border-b border-white/5">
+              <div class="flex items-baseline gap-1 mb-1">
+                <span class="text-3xl font-bold text-white tracking-tight">{plan.price}</span>
+                <span class="text-xs font-semibold text-white/40">CLP</span>
+              </div>
+              <div class="text-xs text-white/30 mb-2">Ref: {plan.usd}</div>
+              <div class="text-[0.65rem] text-white/40 bg-white/5 inline-block px-2 py-1 rounded">
+                Mantenimiento anual: <span class="text-white/70">{plan.monthly}</span>
+              </div>
             </div>
 
-            <!-- Features -->
-            <ul class="space-y-2.5 mb-8 flex-1">
+            <ul class="space-y-4 mb-8 flex-1">
               {plan.features.map(f => (
                 <li class="flex items-start gap-3">
-                  <svg class="flex-shrink-0 mt-0.5" width="15" height="15" viewBox="0 0 15 15" fill="none">
-                    <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="#8B1A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  <span class="font-body text-sm text-white/60">{f}</span>
+                  <svg class="flex-shrink-0 mt-0.5 text-[#8B1A2B]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span class="text-sm text-white/70">{f}</span>
                 </li>
               ))}
             </ul>
 
-            <a
-              href="#contacto"
-              class={`pricing-cta ${plan.popular ? 'pricing-cta-featured shimmer-btn' : ''}`}
-            >
-              {plan.cta}
+            <a href="#contacto" class={`w-full text-center ${plan.popular ? 'btn-primary' : 'btn-secondary'}`}>
+              Elegir Plan
             </a>
           </div>
+          
+          {plan.popular && (
+            <div class="absolute inset-0 bg-gradient-to-b from-[#8B1A2B]/5 to-transparent pointer-events-none"></div>
+          )}
         </div>
       ))}
     </div>
 
-    <!-- Extras section -->
-    <div class="reveal">
-      <div class="extras-box">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-8">
-          <div>
-            <h3 class="font-display text-2xl font-bold text-white mb-1">Servicios adicionales</h3>
-            <p class="font-body text-white/40 text-sm">Opcionales y negociables. Se acuerdan antes de iniciar el proyecto.</p>
+    <!-- Extras Bento -->
+    <div class="max-w-4xl mx-auto bento-card p-6 md:p-8 fade-up">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
+        <div>
+          <h3 class="text-lg font-bold text-white">Módulos Extra</h3>
+          <p class="text-sm text-white/50">Servicios adicionales integrables a cualquier plan.</p>
+        </div>
+        <a href="#contacto" class="btn-secondary text-xs py-2">Consultar</a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {extras.map(e => (
+          <div class="flex justify-between items-center p-3 bg-white/[0.02] border border-white/5 rounded-xl">
+            <span class="text-sm text-white/70">{e.name}</span>
+            <span class="text-xs font-bold text-white/90">{e.price}</span>
           </div>
-          <a href="#contacto" class="font-body text-xs font-semibold uppercase tracking-widest text-brand-red border-b border-brand-red/40 pb-px hover:border-brand-red transition-colors whitespace-nowrap">
-            Consultar precio
-          </a>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-          {extras.map(e => (
-            <div class="extra-item group">
-              <span class="font-body text-sm text-white/65 group-hover:text-white transition-colors">{e.name}</span>
-              <span class="font-body text-sm font-bold text-brand-red">{e.price}</span>
-            </div>
-          ))}
-        </div>
-        <p class="font-body text-xs text-white/20 mt-6">* Todos los precios en CLP. Los valores en USD son referenciales al tipo de cambio vigente.</p>
+        ))}
       </div>
     </div>
+
   </div>
 </section>
-
-<style>
-  .pricing-card {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.07);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    transition: border-color 0.35s, box-shadow 0.35s;
-  }
-  .pricing-card:hover {
-    border-color: rgba(139,26,43,0.3);
-    box-shadow: 0 0 30px rgba(139,26,43,0.07);
-  }
-  .pricing-featured {
-    border-color: rgba(139,26,43,0.5) !important;
-    background: rgba(139,26,43,0.06) !important;
-    box-shadow: 0 0 40px rgba(139,26,43,0.15), inset 0 1px 0 rgba(139,26,43,0.2) !important;
-  }
-
-  .glow-price { text-shadow: 0 0 30px rgba(255,255,255,0.15); }
-
-  .plan-badge {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 800;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0.4rem 1rem;
-    text-align: center;
-  }
-  .badge-popular { background: #8B1A2B; color: white; }
-  .badge-complete { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.45); border-bottom: 1px solid rgba(255,255,255,0.07); }
-
-  .pricing-cta {
-    display: block;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 0.82rem;
-    padding: 0.8rem 1rem;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-    border: 1px solid rgba(255,255,255,0.12);
-    color: white;
-    position: relative;
-    overflow: hidden;
-  }
-  .pricing-cta:hover {
-    border-color: rgba(139,26,43,0.5);
-    background: rgba(139,26,43,0.1);
-  }
-  .pricing-cta-featured {
-    background: #8B1A2B;
-    border-color: #8B1A2B;
-    color: white;
-  }
-  .pricing-cta-featured:hover { background: #A52030 !important; border-color: #A52030 !important; }
-
-  .extras-box {
-    border: 1px solid rgba(255,255,255,0.07);
-    padding: 2.5rem;
-    background: rgba(255,255,255,0.015);
-  }
-
-  .extra-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: border-color 0.2s, background 0.2s;
-    gap: 0.5rem;
-  }
-  .extra-item:hover {
-    border-color: rgba(139,26,43,0.2);
-    background: rgba(139,26,43,0.04);
-  }
-</style>

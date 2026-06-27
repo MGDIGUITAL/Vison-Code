@@ -2,377 +2,98 @@
 const products = [
   {
     img: "/images/productos/lading-basica.png",
-    alt: "Landing Básica — Vision Code",
     name: "Landing Básica",
     price: "$58.000 CLP",
-    desc: "Página de aterrizaje profesional, rápida y responsive. Perfecta para presentar tu negocio y captar leads desde el primer día.",
-    tags: ["Diseño responsive", "SEO básico", "Formulario"],
+    desc: "Sitio de una página optimizado para conversión. Ideal para captar leads rápidamente.",
+    tags: ["Formulario", "Diseño Responsive"],
     popular: false,
   },
   {
     img: "/images/productos/lading-sitioweb.png",
-    alt: "Landing + Sitio Web — Vision Code",
-    name: "Landing + Sitio Web",
+    name: "Landing + Sitio Corporativo",
     price: "$80.000 CLP",
-    desc: "Tu presencia digital completa: landing de ventas + sitio corporativo con secciones, blog y múltiples páginas internas.",
-    tags: ["Multi-página", "Blog", "SEO avanzado"],
+    desc: "Tu presencia digital completa con secciones internas, blog y posicionamiento SEO.",
+    tags: ["Multi-página", "Google Analytics"],
     popular: true,
   },
   {
     img: "/images/productos/lading-ecommerce.png",
-    alt: "Landing + E-Commerce — Vision Code",
-    name: "Landing + E-Commerce",
+    name: "E-Commerce",
     price: "$150.000 CLP",
-    desc: "Tu tienda online lista para vender: catálogo de productos, carrito, pasarela de pago y gestión de pedidos integrada.",
-    tags: ["Tienda online", "Pagos online", "Inventario"],
+    desc: "Tienda online completa. Catálogo, carrito de compras y pasarela de pago integrada.",
+    tags: ["Pagos Online", "Inventario"],
     popular: false,
   },
   {
     img: "/images/productos/lading-ecommerce-erp.png",
-    alt: "E-Commerce + ERP — Vision Code",
     name: "E-Commerce + ERP",
     price: "$300.000 CLP",
-    desc: "La solución empresarial completa: tienda online integrada con sistema de gestión de ventas, clientes y reportes.",
-    tags: ["Panel admin", "ERP integrado", "Reportes"],
+    desc: "La suite definitiva. Tienda conectada a un sistema de gestión de ventas y clientes.",
+    tags: ["Panel Admin", "Reportes"],
     popular: false,
   },
 ];
 ---
 
-<section id="productos" class="py-32 bg-[#0d0d0d] relative overflow-hidden">
-  <!-- Glow decorativo izquierda -->
-  <div class="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none" style="background: radial-gradient(ellipse at 0% 50%, rgba(139,26,43,0.08) 0%, transparent 65%);"></div>
-  <!-- Glow derecha abajo -->
-  <div class="absolute bottom-0 right-0 w-[500px] h-[500px] pointer-events-none" style="background: radial-gradient(ellipse at 100% 100%, rgba(139,26,43,0.06) 0%, transparent 65%);"></div>
-
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
-    <!-- Header -->
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16 reveal">
-      <div>
-        <div class="section-eyebrow">
-          <span class="eyebrow-num">02</span>
-          <span class="eyebrow-line"></span>
-          <span class="eyebrow-label">Portafolio</span>
-        </div>
-        <h2 class="font-display text-5xl md:text-6xl font-bold text-white leading-tight">
-          Nuestros <span class="text-brand-red">productos</span>
-        </h2>
-        <p class="font-body text-white/50 text-lg mt-4 max-w-lg leading-relaxed">
-          Mirá los tipos de sitio que construimos. Cada uno adaptado a tu industria y objetivos.
-        </p>
-      </div>
-      <!-- Counter -->
-      <div class="flex items-center gap-4 flex-shrink-0">
-        <span id="carousel-current" class="font-display text-5xl font-bold text-white">01</span>
-        <div class="flex flex-col gap-1">
-          <span class="font-body text-xs text-white/30 uppercase tracking-widest">de</span>
-          <span class="font-display text-lg font-bold text-white/20">04</span>
-        </div>
-      </div>
+<section id="productos" class="py-24 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    
+    <div class="text-center mb-16 fade-up">
+      <div class="saas-badge mb-4 mx-auto">Nuestros Productos</div>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+        Soluciones listas <br/><span class="text-white/40">para implementar.</span>
+      </h2>
+      <p class="text-sm text-white/50 max-w-lg mx-auto">Selecciona el paquete tecnológico que mejor se adapte a tu fase de crecimiento comercial.</p>
     </div>
 
-    <!-- Carousel wrapper -->
-    <div class="relative">
-      <!-- Track -->
-      <div id="carousel-track" class="flex gap-6 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-grab active:cursor-grabbing select-none">
-        {products.map((p, i) => (
-          <div class="carousel-slide flex-shrink-0">
-            <div class="carousel-card group">
-              <!-- Image -->
-              <div class="carousel-img-wrap">
-                <img src={p.img} alt={p.alt} class="carousel-img" loading="lazy" draggable="false" />
-                <!-- Overlay -->
-                <div class="carousel-overlay"></div>
-                <!-- Price badge -->
-                <div class="absolute top-5 right-5 z-10">
-                  <span class="price-badge">{p.price}</span>
-                </div>
-                <!-- Popular badge -->
-                {p.popular && (
-                  <div class="absolute top-5 left-5 z-10">
-                    <span class="popular-badge">
-                      <span class="popular-dot"></span>
-                      Más popular
-                    </span>
-                  </div>
-                )}
+    <!-- 2x2 Bento Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {products.map((p, i) => (
+        <article class="bento-card group flex flex-col sm:flex-row h-auto sm:h-[300px] fade-up" style={`transition-delay: ${i * 0.1}s`}>
+          
+          <!-- Image Section -->
+          <div class="w-full sm:w-2/5 h-48 sm:h-full bg-[#030303] relative overflow-hidden flex-shrink-0">
+            <img src={p.img} alt={p.name} class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-[var(--saas-surface)] hidden sm:block"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[var(--saas-bg)] to-transparent sm:hidden"></div>
+            
+            {p.popular && (
+              <div class="absolute top-4 left-4 z-10">
+                <span class="saas-badge bg-[#8B1A2B] border-[#8B1A2B] text-white shadow-[0_0_15px_rgba(139,26,43,0.4)]">
+                  Más Solicitado
+                </span>
               </div>
+            )}
+          </div>
 
-              <!-- Info panel -->
-              <div class="carousel-info">
-                <div class="flex items-start justify-between gap-4 mb-3">
-                  <h3 class="font-display text-2xl font-bold text-white group-hover:text-brand-red transition-colors duration-300">{p.name}</h3>
-                  <span class="font-display text-4xl font-bold text-white/[0.06] leading-none flex-shrink-0">{String(i+1).padStart(2,'0')}</span>
-                </div>
-                <p class="font-body text-white/50 text-sm leading-relaxed mb-5">{p.desc}</p>
-                <div class="flex flex-wrap gap-2 mb-6">
-                  {p.tags.map(tag => (
-                    <span class="carousel-tag">{tag}</span>
-                  ))}
-                </div>
-                <a href="#contacto" class="carousel-cta shimmer-btn">
-                  Solicitar cotización
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </a>
+          <!-- Content Section -->
+          <div class="w-full sm:w-3/5 p-6 sm:p-8 flex flex-col justify-center z-10 relative">
+            <div class="mb-4">
+              <h3 class="text-2xl font-bold text-white mb-1">{p.name}</h3>
+              <div class="text-[#8B1A2B] font-bold tracking-tight">{p.price}</div>
+            </div>
+            
+            <p class="text-sm text-white/60 leading-relaxed mb-6 flex-1">
+              {p.desc}
+            </p>
+            
+            <div class="flex items-center justify-between mt-auto">
+              <div class="flex gap-2">
+                {p.tags.map(tag => (
+                  <span class="text-[0.65rem] font-bold uppercase tracking-wider text-white/30 border border-white/10 px-2 py-1 rounded-md">
+                    {tag}
+                  </span>
+                ))}
               </div>
+              <a href="#contacto" class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 group-hover:bg-[#8B1A2B] group-hover:text-white group-hover:border-[#8B1A2B] transition-colors">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
             </div>
           </div>
-        ))}
-      </div>
-
-      <!-- Navigation -->
-      <div class="flex items-center justify-between mt-10">
-        <!-- Dots -->
-        <div class="flex gap-2" id="carousel-dots">
-          {products.map((_, i) => (
-            <button class={`carousel-dot ${i === 0 ? 'active' : ''}`} data-index={i} aria-label={`Ir a producto ${i+1}`}></button>
-          ))}
-        </div>
-
-        <!-- Arrows -->
-        <div class="flex gap-3">
-          <button id="carousel-prev" class="carousel-arrow" aria-label="Anterior">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button id="carousel-next" class="carousel-arrow carousel-arrow-active" aria-label="Siguiente">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-      </div>
+          
+        </article>
+      ))}
     </div>
+
   </div>
 </section>
-
-<style>
-  /* ── Carousel layout ── */
-  .carousel-slide {
-    width: calc(65% - 1.5rem);
-    min-width: 320px;
-  }
-  @media (max-width: 768px) {
-    .carousel-slide { width: calc(88vw - 1.5rem); }
-  }
-  @media (min-width: 1280px) {
-    .carousel-slide { width: calc(55% - 1.5rem); }
-  }
-
-  .carousel-card {
-    background: #141414;
-    border: 1px solid rgba(255,255,255,0.06);
-    overflow: hidden;
-    transition: border-color 0.4s;
-  }
-  .carousel-card:hover { border-color: rgba(139,26,43,0.3); }
-
-  .carousel-img-wrap {
-    position: relative;
-    height: 380px;
-    overflow: hidden;
-  }
-  @media (max-width: 640px) { .carousel-img-wrap { height: 240px; } }
-
-  .carousel-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
-    pointer-events: none;
-  }
-  .carousel-card:hover .carousel-img { transform: scale(1.04); }
-
-  .carousel-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(20,20,20,0.98) 0%, rgba(20,20,20,0.4) 50%, rgba(20,20,20,0.1) 100%);
-    pointer-events: none;
-  }
-
-  /* ── Badges ── */
-  .price-badge {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    color: white;
-    background: rgba(139,26,43,0.9);
-    backdrop-filter: blur(8px);
-    padding: 0.35rem 0.85rem;
-    border: 1px solid rgba(139,26,43,0.5);
-  }
-  .popular-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: white;
-    background: rgba(15,15,15,0.85);
-    backdrop-filter: blur(8px);
-    padding: 0.35rem 0.75rem;
-    border: 1px solid rgba(255,255,255,0.15);
-  }
-  .popular-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #8B1A2B;
-    animation: pulse-dot 2s ease-in-out infinite;
-  }
-  @keyframes pulse-dot {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50%       { opacity: 0.5; transform: scale(1.5); }
-  }
-
-  /* ── Info panel ── */
-  .carousel-info {
-    padding: 1.75rem 2rem 2rem;
-  }
-  .carousel-tag {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    border: 1px solid rgba(255,255,255,0.09);
-    padding: 0.25rem 0.65rem;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .carousel-card:hover .carousel-tag {
-    border-color: rgba(139,26,43,0.25);
-    color: rgba(255,255,255,0.5);
-  }
-  .carousel-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: #8B1A2B;
-    color: white;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 0.82rem;
-    padding: 0.75rem 1.5rem;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-  .carousel-cta:hover { background: #A52030; }
-
-  /* ── Navigation ── */
-  .carousel-dot {
-    width: 24px; height: 3px;
-    background: rgba(255,255,255,0.15);
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    transition: background 0.3s, width 0.3s;
-  }
-  .carousel-dot.active {
-    background: #8B1A2B;
-    width: 40px;
-  }
-  .carousel-arrow {
-    width: 44px; height: 44px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.5);
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-  }
-  .carousel-arrow:hover,
-  .carousel-arrow-active {
-    background: #8B1A2B;
-    border-color: #8B1A2B;
-    color: white;
-  }
-  .carousel-arrow:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    background: transparent;
-    border-color: rgba(255,255,255,0.07);
-  }
-</style>
-
-<script>
-  const track    = document.getElementById('carousel-track') as HTMLElement;
-  const dots     = document.querySelectorAll('.carousel-dot') as NodeListOf<HTMLButtonElement>;
-  const prevBtn  = document.getElementById('carousel-prev') as HTMLButtonElement;
-  const nextBtn  = document.getElementById('carousel-next') as HTMLButtonElement;
-  const counter  = document.getElementById('carousel-current') as HTMLElement;
-  const total    = dots.length;
-  let current    = 0;
-  let autoplayTimer: ReturnType<typeof setInterval>;
-  let isDragging = false;
-  let startX     = 0;
-  let startScroll = 0;
-
-  function getSlideWidth(): number {
-    const slide = track.querySelector('.carousel-slide') as HTMLElement;
-    if (!slide) return 0;
-    return slide.offsetWidth + 24; // gap-6 = 24px
-  }
-
-  function goTo(index: number) {
-    current = Math.max(0, Math.min(index, total - 1));
-    track.style.transform = `translateX(-${current * getSlideWidth()}px)`;
-    dots.forEach((d, i) => d.classList.toggle('active', i === current));
-    counter.textContent = String(current + 1).padStart(2, '0');
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === total - 1;
-    // Swap active style on arrows
-    prevBtn.classList.toggle('carousel-arrow-active', current > 0);
-    nextBtn.classList.toggle('carousel-arrow-active', current < total - 1);
-  }
-
-  function startAutoplay() {
-    autoplayTimer = setInterval(() => {
-      goTo(current < total - 1 ? current + 1 : 0);
-    }, 5000);
-  }
-  function stopAutoplay() { clearInterval(autoplayTimer); }
-
-  prevBtn.addEventListener('click', () => { goTo(current - 1); stopAutoplay(); startAutoplay(); });
-  nextBtn.addEventListener('click', () => { goTo(current + 1); stopAutoplay(); startAutoplay(); });
-  dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); stopAutoplay(); startAutoplay(); }));
-
-  // Touch/drag support
-  track.addEventListener('mousedown', (e) => { isDragging = true; startX = e.pageX; startScroll = current; track.style.transition = 'none'; });
-  window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    const dx = e.pageX - startX;
-    const sw = getSlideWidth();
-    track.style.transform = `translateX(${-startScroll * sw + dx}px)`;
-  });
-  window.addEventListener('mouseup', (e) => {
-    if (!isDragging) return;
-    isDragging = false;
-    track.style.transition = '';
-    const dx = e.pageX - startX;
-    if (dx < -60)      goTo(current + 1);
-    else if (dx > 60)  goTo(current - 1);
-    else               goTo(current);
-    stopAutoplay(); startAutoplay();
-  });
-
-  track.addEventListener('touchstart', (e) => { startX = e.touches[0].pageX; startScroll = current; }, { passive: true });
-  track.addEventListener('touchend', (e) => {
-    const dx = e.changedTouches[0].pageX - startX;
-    if (dx < -50)      goTo(current + 1);
-    else if (dx > 50)  goTo(current - 1);
-    stopAutoplay(); startAutoplay();
-  });
-
-  // Pause on hover
-  track.addEventListener('mouseenter', stopAutoplay);
-  track.addEventListener('mouseleave', startAutoplay);
-
-  // Init
-  goTo(0);
-  startAutoplay();
-
-  // Recalculate on resize
-  window.addEventListener('resize', () => goTo(current));
-</script>

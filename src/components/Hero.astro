@@ -1,165 +1,108 @@
 ---
 ---
-<section id="inicio" class="hero relative min-h-screen flex items-center justify-center overflow-hidden">
-  <!-- Video Background -->
-  <video
-    class="hero-video absolute inset-0 w-full h-full object-cover"
-    autoplay
-    loop
-    muted
-    playsinline
-    aria-hidden="true"
-  >
-    <source src="/videos/HERO.mp4" type="video/mp4" />
-  </video>
+<section id="inicio" class="relative pt-40 pb-24 px-6 lg:px-10 overflow-hidden flex flex-col items-center text-center">
+  
+  <!-- Contenido Central -->
+  <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center fade-up">
+    
+    <div class="saas-badge mb-8">
+      <span class="w-2 h-2 rounded-full bg-[#8B1A2B] animate-pulse"></span>
+      Soluciones Digitales Empresariales
+    </div>
 
-  <!-- Overlay gradient -->
-  <div class="absolute inset-0 bg-gradient-to-r from-brand-black/90 via-brand-black/70 to-brand-black/40"></div>
-  <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent"></div>
+    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6">
+      Creamos tecnología para<br/>
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-[#8B1A2B]">impulsar tu negocio.</span>
+    </h1>
 
-  <!-- Red accent line top-left -->
-  <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-brand-red via-brand-red/30 to-transparent opacity-60"></div>
+    <p class="text-lg text-white/60 max-w-2xl mx-auto leading-relaxed mb-10">
+      Diseñamos y desarrollamos sitios web, tiendas online, sistemas de gestión y automatizaciones adaptadas a las necesidades de cada empresa.
+    </p>
 
-  <!-- Content -->
-  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-24 pb-16">
-    <div class="max-w-3xl">
-      <!-- Eyebrow -->
-      <div class="flex items-center gap-3 mb-6 hero-animate" style="animation-delay: 0.2s">
-        <span class="block w-8 h-px bg-brand-red"></span>
-        <span class="font-body text-brand-red font-medium text-sm uppercase tracking-[0.2em]">
-          Región de Valparaíso, Chile
-        </span>
-      </div>
+    <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+      <a href="#contacto" class="btn-primary w-full sm:w-auto">
+        Cotizar proyecto
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#servicios" class="btn-secondary w-full sm:w-auto">
+        Conocer servicios
+      </a>
+    </div>
 
-      <!-- Headline -->
-      <h1 class="font-display text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.92] text-white mb-7 hero-animate" style="animation-delay: 0.4s">
-        Tu negocio<br />
-        <span class="text-brand-red">merece</span> una<br />
-        presencia digital<br />
-        <span class="hero-outline-text glow-text">real.</span>
-      </h1>
+    <!-- Puntos de confianza / Servicios -->
+    <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-3 mt-12 text-[0.8rem] font-medium text-white/40 uppercase tracking-widest">
+      <span>Desarrollo Web</span>
+      <span class="w-1 h-1 rounded-full bg-white/20"></span>
+      <span>E-commerce</span>
+      <span class="w-1 h-1 rounded-full bg-white/20"></span>
+      <span>Sistemas ERP</span>
+      <span class="w-1 h-1 rounded-full bg-white/20"></span>
+      <span>IA & Automatización</span>
+    </div>
+  </div>
 
-      <!-- Subheadline -->
-      <p class="font-body text-lg md:text-xl text-white/70 leading-relaxed mb-10 max-w-xl hero-animate" style="animation-delay: 0.6s">
-        Creamos sitios web profesionales, tiendas online y sistemas de gestión para empresas en Chile. 
-        Diseño con IA, hosting incluido y soporte técnico real.
-      </p>
-
-      <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row gap-4 hero-animate" style="animation-delay: 0.8s">
-        <a href="#planes" class="btn-primary shimmer-btn">
-          Ver planes y precios
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="#contacto" class="btn-secondary">
-          Cotizar mi proyecto
-        </a>
-      </div>
-
-      <!-- Stats row -->
-      <div class="flex flex-wrap gap-10 mt-16 pt-10 border-t border-white/[0.08] hero-animate" style="animation-delay: 1s">
-        <div class="stat-item">
-          <div class="font-display text-4xl font-bold text-white tracking-tight">100%</div>
-          <div class="stat-label">Diseño responsive</div>
+  <!-- Abstract UI Mockup (SaaS Dashboard Vibe) -->
+  <div class="relative z-10 w-full max-w-5xl mx-auto mt-20 fade-up" style="transition-delay: 0.2s">
+    <div class="bento-card p-2">
+      <div class="w-full bg-[#030303] rounded-2xl border border-white/5 overflow-hidden flex flex-col relative" style="height: 400px;">
+        
+        <!-- UI Header -->
+        <div class="h-12 border-b border-white/5 flex items-center px-4 justify-between bg-white/[0.01]">
+          <div class="flex gap-2">
+            <div class="w-3 h-3 rounded-full bg-white/10"></div>
+            <div class="w-3 h-3 rounded-full bg-white/10"></div>
+            <div class="w-3 h-3 rounded-full bg-white/10"></div>
+          </div>
+          <div class="w-1/3 h-5 bg-white/5 rounded-md"></div>
+          <div class="w-8 h-8 rounded-full bg-white/5"></div>
         </div>
-        <div class="stat-item">
-          <div class="font-display text-4xl font-bold text-white tracking-tight">IA</div>
-          <div class="stat-label">En cada proyecto</div>
+
+        <!-- UI Body (Abstract Bento Inside) -->
+        <div class="flex-1 p-6 grid grid-cols-3 gap-4 relative">
+          <!-- Gradiente decorativo detrás de la UI -->
+          <div class="absolute inset-0 bg-gradient-to-tr from-[#8B1A2B]/10 to-transparent pointer-events-none"></div>
+
+          <!-- Columna izquierda -->
+          <div class="col-span-1 flex flex-col gap-4">
+            <div class="h-16 bento-card border-none bg-white/[0.03] rounded-xl p-4 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-[#8B1A2B]/20 flex-shrink-0"></div>
+              <div class="w-full h-3 bg-white/10 rounded-full"></div>
+            </div>
+            <div class="h-16 bento-card border-none bg-white/[0.03] rounded-xl p-4 flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-white/10 flex-shrink-0"></div>
+              <div class="w-2/3 h-3 bg-white/10 rounded-full"></div>
+            </div>
+            <div class="flex-1 bento-card border-none bg-white/[0.02] rounded-xl p-4 flex items-end">
+              <div class="w-full flex items-end justify-between gap-2 h-full opacity-30">
+                <div class="w-full bg-white rounded-t-sm" style="height: 40%"></div>
+                <div class="w-full bg-white rounded-t-sm" style="height: 70%"></div>
+                <div class="w-full bg-[#8B1A2B] rounded-t-sm" style="height: 100%"></div>
+                <div class="w-full bg-white rounded-t-sm" style="height: 60%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Centro y Derecha -->
+          <div class="col-span-2 flex flex-col gap-4">
+            <div class="h-32 bento-card border-none bg-white/[0.03] rounded-xl p-5 relative overflow-hidden flex flex-col justify-between">
+              <div class="w-32 h-4 bg-white/10 rounded-full"></div>
+              <div class="font-bold text-4xl text-white">99.9%</div>
+              <!-- Curva abstracta -->
+              <svg class="absolute bottom-0 right-0 w-2/3 h-full opacity-20" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0,100 L0,50 Q25,60 50,20 T100,10 L100,100 Z" fill="#8B1A2B"/>
+              </svg>
+            </div>
+            <div class="flex-1 grid grid-cols-2 gap-4">
+              <div class="bento-card border-none bg-white/[0.02] rounded-xl p-4"></div>
+              <div class="bento-card border-none bg-[#8B1A2B]/10 rounded-xl p-4 border border-[#8B1A2B]/20"></div>
+            </div>
+          </div>
         </div>
-        <div class="stat-item">
-          <div class="font-display text-4xl font-bold text-brand-red tracking-tight glow-text">30d</div>
-          <div class="stat-label">Soporte técnico</div>
-        </div>
+
+        <!-- Fade Bottom -->
+        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-var(--saas-bg) to-transparent pointer-events-none z-20"></div>
       </div>
     </div>
   </div>
 
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hero-animate" style="animation-delay: 1.2s">
-    <span class="font-body text-xs text-white/40 uppercase tracking-widest">Scroll</span>
-    <div class="scroll-dot"></div>
-  </div>
 </section>
-
-<style>
-  .hero-video {
-    filter: brightness(0.6) saturate(0.8);
-  }
-
-  .hero-outline-text {
-    -webkit-text-stroke: 2px #8B1A2B;
-    color: transparent;
-  }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: #8B1A2B;
-    color: white;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 0.875rem 1.75rem;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.2s;
-  }
-  .btn-primary:hover {
-    background: #A52030;
-    transform: translateY(-1px);
-  }
-
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.3);
-    color: white;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 0.9rem;
-    padding: 0.875rem 1.75rem;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .btn-secondary:hover {
-    border-color: #8B1A2B;
-    background: rgba(139, 26, 43, 0.1);
-  }
-
-  @keyframes scrollBounce {
-    0%, 100% { transform: translateY(0); opacity: 1; }
-    50% { transform: translateY(8px); opacity: 0.4; }
-  }
-
-  .scroll-dot {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
-    animation: scrollBounce 2s ease-in-out infinite;
-  }
-
-  @keyframes heroFadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-animate {
-    opacity: 0;
-    animation: heroFadeUp 0.8s ease forwards;
-  }
-
-  .stat-item { position: relative; }
-  .stat-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 500;
-    color: rgba(255,255,255,0.4);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-top: 0.35rem;
-  }
-</style>
