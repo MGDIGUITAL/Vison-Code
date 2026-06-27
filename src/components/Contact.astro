@@ -183,8 +183,8 @@
   // SUPABASE CONTACT FORM
   // Replace with your actual Supabase credentials
   // ==========================================
-  const SUPABASE_URL = 'https://oghqbrtfcmrmucqgehkc.supabase.co';
-  const SUPABASE_ANON_KEY = 'sb_publishable_UPkB-p03qgE3I-VDsaHIyg_7cLCjrg-';
+  const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
+  const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
