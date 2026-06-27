@@ -1,6 +1,6 @@
 ---
 ---
-<section id="inicio" class="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+<section id="inicio" class="relative w-full h-screen min-h-[750px] flex flex-col justify-center overflow-hidden">
   
   <!-- Video de Fondo Full-Screen -->
   <div class="absolute inset-0 w-full h-full z-0">
@@ -15,39 +15,46 @@
     
     <!-- Overlays Cinemáticos -->
     <div class="absolute inset-0 bg-black/60"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-[var(--saas-bg)] via-transparent to-black/40"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[var(--saas-bg)] via-black/20 to-black/60"></div>
   </div>
 
   <!-- Contenido Central -->
-  <div class="relative z-10 max-w-5xl mx-auto px-6 lg:px-10 flex flex-col items-center text-center mt-20 fade-up">
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 flex flex-col items-center text-center mt-12 fade-up w-full">
     
-    <div class="saas-badge mb-8 border-white/30 text-white tracking-widest backdrop-blur-md bg-white/5">
-      Firma de Ingeniería de Software
+    <div class="saas-badge mb-8 border-white/20 text-white/80 tracking-widest bg-black/20 backdrop-blur-md px-4 py-1.5 uppercase text-[0.65rem]">
+      Firma Global de Ingeniería & Diseño
     </div>
 
-    <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[1.05] mb-8 drop-shadow-2xl">
-      Infraestructura digital<br/>
-      para <span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">líderes.</span>
+    <h1 class="text-6xl md:text-8xl lg:text-[7rem] font-black tracking-tighter text-white leading-[0.95] mb-8 drop-shadow-2xl">
+      Infraestructura<br/>
+      <span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40">para líderes.</span>
     </h1>
 
-    <p class="text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed mb-12 font-light">
-      Desarrollamos ecosistemas tecnológicos corporativos, e-commerce de alto rendimiento y sistemas de gestión avanzados para empresas que no toleran plantillas.
+    <p class="text-lg md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed mb-12 font-light tracking-wide">
+      Ingeniería de software, plataformas de conversión B2B y sistemas de gestión para corporaciones que exigen escalabilidad absoluta.
     </p>
 
     <div class="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
-      <a href="#contacto" class="btn-primary w-full sm:w-auto text-sm tracking-wide">
-        Agendar Consultoría
-      </a>
-      <a href="#servicios" class="btn-secondary w-full sm:w-auto text-sm tracking-wide bg-transparent border-white/30 backdrop-blur-md">
-        Explorar Soluciones
+      <a href="#contacto" class="btn-primary w-full sm:w-auto text-xs tracking-widest uppercase font-bold py-4 px-8">
+        Agendar Auditoría Técnica
       </a>
     </div>
   </div>
 
-  <!-- Scroll Down Indicator -->
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-50 fade-up" style="transition-delay: 0.5s">
-    <span class="text-[0.6rem] uppercase tracking-widest text-white font-bold">Descubrir</span>
-    <div class="w-px h-12 bg-gradient-to-b from-white to-transparent"></div>
+  <!-- Trust Banner (Social Proof) -->
+  <div class="absolute bottom-0 w-full border-t border-white/5 bg-black/40 backdrop-blur-md z-10 py-6 fade-up" style="transition-delay: 0.3s">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <span class="text-[0.65rem] uppercase tracking-widest text-white/40 font-bold whitespace-nowrap">
+        Tecnología validada por líderes de industria:
+      </span>
+      <div class="flex items-center gap-8 md:gap-16 opacity-40 grayscale">
+        <!-- Logos Abstractos de Prueba Social -->
+        <svg height="24" viewBox="0 0 100 30" fill="currentColor" class="text-white"><path d="M10 15a5 5 0 100-10 5 5 0 000 10zm15 0h20v-2H25v-8h-4v10zM55 15h20v-2H55v-8h-4v10zM85 5a5 5 0 100 10 5 5 0 000-10z"/></svg>
+        <svg height="24" viewBox="0 0 100 30" fill="currentColor" class="text-white"><path d="M5 25L50 5l45 20H5z"/></svg>
+        <svg height="24" viewBox="0 0 100 30" fill="currentColor" class="text-white hidden sm:block"><circle cx="20" cy="15" r="10"/><rect x="40" y="5" width="40" height="20"/></svg>
+        <svg height="24" viewBox="0 0 100 30" fill="currentColor" class="text-white hidden md:block"><path d="M10 5h80v20H10zM20 10h60v10H20z"/></svg>
+      </div>
+    </div>
   </div>
 
 </section>

@@ -1,42 +1,55 @@
 ---
 const steps = [
-  { num: "01", title: "Consultoría Estratégica", desc: "Auditoría técnica y definición de la arquitectura comercial." },
-  { num: "02", title: "Prototipado", desc: "Diseño de interfaces bajo estándares UX/UI corporativos." },
-  { num: "03", title: "Ingeniería de Software", desc: "Desarrollo del código fuente con actualizaciones semanales." },
-  { num: "04", title: "Quality Assurance", desc: "Auditoría de seguridad, rendimiento y estrés de servidores." },
-  { num: "05", title: "Despliegue a Producción", desc: "Lanzamiento oficial y capacitación técnica al equipo interno." },
+  { num: "01", title: "Auditoría de Sistemas", desc: "Analizamos su infraestructura actual para identificar cuellos de botella y oportunidades de automatización. Entregamos un diagnóstico técnico de viabilidad." },
+  { num: "02", title: "Diseño de Arquitectura", desc: "Modelamos la estructura de bases de datos, flujos de usuario y stack tecnológico necesario para garantizar la escalabilidad sin refactorizaciones futuras." },
+  { num: "03", title: "Ingeniería de Software", desc: "Nuestros ingenieros construyen la plataforma utilizando metodologías ágiles. Usted tiene visibilidad total del código y el progreso semanal." },
+  { num: "04", title: "Stress Testing & QA", desc: "Sometemos la plataforma a pruebas de carga masiva, auditorías de seguridad y control de calidad multiplataforma antes de cualquier lanzamiento." },
+  { num: "05", title: "Despliegue & Capacitación", desc: "Migramos a producción sin interrupción de servicio. Proveemos documentación técnica detallada y capacitamos a su equipo directivo." },
 ];
 ---
 
-<section id="proceso" class="py-32 relative z-10 border-t border-white/5">
-  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+<section id="proceso" class="py-40 relative z-10 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
     
-    <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-24 fade-up">
-      <div>
-        <div class="saas-badge mb-4">Metodología de Trabajo</div>
-        <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">
-          Fases de <span class="text-white/40">Ingeniería.</span>
-        </h2>
-      </div>
-    </div>
-
-    <!-- Corporate Timeline -->
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
-      {steps.map((step, i) => (
-        <div class="flex flex-col fade-up relative" style={`transition-delay: ${i * 0.1}s`}>
-          <!-- Línea conectora (oculta en el último) -->
-          {i !== steps.length - 1 && (
-            <div class="hidden md:block absolute top-6 left-12 right-[-2rem] h-px bg-white/10"></div>
-          )}
-          
-          <div class="w-12 h-12 rounded border border-white/20 bg-black/50 backdrop-blur-md flex items-center justify-center font-bold text-lg text-white mb-6 relative z-10">
-             {step.num}
-          </div>
-
-          <h3 class="text-lg font-bold text-white mb-3 pr-4">{step.title}</h3>
-          <p class="text-sm text-white/50 leading-relaxed font-light pr-4">{step.desc}</p>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 relative items-start">
+      
+      <!-- Sticky Left Side -->
+      <div class="lg:col-span-5 lg:sticky lg:top-32 fade-up">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="h-px bg-white/20 w-12"></div>
+          <div class="saas-badge border-none text-white/50 tracking-widest text-[0.65rem] px-0">Ingeniería Estructurada</div>
         </div>
-      ))}
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
+          Ejecución <br/><span class="text-white/40">milimétrica.</span>
+        </h2>
+        <p class="text-sm text-white/50 leading-relaxed max-w-sm font-light">
+          No dejamos margen al error. Nuestra metodología de desarrollo garantiza entregas puntuales y arquitecturas de software diseñadas para dominar su industria.
+        </p>
+      </div>
+
+      <!-- Scrolling Right Side -->
+      <div class="lg:col-span-7 flex flex-col gap-12 pt-8 lg:pt-0">
+        {steps.map((step, i) => (
+          <div class="bento-card p-10 fade-up relative overflow-hidden group" style={`transition-delay: ${i * 0.1}s`}>
+            
+            <div class="text-[5rem] font-black text-white/5 absolute -top-4 -right-4 select-none group-hover:text-[#8B1A2B]/10 transition-colors duration-500">
+              {step.num}
+            </div>
+
+            <div class="relative z-10">
+              <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-4">
+                <span class="text-[#8B1A2B] text-sm">{step.num}</span>
+                {step.title}
+              </h3>
+              <p class="text-sm text-white/60 leading-relaxed font-light max-w-lg">
+                {step.desc}
+              </p>
+            </div>
+
+          </div>
+        ))}
+      </div>
+
     </div>
 
   </div>
