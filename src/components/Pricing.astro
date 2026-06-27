@@ -86,21 +86,30 @@ const extras = [
 ];
 ---
 
-<section id="planes" class="py-28 bg-[#111111] relative">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+<section id="planes" class="py-32 bg-[#0d0d0d] relative overflow-hidden">
+  <!-- Glow top center -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] pointer-events-none" style="background: radial-gradient(ellipse at 50% 0%, rgba(139,26,43,0.08) 0%, transparent 70%);"></div>
+  <!-- Dot grid -->
+  <div class="absolute inset-0 dot-grid pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
     <!-- Section header -->
-    <div class="text-center mb-16 reveal">
-      <span class="accent-line mx-auto block"></span>
-      <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">
+    <div class="text-center mb-20 reveal">
+      <div class="section-eyebrow justify-center">
+        <span class="eyebrow-num">04</span>
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-label">Planes</span>
+      </div>
+      <h2 class="font-display text-5xl md:text-6xl font-bold text-white mb-5">
         Planes y <span class="text-brand-red">precios</span>
       </h2>
-      <p class="font-body text-white/60 text-lg max-w-xl mx-auto">
+      <p class="font-body text-white/50 text-lg max-w-xl mx-auto leading-relaxed">
         Inversión única, sin sorpresas. Todos los planes incluyen hosting y dominio por 1 año.
       </p>
     </div>
 
     <!-- Plans grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mb-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mb-16">
       {plans.map((plan, i) => (
         <div class={`pricing-card reveal reveal-delay-${i + 1} ${plan.popular ? 'pricing-featured' : ''}`}>
           {plan.badge && (
@@ -108,29 +117,34 @@ const extras = [
               {plan.badge}
             </div>
           )}
-          <div class="p-8">
-            <h3 class="font-display text-lg font-semibold text-white mb-1">{plan.name}</h3>
-            <div class="mt-4 mb-1">
-              <span class="font-display text-3xl font-bold text-white">{plan.price}</span>
-              <span class="font-body text-white/40 text-sm ml-1">CLP</span>
-            </div>
-            <div class="font-body text-brand-red text-sm mb-1">{plan.usd}</div>
-            <div class="font-body text-white/35 text-xs mb-6">Mantenimiento: {plan.monthly}</div>
+          <div class="p-7 flex flex-col h-full">
+            <h3 class="font-display text-lg font-bold text-white mb-4">{plan.name}</h3>
 
-            <ul class="space-y-3 mb-8">
+            <!-- Price block -->
+            <div class="mb-1">
+              <span class={`font-display text-4xl font-bold ${plan.popular ? 'text-white glow-price' : 'text-white'}`}>{plan.price}</span>
+              <span class="font-body text-white/35 text-sm ml-1">CLP</span>
+            </div>
+            <div class="font-body text-brand-red text-sm font-semibold mb-1">{plan.usd}</div>
+            <div class="font-body text-white/30 text-xs mb-6 pb-5 border-b border-white/[0.06]">
+              Mantenimiento: {plan.monthly}
+            </div>
+
+            <!-- Features -->
+            <ul class="space-y-2.5 mb-8 flex-1">
               {plan.features.map(f => (
                 <li class="flex items-start gap-3">
-                  <svg class="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8l3.5 3.5L13 4" stroke="#8B1A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <svg class="flex-shrink-0 mt-0.5" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                    <path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="#8B1A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
-                  <span class="font-body text-sm text-white/65">{f}</span>
+                  <span class="font-body text-sm text-white/60">{f}</span>
                 </li>
               ))}
             </ul>
 
-            <a 
-              href="#contacto" 
-              class={`block text-center font-body font-semibold text-sm py-3 px-4 tracking-wide transition-all duration-200 ${plan.popular ? 'bg-brand-red hover:bg-brand-red-light text-white' : 'border border-white/20 hover:border-brand-red text-white hover:bg-brand-red/10'}`}
+            <a
+              href="#contacto"
+              class={`pricing-cta ${plan.popular ? 'pricing-cta-featured shimmer-btn' : ''}`}
             >
               {plan.cta}
             </a>
@@ -141,18 +155,25 @@ const extras = [
 
     <!-- Extras section -->
     <div class="reveal">
-      <div class="border border-white/10 p-8 md:p-10">
-        <h3 class="font-display text-2xl font-semibold text-white mb-2">Servicios adicionales</h3>
-        <p class="font-body text-white/50 text-sm mb-8">Opcionales y negociables. Se acuerdan antes de iniciar el proyecto.</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="extras-box">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-8">
+          <div>
+            <h3 class="font-display text-2xl font-bold text-white mb-1">Servicios adicionales</h3>
+            <p class="font-body text-white/40 text-sm">Opcionales y negociables. Se acuerdan antes de iniciar el proyecto.</p>
+          </div>
+          <a href="#contacto" class="font-body text-xs font-semibold uppercase tracking-widest text-brand-red border-b border-brand-red/40 pb-px hover:border-brand-red transition-colors whitespace-nowrap">
+            Consultar precio
+          </a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
           {extras.map(e => (
-            <div class="extra-item flex justify-between items-center py-3 border-b border-white/8">
-              <span class="font-body text-sm text-white/70">{e.name}</span>
-              <span class="font-body text-sm font-semibold text-brand-red">{e.price}</span>
+            <div class="extra-item group">
+              <span class="font-body text-sm text-white/65 group-hover:text-white transition-colors">{e.name}</span>
+              <span class="font-body text-sm font-bold text-brand-red">{e.price}</span>
             </div>
           ))}
         </div>
-        <p class="font-body text-xs text-white/30 mt-6">* Todos los precios en CLP. Los valores en USD son referenciales.</p>
+        <p class="font-body text-xs text-white/20 mt-6">* Todos los precios en CLP. Los valores en USD son referenciales al tipo de cambio vigente.</p>
       </div>
     </div>
   </div>
@@ -160,35 +181,81 @@ const extras = [
 
 <style>
   .pricing-card {
-    background: #1a1a1a;
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
     position: relative;
-    transition: border-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.35s, box-shadow 0.35s;
   }
   .pricing-card:hover {
-    border-color: rgba(139, 26, 43, 0.4);
+    border-color: rgba(139,26,43,0.3);
+    box-shadow: 0 0 30px rgba(139,26,43,0.07);
   }
   .pricing-featured {
-    border-color: #8B1A2B !important;
-    background: #1e1010;
+    border-color: rgba(139,26,43,0.5) !important;
+    background: rgba(139,26,43,0.06) !important;
+    box-shadow: 0 0 40px rgba(139,26,43,0.15), inset 0 1px 0 rgba(139,26,43,0.2) !important;
   }
+
+  .glow-price { text-shadow: 0 0 30px rgba(255,255,255,0.15); }
+
   .plan-badge {
     font-family: 'Inter', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    padding: 0.35rem 1rem;
+    padding: 0.4rem 1rem;
     text-align: center;
   }
-  .badge-popular {
+  .badge-popular { background: #8B1A2B; color: white; }
+  .badge-complete { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.45); border-bottom: 1px solid rgba(255,255,255,0.07); }
+
+  .pricing-cta {
+    display: block;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    padding: 0.8rem 1rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-cta:hover {
+    border-color: rgba(139,26,43,0.5);
+    background: rgba(139,26,43,0.1);
+  }
+  .pricing-cta-featured {
     background: #8B1A2B;
+    border-color: #8B1A2B;
     color: white;
   }
-  .badge-complete {
-    background: #2d2d2d;
-    color: rgba(255,255,255,0.6);
+  .pricing-cta-featured:hover { background: #A52030 !important; border-color: #A52030 !important; }
+
+  .extras-box {
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 2.5rem;
+    background: rgba(255,255,255,0.015);
   }
-  .extra-item:last-child { border-bottom: none; }
-  .border-white\/8 { border-color: rgba(255,255,255,0.08); }
+
+  .extra-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: border-color 0.2s, background 0.2s;
+    gap: 0.5rem;
+  }
+  .extra-item:hover {
+    border-color: rgba(139,26,43,0.2);
+    background: rgba(139,26,43,0.04);
+  }
 </style>

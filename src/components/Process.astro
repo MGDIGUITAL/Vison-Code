@@ -4,76 +4,174 @@ const steps = [
     num: "01",
     title: "Primera reunión",
     desc: "Conversamos sobre tu negocio, tus objetivos y qué tipo de sitio necesitas. Sin compromisos, sin tecnicismos.",
+    icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M18 10c0 4.4-3.6 8-8 8a8 8 0 01-4.8-1.6L2 18l1.6-3.2A8 8 0 1118 10z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>`,
   },
   {
     num: "02",
     title: "Propuesta y diseño",
     desc: "Enviamos una propuesta con diseño visual, tecnologías a usar y plazo de entrega. Todo por escrito.",
+    icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="2" width="14" height="16" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M7 7h6M7 10h6M7 13h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>`,
   },
   {
     num: "03",
     title: "Desarrollo con IA",
     desc: "Construimos tu sitio usando IA para optimizar imágenes, textos y diseño. Tú ves el avance en tiempo real.",
+    icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.4"/><path d="M10 7v3l2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>`,
   },
   {
     num: "04",
     title: "Revisión y ajustes",
     desc: "Revisamos juntos el resultado, hacemos los ajustes necesarios y aseguramos que todo funcione perfecto.",
+    icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
   },
   {
     num: "05",
     title: "Lanzamiento",
-    desc: "Publicamos tu sitio con hosting y dominio configurado. Recibas capacitación para administrarlo tú mismo.",
+    desc: "Publicamos tu sitio con hosting y dominio configurado. Recibes capacitación para administrarlo tú mismo.",
+    icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l1.5 4.5H16l-3.7 2.7 1.4 4.3L10 11l-3.7 2.5 1.4-4.3L4 6.5h4.5L10 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>`,
   },
   {
     num: "06",
     title: "Soporte continuo",
     desc: "30 o 60 días de soporte técnico incluido. Además, planes de mantenimiento mensual disponibles.",
+    icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L4 5v5c0 4.5 2.7 8.7 6 10 3.3-1.3 6-5.5 6-10V5l-6-3z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>`,
   },
 ];
 ---
 
-<section id="proceso" class="py-28 bg-brand-black relative">
-  <!-- Decorative red stripe -->
-  <div class="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-brand-red/30 to-transparent"></div>
+<section id="proceso" class="py-32 bg-[#0a0a0a] relative overflow-hidden">
+  <!-- Decorative vertical line right -->
+  <div class="absolute right-[10%] top-0 bottom-0 w-px" style="background: linear-gradient(to bottom, transparent, rgba(139,26,43,0.15) 30%, rgba(139,26,43,0.15) 70%, transparent);"></div>
+  <!-- Glow center -->
+  <div class="absolute top-1/2 right-0 w-[500px] h-[500px] -translate-y-1/2 pointer-events-none" style="background: radial-gradient(ellipse at 100% 50%, rgba(139,26,43,0.07) 0%, transparent 65%);"></div>
 
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="grid lg:grid-cols-2 gap-16 items-start">
+    <div class="grid lg:grid-cols-[1fr_1.4fr] gap-20 items-start">
       <!-- Left: sticky header -->
-      <div class="lg:sticky lg:top-32 reveal">
-        <span class="accent-line"></span>
-        <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-6">
+      <div class="lg:sticky lg:top-32 reveal-left">
+        <div class="section-eyebrow">
+          <span class="eyebrow-num">03</span>
+          <span class="eyebrow-line"></span>
+          <span class="eyebrow-label">Proceso</span>
+        </div>
+        <h2 class="font-display text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
           Así trabajamos<br /><span class="text-brand-red">contigo</span>
         </h2>
-        <p class="font-body text-white/60 text-lg leading-relaxed mb-8">
+        <p class="font-body text-white/50 text-lg leading-relaxed mb-10">
           Un proceso claro, transparente y humano. Sin jerga técnica, con resultados que puedes ver y tocar.
         </p>
-        <a href="#contacto" class="inline-flex items-center gap-2 font-body font-semibold text-sm text-brand-red border-b border-brand-red pb-px hover:text-white hover:border-white transition-colors">
+        <a href="#contacto" class="process-cta shimmer-btn">
           Iniciar mi proyecto
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
 
       <!-- Right: steps -->
-      <div class="space-y-0">
-        {steps.map((step, i) => (
-          <div class={`process-step flex gap-6 py-8 border-b border-white/8 reveal reveal-delay-${(i % 4) + 1}`}>
-            <div class="step-num font-display text-5xl font-bold text-brand-red/20 leading-none flex-shrink-0 w-16 select-none">
-              {step.num}
+      <div class="relative">
+        <!-- Connector line -->
+        <div class="step-connector"></div>
+
+        <div class="space-y-0 relative z-10">
+          {steps.map((step, i) => (
+            <div class={`process-step group reveal reveal-delay-${(i % 4) + 1}`}>
+              <!-- Step number (large BG) -->
+              <div class="step-bg-num">{step.num}</div>
+
+              <div class="flex gap-5 items-start relative z-10">
+                <!-- Icon circle -->
+                <div class="step-icon-wrap flex-shrink-0">
+                  <div class="step-icon text-brand-red" set:html={step.icon}></div>
+                </div>
+
+                <div class="pt-0.5 flex-1">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="step-label">{step.num}</span>
+                    <h3 class="font-display text-xl font-bold text-white group-hover:text-brand-red transition-colors duration-300">{step.title}</h3>
+                  </div>
+                  <p class="font-body text-white/50 text-sm leading-relaxed">{step.desc}</p>
+                </div>
+              </div>
             </div>
-            <div class="pt-2">
-              <h3 class="font-display text-xl font-semibold text-white mb-2">{step.title}</h3>
-              <p class="font-body text-white/55 text-sm leading-relaxed">{step.desc}</p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <style>
+  .process-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #8B1A2B;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.875rem 1.75rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .process-cta:hover { background: #A52030; }
+
+  .step-connector {
+    position: absolute;
+    left: 22px;
+    top: 28px;
+    bottom: 28px;
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(139,26,43,0.4), rgba(139,26,43,0.1));
+    z-index: 0;
+  }
+
+  .process-step {
+    position: relative;
+    padding: 1.75rem 0 1.75rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: border-color 0.3s;
+    overflow: hidden;
+  }
   .process-step:last-child { border-bottom: none; }
-  .process-step:hover .step-num { color: rgba(139, 26, 43, 0.6); }
-  .border-white\/8 { border-color: rgba(255,255,255,0.08); }
+  .process-step:hover { border-color: rgba(139,26,43,0.15); }
+
+  .step-bg-num {
+    position: absolute;
+    right: -10px; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 7rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    line-height: 1;
+    pointer-events: none;
+    select: none;
+    transition: color 0.3s;
+  }
+  .process-step:hover .step-bg-num { color: rgba(139,26,43,0.07); }
+
+  .step-icon-wrap {
+    width: 44px; height: 44px;
+    background: rgba(139,26,43,0.1);
+    border: 1px solid rgba(139,26,43,0.2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.3s, border-color 0.3s;
+    position: relative;
+    z-index: 2;
+  }
+  .process-step:hover .step-icon-wrap {
+    background: rgba(139,26,43,0.2);
+    border-color: rgba(139,26,43,0.5);
+  }
+
+  .step-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(139,26,43,0.7);
+    text-transform: uppercase;
+  }
 </style>

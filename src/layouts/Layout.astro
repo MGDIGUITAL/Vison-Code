@@ -33,32 +33,65 @@ const {
       html { scroll-behavior: smooth; }
       body {
         margin: 0;
-        background-color: #0f0f0f;
+        background-color: #0a0a0a;
         color: #FFFFFF;
         font-family: 'Inter', system-ui, sans-serif;
         -webkit-font-smoothing: antialiased;
       }
       ::selection { background: #8B1A2B; color: #fff; }
-      ::-webkit-scrollbar { width: 6px; }
-      ::-webkit-scrollbar-track { background: #1a1a1a; }
-      ::-webkit-scrollbar-thumb { background: #8B1A2B; border-radius: 3px; }
+      ::-webkit-scrollbar { width: 5px; }
+      ::-webkit-scrollbar-track { background: #0a0a0a; }
+      ::-webkit-scrollbar-thumb { background: #8B1A2B; border-radius: 0; }
 
-      /* Reveal animations */
+      /* ── Reveal animations ── */
       .reveal {
         opacity: 0;
-        transform: translateY(40px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
+        transform: translateY(48px);
+        transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
       }
-      .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .reveal-delay-1 { transition-delay: 0.1s; }
-      .reveal-delay-2 { transition-delay: 0.2s; }
-      .reveal-delay-3 { transition-delay: 0.3s; }
-      .reveal-delay-4 { transition-delay: 0.4s; }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
+      .reveal-left  { opacity: 0; transform: translateX(-48px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+      .reveal-left.visible  { opacity: 1; transform: translateX(0); }
+      .reveal-right { opacity: 0; transform: translateX(48px);  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+      .reveal-right.visible { opacity: 1; transform: translateX(0); }
+      .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+      .reveal-scale.visible { opacity: 1; transform: scale(1); }
 
-      /* Red accent line */
+      .reveal-delay-1 { transition-delay: 0.08s; }
+      .reveal-delay-2 { transition-delay: 0.16s; }
+      .reveal-delay-3 { transition-delay: 0.24s; }
+      .reveal-delay-4 { transition-delay: 0.32s; }
+
+      /* ── Section eyebrow ── */
+      .section-eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+      }
+      .section-eyebrow .eyebrow-num {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #8B1A2B;
+        letter-spacing: 0.15em;
+      }
+      .section-eyebrow .eyebrow-line {
+        width: 32px;
+        height: 1px;
+        background: #8B1A2B;
+        opacity: 0.6;
+      }
+      .section-eyebrow .eyebrow-label {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: rgba(255,255,255,0.35);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      /* ── Red accent line (legacy) ── */
       .accent-line {
         display: inline-block;
         width: 48px;
@@ -66,21 +99,67 @@ const {
         background: #8B1A2B;
         margin-bottom: 1rem;
       }
+
+      /* ── Glow text ── */
+      .glow-text {
+        text-shadow: 0 0 40px rgba(139,26,43,0.5), 0 0 80px rgba(139,26,43,0.2);
+      }
+
+      /* ── Shimmer button ── */
+      .shimmer-btn {
+        position: relative;
+        overflow: hidden;
+      }
+      .shimmer-btn::after {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+        transform: skewX(-20deg);
+        animation: shimmer 3s ease-in-out infinite;
+      }
+      @keyframes shimmer {
+        0%   { left: -100%; }
+        40%, 100% { left: 150%; }
+      }
+
+      /* ── Dot grid pattern ── */
+      .dot-grid {
+        background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+        background-size: 28px 28px;
+      }
+
+      /* ── Glass card ── */
+      .glass-card {
+        background: rgba(255,255,255,0.03);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255,255,255,0.07);
+        transition: border-color 0.35s, box-shadow 0.35s, background 0.35s;
+      }
+      .glass-card:hover {
+        background: rgba(255,255,255,0.055);
+        border-color: rgba(139,26,43,0.35);
+        box-shadow: 0 0 28px rgba(139,26,43,0.12), inset 0 1px 0 rgba(255,255,255,0.06);
+      }
     </style>
   </head>
   <body>
     <slot />
     <script>
-      // Intersection Observer for reveal animations
+      // Intersection Observer for all reveal variants
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
           }
         });
-      }, { threshold: 0.1 });
+      }, { threshold: 0.08 });
 
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale')
+        .forEach(el => observer.observe(el));
     </script>
   </body>
 </html>

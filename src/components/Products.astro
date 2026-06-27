@@ -1,233 +1,378 @@
 ---
+const products = [
+  {
+    img: "/images/productos/lading-basica.png",
+    alt: "Landing Básica — Vision Code",
+    name: "Landing Básica",
+    price: "$58.000 CLP",
+    desc: "Página de aterrizaje profesional, rápida y responsive. Perfecta para presentar tu negocio y captar leads desde el primer día.",
+    tags: ["Diseño responsive", "SEO básico", "Formulario"],
+    popular: false,
+  },
+  {
+    img: "/images/productos/lading-sitioweb.png",
+    alt: "Landing + Sitio Web — Vision Code",
+    name: "Landing + Sitio Web",
+    price: "$80.000 CLP",
+    desc: "Tu presencia digital completa: landing de ventas + sitio corporativo con secciones, blog y múltiples páginas internas.",
+    tags: ["Multi-página", "Blog", "SEO avanzado"],
+    popular: true,
+  },
+  {
+    img: "/images/productos/lading-ecommerce.png",
+    alt: "Landing + E-Commerce — Vision Code",
+    name: "Landing + E-Commerce",
+    price: "$150.000 CLP",
+    desc: "Tu tienda online lista para vender: catálogo de productos, carrito, pasarela de pago y gestión de pedidos integrada.",
+    tags: ["Tienda online", "Pagos online", "Inventario"],
+    popular: false,
+  },
+  {
+    img: "/images/productos/lading-ecommerce-erp.png",
+    alt: "E-Commerce + ERP — Vision Code",
+    name: "E-Commerce + ERP",
+    price: "$300.000 CLP",
+    desc: "La solución empresarial completa: tienda online integrada con sistema de gestión de ventas, clientes y reportes.",
+    tags: ["Panel admin", "ERP integrado", "Reportes"],
+    popular: false,
+  },
+];
 ---
-<section id="productos" class="py-28 bg-[#0f0f0f] relative overflow-hidden">
-  <!-- BG decoration -->
-  <div class="absolute top-0 left-0 w-1/2 h-full opacity-5" style="background: radial-gradient(ellipse at 20% 50%, #8B1A2B 0%, transparent 70%);"></div>
 
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+<section id="productos" class="py-32 bg-[#0d0d0d] relative overflow-hidden">
+  <!-- Glow decorativo izquierda -->
+  <div class="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none" style="background: radial-gradient(ellipse at 0% 50%, rgba(139,26,43,0.08) 0%, transparent 65%);"></div>
+  <!-- Glow derecha abajo -->
+  <div class="absolute bottom-0 right-0 w-[500px] h-[500px] pointer-events-none" style="background: radial-gradient(ellipse at 100% 100%, rgba(139,26,43,0.06) 0%, transparent 65%);"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
     <!-- Header -->
-    <div class="text-center mb-16 reveal">
-      <span class="accent-line mx-auto"></span>
-      <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-5">
-        Nuestros <span class="text-brand-red">productos</span>
-      </h2>
-      <p class="font-body text-white/50 text-lg max-w-2xl mx-auto">
-        Cada solución está diseñada y desarrollada a medida. Mirá el tipo de sitio que podemos construir para tu negocio.
-      </p>
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16 reveal">
+      <div>
+        <div class="section-eyebrow">
+          <span class="eyebrow-num">02</span>
+          <span class="eyebrow-line"></span>
+          <span class="eyebrow-label">Portafolio</span>
+        </div>
+        <h2 class="font-display text-5xl md:text-6xl font-bold text-white leading-tight">
+          Nuestros <span class="text-brand-red">productos</span>
+        </h2>
+        <p class="font-body text-white/50 text-lg mt-4 max-w-lg leading-relaxed">
+          Mirá los tipos de sitio que construimos. Cada uno adaptado a tu industria y objetivos.
+        </p>
+      </div>
+      <!-- Counter -->
+      <div class="flex items-center gap-4 flex-shrink-0">
+        <span id="carousel-current" class="font-display text-5xl font-bold text-white">01</span>
+        <div class="flex flex-col gap-1">
+          <span class="font-body text-xs text-white/30 uppercase tracking-widest">de</span>
+          <span class="font-display text-lg font-bold text-white/20">04</span>
+        </div>
+      </div>
     </div>
 
-    <!-- Products Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Carousel wrapper -->
+    <div class="relative">
+      <!-- Track -->
+      <div id="carousel-track" class="flex gap-6 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-grab active:cursor-grabbing select-none">
+        {products.map((p, i) => (
+          <div class="carousel-slide flex-shrink-0">
+            <div class="carousel-card group">
+              <!-- Image -->
+              <div class="carousel-img-wrap">
+                <img src={p.img} alt={p.alt} class="carousel-img" loading="lazy" draggable="false" />
+                <!-- Overlay -->
+                <div class="carousel-overlay"></div>
+                <!-- Price badge -->
+                <div class="absolute top-5 right-5 z-10">
+                  <span class="price-badge">{p.price}</span>
+                </div>
+                <!-- Popular badge -->
+                {p.popular && (
+                  <div class="absolute top-5 left-5 z-10">
+                    <span class="popular-badge">
+                      <span class="popular-dot"></span>
+                      Más popular
+                    </span>
+                  </div>
+                )}
+              </div>
 
-      <!-- Landing Básica -->
-      <div class="product-card reveal">
-        <div class="product-image-wrap">
-          <img
-            src="/images/productos/lading-basica.png"
-            alt="Landing Básica — Vision Code"
-            class="product-img"
-            loading="lazy"
-          />
-          <div class="product-overlay">
-            <span class="product-badge">Desde $58.000 CLP</span>
+              <!-- Info panel -->
+              <div class="carousel-info">
+                <div class="flex items-start justify-between gap-4 mb-3">
+                  <h3 class="font-display text-2xl font-bold text-white group-hover:text-brand-red transition-colors duration-300">{p.name}</h3>
+                  <span class="font-display text-4xl font-bold text-white/[0.06] leading-none flex-shrink-0">{String(i+1).padStart(2,'0')}</span>
+                </div>
+                <p class="font-body text-white/50 text-sm leading-relaxed mb-5">{p.desc}</p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  {p.tags.map(tag => (
+                    <span class="carousel-tag">{tag}</span>
+                  ))}
+                </div>
+                <a href="#contacto" class="carousel-cta shimmer-btn">
+                  Solicitar cotización
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="product-info">
-          <div class="product-line"></div>
-          <h3 class="font-display text-xl font-bold text-white mb-2">Landing Básica</h3>
-          <p class="font-body text-white/50 text-sm leading-relaxed">
-            Página de aterrizaje profesional, rápida y responsive. Perfecta para presentar tu negocio o captar leads.
-          </p>
-          <div class="product-tags">
-            <span class="tag">Diseño responsive</span>
-            <span class="tag">SEO básico</span>
-            <span class="tag">Formulario</span>
-          </div>
-        </div>
+        ))}
       </div>
 
-      <!-- Landing + Sitio Web -->
-      <div class="product-card reveal reveal-delay-1">
-        <div class="product-image-wrap">
-          <img
-            src="/images/productos/lading-sitioweb.png"
-            alt="Landing + Sitio Web — Vision Code"
-            class="product-img"
-            loading="lazy"
-          />
-          <div class="product-overlay">
-            <span class="product-badge popular">⭐ Más popular — $80.000 CLP</span>
-          </div>
+      <!-- Navigation -->
+      <div class="flex items-center justify-between mt-10">
+        <!-- Dots -->
+        <div class="flex gap-2" id="carousel-dots">
+          {products.map((_, i) => (
+            <button class={`carousel-dot ${i === 0 ? 'active' : ''}`} data-index={i} aria-label={`Ir a producto ${i+1}`}></button>
+          ))}
         </div>
-        <div class="product-info">
-          <div class="product-line"></div>
-          <h3 class="font-display text-xl font-bold text-white mb-2">Landing + Sitio Web</h3>
-          <p class="font-body text-white/50 text-sm leading-relaxed">
-            Tu presencia digital completa: landing de ventas + sitio corporativo con secciones, blog y múltiples páginas.
-          </p>
-          <div class="product-tags">
-            <span class="tag">Multi-página</span>
-            <span class="tag">Blog</span>
-            <span class="tag">SEO avanzado</span>
-          </div>
+
+        <!-- Arrows -->
+        <div class="flex gap-3">
+          <button id="carousel-prev" class="carousel-arrow" aria-label="Anterior">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button id="carousel-next" class="carousel-arrow carousel-arrow-active" aria-label="Siguiente">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
       </div>
-
-      <!-- Landing + E-Commerce -->
-      <div class="product-card reveal reveal-delay-2">
-        <div class="product-image-wrap">
-          <img
-            src="/images/productos/lading-ecommerce.png"
-            alt="Landing + E-Commerce — Vision Code"
-            class="product-img"
-            loading="lazy"
-          />
-          <div class="product-overlay">
-            <span class="product-badge">Desde $150.000 CLP</span>
-          </div>
-        </div>
-        <div class="product-info">
-          <div class="product-line"></div>
-          <h3 class="font-display text-xl font-bold text-white mb-2">Landing + E-Commerce</h3>
-          <p class="font-body text-white/50 text-sm leading-relaxed">
-            Tu tienda online lista para vender: catálogo de productos, carrito, pasarela de pago y gestión de pedidos.
-          </p>
-          <div class="product-tags">
-            <span class="tag">Tienda online</span>
-            <span class="tag">Pagos online</span>
-            <span class="tag">Inventario</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- E-Commerce + ERP -->
-      <div class="product-card reveal reveal-delay-3">
-        <div class="product-image-wrap">
-          <img
-            src="/images/productos/lading-ecommerce-erp.png"
-            alt="E-Commerce + ERP — Vision Code"
-            class="product-img"
-            loading="lazy"
-          />
-          <div class="product-overlay">
-            <span class="product-badge complete">🏆 Más completo — $300.000 CLP</span>
-          </div>
-        </div>
-        <div class="product-info">
-          <div class="product-line"></div>
-          <h3 class="font-display text-xl font-bold text-white mb-2">E-Commerce + ERP</h3>
-          <p class="font-body text-white/50 text-sm leading-relaxed">
-            La solución empresarial completa: tienda online integrada con sistema de gestión (ventas, clientes, reportes).
-          </p>
-          <div class="product-tags">
-            <span class="tag">Panel admin</span>
-            <span class="tag">ERP integrado</span>
-            <span class="tag">Reportes</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- CTA -->
-    <div class="text-center mt-16 reveal">
-      <a href="#contacto" class="font-body font-semibold text-sm uppercase tracking-widest text-white border border-brand-red px-10 py-4 inline-block hover:bg-brand-red transition-all duration-300">
-        Solicitar cotización
-      </a>
     </div>
   </div>
 </section>
 
 <style>
-  .accent-line {
-    display: block;
-    width: 3px;
-    height: 32px;
-    background: #8B1A2B;
-    margin-bottom: 1.5rem;
+  /* ── Carousel layout ── */
+  .carousel-slide {
+    width: calc(65% - 1.5rem);
+    min-width: 320px;
   }
-  .product-card {
-    background: #1a1a1a;
+  @media (max-width: 768px) {
+    .carousel-slide { width: calc(88vw - 1.5rem); }
+  }
+  @media (min-width: 1280px) {
+    .carousel-slide { width: calc(55% - 1.5rem); }
+  }
+
+  .carousel-card {
+    background: #141414;
     border: 1px solid rgba(255,255,255,0.06);
     overflow: hidden;
-    transition: border-color 0.3s, transform 0.3s;
-    position: relative;
+    transition: border-color 0.4s;
   }
-  .product-card:hover {
-    border-color: rgba(139,26,43,0.4);
-    transform: translateY(-4px);
-  }
-  .product-image-wrap {
+  .carousel-card:hover { border-color: rgba(139,26,43,0.3); }
+
+  .carousel-img-wrap {
     position: relative;
+    height: 380px;
     overflow: hidden;
-    height: 240px;
   }
-  .product-img {
+  @media (max-width: 640px) { .carousel-img-wrap { height: 240px; } }
+
+  .carousel-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top;
-    transition: transform 0.6s ease;
+    transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    pointer-events: none;
   }
-  .product-card:hover .product-img {
-    transform: scale(1.04);
+  .carousel-card:hover .carousel-img { transform: scale(1.04); }
+
+  .carousel-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(20,20,20,0.98) 0%, rgba(20,20,20,0.4) 50%, rgba(20,20,20,0.1) 100%);
+    pointer-events: none;
   }
-  .product-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    background: linear-gradient(to top, rgba(15,15,15,0.95) 0%, transparent 100%);
-    display: flex;
-    align-items: flex-end;
-  }
-  .product-badge {
+
+  /* ── Badges ── */
+  .price-badge {
     font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.05em;
-    color: rgba(255,255,255,0.8);
-    background: rgba(139,26,43,0.85);
-    padding: 0.25rem 0.75rem;
-    border: 1px solid rgba(139,26,43,0.6);
+    letter-spacing: 0.06em;
+    color: white;
+    background: rgba(139,26,43,0.9);
+    backdrop-filter: blur(8px);
+    padding: 0.35rem 0.85rem;
+    border: 1px solid rgba(139,26,43,0.5);
   }
-  .product-badge.popular {
-    background: rgba(139,26,43,1);
-    color: #fff;
-  }
-  .product-badge.complete {
-    background: rgba(45,45,45,0.95);
-    border-color: rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.9);
-  }
-  .product-info {
-    padding: 1.5rem;
-  }
-  .product-line {
-    width: 0;
-    height: 2px;
-    background: #8B1A2B;
-    margin-bottom: 1rem;
-    transition: width 0.4s ease;
-  }
-  .product-card:hover .product-line {
-    width: 48px;
-  }
-  .product-tags {
+  .popular-badge {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-  .tag {
+    align-items: center;
+    gap: 0.4rem;
     font-family: 'Inter', sans-serif;
     font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
+    color: white;
+    background: rgba(15,15,15,0.85);
+    backdrop-filter: blur(8px);
+    padding: 0.35rem 0.75rem;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .popular-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #8B1A2B;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(1.5); }
+  }
+
+  /* ── Info panel ── */
+  .carousel-info {
+    padding: 1.75rem 2rem 2rem;
+  }
+  .carousel-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.09);
+    padding: 0.25rem 0.65rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .carousel-card:hover .carousel-tag {
+    border-color: rgba(139,26,43,0.25);
+    color: rgba(255,255,255,0.5);
+  }
+  .carousel-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #8B1A2B;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    padding: 0.75rem 1.5rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .carousel-cta:hover { background: #A52030; }
+
+  /* ── Navigation ── */
+  .carousel-dot {
+    width: 24px; height: 3px;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s, width 0.3s;
+  }
+  .carousel-dot.active {
+    background: #8B1A2B;
+    width: 40px;
+  }
+  .carousel-arrow {
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.1);
-    padding: 0.2rem 0.6rem;
+    color: rgba(255,255,255,0.5);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .carousel-arrow:hover,
+  .carousel-arrow-active {
+    background: #8B1A2B;
+    border-color: #8B1A2B;
+    color: white;
+  }
+  .carousel-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background: transparent;
+    border-color: rgba(255,255,255,0.07);
   }
 </style>
+
+<script>
+  const track    = document.getElementById('carousel-track') as HTMLElement;
+  const dots     = document.querySelectorAll('.carousel-dot') as NodeListOf<HTMLButtonElement>;
+  const prevBtn  = document.getElementById('carousel-prev') as HTMLButtonElement;
+  const nextBtn  = document.getElementById('carousel-next') as HTMLButtonElement;
+  const counter  = document.getElementById('carousel-current') as HTMLElement;
+  const total    = dots.length;
+  let current    = 0;
+  let autoplayTimer: ReturnType<typeof setInterval>;
+  let isDragging = false;
+  let startX     = 0;
+  let startScroll = 0;
+
+  function getSlideWidth(): number {
+    const slide = track.querySelector('.carousel-slide') as HTMLElement;
+    if (!slide) return 0;
+    return slide.offsetWidth + 24; // gap-6 = 24px
+  }
+
+  function goTo(index: number) {
+    current = Math.max(0, Math.min(index, total - 1));
+    track.style.transform = `translateX(-${current * getSlideWidth()}px)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    counter.textContent = String(current + 1).padStart(2, '0');
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === total - 1;
+    // Swap active style on arrows
+    prevBtn.classList.toggle('carousel-arrow-active', current > 0);
+    nextBtn.classList.toggle('carousel-arrow-active', current < total - 1);
+  }
+
+  function startAutoplay() {
+    autoplayTimer = setInterval(() => {
+      goTo(current < total - 1 ? current + 1 : 0);
+    }, 5000);
+  }
+  function stopAutoplay() { clearInterval(autoplayTimer); }
+
+  prevBtn.addEventListener('click', () => { goTo(current - 1); stopAutoplay(); startAutoplay(); });
+  nextBtn.addEventListener('click', () => { goTo(current + 1); stopAutoplay(); startAutoplay(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); stopAutoplay(); startAutoplay(); }));
+
+  // Touch/drag support
+  track.addEventListener('mousedown', (e) => { isDragging = true; startX = e.pageX; startScroll = current; track.style.transition = 'none'; });
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const dx = e.pageX - startX;
+    const sw = getSlideWidth();
+    track.style.transform = `translateX(${-startScroll * sw + dx}px)`;
+  });
+  window.addEventListener('mouseup', (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    track.style.transition = '';
+    const dx = e.pageX - startX;
+    if (dx < -60)      goTo(current + 1);
+    else if (dx > 60)  goTo(current - 1);
+    else               goTo(current);
+    stopAutoplay(); startAutoplay();
+  });
+
+  track.addEventListener('touchstart', (e) => { startX = e.touches[0].pageX; startScroll = current; }, { passive: true });
+  track.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].pageX - startX;
+    if (dx < -50)      goTo(current + 1);
+    else if (dx > 50)  goTo(current - 1);
+    stopAutoplay(); startAutoplay();
+  });
+
+  // Pause on hover
+  track.addEventListener('mouseenter', stopAutoplay);
+  track.addEventListener('mouseleave', startAutoplay);
+
+  // Init
+  goTo(0);
+  startAutoplay();
+
+  // Recalculate on resize
+  window.addEventListener('resize', () => goTo(current));
+</script>

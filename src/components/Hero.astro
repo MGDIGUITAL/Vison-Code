@@ -32,11 +32,11 @@
       </div>
 
       <!-- Headline -->
-      <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-none text-white mb-6 hero-animate" style="animation-delay: 0.4s">
+      <h1 class="font-display text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.92] text-white mb-7 hero-animate" style="animation-delay: 0.4s">
         Tu negocio<br />
         <span class="text-brand-red">merece</span> una<br />
         presencia digital<br />
-        <span class="hero-outline-text">real.</span>
+        <span class="hero-outline-text glow-text">real.</span>
       </h1>
 
       <!-- Subheadline -->
@@ -47,7 +47,7 @@
 
       <!-- CTAs -->
       <div class="flex flex-col sm:flex-row gap-4 hero-animate" style="animation-delay: 0.8s">
-        <a href="#planes" class="btn-primary">
+        <a href="#planes" class="btn-primary shimmer-btn">
           Ver planes y precios
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -57,18 +57,18 @@
       </div>
 
       <!-- Stats row -->
-      <div class="flex flex-wrap gap-10 mt-16 pt-10 border-t border-white/10 hero-animate" style="animation-delay: 1s">
-        <div>
-          <div class="font-display text-3xl font-bold text-white">100%</div>
-          <div class="font-body text-sm text-white/50 mt-1 uppercase tracking-wide">Diseño responsive</div>
+      <div class="flex flex-wrap gap-10 mt-16 pt-10 border-t border-white/[0.08] hero-animate" style="animation-delay: 1s">
+        <div class="stat-item">
+          <div class="font-display text-4xl font-bold text-white tracking-tight">100%</div>
+          <div class="stat-label">Diseño responsive</div>
         </div>
-        <div>
-          <div class="font-display text-3xl font-bold text-white">IA</div>
-          <div class="font-body text-sm text-white/50 mt-1 uppercase tracking-wide">En cada proyecto</div>
+        <div class="stat-item">
+          <div class="font-display text-4xl font-bold text-white tracking-tight">IA</div>
+          <div class="stat-label">En cada proyecto</div>
         </div>
-        <div>
-          <div class="font-display text-3xl font-bold text-brand-red">30d</div>
-          <div class="font-body text-sm text-white/50 mt-1 uppercase tracking-wide">Soporte técnico</div>
+        <div class="stat-item">
+          <div class="font-display text-4xl font-bold text-brand-red tracking-tight glow-text">30d</div>
+          <div class="stat-label">Soporte técnico</div>
         </div>
       </div>
     </div>
@@ -150,5 +150,16 @@
   .hero-animate {
     opacity: 0;
     animation: heroFadeUp 0.8s ease forwards;
+  }
+
+  .stat-item { position: relative; }
+  .stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 0.35rem;
   }
 </style>
