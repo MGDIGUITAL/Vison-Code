@@ -1,4 +1,5 @@
 ---
+import SalesAgent from '../components/SalesAgent.astro';
 export interface Props {
   title?: string;
   description?: string;
@@ -199,5 +200,6 @@ const {
 
       document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     </script>
+    <SalesAgent />
   </body>
 </html>

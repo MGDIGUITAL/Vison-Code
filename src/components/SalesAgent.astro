@@ -1,0 +1,254 @@
+---
+// Constanza — Agente de ventas IA de VisionCode
+---
+
+<div id="vc-agent">
+  <!-- Botón flotante -->
+  <button id="vc-bubble" aria-label="Hablar con Constanza">
+    <span id="vc-dot"></span>
+    <svg id="ico-chat" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <svg id="ico-x" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+
+  <!-- Panel del chat -->
+  <div id="vc-panel">
+    <div id="vc-header">
+      <div id="vc-avatar">C</div>
+      <div id="vc-header-info">
+        <div id="vc-name">Constanza</div>
+        <div id="vc-status">
+          <span class="dot-green"></span>
+          Ejecutiva VisionCode
+        </div>
+      </div>
+      <button id="vc-close">×</button>
+    </div>
+    <div id="vc-messages"></div>
+    <div id="vc-input-row">
+      <input id="vc-input" type="text" placeholder="Escribe tu mensaje..." autocomplete="off" />
+      <button id="vc-send">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  #vc-agent { position: fixed; bottom: 24px; right: 24px; z-index: 9999; font-family: 'Inter', sans-serif; }
+
+  #vc-bubble {
+    width: 58px; height: 58px; border-radius: 50%;
+    background: #8B1A2B; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(139,26,43,0.4);
+    position: relative;
+  }
+  #vc-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(139,26,43,0.5); }
+
+  #ico-x { display: none; position: absolute; }
+
+  #vc-dot {
+    position: absolute; top: 10px; right: 10px;
+    width: 11px; height: 11px; background: #25D366;
+    border-radius: 50%; border: 2px solid #030303;
+  }
+
+  #vc-panel {
+    position: absolute; bottom: 70px; right: 0;
+    width: 320px; background: #111;
+    border: 0.5px solid #2a2a2a; border-radius: 16px;
+    overflow: hidden; display: none; flex-direction: column;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  }
+  #vc-panel.open { display: flex; }
+
+  #vc-header {
+    background: #0a0a0a; padding: 14px 16px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 0.5px solid #1f1f1f;
+  }
+  #vc-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: #8B1A2B; display: flex; align-items: center;
+    justify-content: center; font-size: 15px; font-weight: 700;
+    color: #fff; flex-shrink: 0;
+  }
+  #vc-header-info { flex: 1; }
+  #vc-name { font-size: 14px; font-weight: 600; color: #fff; }
+  #vc-status { font-size: 11px; color: #aaa; display: flex; align-items: center; gap: 4px; margin-top: 1px; }
+  .dot-green { width: 6px; height: 6px; background: #25D366; border-radius: 50%; display: inline-block; }
+  #vc-close { background: none; border: none; color: #555; cursor: pointer; font-size: 22px; padding: 0; line-height: 1; }
+  #vc-close:hover { color: #fff; }
+
+  #vc-messages {
+    height: 300px; overflow-y: auto;
+    padding: 14px 12px; display: flex;
+    flex-direction: column; gap: 10px;
+    background: #0d0d0d;
+  }
+  #vc-messages::-webkit-scrollbar { width: 3px; }
+  #vc-messages::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 4px; }
+
+  .msg {
+    max-width: 85%; padding: 10px 14px;
+    border-radius: 14px; font-size: 13px;
+    line-height: 1.55; white-space: pre-line;
+  }
+  .msg.bot {
+    background: #1a1a1a; border: 0.5px solid #2a2a2a;
+    color: #e5e5e5; align-self: flex-start;
+    border-radius: 4px 14px 14px 14px;
+  }
+  .msg.user {
+    background: #8B1A2B; color: #fff;
+    align-self: flex-end; font-weight: 500;
+    border-radius: 14px 4px 14px 14px;
+  }
+  .msg.typing { color: #666; font-style: italic; }
+
+  .wa-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    margin-top: 8px; padding: 9px 16px;
+    background: #25D366; color: #fff; border-radius: 8px;
+    font-size: 12px; font-weight: 600; cursor: pointer;
+    border: none; text-decoration: none;
+  }
+  .wa-btn:hover { background: #1ebe5d; }
+
+  #vc-input-row {
+    display: flex; gap: 8px; padding: 10px;
+    border-top: 0.5px solid #1f1f1f; background: #111;
+  }
+  #vc-input {
+    flex: 1; font-size: 13px; padding: 9px 12px;
+    background: #1a1a1a; border: 0.5px solid #2a2a2a;
+    color: #fff; border-radius: 8px; font-family: 'Inter', sans-serif;
+  }
+  #vc-input::placeholder { color: #555; }
+  #vc-input:focus { outline: none; border-color: #8B1A2B; }
+  #vc-send {
+    width: 36px; height: 36px; background: #8B1A2B;
+    border: none; border-radius: 8px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  #vc-send:hover { background: #a01e30; }
+</style>
+
+<script>
+  const bubble = document.getElementById('vc-bubble')!;
+  const panel = document.getElementById('vc-panel')!;
+  const closeBtn = document.getElementById('vc-close')!;
+  const msgs = document.getElementById('vc-messages')!;
+  const input = document.getElementById('vc-input') as HTMLInputElement;
+  const sendBtn = document.getElementById('vc-send')!;
+  const icoChat = document.getElementById('ico-chat')!;
+  const icoX = document.getElementById('ico-x')!;
+
+  let history: { role: string; content: string }[] = [];
+  let started = false;
+  let loading = false;
+
+  function scroll() { msgs.scrollTop = msgs.scrollHeight; }
+
+  function addMsg(text: string, cls: string) {
+    const d = document.createElement('div');
+    d.className = 'msg ' + cls;
+    d.textContent = text;
+    msgs.appendChild(d);
+    scroll();
+    return d;
+  }
+
+  function addWA() {
+    const name = extractName();
+    const txt = encodeURIComponent(`Hola Constanza, soy ${name || 'un interesado en VisionCode'}. Me gustaría cotizar un proyecto.`);
+    const a = document.createElement('a');
+    a.className = 'wa-btn';
+    a.href = `https://wa.me/56929645522?text=${txt}`;
+    a.target = '_blank';
+    a.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.104.549 4.078 1.504 5.798L.057 23.428c-.083.334.216.633.55.55l5.63-1.447A11.951 11.951 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.807 9.807 0 01-5.003-1.37l-.358-.214-3.724.956.989-3.607-.235-.372A9.816 9.816 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>Hablar con Constanza por WhatsApp`;
+    msgs.appendChild(a);
+    scroll();
+  }
+
+  function extractName(): string {
+    const first = history.find(m => m.role === 'user');
+    return first ? first.content.split(' ')[0] : '';
+  }
+
+  async function sendMessage(userText: string) {
+    if (loading) return;
+    loading = true;
+    input.disabled = true;
+
+    history.push({ role: 'user', content: userText });
+
+    const typing = addMsg('Constanza está escribiendo...', 'bot typing');
+
+    try {
+      const res = await fetch('/api/constanza', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history }),
+      });
+      const data = await res.json();
+      const reply: string = data.reply;
+
+      typing.remove();
+      addMsg(reply, 'bot');
+      history.push({ role: 'assistant', content: reply });
+
+      const lower = reply.toLowerCase();
+      if (lower.includes('whatsapp') || lower.includes('wa.me') || history.length >= 8) {
+        addWA();
+      }
+    } catch {
+      typing.remove();
+      addMsg('Hubo un problema de conexión. Por favor intenta de nuevo.', 'bot');
+    }
+
+    loading = false;
+    input.disabled = false;
+    input.focus();
+  }
+
+  async function startChat() {
+    await sendMessage('Hola, me gustaría saber más sobre los servicios de VisionCode.');
+  }
+
+  bubble.addEventListener('click', () => {
+    const open = panel.classList.toggle('open');
+    icoChat.style.display = open ? 'none' : 'block';
+    icoX.style.display = open ? 'block' : 'none';
+    if (open && !started) {
+      started = true;
+      startChat();
+    }
+    if (open) input.focus();
+  });
+
+  closeBtn.addEventListener('click', () => {
+    panel.classList.remove('open');
+    icoChat.style.display = 'block';
+    icoX.style.display = 'none';
+  });
+
+  function handleSend() {
+    const val = input.value.trim();
+    if (!val || loading) return;
+    addMsg(val, 'user');
+    input.value = '';
+    sendMessage(val);
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleSend(); });
+</script>
