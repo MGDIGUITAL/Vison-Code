@@ -1,9 +1,9 @@
 ---
-// Constanza — Agente de ventas VisionCode
+// Vision Code Ventas — Agente de ventas VisionCode
 ---
 
 <div id="vc-agent">
-  <button id="vc-bubble" aria-label="Hablar con Constanza">
+  <button id="vc-bubble" aria-label="Hablar con Vision Code Ventas">
     <span id="vc-dot"></span>
     <svg id="ico-chat" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -15,10 +15,10 @@
 
   <div id="vc-panel">
     <div id="vc-header">
-      <div id="vc-avatar">C</div>
+      <div id="vc-avatar">V</div>
       <div id="vc-header-info">
-        <div id="vc-name">Constanza</div>
-        <div id="vc-status"><span class="dot-green"></span>Ejecutiva VisionCode · En línea</div>
+        <div id="vc-name">Vision Code Ventas</div>
+        <div id="vc-status"><span class="dot-green"></span>Agente VisionCode · En línea</div>
       </div>
       <button id="vc-close">×</button>
     </div>
@@ -292,7 +292,7 @@ function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 async function botSay(text, tipo = 'text', extra = null) {
   showInput(false);
-  const t = addMsg('Constanza está escribiendo...', 'bot typing');
+  const t = addMsg('Vision Code Ventas está escribiendo...', 'bot typing');
   await delay(900);
   t.remove();
   addMsg(text, 'bot');
@@ -312,7 +312,7 @@ async function botSay(text, tipo = 'text', extra = null) {
 async function start() {
   step = 'nombre';
   await botSay(
-    '¡Hola! Soy Constanza, ejecutiva de ventas de VisionCode 👋\n\n¿Con quién tengo el gusto de hablar? (nombre o empresa)',
+    '¡Hola! Soy Vision Code Ventas, tu agente de ventas de VisionCode 👋\n\n¿Con quién tengo el gusto de hablar? (nombre o empresa)',
     'input', 'Tu nombre o empresa...'
   );
 }

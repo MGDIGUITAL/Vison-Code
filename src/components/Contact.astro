@@ -1,16 +1,9 @@
 ---
-const whatsappNumber = "+56929645522";
-const whatsappMsg = "Hola Vision Code, me gustaría agendar una consultoría.";
-const waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMsg)}`;
 ---
-
 <section id="contacto" class="py-32 relative z-10 border-t border-white/5">
   <div class="max-w-6xl mx-auto px-6 lg:px-10">
-    
     <div class="bento-card p-10 md:p-16 fade-up bg-black/60">
-
       <div class="grid lg:grid-cols-2 gap-16">
-        
         <!-- Info -->
         <div>
           <div class="flex items-center gap-4 mb-6">
@@ -23,46 +16,90 @@ const waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsa
           <p class="text-sm text-white/60 mb-12 max-w-sm font-light leading-relaxed">
             Analizaremos la viabilidad tecnológica de su requerimiento y estructuraremos un plan de acción formal.
           </p>
-
           <div class="flex flex-col gap-6 border-t border-white/10 pt-8">
             <a href="mailto:Vision.code.vs@gmail.com" class="group">
               <div class="text-[0.65rem] font-bold uppercase tracking-widest text-white/40 mb-1">Correo Electrónico</div>
               <div class="text-lg text-white font-medium group-hover:text-[#8B1A2B] transition-colors">Vision.code.vs@gmail.com</div>
             </a>
-
-            <a href={waLink} target="_blank" class="group">
+            <a href="https://wa.me/56929645522" target="_blank" class="group">
               <div class="text-[0.65rem] font-bold uppercase tracking-widest text-white/40 mb-1">Línea Directa (WhatsApp)</div>
               <div class="text-lg text-white font-medium group-hover:text-[#8B1A2B] transition-colors">+56 9 2964 5522</div>
             </a>
           </div>
         </div>
 
-        <!-- Formulario Corporate -->
+        <!-- Formulario -->
         <div class="bg-black/40 p-8 border border-white/5 rounded-lg">
-          <form class="flex flex-col gap-6">
+          <form id="contactForm" class="flex flex-col gap-6">
             <div>
               <label for="name" class="text-xs font-bold uppercase tracking-widest text-white/50 block mb-2">Nombre o Empresa</label>
               <input type="text" id="name" required class="w-full bg-transparent border-b border-white/20 py-3 text-sm text-white placeholder:text-white/20 focus:border-white outline-none transition-all" placeholder="Ej. Empresa SpA" />
             </div>
-            
             <div>
               <label for="email" class="text-xs font-bold uppercase tracking-widest text-white/50 block mb-2">Correo Corporativo</label>
               <input type="email" id="email" required class="w-full bg-transparent border-b border-white/20 py-3 text-sm text-white placeholder:text-white/20 focus:border-white outline-none transition-all" placeholder="contacto@empresa.com" />
             </div>
-
             <div>
-              <label for="message" class="text-xs font-bold uppercase tracking-widest text-white/50 block mb-2">Requerimiento Técnico</label>
-              <textarea id="message" rows="3" required class="w-full bg-transparent border-b border-white/20 py-3 text-sm text-white placeholder:text-white/20 focus:border-white outline-none transition-all resize-none" placeholder="Describa brevemente la arquitectura o solución que necesita..."></textarea>
+              <label for="phone" class="text-xs font-bold uppercase tracking-widest text-white/50 block mb-2">Teléfono</label>
+              <input type="tel" id="phone" required class="w-full bg-transparent border-b border-white/20 py-3 text-sm text-white placeholder:text-white/20 focus:border-white outline-none transition-all" placeholder="+56 9 XXXX XXXX" />
             </div>
-
-            <button type="submit" class="btn-primary w-full mt-4 text-xs tracking-widest uppercase py-4">
+            <div>
+              <label for="service" class="text-xs font-bold uppercase tracking-widest text-white/50 block mb-2">Servicio de Interés</label>
+              <select id="service" required class="w-full bg-black border-b border-white/20 py-3 text-sm text-white focus:border-white outline-none transition-all">
+                <option value="" disabled selected>Seleccione un servicio</option>
+                <option value="Landing Básica — $58.000 CLP">Landing Básica — $58.000 CLP</option>
+                <option value="Landing + Sitio Web — $80.000 CLP">Landing + Sitio Web — $80.000 CLP</option>
+                <option value="Landing + E-Commerce — $150.000 CLP">Landing + E-Commerce — $150.000 CLP</option>
+                <option value="E-Commerce + ERP — $300.000 CLP">E-Commerce + ERP — $300.000 CLP</option>
+              </select>
+            </div>
+            <div id="formMsg" class="text-sm hidden"></div>
+            <button type="submit" id="submitBtn" class="btn-primary w-full mt-4 text-xs tracking-widest uppercase py-4">
               Enviar Solicitud
             </button>
           </form>
         </div>
-
       </div>
     </div>
-    
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
+  const formMsg = document.getElementById('formMsg') as HTMLDivElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const nombre = (document.getElementById('name') as HTMLInputElement).value;
+    const correo = (document.getElementById('email') as HTMLInputElement).value;
+    const telefono = (document.getElementById('phone') as HTMLInputElement).value;
+    const servicio = (document.getElementById('service') as HTMLSelectElement).value;
+
+    submitBtn.textContent = 'Enviando...';
+    submitBtn.disabled = true;
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre, correo, telefono, servicio }),
+      });
+
+      if (res.ok) {
+        formMsg.textContent = '✅ Solicitud enviada. Te contactaremos a la brevedad.';
+        formMsg.className = 'text-sm text-green-400 block';
+        form.reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      formMsg.textContent = '❌ Error al enviar. Intente nuevamente.';
+      formMsg.className = 'text-sm text-red-400 block';
+    } finally {
+      submitBtn.textContent = 'Enviar Solicitud';
+      submitBtn.disabled = false;
+    }
+  });
+</script>
