@@ -122,9 +122,10 @@
   .wa-btn:hover { background: #1ebe5d; }
 
   #vc-input-row {
-    display: flex; gap: 8px; padding: 10px;
+    display: none; gap: 8px; padding: 10px;
     border-top: 0.5px solid #1f1f1f; background: #111;
   }
+  #vc-input-row.visible { display: flex; }
   #vc-input {
     flex: 1; font-size: 13px; padding: 9px 12px;
     background: #1a1a1a; border: 0.5px solid #2a2a2a;
@@ -263,8 +264,21 @@ function addWA() {
 
 function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
 
+const inputRow = document.getElementById('vc-input-row');
+function showInput(visible, placeholder) {
+  if (visible) {
+    inputRow.classList.add('visible');
+    inputEl.placeholder = placeholder || 'Escribe aquí...';
+    inputEl.disabled = false;
+    inputEl.focus();
+  } else {
+    inputRow.classList.remove('visible');
+    inputEl.disabled = true;
+  }
+}
+
 async function botReply(resp) {
-  inputEl.disabled = true;
+  showInput(false);
   const t = addMsg('Constanza está escribiendo...', 'bot typing');
   await delay(900);
   t.remove();
@@ -272,14 +286,12 @@ async function botReply(resp) {
 
   if (resp.tipo === 'opciones') {
     addOpts(resp.opts, handleOpt);
-    inputEl.disabled = false;
+    // Input stays hidden — solo opciones
   } else if (resp.tipo === 'input') {
-    inputEl.placeholder = resp.placeholder || 'Escribe aquí...';
-    inputEl.disabled = false;
-    inputEl.focus();
+    showInput(true, resp.placeholder);
   } else if (resp.tipo === 'wa') {
     addWA();
-    inputEl.disabled = true;
+    // Input stays hidden al finalizar
   }
 }
 
@@ -322,6 +334,7 @@ async function handleOpt(opt) {
 async function handleInput(val) {
   addMsg(val, 'user');
   inputEl.value = '';
+  showInput(false);
   await delay(300);
 
   if (step === 'inicio') {
@@ -332,29 +345,8 @@ async function handleInput(val) {
     contacto = val;
     step = 'cierre';
     await botReply(RESPUESTAS.cierre(name, contacto));
-  } else {
-    const lower = val.toLowerCase();
-    if (lower.includes('precio') || lower.includes('costo') || lower.includes('cuánto') || lower.includes('cuanto') || lower.includes('valor')) {
-      await botReply(RESPUESTAS.todos_planes(name));
-    } else if (lower.includes('tienda') || lower.includes('vender') || lower.includes('ecommerce') || lower.includes('e-commerce')) {
-      await botReply(RESPUESTAS.ecommerce_pitch(name));
-    } else if (lower.includes('portal') || lower.includes('corporativo') || lower.includes('empresa')) {
-      plan = 'Portal Corporativo'; await botReply(RESPUESTAS.portal_pitch(name));
-    } else if (lower.includes('landing') || lower.includes('básico') || lower.includes('basico') || lower.includes('simple')) {
-      await botReply(RESPUESTAS.presencia(name));
-    } else if (lower.includes('cotizar') || lower.includes('comprar') || lower.includes('contratar') || lower.includes('quiero')) {
-      step = 'cotizar'; await botReply(RESPUESTAS.cotizar(name));
-    } else if (lower.includes('whatsapp') || lower.includes('llamar') || lower.includes('hablar') || lower.includes('ejecutivo')) {
-      await botReply({ bot: `Con gusto te conecto, ${name} 👇`, tipo: 'wa' });
-    } else {
-      intentos++;
-      if (intentos >= 2) {
-        await botReply({ bot: `${name}, lo mejor es que hablemos directamente para entender bien tu proyecto y darte la propuesta exacta que necesitas 🙌`, tipo: 'wa' });
-      } else {
-        await botReply(RESPUESTAS.fallback(name));
-      }
-    }
   }
+  // Todos los demás pasos son solo opciones — no se procesa texto libre
 }
 
 bubble.addEventListener('click', () => {
@@ -365,7 +357,6 @@ bubble.addEventListener('click', () => {
     started = true;
     botReply(RESPUESTAS.inicio);
   }
-  if (open) inputEl.focus();
 });
 
 closeBtn.addEventListener('click', () => {
