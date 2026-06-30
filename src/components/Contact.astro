@@ -30,31 +30,48 @@
 
         <!-- Formulario -->
         <div class="bg-black/40 p-8 border border-white/5 rounded-lg">
-          <form id="contactForm" class="flex flex-col gap-6">
-            <div>
-              <label for="name" class="text-xs font-bold uppercase tracking-widest text-white/50 block mb-2">Nombre o Empresa</label>
-              <input type="text" id="name" required class="w-full bg-transparent border-b border-white/20 py-3 text-sm text-white placeholder:text-white/20 focus:border-white outline-none transition-all" placeholder="Ej. Empresa SpA" />
+          <form id="contactForm" class="flex flex-col gap-5">
+            
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="empresa" class="text-[10px] font-bold uppercase tracking-widest text-white/50 block mb-2">Empresa o Negocio</label>
+                <input type="text" id="empresa" required class="w-full bg-transparent border-b border-white/20 py-2 text-sm text-white placeholder:text-white/20 focus:border-white outline-none transition-all" placeholder="Ej. Tu Empresa SpA" />
+              </div>
+              <div>
+                <label for="telefono_empresa" class="text-[10px] font-bold uppercase tracking-widest text-white/50 block mb-2">Teléfono Empresa</label>
+                <input type="tel" id="telefono_empresa" required class="w-full bg-transparent border-b border-white/20 py-2 text-sm text-white placeholder:text-white/20 focus:border-white outline-none transition-all" placeholder="+56 9 XXXX XXXX" />
+              </div>
             </div>
-            <div>
-              <label for="email" class="text-xs font-bold uppercase tracking-widest text-white/50 block mb-2">Correo Corporativo</label>
-              <input type="email" id="email" required class="w-full bg-transparent border-b border-white/20 py-3 text-sm text-white placeholder:text-white/20 focus:border-white outline-none transition-all" placeholder="contacto@empresa.com" />
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="solicitante" class="text-[10px] font-bold uppercase tracking-widest text-white/50 block mb-2">Nombre Solicitante</label>
+                <input type="text" id="solicitante" required class="w-full bg-transparent border-b border-white/20 py-2 text-sm text-white placeholder:text-white/20 focus:border-white outline-none transition-all" placeholder="Tu nombre" />
+              </div>
+              <div>
+                <label for="telefono_solicitante" class="text-[10px] font-bold uppercase tracking-widest text-white/50 block mb-2">Tu Teléfono</label>
+                <input type="tel" id="telefono_solicitante" required class="w-full bg-transparent border-b border-white/20 py-2 text-sm text-white placeholder:text-white/20 focus:border-white outline-none transition-all" placeholder="+56 9 XXXX XXXX" />
+              </div>
             </div>
+
             <div>
-              <label for="phone" class="text-xs font-bold uppercase tracking-widest text-white/50 block mb-2">Teléfono</label>
-              <input type="tel" id="phone" required class="w-full bg-transparent border-b border-white/20 py-3 text-sm text-white placeholder:text-white/20 focus:border-white outline-none transition-all" placeholder="+56 9 XXXX XXXX" />
+              <label for="correo" class="text-[10px] font-bold uppercase tracking-widest text-white/50 block mb-2">Correo Electrónico</label>
+              <input type="email" id="correo" required class="w-full bg-transparent border-b border-white/20 py-2 text-sm text-white placeholder:text-white/20 focus:border-white outline-none transition-all" placeholder="contacto@empresa.com" />
             </div>
+
             <div>
-              <label for="service" class="text-xs font-bold uppercase tracking-widest text-white/50 block mb-2">Servicio de Interés</label>
-              <select id="service" required class="w-full bg-black border-b border-white/20 py-3 text-sm text-white focus:border-white outline-none transition-all">
+              <label for="servicio" class="text-[10px] font-bold uppercase tracking-widest text-white/50 block mb-2">Servicio de Interés</label>
+              <select id="servicio" required class="w-full bg-black border-b border-white/20 py-2 text-sm text-white focus:border-white outline-none transition-all">
                 <option value="" disabled selected>Seleccione un servicio</option>
-                <option value="Landing Básica — $58.000 CLP">Landing Básica — $58.000 CLP</option>
-                <option value="Landing + Sitio Web — $80.000 CLP">Landing + Sitio Web — $80.000 CLP</option>
-                <option value="Landing + E-Commerce — $150.000 CLP">Landing + E-Commerce — $150.000 CLP</option>
+                <option value="Landing Institucional — $58.000 CLP">Landing Institucional — $58.000 CLP</option>
+                <option value="Portal Corporativo — $80.000 CLP">Portal Corporativo — $80.000 CLP</option>
+                <option value="Plataforma E-Commerce — $150.000 CLP">Plataforma E-Commerce — $150.000 CLP</option>
                 <option value="E-Commerce + ERP — $300.000 CLP">E-Commerce + ERP — $300.000 CLP</option>
               </select>
             </div>
+
             <div id="formMsg" class="text-sm hidden"></div>
-            <button type="submit" id="submitBtn" class="btn-primary w-full mt-4 text-xs tracking-widest uppercase py-4">
+            <button type="submit" id="submitBtn" class="btn-primary w-full mt-2 text-xs tracking-widest uppercase py-4">
               Enviar Solicitud
             </button>
           </form>
@@ -72,10 +89,12 @@
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const nombre = (document.getElementById('name') as HTMLInputElement).value;
-    const correo = (document.getElementById('email') as HTMLInputElement).value;
-    const telefono = (document.getElementById('phone') as HTMLInputElement).value;
-    const servicio = (document.getElementById('service') as HTMLSelectElement).value;
+    const empresa = (document.getElementById('empresa') as HTMLInputElement).value;
+    const telefono_empresa = (document.getElementById('telefono_empresa') as HTMLInputElement).value;
+    const solicitante = (document.getElementById('solicitante') as HTMLInputElement).value;
+    const telefono_solicitante = (document.getElementById('telefono_solicitante') as HTMLInputElement).value;
+    const correo = (document.getElementById('correo') as HTMLInputElement).value;
+    const servicio = (document.getElementById('servicio') as HTMLSelectElement).value;
 
     submitBtn.textContent = 'Enviando...';
     submitBtn.disabled = true;
@@ -84,7 +103,7 @@
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nombre, correo, telefono, servicio }),
+        body: JSON.stringify({ empresa, telefono_empresa, solicitante, telefono_solicitante, correo, servicio }),
       });
 
       if (res.ok) {
