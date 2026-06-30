@@ -181,7 +181,10 @@ let clientName = '';
 let clientEmail = '';
 let clientPhone = '';
 let clientService = '';
-let step = 'nombre'; // nombre → correo → telefono → servicio → cierre
+let step = 'nombre'; // nombre → servicio → telefono → correo → cierre
+
+let started = false;
+let isProcessing = false; // Bloqueo para evitar doble envío
 
 const SERVICIOS = [
   { label: 'Landing Institucional', precio: '$58.000 CLP', mant: '$10.000/mes' },
@@ -200,7 +203,6 @@ const sendBtn  = document.getElementById('vc-send');
 const inputRow = document.getElementById('vc-input-row');
 const icoChat  = document.getElementById('ico-chat');
 const icoX     = document.getElementById('ico-x');
-let started = false;
 
 // ── Utilidades ───────────────────────────────────────────
 function scroll() { msgsEl.scrollTop = msgsEl.scrollHeight; }
@@ -268,22 +270,13 @@ function addServiceCard(s) {
 }
 
 function addWAButton() {
-  const msg = `¡Hola equipo VisionCode! 👋
-
-Me gustaría gestionar la compra de un servicio. Aquí van mis datos:
-
-👤 Nombre: ${clientName}
-📧 Correo: ${clientEmail}
-📱 Teléfono: ${clientPhone}
-🛒 Servicio de interés: ${clientService}
-
-Quedo atento/a a sus indicaciones para proceder. ¡Muchas gracias!`;
-
+  const msg = `🌐 VENTA SITIO WEB\n\n👤 Nombre: ${clientName}\n📞 Teléfono: ${clientPhone}\n📄 Correo: ${clientEmail}\n💼 Servicio: ${clientService}`;
+  
   const a = document.createElement('a');
   a.className = 'wa-btn';
   a.href = `https://wa.me/${WA_NUM}?text=${encodeURIComponent(msg)}`;
   a.target = '_blank';
-  a.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.104.549 4.078 1.504 5.798L.057 23.428c-.083.334.216.633.55.55l5.63-1.447A11.951 11.951 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.807 9.807 0 01-5.003-1.37l-.358-.214-3.724.956.989-3.607-.235-.372A9.816 9.816 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>Gestionar mi compra por WhatsApp`;
+  a.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.104.549 4.078 1.504 5.798L.057 23.428c-.083.334.216.633.55.55l5.63-1.447A11.951 11.951 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.807 9.807 0 01-5.003-1.37l-.358-.214-3.724.956.989-3.607-.235-.372A9.816 9.816 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>Coordinar por WhatsApp`;
   msgsEl.appendChild(a);
   scroll();
 }
@@ -306,56 +299,98 @@ async function botSay(text, tipo = 'text', extra = null) {
     await delay(400);
     addWAButton();
   }
+  
+  isProcessing = false; // Liberar bloqueo
 }
 
 // ── Flujo principal ──────────────────────────────────────
 async function start() {
+  if (isProcessing) return;
+  isProcessing = true;
   step = 'nombre';
   await botSay(
-    '¡Hola! Soy Vision Code Ventas, tu agente de ventas de VisionCode 👋\n\n¿Con quién tengo el gusto de hablar? (nombre o empresa)',
+    '¡Hola! Soy Vision Code Ventas, tu asesor corporativo 👋\n\n¿Con quién tengo el gusto de hablar el día de hoy? (nombre o empresa)',
     'input', 'Tu nombre o empresa...'
   );
 }
 
 async function handleInput(val) {
+  if (isProcessing) return;
+  isProcessing = true;
+
   addMsg(val, 'user');
   showInput(false);
   await delay(350);
 
   if (step === 'nombre') {
+    const valLower = val.toLowerCase().trim();
+    const saludos = ['hola', 'hey', 'buenas', 'buenas tardes', 'buenos dias', 'buenos días', 'buenas noches', 'holi', 'holis', 'alo', 'saludos', 'que tal'];
+    
+    if (valLower.length < 2 || saludos.includes(valLower)) {
+      await botSay(
+        `¡Hola de nuevo! 😊 Para poder atenderte de forma personalizada, ¿me podrías confirmar tu nombre o el de tu empresa?`,
+        'input', 'Tu nombre o empresa...'
+      );
+      return;
+    }
+    
     clientName = val.trim();
+    step = 'servicio';
+    await botSay(
+      `¡Mucho gusto, ${clientName}! 👋\n\nPor favor, selecciona a continuación el servicio tecnológico en el que tienes interés para tu proyecto 📋👇`,
+      'opciones', SERVICIOS
+    );
+
+  } else if (step === 'telefono') {
+    const cleanPhone = val.replace(/[\s+]/g, '');
+    if (!/^\d{8,}$/.test(cleanPhone)) {
+      await botSay(
+        `Ese número no parece ser válido. 🤔\n\nPor favor, ingresa un número de teléfono válido (ej: +56 9 1234 5678).`,
+        'input', '+56 9 XXXX XXXX'
+      );
+      return;
+    }
+    
+    clientPhone = val.trim();
     step = 'correo';
     await botSay(
-      `Mucho gusto, ${clientName}! 😊\n\n¿Cuál es tu correo electrónico de contacto?`,
+      `¡Perfecto! ✅\n\nPara terminar, ¿me compartes tu correo corporativo o personal para enviarte toda la información formal? 📄`,
       'input', 'correo@empresa.com'
     );
 
   } else if (step === 'correo') {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(val.trim())) {
+      await botSay(
+        `El correo ingresado no parece tener un formato válido. 🤔\n\n¿Me podrías confirmar tu correo electrónico completo? (Ej: contacto@empresa.com)`,
+        'input', 'correo@empresa.com'
+      );
+      return;
+    }
+    
     clientEmail = val.trim();
-    step = 'telefono';
+    step = 'cierre';
+    
+    const selectedObj = SERVICIOS.find(s => s.label === clientService);
     await botSay(
-      `Perfecto. ¿Y un número de teléfono donde podamos contactarte?`,
-      'input', '+56 9 XXXX XXXX'
-    );
-
-  } else if (step === 'telefono') {
-    clientPhone = val.trim();
-    step = 'servicio';
-    await botSay(
-      `¡Excelente, ${clientName}! Ya tengo tus datos.\n\nSelecciona el servicio que más se ajusta a tu proyecto 👇`,
-      'opciones', SERVICIOS
+      `¡Listo, ${clientName}! ✅\n\nTus datos quedaron registrados correctamente.\n\nTe derivaré ahora con uno de nuestros ejecutivos por WhatsApp para coordinar los siguientes pasos. 🚀`,
+      'cierre', selectedObj
     );
   }
 }
 
 async function handleServiceSelect(servicio) {
+  if (isProcessing) return;
+  isProcessing = true;
+
   clientService = servicio.label;
   addMsg(servicio.label, 'user');
-  step = 'cierre';
+  
+  step = 'telefono';
   await delay(350);
   await botSay(
-    `¡Muy buena elección, ${clientName}! 🙌\n\nAquí tienes el detalle del servicio seleccionado. Al hacer clic en el botón, nuestro equipo recibirá toda tu información y te contactará a la brevedad para gestionar tu compra.`,
-    'cierre', servicio
+    `¡Excelente elección! 🚀\n\nPara contactarte a la brevedad, ¿cuál es tu número de teléfono (WhatsApp)? 📞`,
+    'input', '+56 9 XXXX XXXX'
   );
 }
 
@@ -375,7 +410,9 @@ closeBtn.addEventListener('click', () => {
 
 function doSend() {
   const val = inputEl.value.trim();
-  if (val && !inputEl.disabled) handleInput(val);
+  if (val && !inputEl.disabled && !isProcessing) {
+    handleInput(val);
+  }
 }
 
 sendBtn.addEventListener('click', doSend);
