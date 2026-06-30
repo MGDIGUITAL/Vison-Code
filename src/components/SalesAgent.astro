@@ -1,5 +1,5 @@
 ---
-// Constanza — Agente de ventas VisionCode (lógica local)
+// Constanza — Agente de ventas VisionCode
 ---
 
 <div id="vc-agent">
@@ -18,13 +18,13 @@
       <div id="vc-avatar">C</div>
       <div id="vc-header-info">
         <div id="vc-name">Constanza</div>
-        <div id="vc-status"><span class="dot-green"></span>Ejecutiva VisionCode</div>
+        <div id="vc-status"><span class="dot-green"></span>Ejecutiva VisionCode · En línea</div>
       </div>
       <button id="vc-close">×</button>
     </div>
     <div id="vc-messages"></div>
     <div id="vc-input-row">
-      <input id="vc-input" type="text" placeholder="Escribe tu mensaje..." autocomplete="off"/>
+      <input id="vc-input" type="text" placeholder="Escribe aquí..." autocomplete="off"/>
       <button id="vc-send">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
@@ -55,7 +55,7 @@
 
   #vc-panel {
     position: absolute; bottom: 70px; right: 0;
-    width: 320px; background: #111;
+    width: 330px; background: #111;
     border: 0.5px solid #2a2a2a; border-radius: 16px;
     overflow: hidden; display: none; flex-direction: column;
     box-shadow: 0 8px 40px rgba(0,0,0,0.6);
@@ -74,13 +74,13 @@
   }
   #vc-header-info { flex: 1; }
   #vc-name { font-size: 14px; font-weight: 600; color: #fff; }
-  #vc-status { font-size: 11px; color: #aaa; display: flex; align-items: center; gap: 4px; margin-top: 1px; }
+  #vc-status { font-size: 10.5px; color: #aaa; display: flex; align-items: center; gap: 4px; margin-top: 1px; }
   .dot-green { width: 6px; height: 6px; background: #25D366; border-radius: 50%; display: inline-block; }
   #vc-close { background: none; border: none; color: #555; cursor: pointer; font-size: 22px; padding: 0; line-height: 1; }
   #vc-close:hover { color: #fff; }
 
   #vc-messages {
-    height: 300px; overflow-y: auto;
+    height: 320px; overflow-y: auto;
     padding: 14px 12px; display: flex;
     flex-direction: column; gap: 10px; background: #0d0d0d;
   }
@@ -88,9 +88,8 @@
   #vc-messages::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 4px; }
 
   .msg {
-    max-width: 86%; padding: 10px 14px;
-    border-radius: 14px; font-size: 13px;
-    line-height: 1.55; white-space: pre-line;
+    max-width: 88%; padding: 10px 14px;
+    font-size: 13px; line-height: 1.6; white-space: pre-line;
   }
   .msg.bot {
     background: #1a1a1a; border: 0.5px solid #2a2a2a;
@@ -104,34 +103,53 @@
   }
   .msg.typing { color: #555; font-style: italic; font-size: 12px; }
 
-  .opts { display: flex; flex-direction: column; gap: 6px; padding: 4px 12px 12px; }
+  /* Opciones con separador "/" */
+  .opts-wrap {
+    display: flex; flex-direction: column;
+    gap: 5px; padding: 4px 12px 12px;
+  }
+  .opts-sep {
+    display: flex; align-items: center;
+    gap: 8px;
+  }
+  .opts-sep-line {
+    color: rgba(139,26,43,0.4); font-size: 13px; font-weight: 300;
+    user-select: none; padding: 0 2px;
+  }
   .opt {
-    font-size: 12.5px; padding: 9px 14px;
+    flex: 1; font-size: 12.5px; padding: 9px 12px;
     border-radius: 6px;
     border: 1px solid rgba(139,26,43,0.35);
     border-left: 3px solid #8B1A2B;
     color: #e0b0b8;
     background: linear-gradient(90deg, rgba(139,26,43,0.12) 0%, rgba(26,10,12,0.6) 100%);
-    cursor: pointer;
-    transition: all 0.18s ease;
-    text-align: left;
-    font-weight: 500;
-    letter-spacing: 0.01em;
+    cursor: pointer; transition: all 0.18s ease;
+    text-align: left; font-weight: 500;
   }
   .opt:hover {
     background: linear-gradient(90deg, rgba(139,26,43,0.5) 0%, rgba(139,26,43,0.2) 100%);
-    border-left-color: #c0293f;
-    border-color: rgba(139,26,43,0.7);
-    color: #fff;
-    transform: translateX(3px);
+    border-left-color: #c0293f; border-color: rgba(139,26,43,0.7);
+    color: #fff; transform: translateX(3px);
   }
 
+  /* Tarjeta de servicio seleccionado */
+  .service-card {
+    background: linear-gradient(135deg, rgba(139,26,43,0.15), rgba(10,5,6,0.8));
+    border: 1px solid rgba(139,26,43,0.4);
+    border-left: 3px solid #8B1A2B;
+    border-radius: 8px; padding: 12px 14px;
+    margin: 0 12px 10px; font-size: 12px;
+    color: #e0b0b8; line-height: 1.7;
+  }
+  .service-card strong { color: #fff; display: block; margin-bottom: 4px; font-size: 13px; }
+
   .wa-btn {
-    display: inline-flex; align-items: center; gap: 7px;
-    margin: 4px 0 2px; padding: 9px 16px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    margin: 4px 12px 12px; padding: 11px 16px;
     background: #25D366; color: #fff; border-radius: 8px;
-    font-size: 12px; font-weight: 600; cursor: pointer;
-    border: none; text-decoration: none;
+    font-size: 13px; font-weight: 700; cursor: pointer;
+    border: none; text-decoration: none; letter-spacing: 0.02em;
+    transition: background 0.15s;
   }
   .wa-btn:hover { background: #1ebe5d; }
 
@@ -156,85 +174,35 @@
 </style>
 
 <script>
-const WA = '56929645522';
+const WA_NUM = '56929645522';
 
-let name = '';
-let step = 'inicio';
-let plan = '';
-let intentos = 0;
+// Estado del cliente
+let clientName = '';
+let clientEmail = '';
+let clientPhone = '';
+let clientService = '';
+let step = 'nombre'; // nombre → correo → telefono → servicio → cierre
 
-const RESPUESTAS = {
-  inicio: {
-    bot: '¡Hola! Soy Constanza, ejecutiva de VisionCode 👋\n¿Con quién tengo el gusto de hablar?',
-    tipo: 'input',
-    placeholder: 'Tu nombre o empresa...'
-  },
-  saludo: (n) => ({
-    bot: `Mucho gusto, ${n}. ¿Qué tipo de proyecto tienes en mente para tu negocio?`,
-    tipo: 'opciones',
-    opts: ['Quiero presencia digital', 'Necesito un sitio corporativo', 'Quiero vender online', 'Tengo dudas, oriéntame']
-  }),
-  orientar: (n) => ({
-    bot: `${n}, la mayoría de mis clientes que parten sin saber qué necesitan terminan eligiendo nuestro Portal Corporativo. Es el plan con mejor ROI: 6 páginas, analytics profesional y posicionamiento Google — todo por $80.000 CLP.\n\n¿Te cuento más sobre este plan?`,
-    tipo: 'opciones',
-    opts: ['Sí, cuéntame más', 'Prefiero algo más básico', 'Quiero ver todos los planes']
-  }),
-  presencia: (n) => ({
-    bot: `Entiendo, ${n}. Tenemos el Landing Institucional en $58.000 CLP — ideal para tener presencia rápida.\n\nPero ojo: por solo $22.000 CLP más, el Portal Corporativo te da 6 páginas completas + Google Analytics. La mayoría de mis clientes eligen esa opción porque se paga sola en conversiones. ¿Te interesa comparar?`,
-    tipo: 'opciones',
-    opts: ['Ver Portal Corporativo', 'Me quedo con el Landing', 'Ver todos los planes']
-  }),
-  portal_pitch: (n) => ({
-    bot: `El Portal Corporativo es nuestro plan más elegido, ${n}.\n\n💰 $80.000 CLP — precio único\n📦 Incluye: 6 páginas, hosting + dominio 1 año, Google Analytics, Blog/Noticias\n🛠 Mantenimiento: $15.000/mes\n✅ Soporte prioritario 30 días\n\nTenemos agenda limitada este mes. ¿Lo cotizamos?`,
-    tipo: 'opciones',
-    opts: ['Sí, quiero cotizar', 'Necesito pensarlo', 'Ver otros planes']
-  }),
-  ecommerce_pitch: (n) => ({
-    bot: `Perfecto, ${n}. Para vender online tenemos dos opciones:\n\n🛒 Plataforma E-Commerce → $150.000 CLP\nTienda con Webpay + Mercado Pago, panel admin, 50 productos.\n\n🚀 E-Commerce + ERP → $300.000 CLP\nLa suite completa con gestión interna, inventario y reportes.\n\nMuchos clientes parten con el Portal Corporativo y agregan la tienda después. ¿Quieres que te oriente según tu caso?`,
-    tipo: 'opciones',
-    opts: ['Quiero el E-Commerce', 'Quiero el ERP completo', 'Mejor parto con Portal Corporativo', 'Hablar con ejecutivo']
-  }),
-  pensar: (n) => ({
-    bot: `Te entiendo perfectamente, ${n}. Lo importante es que tomes la mejor decisión.\n\nDicho eso — nuestros proyectos tienen lista de espera y los precios actuales son válidos solo hasta fin de mes. ¿Te puedo dejar los datos de un ejecutivo para que te resuelva cualquier duda?`,
-    tipo: 'opciones',
-    opts: ['Sí, me interesa', 'Necesito más tiempo']
-  }),
-  mas_tiempo: (n) => ({
-    bot: `Sin problema, ${n}. Te dejo el contacto directo para cuando estés listo — respondemos en menos de 1 hora en horario hábil 🙌`,
-    tipo: 'wa'
-  }),
-  todos_planes: (n) => ({
-    bot: `Estos son todos nuestros planes, ${n}:\n\n📄 Landing Institucional → $58.000 CLP\n🏢 Portal Corporativo → $80.000 CLP ⭐ más elegido\n🛒 E-Commerce → $150.000 CLP\n🚀 E-Commerce + ERP → $300.000 CLP\n\nTodos incluyen hosting, dominio y SSL el primer año. ¿Cuál te llama la atención?`,
-    tipo: 'opciones',
-    opts: ['Landing Institucional', 'Portal Corporativo', 'E-Commerce', 'E-Commerce + ERP']
-  }),
-  cotizar: (n) => ({
-    bot: `Excelente decisión, ${n} 💪\n\n¿Cuál es tu correo o WhatsApp para que un ejecutivo te envíe la propuesta formal hoy mismo?`,
-    tipo: 'input',
-    placeholder: 'correo@empresa.com o +56 9...'
-  }),
-  cierre: (n, contacto) => ({
-    bot: `Perfecto, ${n}. Ya tengo tu contacto (${contacto}) y te escribiremos a la brevedad con la propuesta.\n\nSi prefieres hablar ahora mismo, aquí tienes el contacto directo 👇`,
-    tipo: 'wa'
-  }),
-  fallback: (n) => ({
-    bot: `Entiendo, ${n}. Cada negocio es distinto y me gustaría orientarte bien.\n\n¿Qué es lo más importante para ti ahora mismo: tener presencia online, vender por internet o gestionar tu negocio digitalmente?`,
-    tipo: 'opciones',
-    opts: ['Presencia online', 'Vender online', 'Gestión digital', 'Hablar con ejecutivo']
-  })
-};
+const SERVICIOS = [
+  { label: 'Landing Institucional', precio: '$58.000 CLP', mant: '$10.000/mes' },
+  { label: 'Portal Corporativo',    precio: '$80.000 CLP', mant: '$15.000/mes' },
+  { label: 'Plataforma E-Commerce', precio: '$150.000 CLP', mant: '$20.000/mes' },
+  { label: 'E-Commerce + ERP',      precio: '$300.000 CLP', mant: '$30.000/mes' },
+];
 
-const bubble = document.getElementById('vc-bubble');
-const panel = document.getElementById('vc-panel');
+// DOM
+const bubble   = document.getElementById('vc-bubble');
+const panel    = document.getElementById('vc-panel');
 const closeBtn = document.getElementById('vc-close');
-const msgsEl = document.getElementById('vc-messages');
-const inputEl = document.getElementById('vc-input');
-const sendBtn = document.getElementById('vc-send');
-const icoChat = document.getElementById('ico-chat');
-const icoX = document.getElementById('ico-x');
+const msgsEl   = document.getElementById('vc-messages');
+const inputEl  = document.getElementById('vc-input');
+const sendBtn  = document.getElementById('vc-send');
+const inputRow = document.getElementById('vc-input-row');
+const icoChat  = document.getElementById('ico-chat');
+const icoX     = document.getElementById('ico-x');
 let started = false;
-let contacto = '';
 
+// ── Utilidades ───────────────────────────────────────────
 function scroll() { msgsEl.scrollTop = msgsEl.scrollHeight; }
 
 function addMsg(text, cls) {
@@ -246,131 +214,157 @@ function addMsg(text, cls) {
   return d;
 }
 
-function clearOpts() {
-  document.querySelectorAll('.opts').forEach(o => o.remove());
+function showInput(visible, placeholder = 'Escribe aquí...') {
+  if (visible) {
+    inputRow.classList.add('visible');
+    inputEl.placeholder = placeholder;
+    inputEl.disabled = false;
+    setTimeout(() => inputEl.focus(), 50);
+  } else {
+    inputRow.classList.remove('visible');
+    inputEl.disabled = true;
+    inputEl.value = '';
+  }
 }
 
+function clearOpts() {
+  document.querySelectorAll('.opts-wrap').forEach(o => o.remove());
+}
+
+// Renderiza opciones en columna con separador "/" entre cada una
 function addOpts(opts, cb) {
   clearOpts();
-  const d = document.createElement('div');
-  d.className = 'opts';
-  opts.forEach(o => {
-    const b = document.createElement('button');
-    b.className = 'opt';
-    b.textContent = o;
-    b.onclick = () => { clearOpts(); cb(o); };
-    d.appendChild(b);
+  const wrap = document.createElement('div');
+  wrap.className = 'opts-wrap';
+
+  opts.forEach((o, i) => {
+    const row = document.createElement('div');
+    row.className = 'opts-sep';
+
+    const sep = document.createElement('span');
+    sep.className = 'opts-sep-line';
+    sep.textContent = '/';
+
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.textContent = o.label || o;
+    btn.onclick = () => { clearOpts(); cb(o); };
+
+    row.appendChild(sep);
+    row.appendChild(btn);
+    wrap.appendChild(row);
   });
-  msgsEl.appendChild(d);
+
+  msgsEl.appendChild(wrap);
   scroll();
 }
 
-function addWA() {
-  const txt = encodeURIComponent(`Hola Constanza, soy ${name || 'un interesado'}. Me gustaría cotizar un proyecto con VisionCode.${plan ? ' Me interesa el plan ' + plan + '.' : ''}`);
+function addServiceCard(s) {
+  const card = document.createElement('div');
+  card.className = 'service-card';
+  card.innerHTML = `<strong>${s.label}</strong>Precio: ${s.precio} &nbsp;·&nbsp; Mantenimiento: ${s.mant}`;
+  msgsEl.appendChild(card);
+  scroll();
+}
+
+function addWAButton() {
+  const msg = `¡Hola equipo VisionCode! 👋
+
+Me gustaría gestionar la compra de un servicio. Aquí van mis datos:
+
+👤 Nombre: ${clientName}
+📧 Correo: ${clientEmail}
+📱 Teléfono: ${clientPhone}
+🛒 Servicio de interés: ${clientService}
+
+Quedo atento/a a sus indicaciones para proceder. ¡Muchas gracias!`;
+
   const a = document.createElement('a');
   a.className = 'wa-btn';
-  a.href = `https://wa.me/${WA}?text=${txt}`;
+  a.href = `https://wa.me/${WA_NUM}?text=${encodeURIComponent(msg)}`;
   a.target = '_blank';
-  a.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.104.549 4.078 1.504 5.798L.057 23.428c-.083.334.216.633.55.55l5.63-1.447A11.951 11.951 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.807 9.807 0 01-5.003-1.37l-.358-.214-3.724.956.989-3.607-.235-.372A9.816 9.816 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>Hablar con Constanza ahora`;
+  a.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.104.549 4.078 1.504 5.798L.057 23.428c-.083.334.216.633.55.55l5.63-1.447A11.951 11.951 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.807 9.807 0 01-5.003-1.37l-.358-.214-3.724.956.989-3.607-.235-.372A9.816 9.816 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>Gestionar mi compra por WhatsApp`;
   msgsEl.appendChild(a);
   scroll();
 }
 
 function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-const inputRow = document.getElementById('vc-input-row');
-function showInput(visible, placeholder) {
-  if (visible) {
-    inputRow.classList.add('visible');
-    inputEl.placeholder = placeholder || 'Escribe aquí...';
-    inputEl.disabled = false;
-    inputEl.focus();
-  } else {
-    inputRow.classList.remove('visible');
-    inputEl.disabled = true;
-  }
-}
-
-async function botReply(resp) {
+async function botSay(text, tipo = 'text', extra = null) {
   showInput(false);
   const t = addMsg('Constanza está escribiendo...', 'bot typing');
   await delay(900);
   t.remove();
-  addMsg(resp.bot, 'bot');
+  addMsg(text, 'bot');
 
-  if (resp.tipo === 'opciones') {
-    addOpts(resp.opts, handleOpt);
-    // Input stays hidden — solo opciones
-  } else if (resp.tipo === 'input') {
-    showInput(true, resp.placeholder);
-  } else if (resp.tipo === 'wa') {
-    addWA();
-    // Input stays hidden al finalizar
+  if (tipo === 'input') {
+    showInput(true, extra);
+  } else if (tipo === 'opciones') {
+    addOpts(extra, handleServiceSelect);
+  } else if (tipo === 'cierre') {
+    addServiceCard(extra);
+    await delay(400);
+    addWAButton();
   }
 }
 
-async function handleOpt(opt) {
-  addMsg(opt, 'user');
-  await delay(300);
-
-  if (opt === 'Quiero presencia digital' || opt === 'Presencia online') {
-    step = 'presencia'; plan = 'Landing Institucional'; await botReply(RESPUESTAS.presencia(name));
-  } else if (opt === 'Necesito un sitio corporativo' || opt === 'Ver Portal Corporativo' || opt === 'Portal Corporativo' || opt === 'Sí, cuéntame más' || opt === 'Mejor parto con Portal Corporativo') {
-    step = 'portal'; plan = 'Portal Corporativo'; await botReply(RESPUESTAS.portal_pitch(name));
-  } else if (opt === 'Quiero vender online' || opt === 'Vender online') {
-    step = 'ecommerce'; await botReply(RESPUESTAS.ecommerce_pitch(name));
-  } else if (opt === 'Tengo dudas, oriéntame' || opt === 'Gestión digital') {
-    step = 'orientar'; await botReply(RESPUESTAS.orientar(name));
-  } else if (opt === 'Ver todos los planes' || opt === 'Quiero ver todos los planes' || opt === 'Ver otros planes') {
-    step = 'todos'; await botReply(RESPUESTAS.todos_planes(name));
-  } else if (opt === 'Me quedo con el Landing' || opt === 'Landing Institucional') {
-    plan = 'Landing Institucional'; step = 'cotizar'; await botReply(RESPUESTAS.cotizar(name));
-  } else if (opt === 'Quiero el E-Commerce' || opt === 'E-Commerce') {
-    plan = 'Plataforma E-Commerce'; step = 'cotizar'; await botReply(RESPUESTAS.cotizar(name));
-  } else if (opt === 'Quiero el ERP completo' || opt === 'E-Commerce + ERP') {
-    plan = 'E-Commerce + ERP'; step = 'cotizar'; await botReply(RESPUESTAS.cotizar(name));
-  } else if (opt === 'Sí, quiero cotizar' || opt === 'Sí, me interesa' || opt === 'Quiero cotizar') {
-    step = 'cotizar'; await botReply(RESPUESTAS.cotizar(name));
-  } else if (opt === 'Necesito pensarlo') {
-    step = 'pensar'; await botReply(RESPUESTAS.pensar(name));
-  } else if (opt === 'Necesito más tiempo') {
-    step = 'mas_tiempo'; await botReply(RESPUESTAS.mas_tiempo(name));
-  } else if (opt === 'Hablar con ejecutivo') {
-    await botReply({ bot: `Con gusto te conecto, ${name} 👇`, tipo: 'wa' });
-  } else if (opt === 'Prefiero algo más básico') {
-    step = 'presencia'; plan = 'Landing Institucional'; await botReply(RESPUESTAS.presencia(name));
-  } else {
-    intentos++;
-    await botReply(RESPUESTAS.fallback(name));
-  }
+// ── Flujo principal ──────────────────────────────────────
+async function start() {
+  step = 'nombre';
+  await botSay(
+    '¡Hola! Soy Constanza, ejecutiva de ventas de VisionCode 👋\n\n¿Con quién tengo el gusto de hablar? (nombre o empresa)',
+    'input', 'Tu nombre o empresa...'
+  );
 }
 
 async function handleInput(val) {
   addMsg(val, 'user');
-  inputEl.value = '';
   showInput(false);
-  await delay(300);
+  await delay(350);
 
-  if (step === 'inicio') {
-    name = val.split(' ')[0];
-    step = 'saludo';
-    await botReply(RESPUESTAS.saludo(name));
-  } else if (step === 'cotizar') {
-    contacto = val;
-    step = 'cierre';
-    await botReply(RESPUESTAS.cierre(name, contacto));
+  if (step === 'nombre') {
+    clientName = val.trim();
+    step = 'correo';
+    await botSay(
+      `Mucho gusto, ${clientName}! 😊\n\n¿Cuál es tu correo electrónico de contacto?`,
+      'input', 'correo@empresa.com'
+    );
+
+  } else if (step === 'correo') {
+    clientEmail = val.trim();
+    step = 'telefono';
+    await botSay(
+      `Perfecto. ¿Y un número de teléfono donde podamos contactarte?`,
+      'input', '+56 9 XXXX XXXX'
+    );
+
+  } else if (step === 'telefono') {
+    clientPhone = val.trim();
+    step = 'servicio';
+    await botSay(
+      `¡Excelente, ${clientName}! Ya tengo tus datos.\n\nSelecciona el servicio que más se ajusta a tu proyecto 👇`,
+      'opciones', SERVICIOS
+    );
   }
-  // Todos los demás pasos son solo opciones — no se procesa texto libre
 }
 
+async function handleServiceSelect(servicio) {
+  clientService = servicio.label;
+  addMsg(servicio.label, 'user');
+  step = 'cierre';
+  await delay(350);
+  await botSay(
+    `¡Muy buena elección, ${clientName}! 🙌\n\nAquí tienes el detalle del servicio seleccionado. Al hacer clic en el botón, nuestro equipo recibirá toda tu información y te contactará a la brevedad para gestionar tu compra.`,
+    'cierre', servicio
+  );
+}
+
+// ── Eventos ──────────────────────────────────────────────
 bubble.addEventListener('click', () => {
   const open = panel.classList.toggle('open');
   icoChat.style.display = open ? 'none' : 'block';
   icoX.style.display = open ? 'block' : 'none';
-  if (open && !started) {
-    started = true;
-    botReply(RESPUESTAS.inicio);
-  }
+  if (open && !started) { started = true; start(); }
 });
 
 closeBtn.addEventListener('click', () => {
@@ -379,15 +373,11 @@ closeBtn.addEventListener('click', () => {
   icoX.style.display = 'none';
 });
 
-sendBtn.addEventListener('click', () => {
+function doSend() {
   const val = inputEl.value.trim();
   if (val && !inputEl.disabled) handleInput(val);
-});
+}
 
-inputEl.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    const val = inputEl.value.trim();
-    if (val && !inputEl.disabled) handleInput(val);
-  }
-});
+sendBtn.addEventListener('click', doSend);
+inputEl.addEventListener('keydown', e => { if (e.key === 'Enter') doSend(); });
 </script>
