@@ -1,0 +1,458 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const projects = [
+  {
+    id: "glowyskin",
+    title: "E-Commerce Dermocosmética Coreana & Skincare",
+    client: "Glowy Skin Chile",
+    category: "ecommerce",
+    categoryLabel: "E-Commerce Pro",
+    image: "/images/proyectos/glowyskin.png",
+    liveUrl: "https://glowyskin.cl/",
+    badge: "Alta Conversión & Retail",
+    idea: "Importadora de cosmética coreana premium requería una tienda online ultrarrápida, visualmente impecable y con checkout optimizado para competir con grandes retailers y gestionar despachos a todo Chile.",
+    solution: "Desarrollamos una plataforma E-Commerce Pro de alto rendimiento con pasarelas de pago automatizadas (Webpay / Mercado Pago), cálculo de envíos en tiempo real y arquitectura UX orientada a maximizar el ticket promedio.",
+    results: [
+      { label: "Tasa de Conversión", value: "+320%" },
+      { label: "Velocidad de Carga", value: "0.8s" },
+      { label: "Cobertura de Envíos", value: "Todo Chile" }
+    ],
+    tech: ["E-Commerce Pro", "Webpay Plus", "CRO & UX", "Checkout Rápido"]
+  },
+  {
+    id: "spm-store",
+    title: "Tienda Oficial Streetwear & Drops Exclusivos",
+    client: "SPM Store Chile",
+    category: "ecommerce",
+    categoryLabel: "E-Commerce Pro",
+    image: "/images/proyectos/spm-store.png",
+    liveUrl: "https://www.spm-store.cl/",
+    badge: "Streetwear & Drops",
+    idea: "Marca de gorras urbanas y moda streetwear con alta tracción en redes sociales necesitaba una infraestructura capaz de resistir picos masivos de tráfico simultáneo durante el lanzamiento de colecciones limitadas.",
+    solution: "Construimos una tienda virtual optimizada para dispositivos móviles con catálogo de alta resolución, control de inventario en tiempo real y checkout ultra-ágil para agotar colecciones en tiempo récord.",
+    results: [
+      { label: "Concurrencia en Drops", value: "10K+ Visitas" },
+      { label: "Checkout Móvil", value: "< 45 Seg" },
+      { label: "Control de Inventario", value: "100% Sincro" }
+    ],
+    tech: ["E-Commerce Streetwear", "Mobile First", "Mercado Pago", "Control de Stock"]
+  },
+  {
+    id: "amorajewelry",
+    title: "Boutique de Joyería Fina & Colecciones de Lujo",
+    client: "Amora Jewelry",
+    category: "ecommerce",
+    categoryLabel: "E-Commerce Pro",
+    image: "/images/proyectos/amorajewelry.png",
+    liveUrl: "https://amorajewelry.cl/",
+    badge: "Diseño Minimalista de Lujo",
+    idea: "Boutique de joyería artesanal premium en Chile necesitaba una presencia digital con estética editorial y refinada que proyectara la pureza de sus piezas y garantizara seguridad en transacciones de alto valor.",
+    solution: "Diseñamos una experiencia e-commerce minimalista y envolvente con fotografía de producto de alto impacto, navegación fluida, pasarela de pago cifrada y un flujo de compra sumamente pulcro y confiable.",
+    results: [
+      { label: "Ticket Promedio", value: "+185%" },
+      { label: "Seguridad de Pago", value: "SSL Bancario" },
+      { label: "Experiencia Visual", value: "Editorial HD" }
+    ],
+    tech: ["Diseño Luxury", "E-Commerce Pro", "Pasarela Segura", "SEO E-Commerce"]
+  },
+  {
+    id: "novaperformance",
+    title: "Plataforma Biotecnológica & Distribución Científica",
+    client: "NOVA Performance®",
+    category: "web-seo",
+    categoryLabel: "Web & Biotecnología",
+    image: "/images/proyectos/novaperformance.png",
+    liveUrl: "https://www.novaperformance.cl/",
+    badge: "Biotecnología de Vanguardia",
+    idea: "Compañía de investigación y biotecnología requería un portal digital moderno y riguroso para la distribución de péptidos de máxima pureza, garantizando respaldo analítico y confidencialidad.",
+    solution: "Desarrollamos una plataforma institucional y de catálogo con diseño futurista, visualización de certificados de autenticidad (COA) por lote, arquitectura segura y canal de asesoría científica.",
+    results: [
+      { label: "Pureza Verificada", value: "99.8%" },
+      { label: "Consultas Técnicas", value: "+210%" },
+      { label: "Protección de Datos", value: "Encriptación Total" }
+    ],
+    tech: ["Plataforma Científica", "Fichas Técnicas", "Seguridad SSL", "UI Futurista"]
+  },
+  {
+    id: "quinchotabolango",
+    title: "Portal de Reservas para Arriendo de Quincho Privado",
+    client: "Quincho Limache / Tabolango",
+    category: "web-seo",
+    categoryLabel: "Landing & Reservas",
+    image: "/images/proyectos/quinchotabolango.png",
+    liveUrl: "https://www.quinchotabolango.cl/",
+    badge: "Captación Directa & Reservas",
+    idea: "Espacio de descanso y eventos familiares en el Valle de Limache requería captar reservas directas para cumpleaños y jornadas de descanso sin intermediarios ni altas comisiones de aplicaciones.",
+    solution: "Implementamos una landing page inmersiva de alta conversión con galería fotográfica de piscina y tinajas, información clara de comodidades y conexión inmediata a WhatsApp para agendar visitas.",
+    results: [
+      { label: "Ocupación de Temporada", value: "95% Llena" },
+      { label: "Leads por WhatsApp", value: "+300 / mes" },
+      { label: "Cero Comisiones", value: "100% Directo" }
+    ],
+    tech: ["Landing de Conversión", "Galería HD", "WhatsApp Directo", "SEO Local Limache"]
+  },
+  {
+    id: "peritum",
+    title: "Estudio Jurídico & Defensa Tributaria Corporativa",
+    client: "Peritum Abogados & Consultores",
+    category: "corporativo",
+    categoryLabel: "Legal & Corporativo",
+    image: "/images/proyectos/peritum.png",
+    liveUrl: "https://www.peritum.cl/",
+    badge: "Firma Legal de Alto Nivel",
+    idea: "Firma jurídica y consultoría tributaria en Las Condes, Santiago, necesitaba proyectar su prestigio institucional en el canal digital para asesorar a empresas ante fiscalizaciones del SII y litigios complejos.",
+    solution: "Construimos un portal corporativo sobrio y de máxima autoridad, optimizado para posicionamiento SEO orgánico en materia de defensa tributaria, litigación civil y asesoría jurídica empresarial.",
+    results: [
+      { label: "Consultas Corporativas", value: "+175%" },
+      { label: "Posicionamiento Santiago", value: "Top Google" },
+      { label: "Autoridad Institucional", value: "100% Verificada" }
+    ],
+    tech: ["Portal Corporativo", "SEO Tributario SII", "Captación B2B", "Seguridad Legal"]
+  }
+];
+
+const steps = [
+  {
+    num: "01",
+    title: "Diagnóstico de la Idea",
+    desc: "Analizamos tu visión comercial, tu público objetivo y tus metas de facturación para definir la arquitectura tecnológica necesaria."
+  },
+  {
+    num: "02",
+    title: "Construcción de la Infraestructura",
+    desc: "Diseñamos y programamos tu sitio web, tienda E-Commerce o sistema ERP con estándares corporativos de alta velocidad."
+  },
+  {
+    num: "03",
+    title: "Activación del Motor de Ventas",
+    desc: "Lanzamos campañas de adquisición en Meta Ads (FB/IG) e integramos Agentes de IA en WhatsApp para atender y cotizar en automático."
+  },
+  {
+    num: "04",
+    title: "Operación & Escalabilidad",
+    desc: "Tu negocio queda funcionando en piloto automático, generando prospectos y ventas mientras supervisas métricas en vivo."
+  }
+];
+---
+
+<Layout title="Proyectos & Casos de Éxito — Vision Code" description="Casos reales de transformación digital: descubre cómo convertimos ideas en negocios rentables con desarrollo web, E-Commerce y Agentes de Inteligencia Artificial.">
+  <Navbar />
+  
+  <main id="main-content" class="pt-24 bg-black text-white">
+
+    <!-- HERO DE PROYECTOS: 2.png de fondos nuevos -->
+    <section class="relative py-28 overflow-hidden bg-black text-white border-b border-white/10">
+      <div class="absolute inset-0 z-0 pointer-events-none select-none bg-cover bg-center" style="background-image: url('/images/fondos/2.png');"></div>
+      <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/90 via-black/80 to-black pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center md:text-left">
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-[0.68rem] font-extrabold uppercase tracking-[0.25em] mb-6 backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-white animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+          PORTAFOLIO DE INGENIERÍA & RESULTADOS
+        </div>
+        
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+          <div class="max-w-3xl">
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-tight mb-6">
+              Transformamos <br class="hidden sm:block"/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-neutral-400">
+                Ideas en Negocios Rentables.
+              </span>
+            </h1>
+            <p class="text-lg sm:text-xl text-white/80 font-medium leading-relaxed">
+              Explora proyectos reales construidos por nuestro equipo: plataformas web de velocidad extrema, tiendas E-Commerce de alto volumen y sistemas con Inteligencia Artificial que automatizan ventas 24/7.
+            </p>
+          </div>
+
+          <!-- Métricas Resumen -->
+          <div class="grid grid-cols-2 gap-4 shrink-0 bg-[#000000] border border-white/15 p-6 rounded-2xl backdrop-blur-xl shadow-xl">
+            <div>
+              <div class="text-3xl lg:text-4xl font-black text-white">+100%</div>
+              <div class="text-[0.65rem] font-bold uppercase tracking-widest text-white/60">Código Optimizado</div>
+            </div>
+            <div>
+              <div class="text-3xl lg:text-4xl font-black text-white">24/7</div>
+              <div class="text-[0.65rem] font-bold uppercase tracking-widest text-white/60">Captación Activa</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METODOLOGÍA: DE LA IDEA AL NEGOCIO: Fondo 3.png -->
+    <section class="py-24 bg-[#000000] border-b border-white/10 relative z-10 overflow-hidden text-white">
+      <div class="absolute inset-0 z-0 pointer-events-none select-none bg-cover bg-center" style="background-image: url('/images/fondos/3.png');"></div>
+      <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90 pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-[0.7rem] font-black uppercase tracking-[0.25em] text-white/50 mb-3 block">NUESTRA METODOLOGÍA</span>
+          <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-5">
+            ¿Cómo convertimos tu idea en un negocio?
+          </h2>
+          <p class="text-base text-white/70 font-medium leading-relaxed">
+            No solo programamos código; diseñamos la estrategia comercial completa para que tu proyecto genere ingresos reales desde el primer día.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {steps.map((s) => (
+            <div class="bento-card p-8 bg-[#000000] border border-white/15 hover:border-white/40 rounded-2xl transition-all duration-300 flex flex-col justify-between group shadow-xl">
+              <div>
+                <div class="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-neutral-400 mb-4 tracking-tighter">{s.num}</div>
+                <h3 class="text-xl font-black text-white mb-3 tracking-tight group-hover:text-neutral-200 transition-colors">{s.title}</h3>
+                <p class="text-sm text-white/70 leading-relaxed font-normal">{s.desc}</p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs font-bold uppercase tracking-widest text-white/40 group-hover:text-white/80 transition-colors">
+                Fase {s.num} →
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS & CASOS DE ÉXITO -->
+    <section class="py-28 bg-black relative z-10">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        
+        <!-- Controles de Filtro -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-16 pb-8 border-b border-white/10">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-neutral-400 block mb-1">Catálogo de Proyectos</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">Soluciones Entregadas</h2>
+          </div>
+
+          <!-- Botones de Filtro por Categoría -->
+          <div class="flex flex-wrap gap-2" id="filter-container">
+            <button class="filter-btn active px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-black transition-all" data-category="all">
+              Todos ({projects.length})
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-black text-white/70 border border-white/15 hover:border-white transition-all" data-category="ecommerce">
+              E-Commerce ({projects.filter(p => p.category === 'ecommerce').length})
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-black text-white/70 border border-white/15 hover:border-white transition-all" data-category="web-seo">
+              Web & Servicios ({projects.filter(p => p.category === 'web-seo').length})
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-black text-white/70 border border-white/15 hover:border-white transition-all" data-category="corporativo">
+              Legal & Corporativo ({projects.filter(p => p.category === 'corporativo').length})
+            </button>
+          </div>
+        </div>
+
+        <!-- Galería Bento Grid de Proyectos -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10" id="projects-grid">
+          {projects.map((p) => (
+            <article 
+              class="project-card bento-card bg-[#000000] border border-white/15 hover:border-white/40 rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between shadow-2xl group"
+              data-category={p.category}
+            >
+              <!-- Imagen de Encabezado (Clickable Live Preview) -->
+              <a 
+                href={p.liveUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="relative h-64 sm:h-72 overflow-hidden bg-black block group/img cursor-pointer"
+                title={"Visitar sitio web oficial: " + p.client}
+              >
+                <img 
+                  src={p.image} 
+                  alt={p.title} 
+                  loading="lazy"
+                  class="w-full h-full object-cover object-top transition-transform duration-700 group-hover/img:scale-105"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent pointer-events-none"></div>
+                
+                <!-- Badges sobre imagen -->
+                <div class="absolute top-5 left-5 flex flex-wrap gap-2 pointer-events-none">
+                  <span class="px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-white text-[0.65rem] font-extrabold uppercase tracking-widest">
+                    {p.categoryLabel}
+                  </span>
+                  <span class="px-3 py-1 rounded-full bg-white text-black text-[0.65rem] font-extrabold uppercase tracking-widest shadow-lg">
+                    {p.badge}
+                  </span>
+                </div>
+
+                <!-- Hover Chip Ver Sitio Web -->
+                <div class="absolute bottom-4 right-4 z-10 pointer-events-none">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/30 text-white text-[0.65rem] font-bold tracking-wider group-hover/img:bg-white group-hover/img:text-black transition-all duration-300">
+                    <span>Sitio en Vivo</span>
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                  </span>
+                </div>
+              </a>
+
+              <!-- Contenido del Caso -->
+              <div class="p-8 sm:p-10 flex-1 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between gap-2 mb-2">
+                    <span class="text-xs font-bold text-white/60 uppercase tracking-widest">{p.client}</span>
+                    <a 
+                      href={p.liveUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      class="text-[0.68rem] font-mono text-neutral-400 hover:text-white transition-colors flex items-center gap-1"
+                    >
+                      <span>{p.liveUrl.replace('https://', '').replace(/\/$/, '')}</span>
+                      <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                      </svg>
+                    </a>
+                  </div>
+                  <h3 class="text-2xl sm:text-3xl font-black text-white mb-4 tracking-tight group-hover:text-neutral-200 transition-colors">
+                    {p.title}
+                  </h3>
+
+                  <!-- Desafío vs Solución -->
+                  <div class="space-y-4 mb-8 text-sm">
+                    <div class="bg-black/40 border border-white/10 p-4 rounded-xl">
+                      <span class="text-[0.65rem] font-extrabold uppercase tracking-widest text-neutral-300 flex items-center gap-1.5 mb-1">
+                        <svg class="w-3.5 h-3.5 text-neutral-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                        <span>El Desafío Inicial</span>
+                      </span>
+                      <p class="text-white/80 font-normal leading-relaxed">{p.idea}</p>
+                    </div>
+                    <div class="bg-black/40 border border-white/10 p-4 rounded-xl">
+                      <span class="text-[0.65rem] font-extrabold uppercase tracking-widest text-white flex items-center gap-1.5 mb-1">
+                        <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span>Solución Vision Code</span>
+                      </span>
+                      <p class="text-white/80 font-normal leading-relaxed">{p.solution}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Métricas Destacadas -->
+                <div>
+                  <div class="grid grid-cols-3 gap-3 pt-6 border-t border-white/10 mb-6 text-center">
+                    {p.results.map((r) => (
+                      <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+                        <div class="text-lg sm:text-xl font-black text-white">{r.value}</div>
+                        <div class="text-[0.6rem] font-bold uppercase tracking-wider text-white/60 leading-tight mt-1">{r.label}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <!-- Tech Tags + Botones de Acción -->
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-white/10">
+                    <div class="flex flex-wrap gap-1.5">
+                      {p.tech.map((t) => (
+                        <span class="text-[0.65rem] font-bold text-white/60 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2.5 shrink-0">
+                      <a 
+                        href={p.liveUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1.5 bg-transparent hover:bg-white/10 text-white border border-white/25 hover:border-white font-bold text-[0.68rem] uppercase tracking-wider px-3.5 py-2.5 rounded-full transition-all duration-300"
+                        title={"Visitar sitio web oficial: " + p.liveUrl}
+                      >
+                        <span>Visitar Web</span>
+                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                        </svg>
+                      </a>
+
+                      <a 
+                        href={"https://api.whatsapp.com/send?phone=56929645522&text=Hola%20Vision%20Code,%20me%20interesa%20un%20proyecto%20similar%20al%20de%20" + encodeURIComponent(p.client)} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1.5 bg-white text-black hover:bg-neutral-200 font-extrabold text-[0.68rem] uppercase tracking-wider px-4 py-2.5 rounded-full transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.25)]"
+                      >
+                        <span>Cotizar Similar</span>
+                        <span>&rarr;</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </article>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE ACCIÓN: CONVIERTE TU IDEA HOY -->
+    <section class="py-24 bg-black relative z-10 border-t border-white/10">
+      <div class="max-w-5xl mx-auto px-6 text-center">
+        <div class="bento-card p-12 sm:p-16 rounded-3xl bg-[#000000] border border-white/15 relative overflow-hidden shadow-2xl">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+          
+          <span class="text-xs font-black uppercase tracking-[0.25em] text-white/50 mb-4 block">¿TIENES UNA IDEA DE NEGOCIO?</span>
+          <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-6 leading-tight">
+            La convertimos en una plataforma <br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-300 to-neutral-500">
+              lista para generar ingresos.
+            </span>
+          </h2>
+          <p class="text-base sm:text-lg text-white/70 max-w-2xl mx-auto font-medium leading-relaxed mb-10">
+            Agenda una sesión de consultoría técnica gratuita con nuestro equipo de ingeniería. Diseñaremos la arquitectura web y la estrategia comercial perfecta para tu empresa.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a 
+              href="https://api.whatsapp.com/send?phone=56929645522&text=Hola%20Vision%20Code,%20tengo%20una%20idea%20de%20negocio%20y%20quiero%20cotizar." 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="btn-primary w-full sm:w-auto text-xs py-4 px-8 rounded-full"
+            >
+              Transformar mi Idea por WhatsApp →
+            </a>
+            <a 
+              href="/cotizar" 
+              class="btn-secondary w-full sm:w-auto text-xs py-4 px-8 rounded-full !text-white !border-white/20 hover:!border-white"
+            >
+              Solicitar Cotización Formal
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<script is:inline>
+  // Filtro interactivo de categorías
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-white', 'text-black');
+        b.classList.add('bg-black', 'text-white/70');
+      });
+      btn.classList.remove('bg-black', 'text-white/70');
+      btn.classList.add('bg-white', 'text-black');
+
+      const cat = btn.getAttribute('data-category');
+      projectCards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (cat === 'all' || cardCat === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

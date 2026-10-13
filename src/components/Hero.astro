@@ -1,162 +1,452 @@
 ---
 ---
-<section id="inicio" class="relative w-full min-h-screen flex flex-col overflow-hidden bg-neutral-950 text-white">
 
-  <!-- Background carousel -->
+<section id="inicio" class="hero-section relative w-full min-h-screen flex flex-col overflow-hidden bg-black text-white">
+
+  <!-- ═══════════════════════════════════════════
+       CAPA 1: Fondo animado con fotogramas (Canvas)
+       ═══════════════════════════════════════════ -->
   <div class="absolute inset-0 z-0 overflow-hidden select-none pointer-events-none">
-    <div id="hero-bg-1" class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100" style="background-image: url('/images/hero-bg-1.jpeg');"></div>
-    <div id="hero-bg-2" class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('/images/hero-bg-2.jpeg');"></div>
-    <div id="hero-bg-3" class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('/images/hero-bg-3.jpeg');"></div>
-    <div id="hero-bg-4" class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('/images/hero-bg-4.jpeg');"></div>
-    <div id="hero-bg-5" class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('/images/hero-bg-5.jpeg');"></div>
-    <!-- Dark overlay for readability -->
-    <div class="absolute inset-0 bg-black/60 md:bg-black/55 backdrop-blur-[0.5px]"></div>
+    <div id="hero-bg-1" class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 select-none pointer-events-none z-[1]" style="background-image: url('/images/fondos/FONDO%20HERO/ESCRITORIO/1.png');"></div>
+    <div id="hero-bg-2" class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 select-none pointer-events-none z-[2] opacity-0"></div>
+    <!-- Overlay oscuro base para legibilidad -->
+    <div class="absolute inset-0 bg-black/45 z-[3]"></div>
   </div>
 
-  <!-- Navbar spacer -->
-  <div class="h-[64px] md:h-[140px] shrink-0"></div>
+  <!-- ═══════════════════════════════════════════
+       CAPA 2: Panel de scroll tipo Nexbu
+       Se desliza desde ABAJO cubriendo el fondo
+       mientras el usuario hace scroll DOWN
+       ═══════════════════════════════════════════ -->
+  <div id="hero-scroll-panel" class="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
+    <!-- Barra negra que sube desde abajo al hacer scroll -->
+    <div id="scroll-cover" class="absolute bottom-0 left-0 right-0 bg-black transition-none" style="height: 0%;"></div>
+    <!-- Línea de borde luminosa en el frente de la barra -->
+    <div id="scroll-cover-line" class="absolute left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-none" style="bottom: 100%; opacity: 0;"></div>
+  </div>
 
-  <!-- Main Hero Content -->
-  <div class="flex-1 flex items-center relative z-10">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full">
-      <div class="flex items-center min-h-[calc(100vh-60px)]">
+  <!-- ═══════════════════════════════════════════
+       CAPA 3: Contenido principal del Hero
+       ═══════════════════════════════════════════ -->
+  <div class="relative z-10 flex flex-col min-h-screen">
 
-        <!-- LEFT: Text Content -->
-        <div class="flex flex-col justify-center py-16 lg:py-0 fade-up max-w-2xl">
+    <!-- Espaciador Navbar -->
+    <div class="h-[110px] md:h-[110px] shrink-0"></div>
 
-          <!-- Label -->
-          <div class="flex items-center gap-3 mb-6 opacity-0 translate-x-[-15px] animate-slide-in">
-            <span class="text-xs md:text-[0.8rem] font-black uppercase tracking-[0.25em] text-[#E8001C] select-none">
-              MARKETING DIGITAL & INGENIERÍA
-            </span>
-          </div>
+    <!-- Contenido Central -->
+    <div class="flex-1 flex items-center">
+      <div class="max-w-7xl mx-auto px-6 lg:px-16 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
 
-          <!-- Headline -->
-          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.0] tracking-tight text-white mb-2 min-h-[1em] select-none" id="hero-title">
-            Vision Code
-          </h1>
-          <h2 class="text-3xl sm:text-5xl lg:text-[3.5rem] font-black leading-[1.1] tracking-tight text-[#E8001C] mb-10 select-none flex items-start flex-wrap min-h-[2.4em] lg:min-h-[1.3em]" id="hero-subtitle-container">
-            <span id="rotate-text" class="relative">Marketing Digital.</span><span class="typewriter-cursor text-[#E8001C] ml-1">|</span>
-          </h2>
+          <!-- IZQUIERDA: Contenido Textual -->
+          <div class="hero-text flex flex-col justify-center">
 
-          <!-- Description -->
-          <p class="text-base text-white max-w-md leading-relaxed mb-4 font-medium">
-            Ayudamos a tu negocio a vender más y a funcionar en piloto automático. Creamos páginas web profesionales, tiendas online fáciles de usar y sistemas digitales a medida para tu empresa.
-          </p>
-          <p class="text-base text-white max-w-md leading-relaxed mb-10">
-            Optimizamos tu marketing digital y automatizamos tu atención al cliente, <strong class="text-white font-bold">multiplicando tus ventas sin que tengas que trabajar más horas.</strong>
-          </p>
-
-          <!-- CTA Buttons -->
-          <div class="flex flex-col sm:flex-row gap-4 relative z-20">
-            <a href="#contacto" class="relative overflow-hidden inline-flex items-center gap-3 bg-[#E8001C] text-white font-black text-sm uppercase tracking-widest px-8 py-4 group w-fit transition-shadow duration-300 hover:shadow-[0_8px_25px_rgba(232,0,28,0.35)]">
-              <!-- Background slide overlay -->
-              <span class="absolute inset-0 bg-[#B8000E] translate-x-[-101%] group-hover:translate-x-0 transition-transform duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-0"></span>
-              <span class="relative z-10 flex items-center gap-3">
-                Contactar
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:translate-x-1.5 transition-transform duration-300">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
+            <!-- Badge superior -->
+            <div class="hero-badge inline-flex items-center gap-2.5 mb-6">
+              <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+              <span class="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-white/55">
+                Agencia de Marketing Digital & Ingeniería — Santiago, Chile
               </span>
-            </a>
-            <a href="#servicios" class="relative overflow-hidden inline-flex items-center gap-3 border-2 border-white/20 text-white font-bold text-sm uppercase tracking-widest px-8 py-4 group w-fit transition-shadow duration-300 hover:shadow-[0_8px_25px_rgba(255,255,255,0.1)]">
-              <!-- Background slide overlay -->
-              <span class="absolute inset-0 bg-white translate-y-[101%] group-hover:translate-y-0 transition-transform duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-0"></span>
-              <span class="relative z-10 group-hover:text-black transition-colors duration-[400ms]">Ver Servicios</span>
-            </a>
-          </div>
-        </div>
+            </div>
 
+            <!-- NOMBRE PRINCIPAL — Grande y dominante -->
+            <h1 class="hero-title text-[4.5rem] sm:text-[6rem] lg:text-[8rem] xl:text-[9.5rem] font-black leading-[0.9] tracking-[-0.03em] text-white mb-3">
+              Vision<br/>Code
+            </h1>
+
+            <!-- TAGLINE ROTATIVO — Blanco / Gradiente Plata -->
+            <div class="mb-8 hero-sub">
+              <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-white leading-tight flex items-center gap-2 min-h-[1.4em]">
+                <span id="rotate-text" class="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-neutral-400">Desarrollo Web.</span><span class="typewriter-cursor text-white font-light">|</span>
+              </h2>
+            </div>
+
+            <!-- DESCRIPCIÓN BREVE — Máximo impacto, mínimas palabras -->
+            <p class="hero-desc text-sm sm:text-base text-white/65 max-w-sm leading-relaxed mb-10 font-normal">
+              Páginas web, aplicaciones iOS &amp; Android, formalización y automatizaciones con IA para que tu negocio venda más en piloto automático.
+            </p>
+
+            <!-- CTAs -->
+            <div class="hero-cta flex flex-col sm:flex-row gap-3">
+              <a href="/cotizar" id="hero-cta-primary" class="inline-flex items-center gap-3 bg-white text-black font-extrabold text-xs uppercase tracking-[0.2em] px-8 py-4 rounded-full group w-fit hover:bg-neutral-200 hover:shadow-[0_8px_30px_rgba(255,255,255,0.25)] hover:scale-[1.02] transition-all duration-300">
+                <span class="flex items-center gap-3">
+                  Cotizar Proyecto
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:translate-x-1 transition-transform duration-300"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+              </a>
+              <a href="#servicios" id="hero-cta-secondary" class="inline-flex items-center gap-3 border border-white/20 text-white font-bold text-xs uppercase tracking-[0.2em] px-8 py-4 rounded-full group w-fit hover:border-white hover:bg-white/10 hover:shadow-[0_8px_25px_rgba(255,255,255,0.12)] hover:scale-[1.02] transition-all duration-300">
+                <span>Ver Servicios</span>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- DERECHA: 4 Cuadros de Servicios (Negro / Tipografía Blanca — Tamaño Amplio y Ejecutivo) -->
+          <div class="hero-cards hidden lg:flex flex-col gap-3.5 w-[350px] xl:w-[400px] 2xl:w-[430px]">
+
+            <!-- Servicio 1: Desarrollo Web -->
+            <div class="service-card group relative border border-white/15 bg-black/95 backdrop-blur-2xl p-5 xl:p-6 hover:border-white/40 hover:bg-black hover:-translate-y-1 transition-all duration-300 cursor-default overflow-hidden rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.85)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.95),0_0_25px_rgba(255,255,255,0.06)]">
+              <div class="absolute top-0 left-0 w-[3px] h-0 bg-white group-hover:h-full transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"></div>
+              <div class="flex items-start gap-4">
+                <div class="w-11 h-11 rounded-xl bg-white/[0.06] border border-white/15 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-white group-hover:border-white transition-all duration-300 shadow-sm">
+                  <svg class="w-5.5 h-5.5 text-white/70 group-hover:text-black transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-[0.68rem] xl:text-[0.72rem] font-bold uppercase tracking-[0.2em] text-white/50 mb-1">01 — Web &amp; E-Commerce</p>
+                  <h3 class="text-sm sm:text-base xl:text-[1.05rem] font-black text-white mb-1 leading-snug tracking-tight">Desarrollo Web &amp; SEO</h3>
+                  <p class="text-xs sm:text-[0.82rem] xl:text-[0.88rem] text-white/70 leading-relaxed font-normal">Landing Pages y Tiendas de alta conversión.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Servicio 2: Apps Móviles iOS & Android (NUEVO) -->
+            <div class="service-card group relative border border-white/15 bg-black/95 backdrop-blur-2xl p-5 xl:p-6 hover:border-white/40 hover:bg-black hover:-translate-y-1 transition-all duration-300 cursor-default overflow-hidden rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.85)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.95),0_0_25px_rgba(255,255,255,0.06)]">
+              <div class="absolute top-0 left-0 w-[3px] h-0 bg-white group-hover:h-full transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"></div>
+              <div class="flex items-start gap-4">
+                <div class="w-11 h-11 rounded-xl bg-white/[0.06] border border-white/15 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-white group-hover:border-white transition-all duration-300 shadow-sm">
+                  <svg class="w-5.5 h-5.5 text-white/70 group-hover:text-black transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-[0.68rem] xl:text-[0.72rem] font-bold uppercase tracking-[0.2em] text-white/50 mb-1">02 — Mobile Apps</p>
+                  <h3 class="text-sm sm:text-base xl:text-[1.05rem] font-black text-white mb-1 leading-snug tracking-tight">Apps iOS &amp; Android</h3>
+                  <p class="text-xs sm:text-[0.82rem] xl:text-[0.88rem] text-white/70 leading-relaxed font-normal">Publicación oficial en App Store y Google Play.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Servicio 3: Tu Empresa en 1 Día -->
+            <div class="service-card group relative border border-white/15 bg-black/95 backdrop-blur-2xl p-5 xl:p-6 hover:border-white/40 hover:bg-black hover:-translate-y-1 transition-all duration-300 cursor-default overflow-hidden rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.85)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.95),0_0_25px_rgba(255,255,255,0.06)]">
+              <div class="absolute top-0 left-0 w-[3px] h-0 bg-white group-hover:h-full transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"></div>
+              <div class="flex items-start gap-4">
+                <div class="w-11 h-11 rounded-xl bg-white/[0.06] border border-white/15 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-white group-hover:border-white transition-all duration-300 shadow-sm">
+                  <svg class="w-5.5 h-5.5 text-white/70 group-hover:text-black transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-[0.68rem] xl:text-[0.72rem] font-bold uppercase tracking-[0.2em] text-white/50 mb-1">03 — Formalización</p>
+                  <h3 class="text-sm sm:text-base xl:text-[1.05rem] font-black text-white mb-1 leading-snug tracking-tight">Tu Empresa en 1 Día</h3>
+                  <p class="text-xs sm:text-[0.82rem] xl:text-[0.88rem] text-white/70 leading-relaxed font-normal">Constitución, SII y facturación para operar legalmente.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Servicio 4: IA & Automatizaciones -->
+            <div class="service-card group relative border border-white/15 bg-black/95 backdrop-blur-2xl p-5 xl:p-6 hover:border-white/40 hover:bg-black hover:-translate-y-1 transition-all duration-300 cursor-default overflow-hidden rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.85)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.95),0_0_25px_rgba(255,255,255,0.06)]">
+              <div class="absolute top-0 left-0 w-[3px] h-0 bg-white group-hover:h-full transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"></div>
+              <div class="flex items-start gap-4">
+                <div class="w-11 h-11 rounded-xl bg-white/[0.06] border border-white/15 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-white group-hover:border-white transition-all duration-300 shadow-sm">
+                  <svg class="w-5.5 h-5.5 text-white/70 group-hover:text-black transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-[0.68rem] xl:text-[0.72rem] font-bold uppercase tracking-[0.2em] text-white/50 mb-1">04 — Automatización</p>
+                  <h3 class="text-sm sm:text-base xl:text-[1.05rem] font-black text-white mb-1 leading-snug tracking-tight">IA &amp; Agentes WhatsApp</h3>
+                  <p class="text-xs sm:text-[0.82rem] xl:text-[0.88rem] text-white/70 leading-relaxed font-normal">Atención y cotización inteligente 24/7 en WhatsApp.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
       </div>
     </div>
+
+    <!-- Indicador de scroll -->
+    <div class="relative z-10 flex justify-center pb-10 hero-scroll-hint">
+      <div class="flex flex-col items-center gap-2">
+        <span class="text-[0.6rem] font-bold uppercase tracking-[0.3em] text-white/30">Scroll</span>
+        <div class="w-px h-8 bg-gradient-to-b from-white/30 to-transparent scroll-line"></div>
+      </div>
+    </div>
+
   </div>
 
 </section>
 
 <style>
-  /* ── Animación fade-up ──────────────────────────── */
-  @keyframes heroFadeUp {
-    from { opacity: 0; transform: translateY(32px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .fade-up {
-    opacity: 0;
-    animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  /* ── Hero base ── */
+  .hero-section {
+    position: relative;
   }
 
-  /* ── Slide para el Label ──────────────── */
-  @keyframes slideIn {
-    to { opacity: 1; transform: translateX(0); }
+  /* ── Scroll hint line animation ── */
+  @keyframes scrollDown {
+    0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+    50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
   }
-  .animate-slide-in {
-    animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+  .scroll-line {
+    animation: scrollDown 2s ease-in-out infinite;
+  }
+
+  /* ── Typewriter cursor ── */
+  .typewriter-cursor {
+    display: inline-block;
+    animation: blink 0.9s step-end infinite;
+    font-weight: 900;
+    margin-left: 2px;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+
+  /* ── Mobile service pills ── */
+  @media (max-width: 1023px) {
+    .hero-cards { display: none !important; }
   }
 </style>
 
-<script>
-  function animateTitle(id: string, startDelay: number) {
-    const el = document.getElementById(id);
+<script is:inline>
+  function setupTypewriter(elementId, phrases, startDelay, typeSpeed, backSpeed, backDelay) {
+    startDelay = startDelay || 800;
+    typeSpeed = typeSpeed || 60;
+    backSpeed = backSpeed || 30;
+    backDelay = backDelay || 2200;
+    const el = document.getElementById(elementId);
     if (!el) return;
-    const text = el.textContent ? el.textContent.trim() : "";
-    el.innerHTML = "";
-    
-    const chars = Array.from(text);
-    chars.forEach((char, i) => {
-      const span = document.createElement('span');
-      if (char === ' ') {
-        span.innerHTML = '&nbsp;';
+
+    if (!document.getElementById('typewriter-cursor-style')) {
+      const style = document.createElement('style');
+      style.id = 'typewriter-cursor-style';
+      style.textContent = `
+        @keyframes typewriter-blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+        .typewriter-cursor {
+          display: inline-block;
+          font-weight: 300;
+          animation: typewriter-blink 0.8s infinite;
+          vertical-align: middle;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    let phraseIndex = 0;
+    let charIndex = phrases[0].length;
+    let isDeleting = true;
+    let currentText = phrases[0];
+
+    setTimeout(tick, startDelay);
+
+    function tick() {
+      const fullText = phrases[phraseIndex];
+      if (isDeleting) {
+        currentText = fullText.substring(0, charIndex - 1);
+        charIndex--;
       } else {
-        span.textContent = char;
+        currentText = fullText.substring(0, charIndex + 1);
+        charIndex++;
       }
-      span.style.display = 'inline-block';
-      span.style.opacity = '0';
-      span.style.transform = 'translateY(25px) rotate(2deg)';
-      span.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-      el.appendChild(span);
-      
-      setTimeout(() => {
-        span.style.opacity = '1';
-        span.style.transform = 'translateY(0) rotate(0deg)';
-      }, startDelay + (i * 35));
-    });
+      el.textContent = currentText;
+
+      let delta = typeSpeed;
+      if (isDeleting) delta = backSpeed;
+
+      if (!isDeleting && charIndex === fullText.length) {
+        delta = backDelay;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        delta = 400;
+      }
+      setTimeout(tick, delta);
+    }
   }
 
-  import { setupTypewriter } from '../utils/rotator';
+  /* ════════════════════════════════════════════
+     ANIMACIONES DE ENTRADA — secuenciadas
+  ════════════════════════════════════════════ */
+  function animateHeroEntrance() {
+    const badge  = document.querySelector('.hero-badge');
+    const title  = document.querySelector('.hero-title');
+    const sub    = document.querySelector('.hero-sub');
+    const desc   = document.querySelector('.hero-desc');
+    const cta    = document.querySelector('.hero-cta');
+    const cards  = document.querySelector('.hero-cards');
+    const hint   = document.querySelector('.hero-scroll-hint');
 
-  function initHeroCarousel() {
-    const bgElements = [
-      document.getElementById('hero-bg-1'),
-      document.getElementById('hero-bg-2'),
-      document.getElementById('hero-bg-3'),
-      document.getElementById('hero-bg-4'),
-      document.getElementById('hero-bg-5')
+    const easing = 'cubic-bezier(0.16, 1, 0.3, 1)';
+
+    function fadeUp(el, delay, fromY) {
+      if (!el) return;
+      fromY = fromY !== undefined ? fromY : 28;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(' + fromY + 'px)';
+      el.style.transition = 'opacity 0.85s ' + easing + ' ' + delay + 'ms, transform 0.85s ' + easing + ' ' + delay + 'ms';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }));
+      setTimeout(() => {
+        if (el) {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }
+      }, delay + 1000);
+    }
+
+    // Secuencia de entrada escalonada
+    fadeUp(badge,  100, 16);
+    fadeUp(title,  200, 36);
+    fadeUp(sub,    420, 24);
+    fadeUp(desc,   540, 20);
+    fadeUp(cta,    660, 18);
+    fadeUp(cards,  340, 32);
+    fadeUp(hint,   900, 12);
+  }
+
+  /* ════════════════════════════════════════════
+     FONDO CANVAS — Fotogramas FONDO HERO
+  ════════════════════════════════════════════ */
+  function initHeroBackground() {
+    const bg1 = document.getElementById('hero-bg-1');
+    const bg2 = document.getElementById('hero-bg-2');
+    if (!bg1 || !bg2) return;
+
+    const desktopImages = [
+      '/images/fondos/FONDO%20HERO/ESCRITORIO/1.png',
+      '/images/fondos/FONDO%20HERO/ESCRITORIO/2.png',
+      '/images/fondos/FONDO%20HERO/ESCRITORIO/3.png',
+      '/images/fondos/FONDO%20HERO/ESCRITORIO/4.png'
     ];
 
-    const bgs = bgElements.filter(el => el !== null) as HTMLElement[];
-    if (bgs.length <= 1) return;
+    const mobileImages = [
+      '/images/fondos/FONDO%20HERO/MOVIL/1.png',
+      '/images/fondos/FONDO%20HERO/MOVIL/2.png',
+      '/images/fondos/FONDO%20HERO/MOVIL/3.png'
+    ];
 
-    let currentIndex = 0;
-
-    setInterval(() => {
-      // Hide current background
-      bgs[currentIndex].style.opacity = '0';
-      // Calculate next index
-      currentIndex = (currentIndex + 1) % bgs.length;
-      // Show next background
-      bgs[currentIndex].style.opacity = '1';
-    }, 4000);
-  }
-
-  // Inicializar al cargar el DOM
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      animateTitle('hero-title', 150);
-      setupTypewriter('rotate-text', ["Marketing Digital.", "Crea tu E-Commerce.", "Todo tipo de soluciones Digitales.", "Te ayudamos a potenciar tu Marca.", "Desarrollo WEB a medida."], 600);
-      initHeroCarousel();
+    // Pre-cargar todas las imágenes en caché del navegador
+    [...desktopImages, ...mobileImages].forEach(src => {
+      const img = new Image();
+      img.src = src;
     });
-  } else {
-    animateTitle('hero-title', 150);
-    setupTypewriter('rotate-text', ["Marketing Digital.", "Crea tu E-Commerce.", "Todo tipo de soluciones Digitales.", "Te ayudamos a potenciar tu Marca.", "Desarrollo WEB a medida."], 600);
-    initHeroCarousel();
+
+    let isMobile = window.innerWidth < 768;
+    let images = isMobile ? mobileImages : desktopImages;
+    let currentIndex = 0;
+    let activeDiv = 1;
+
+    // Configurar imagen inicial
+    bg1.style.backgroundImage = `url('${images[0]}')`;
+    bg1.style.opacity = '1';
+    bg2.style.opacity = '0';
+
+    function nextSlide() {
+      const nextIndex = (currentIndex + 1) % images.length;
+      const nextSrc = images[nextIndex];
+
+      if (activeDiv === 1) {
+        bg2.style.backgroundImage = `url('${nextSrc}')`;
+        bg2.style.zIndex = '2';
+        bg1.style.zIndex = '1';
+        bg2.style.opacity = '1';
+        bg1.style.opacity = '0';
+        activeDiv = 2;
+      } else {
+        bg1.style.backgroundImage = `url('${nextSrc}')`;
+        bg1.style.zIndex = '2';
+        bg2.style.zIndex = '1';
+        bg1.style.opacity = '1';
+        bg2.style.opacity = '0';
+        activeDiv = 1;
+      }
+
+      currentIndex = nextIndex;
+    }
+
+    // Rotar cada 2.5 segundos (2500ms)
+    setInterval(nextSlide, 2500);
+
+    window.addEventListener('resize', () => {
+      const mob = window.innerWidth < 768;
+      if (mob !== isMobile) {
+        isMobile = mob;
+        images = isMobile ? mobileImages : desktopImages;
+        currentIndex = 0;
+        bg1.style.backgroundImage = `url('${images[0]}')`;
+        bg1.style.opacity = '1';
+        bg2.style.opacity = '0';
+        activeDiv = 1;
+      }
+    });
   }
+
+  /* ════════════════════════════════════════════
+     SCROLL COVER — Animación tipo Nexbu
+     Panel negro que sube desde abajo cubriendo
+     el fondo del Hero al hacer scroll DOWN
+  ════════════════════════════════════════════ */
+  function initScrollCover() {
+    const section = document.getElementById('inicio');
+    const cover   = document.getElementById('scroll-cover');
+    const line    = document.getElementById('scroll-cover-line');
+    if (!section || !cover || !line) return;
+
+    let ticking = false;
+
+    function update() {
+      const sectionH   = section.offsetHeight;
+      const scrollY    = window.scrollY;
+      // La animación empieza desde 0 y cubre el 100% en la mitad del scroll de la sección
+      const progress   = Math.min(1, scrollY / (sectionH * 0.55));
+      const coverPct   = progress * 100;
+
+      cover.style.height  = `${coverPct}%`;
+      line.style.bottom   = `${coverPct}%`;
+      line.style.opacity  = progress > 0.02 && progress < 0.98 ? '1' : '0';
+
+      // Parallax sutil en el canvas
+      const bgCanvas = document.getElementById('hero-bg-canvas');
+      if (bgCanvas) {
+        bgCanvas.style.transform = `translateY(${scrollY * 0.25}px)`;
+      }
+
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    update();
+  }
+
+  /* ════════════════════════════════════════════
+     INIT
+  ════════════════════════════════════════════ */
+  function init() {
+    animateHeroEntrance();
+    setupTypewriter('rotate-text', [
+      'Desarrollo Web.',
+      'Apps iOS & Android.',
+      'Crea tu E-Commerce.',
+      'Tu Empresa en 1 Día.',
+      'Automatizaciones con IA.',
+      'Marketing Digital.',
+    ], 600);
+    initHeroBackground();
+    initScrollCover();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  document.addEventListener('astro:page-load', init);
 </script>

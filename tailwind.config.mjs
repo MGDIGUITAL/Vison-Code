@@ -5,18 +5,18 @@ export default {
     extend: {
       colors: {
         brand: {
-          // Paleta Vision Code — Negro + Rojo
-          red: '#E8001C',
-          'red-light': '#FF1A2E',
-          'red-dark': '#B8000E',
-          'red-glow': 'rgba(232, 0, 28, 0.15)',
-          black: '#0a0a0a',
-          'dark': '#111111',
-          'gray': '#1A1A1A',
-          'gray-light': '#2A2A2A',
-          'gray-mid': '#404040',
+          // Paleta Vision Code — Obsidian & Pure White Monochrome
+          accent: '#FFFFFF',
+          'accent-light': '#F4F4F5',
+          'accent-dark': '#E4E4E7',
+          'accent-glow': 'rgba(255, 255, 255, 0.15)',
+          black: '#000000',
+          dark: '#000000',
+          gray: '#000000',
+          'gray-light': '#18181b',
+          'gray-mid': '#27272a',
           white: '#FFFFFF',
-          'off-white': '#F5F5F5',
+          'off-white': '#FAFAFA',
         },
       },
       fontFamily: {
@@ -55,8 +55,8 @@ export default {
           '100%': { strokeDashoffset: '0' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 10px rgba(232, 0, 28, 0.2)' },
-          '100%': { boxShadow: '0 0 30px rgba(232, 0, 28, 0.6)' },
+          '0%': { boxShadow: '0 0 10px rgba(255, 255, 255, 0.15)' },
+          '100%': { boxShadow: '0 0 30px rgba(255, 255, 255, 0.45)' },
         },
         marquee: {
           '0%': { transform: 'translateX(0%)' },

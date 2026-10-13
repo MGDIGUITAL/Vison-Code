@@ -10,9 +10,22 @@ Thumbs.db
 
 # Archivos innecesarios — no subir al repo
 visioncode-COMPLETO/
-visioncode-COMPLETO.zip
+*.zip
 VIDEO PARA HERO/
 logo.jpg
 PRODUCTOS/
 
 .vercel
+
+# Temporales y documentos locales de trabajo
+public/images/fondos/Fondos para projectos/
+Cuestionario*
+scratch/
+temp_pdf_gen/
+DOCUMENTOS/
+fondos nuevos/
+*.doc
+*.docx
+*.pdf
+SKILL_DOC*.md
+tipografia*.avif

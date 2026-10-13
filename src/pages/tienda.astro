@@ -5,10 +5,31 @@ import Footer from '../components/Footer.astro';
 
 const storeItems = [
   {
+    id: "campana-meta-ads-cpl",
+    title: "Campañas Meta Ads (FB & IG)",
+    price: 40,
+    priceFormatted: "$40 USD CPL",
+    monthly: "+ IVA",
+    category: "Marketing",
+    description: "Generación de clientes cualificados por campaña en Facebook e Instagram con modelo CPL.",
+    delivery: "Lanzamiento en 48 horas",
+    badge: "ALTA CONVERSIÓN",
+    isRecommended: true,
+    features: [
+      "Estrategia de captación por Costo Por Lead (CPL)",
+      "Segmentación avanzada de público objetivo",
+      "Creativos de alto impacto para FB e IG",
+      "Píxel de seguimiento y analíticas en tiempo real",
+      "Optimización continua de embudo de ventas",
+      "Soporte y reporte semanal de rendimiento"
+    ]
+  },
+  {
     id: "ecommerce-profesional",
     title: "E-Commerce Profesional",
     price: 211,
     priceFormatted: "$211 USD",
+    monthly: "+ IVA",
     category: "E-Commerce",
     description: "Tu tienda online a medida, sin límites de categorías y lista para facturar en piloto automático.",
     delivery: "Entrega en 14 días",
@@ -17,7 +38,7 @@ const storeItems = [
     features: [
       "Landing + Tienda Online completa",
       "Catálogo de más de 50 productos",
-      "Integración de Webpay y Mercado Pago",
+      "Integración de pasarelas de pago",
       "Hosting + Dominio (.cl o .com) por 1 año",
       "Diseño de identidad visual & brand assets",
       "Panel de administración autogestionable",
@@ -29,7 +50,7 @@ const storeItems = [
     title: "Agente IA WhatsApp Estándar",
     price: 105,
     priceFormatted: "$105 USD",
-    monthly: "+ $32/mes",
+    monthly: "+ $32/mes + IVA",
     category: "IA",
     description: "Automatiza tu atención al cliente y responde consultas 24/7 de forma inteligente y fluida.",
     delivery: "Configuración en 5 días",
@@ -46,7 +67,7 @@ const storeItems = [
     title: "Agente IA WhatsApp Premium",
     price: 105,
     priceFormatted: "$105 USD",
-    monthly: "+ $32/mes",
+    monthly: "+ $32/mes + IVA",
     category: "IA",
     description: "La solución definitiva con API oficial de WhatsApp Cloud, Meta Verified y multiagente.",
     delivery: "Configuración en 10 días",
@@ -64,6 +85,7 @@ const storeItems = [
     title: "Landing + Portal Corporativo",
     price: 84,
     priceFormatted: "$84 USD",
+    monthly: "+ IVA",
     category: "Web",
     description: "Sitio web corporativo de alto estándar para posicionar tu marca y captar leads calificados.",
     delivery: "Entrega en 10 días",
@@ -81,6 +103,7 @@ const storeItems = [
     title: "Vision Code Pro (Web + ERP)",
     price: 368,
     priceFormatted: "$368 USD",
+    monthly: "+ IVA",
     category: "Sistemas",
     description: "Ecosistema integral con Tienda Online y software ERP de inventario y facturación integrado.",
     delivery: "Entrega en 21 días",
@@ -98,6 +121,7 @@ const storeItems = [
     title: "E-Commerce Básico",
     price: 158,
     priceFormatted: "$158 USD",
+    monthly: "+ IVA",
     category: "E-Commerce",
     description: "Tu tienda virtual inicial para comenzar a vender tus productos en internet rápidamente.",
     delivery: "Entrega en 7 días",
@@ -105,7 +129,7 @@ const storeItems = [
       "Landing + Tienda online básica",
       "Hasta 20 productos en catálogo",
       "Carrito de compras integrado",
-      "Pasarela de pago Mercado Pago",
+      "Integración de pasarelas de pago",
       "Hosting + Dominio por 1 año"
     ]
   },
@@ -114,6 +138,7 @@ const storeItems = [
     title: "E-Commerce Intermedio",
     price: 168,
     priceFormatted: "$168 USD",
+    monthly: "+ IVA",
     category: "E-Commerce",
     description: "Ideal para marcas en crecimiento que necesitan expandir su catálogo y opciones de pago.",
     delivery: "Entrega en 10 días",
@@ -121,7 +146,7 @@ const storeItems = [
       "Landing + Tienda online completa",
       "Hasta 40 productos en catálogo",
       "Carrito de compras avanzado",
-      "Webpay Plus y Mercado Pago integrado",
+      "Pasarelas de pago integradas",
       "Hosting + Dominio por 1 año"
     ]
   },
@@ -130,6 +155,7 @@ const storeItems = [
     title: "Landing Page Básica",
     price: 63,
     priceFormatted: "$63 USD",
+    monthly: "+ IVA",
     category: "Web",
     description: "Una página de aterrizaje profesional orientada 100% a convertir visitantes en clientes.",
     delivery: "Entrega en 7 días",
@@ -171,23 +197,35 @@ const storeItems = [
         </p>
       </div>
 
+      <!-- Notice IVA Global -->
+      <div class="mb-6 p-4 rounded-xl bg-black/5 border border-black/10 flex items-center justify-between text-xs text-black/70 font-medium">
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-black shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span>Todos los precios expresados son valores netos <strong>(+ 19% IVA en la facturación final)</strong>.</span>
+        </span>
+        <span class="font-bold uppercase tracking-wider text-[0.65rem] text-black">Facturación Legal Garantizada</span>
+      </div>
+
       <!-- Filters & Sorting -->
       <div class="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6 mb-12 fade-up">
         
         <!-- Category Pills -->
         <div class="flex flex-wrap items-center gap-2">
-          <button class="filter-btn active px-5 py-2.5 rounded-none text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#E8001C] text-white border border-[#E8001C] shadow-sm" data-filter="all">Todas</button>
-          <button class="filter-btn px-5 py-2.5 rounded-none text-xs font-bold uppercase tracking-[0.15em] transition-all bg-black/5 text-black/60 border border-black/10 hover:border-black/30 hover:text-black backdrop-blur-md" data-filter="Web">Web Corporativa</button>
-          <button class="filter-btn px-5 py-2.5 rounded-none text-xs font-bold uppercase tracking-[0.15em] transition-all bg-black/5 text-black/60 border border-black/10 hover:border-black/30 hover:text-black backdrop-blur-md" data-filter="E-Commerce">E-Commerce</button>
-          <button class="filter-btn px-5 py-2.5 rounded-none text-xs font-bold uppercase tracking-[0.15em] transition-all bg-black/5 text-black/60 border border-black/10 hover:border-black/30 hover:text-black backdrop-blur-md" data-filter="Sistemas">Sistemas & ERP</button>
-          <button class="filter-btn px-5 py-2.5 rounded-none text-xs font-bold uppercase tracking-[0.15em] transition-all bg-black/5 text-black/60 border border-black/10 hover:border-black/30 hover:text-black backdrop-blur-md" data-filter="IA">Inteligencia Artificial</button>
+          <button class="filter-btn active px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-black text-white border border-black shadow-sm" data-filter="all">Todas</button>
+          <button class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-black/5 text-black/60 border border-black/10 hover:border-black/30 hover:text-black backdrop-blur-md" data-filter="Marketing">Meta Ads</button>
+          <button class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-black/5 text-black/60 border border-black/10 hover:border-black/30 hover:text-black backdrop-blur-md" data-filter="Web">Web Corporativa</button>
+          <button class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-black/5 text-black/60 border border-black/10 hover:border-black/30 hover:text-black backdrop-blur-md" data-filter="E-Commerce">E-Commerce</button>
+          <button class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-black/5 text-black/60 border border-black/10 hover:border-black/30 hover:text-black backdrop-blur-md" data-filter="Sistemas">Sistemas & ERP</button>
+          <button class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-black/5 text-black/60 border border-black/10 hover:border-black/30 hover:text-black backdrop-blur-md" data-filter="IA">Inteligencia Artificial</button>
         </div>
         
         <!-- Sorting Segmented Control -->
-        <div class="flex items-center p-1 bg-black/5 border border-black/10 rounded-none backdrop-blur-md">
-          <button class="sort-btn active px-4 py-2 rounded-none text-[0.65rem] font-bold uppercase tracking-widest transition-all bg-black/10 text-black" data-sort="default">Recomendado</button>
-          <button class="sort-btn px-4 py-2 rounded-none text-[0.65rem] font-bold uppercase tracking-widest transition-all text-black/50 hover:text-black" data-sort="asc">Menor Precio</button>
-          <button class="sort-btn px-4 py-2 rounded-none text-[0.65rem] font-bold uppercase tracking-widest transition-all text-black/50 hover:text-black" data-sort="desc">Mayor Precio</button>
+        <div class="flex items-center p-1 bg-black/5 border border-black/10 rounded-full backdrop-blur-md">
+          <button class="sort-btn active px-4 py-2 rounded-full text-[0.65rem] font-bold uppercase tracking-widest transition-all bg-black text-white" data-sort="default">Recomendado</button>
+          <button class="sort-btn px-4 py-2 rounded-full text-[0.65rem] font-bold uppercase tracking-widest transition-all text-black/50 hover:text-black" data-sort="asc">Menor Precio</button>
+          <button class="sort-btn px-4 py-2 rounded-full text-[0.65rem] font-bold uppercase tracking-widest transition-all text-black/50 hover:text-black" data-sort="desc">Mayor Precio</button>
         </div>
 
       </div>
@@ -196,18 +234,18 @@ const storeItems = [
       <div id="storeGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {storeItems.map((item, i) => (
           <div 
-            class={`store-item group relative flex flex-col justify-between transition-all duration-300 p-8 min-h-[580px] bg-[#0a0a0a] text-white border ${item.isRecommended ? 'border-[#E8001C] shadow-[0_0_25px_rgba(232,0,28,0.15)] scale-[1.02] md:scale-[1.03] z-10' : 'border-white/10'} hover:border-[#E8001C]/50 hover:shadow-[0_0_25px_rgba(232,0,28,0.08)]`}
+            class={`store-item group relative flex flex-col justify-between transition-all duration-300 p-8 min-h-[580px] bg-[#000000] text-white rounded-2xl border ${item.isRecommended ? 'border-white/40 shadow-[0_0_25px_rgba(255,255,255,0.1)] scale-[1.02] md:scale-[1.03] z-10' : 'border-white/10'} hover:border-white/60 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)]`}
             data-price={item.price} 
             data-category={item.category} 
             data-original-index={i} 
-            style={`transition-delay: ${i * 0.03}s`}
+            style={"transition-delay: " + (i * 0.03) + "s"}
           >
             
             <div>
               {/* Badge/Tag */}
               <div class="min-h-[28px] mb-4">
                 {item.badge && (
-                  <span class={`inline-block text-[0.62rem] font-black tracking-widest uppercase px-3 py-1 ${item.isRecommended ? 'bg-[#E8001C] text-white font-bold' : 'bg-white/10 text-white/80'}`}>
+                  <span class={`inline-block text-[0.62rem] font-black tracking-widest uppercase px-3 py-1 rounded-full ${item.isRecommended ? 'bg-white text-black font-bold' : 'bg-white/10 text-white/80'}`}>
                     {item.badge}
                   </span>
                 )}
@@ -223,7 +261,7 @@ const storeItems = [
                   <span class="text-4xl font-extrabold tracking-tight text-white">{item.priceFormatted}</span>
                   {item.monthly && <span class="text-xs font-bold text-white/40 uppercase tracking-wider">{item.monthly}</span>}
                 </div>
-                <div class="text-[0.65rem] text-[#E8001C] font-semibold tracking-wider uppercase mt-2">
+                <div class="text-[0.65rem] text-white/60 font-semibold tracking-wider uppercase mt-2">
                   {item.delivery}
                 </div>
               </div>
@@ -232,7 +270,7 @@ const storeItems = [
               <ul class="space-y-3 mb-8">
                 {item.features.map((feature) => (
                   <li class="flex items-start gap-2.5 text-xs text-white/70 font-light">
-                    <svg class="shrink-0 w-3.5 h-3.5 mt-0.5 text-[#E8001C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                    <svg class="shrink-0 w-3.5 h-3.5 mt-0.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                     <span>{feature}</span>
@@ -247,7 +285,7 @@ const storeItems = [
                 href={`https://api.whatsapp.com/send?phone=56929645522&text=Hola,%20me%20gustaría%20cotizar%20el%20servicio:%20${encodeURIComponent(item.title)}`} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                class={`w-full py-3.5 text-center text-xs font-bold uppercase tracking-wider block transition-all ${item.isRecommended ? 'bg-[#E8001C] text-white hover:bg-[#b8000e] shadow-[0_0_15px_rgba(232,0,28,0.4)]' : 'bg-transparent text-white border border-white/20 hover:border-[#E8001C] hover:bg-[#E8001C]/10'}`}
+                class={`w-full py-3.5 text-center text-xs font-bold uppercase tracking-wider block transition-all rounded-full ${item.isRecommended ? 'bg-white text-black hover:bg-neutral-200 shadow-md' : 'bg-transparent text-white border border-white/20 hover:border-white hover:bg-white/10'}`}
               >
                 Cotizar Ahora ↗
               </a>
@@ -268,7 +306,7 @@ const storeItems = [
   <Footer />
 </Layout>
 
-<script>
+<script lang="ts">
   document.addEventListener('DOMContentLoaded', () => {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const sortBtns = document.querySelectorAll('.sort-btn');
@@ -323,12 +361,12 @@ const storeItems = [
       btn.addEventListener('click', (e) => {
         // Update UI
         filterBtns.forEach(b => {
-          b.classList.remove('bg-[#E8001C]', 'text-white', 'border-[#E8001C]', 'shadow-[0_0_15px_rgba(232,0,28,0.4)]');
+          b.classList.remove('bg-black', 'text-white', 'border-black');
           b.classList.add('bg-black/5', 'text-black/60', 'border-black/10');
         });
-        const target = e.currentTarget as HTMLButtonElement;
+        const target = /** @type {HTMLButtonElement} */ (e.currentTarget);
         target.classList.remove('bg-black/5', 'text-black/60', 'border-black/10');
-        target.classList.add('bg-[#E8001C]', 'text-white', 'border-[#E8001C]', 'shadow-[0_0_15px_rgba(232,0,28,0.4)]');
+        target.classList.add('bg-black', 'text-white', 'border-black');
         
         currentCategory = target.getAttribute('data-filter');
         applyFilters();
@@ -340,12 +378,12 @@ const storeItems = [
       btn.addEventListener('click', (e) => {
         // Update UI
         sortBtns.forEach(b => {
-          b.classList.remove('bg-black/10', 'text-black');
+          b.classList.remove('bg-black', 'text-white');
           b.classList.add('text-black/50');
         });
-        const target = e.currentTarget as HTMLButtonElement;
+        const target = /** @type {HTMLButtonElement} */ (e.currentTarget);
         target.classList.remove('text-black/50');
-        target.classList.add('bg-black/10', 'text-black');
+        target.classList.add('bg-black', 'text-white');
         
         currentSort = target.getAttribute('data-sort');
         applyFilters();

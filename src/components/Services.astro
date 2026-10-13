@@ -1,86 +1,160 @@
 ---
 ---
-<section id="servicios" class="py-40 relative z-10 overflow-hidden">
-  <div class="max-w-[90rem] mx-auto px-6 lg:px-12">
+<section id="servicios" class="py-32 relative z-10 overflow-hidden bg-black text-white">
+  
+  <!-- Fondo de sección: 1.png de fondos nuevos -->
+  <div class="absolute inset-0 z-0 pointer-events-none select-none bg-cover bg-center" style="background-image: url('/images/fondos/1.png');"></div>
+  <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/85 via-black/65 to-black/90 pointer-events-none"></div>
+
+  <div class="max-w-[90rem] mx-auto px-6 lg:px-12 relative z-10">
     
-    <div class="mb-28 fade-up">
-      <div class="flex items-center gap-4 mb-6">
-        <div class="h-px bg-[#E8001C] w-16"></div>
-        <div class="saas-badge border-none text-[#E8001C] font-bold tracking-[0.2em] text-[0.7rem] px-0 uppercase">Tecnología para Crecer</div>
+    <!-- Encabezado de Sección -->
+    <div class="mb-20 fade-up">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="w-2.5 h-2.5 rounded-full bg-white animate-pulse shadow-[0_0_10px_rgba(255,255,255,0.8)]"></span>
+        <span class="text-white/80 font-extrabold tracking-[0.25em] text-[0.72rem] uppercase drop-shadow">Agencia de Marketing Digital &amp; Desarrollo Web</span>
       </div>
-      <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-black mb-8 leading-[1.1]">
-        Tu presencia en la web define <br/>
-        <span class="h-[1.2em] relative overflow-hidden w-full text-[#E8001C] block select-none">
-          <span id="rotate-services-text" class="absolute left-0 top-0 w-full h-full flex items-center whitespace-nowrap opacity-0 translate-y-[30px] transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)]">
-            el futuro de tu negocio.
-          </span>
-        </span>
-      </h2>
-      <p class="text-xl text-black/60 max-w-3xl font-light leading-relaxed border-l-2 border-[#E8001C] pl-6 shadow-sm">
-        Hoy, si tu negocio no está en internet de forma profesional, no existe. Creamos herramientas digitales rápidas y atractivas que <strong class="text-black font-bold">capturan visitas, generan confianza y multiplican las ventas</strong> de tu negocio automáticamente.
-      </p>
+      
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-10 border-b border-white/15">
+        <div>
+          <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight sm:leading-[1.18] mb-5 pb-1 drop-shadow-[0_10px_35px_rgba(0,0,0,0.9)]">
+            Desarrollo Web, Apps Móviles <br class="hidden sm:block"/>
+            <span class="inline-block py-1 text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-neutral-400">
+              &amp; Soluciones de IA.
+            </span>
+          </h2>
+          <p class="text-base sm:text-xl text-neutral-300 max-w-3xl font-normal leading-relaxed drop-shadow-md">
+            Construimos el ecosistema comercial completo para tu empresa: plataformas web ultrarrápidas, aplicaciones nativas para iOS y Android, campañas de alta conversión en Meta Ads y agentes inteligentes 24/7.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-4 shrink-0">
+          <div class="beam-border-wrap relative px-6 py-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-black uppercase tracking-widest shadow-[0_0_25px_rgba(255,255,255,0.15)] select-none overflow-hidden backdrop-blur-xl">
+            <span class="beam-line"></span>
+            <span class="relative z-10">Stack Completo 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Rangos de Proyecto -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-14">
+        
+        <!-- Rango 01: Emprendimientos -->
+        <div class="group beam-border-wrap relative p-9 rounded-3xl bg-[#000000] border border-white/15 hover:border-white/40 shadow-[0_20px_50px_rgba(0,0,0,0.95)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 flex flex-col justify-between overflow-hidden">
+          <span class="beam-line" style="animation-duration:7s;"></span>
+          <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-white/40 tracking-tighter">01</span>
+              <span class="px-4 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.2em] bg-white/10 border border-white/20 text-white rounded-full shadow-md">Emprendimientos</span>
+            </div>
+            <h3 class="text-2xl font-black text-white mb-3 tracking-tight leading-snug">Web SEO + Meta Ads Inicial</h3>
+            <p class="text-base text-white/70 font-normal leading-relaxed">
+              Sitio web de velocidad extrema de alta conversión, diseñado para captar tus primeros clientes mediante campañas estratégicas en Meta Ads desde la primera semana.
+            </p>
+          </div>
+        </div>
+
+        <!-- Rango 02: PYMES -->
+        <div class="group beam-border-wrap relative p-9 rounded-3xl bg-[#000000] border border-white/15 hover:border-white/40 shadow-[0_20px_50px_rgba(0,0,0,0.95)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 flex flex-col justify-between overflow-hidden">
+          <span class="beam-line" style="animation-duration:8s;"></span>
+          <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-white/40 tracking-tighter">02</span>
+              <span class="px-4 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.2em] bg-white/10 border border-white/20 text-white rounded-full shadow-md">PYMES</span>
+            </div>
+            <h3 class="text-2xl font-black text-white mb-3 tracking-tight leading-snug">Ecosistema Apps &amp; Captación</h3>
+            <p class="text-base text-white/70 font-normal leading-relaxed">
+              Desarrollo de Apps móviles, arquitectura SEO corporativa, embudos publicitarios continuos en Facebook/Instagram y asistentes de Inteligencia Artificial respondiendo en WhatsApp 24/7.
+            </p>
+          </div>
+        </div>
+
+        <!-- Rango 03: Corporativo -->
+        <div class="group beam-border-wrap relative p-9 rounded-3xl bg-[#000000] border border-white/15 hover:border-white/40 shadow-[0_20px_50px_rgba(0,0,0,0.95)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 flex flex-col justify-between overflow-hidden">
+          <span class="beam-line" style="animation-duration:9s;"></span>
+          <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-white/40 tracking-tighter">03</span>
+              <span class="px-4 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.2em] bg-white/10 border border-white/20 text-white rounded-full shadow-md">Corporativo</span>
+            </div>
+            <h3 class="text-2xl font-black text-white mb-3 tracking-tight leading-snug">Soluciones &amp; Software a Medida</h3>
+            <p class="text-base text-white/70 font-normal leading-relaxed">
+              Desarrollo de software dedicado, aplicaciones móviles a gran escala, integraciones API avanzadas y sincronización completa con ERP/CRM corporativos.
+            </p>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <!-- Corporate Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 md:auto-rows-[320px] auto-rows-auto">
+    <!-- 4 Pilares de Servicios -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
       
-      <!-- Card 1 (Span 2) -->
-      <article class="bento-card md:col-span-2 p-10 md:p-12 group fade-up bg-[#0a0a0a] border border-white/5 hover:border-[#E8001C]/30 shadow-md hover:shadow-[0_20px_50px_rgba(232,0,28,0.15)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 relative overflow-hidden" style="transition-delay: 0s">
-        <!-- Background Graphic -->
-        <div class="absolute inset-0 bg-cover bg-center grayscale opacity-25 group-hover:opacity-45 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 pointer-events-none" style="background-image: url('/images/service-architecture-new.png');"></div>
-        <div class="absolute inset-0 bg-gradient-to-tr from-[#0a0a0a] via-[#0a0a0a]/85 to-transparent pointer-events-none"></div>
-
-        <div class="relative z-10 flex flex-col justify-between h-full">
-          <div>
-            <h3 class="text-3xl font-bold text-white mb-4 tracking-tight group-hover:text-[#E8001C] transition-colors duration-300">Páginas Web Profesionales</h3>
-            <p class="text-base text-white/60 leading-relaxed font-light max-w-xl">
-              Creamos sitios web modernos, rápidos y atractivos que capturan la esencia de tu marca. Diseñados para verse perfectos en celulares y computadoras, ganando la confianza de tus clientes al instante.
-            </p>
+      <!-- Pilar 1: Desarrollo Web & SEO -->
+      <article class="group beam-border-wrap relative p-8 rounded-3xl bg-[#000000] text-white border border-white/15 hover:border-white/40 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 flex flex-col justify-between overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.95)]">
+        <span class="beam-line" style="animation-duration:7s;"></span>
+        <div class="relative z-10">
+          <div class="w-13 h-13 rounded-2xl bg-white/10 border border-white/20 text-white flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-white group-hover:text-black transition-all duration-300 shadow-xl">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m-9 9a9 9 0 019-9"/></svg>
           </div>
+          <span class="text-[0.68rem] font-bold uppercase tracking-[0.25em] text-white/50 mb-2 block">Pilar 01</span>
+          <h3 class="text-xl font-black text-white mb-3 tracking-tight leading-snug">Desarrollo Web &amp; SEO</h3>
+          <p class="text-sm text-white/70 leading-relaxed font-normal">
+            Plataformas web ultrarrápidas y tiendas virtuales optimizadas para liderar las primeras posiciones en Google y convertir visitas en ventas.
+          </p>
         </div>
       </article>
 
-      <!-- Card 2 (Span 1) - Dark Contrast Card -->
-      <article class="bento-card md:col-span-1 p-10 md:p-12 flex flex-col justify-between group fade-up bg-[#0a0a0a] border border-white/5 hover:border-[#E8001C]/30 shadow-md hover:shadow-[0_20px_50px_rgba(232,0,28,0.15)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 relative overflow-hidden" style="transition-delay: 0.15s">
-        <!-- Background Graphic -->
-        <div class="absolute inset-0 bg-cover bg-center grayscale opacity-25 group-hover:opacity-45 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 pointer-events-none" style="background-image: url('/images/service-ecommerce-new.png');"></div>
-        <div class="absolute inset-0 bg-gradient-to-tr from-[#0a0a0a] via-[#0a0a0a]/85 to-transparent pointer-events-none"></div>
-
-        <div class="relative z-10 flex flex-col justify-between h-full">
-          <div>
-            <h3 class="text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-[#E8001C] transition-colors duration-300">Tiendas Online (E-Commerce)</h3>
-            <p class="text-base text-white/60 leading-relaxed font-light">Vende tus productos o servicios en internet de forma automática. Diseñamos tiendas fáciles de usar y con sistemas de pago integrados para recibir dinero directo en tu cuenta bancaria.</p>
+      <!-- Pilar 2: Apps Móviles iOS & Android (NUEVO) -->
+      <article class="group beam-border-wrap relative p-8 rounded-3xl bg-[#000000] text-white border border-white/15 hover:border-white/40 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 flex flex-col justify-between overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.95)]">
+        <span class="beam-line" style="animation-duration:7.5s;"></span>
+        <div class="relative z-10">
+          <div class="w-13 h-13 rounded-2xl bg-white/10 border border-white/20 text-white flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-white group-hover:text-black transition-all duration-300 shadow-xl">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+            </svg>
           </div>
+          <span class="text-[0.68rem] font-bold uppercase tracking-[0.25em] text-white/50 mb-2 block">Pilar 02 · Móvil</span>
+          <h3 class="text-xl font-black text-white mb-3 tracking-tight leading-snug">Apps iOS &amp; Android</h3>
+          <p class="text-sm text-white/70 leading-relaxed font-normal">
+            Creación de aplicaciones móviles para App Store y Google Play con arquitecturas nativas e híbridas, notificaciones push y pasarelas de pago.
+          </p>
         </div>
       </article>
 
-      <!-- Card 3 (Span 1) -->
-      <article class="bento-card md:col-span-1 p-10 md:p-12 flex flex-col justify-between group fade-up bg-[#0a0a0a] border border-white/5 hover:border-[#E8001C]/30 shadow-md hover:shadow-[0_20px_50px_rgba(232,0,28,0.15)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 relative overflow-hidden" style="transition-delay: 0.3s">
-        <!-- Background Graphic -->
-        <div class="absolute inset-0 bg-cover bg-center grayscale opacity-25 group-hover:opacity-45 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 pointer-events-none" style="background-image: url('/images/service-ai-new.png');"></div>
-        <div class="absolute inset-0 bg-gradient-to-tr from-[#0a0a0a] via-[#0a0a0a]/85 to-transparent pointer-events-none"></div>
-
-        <div class="relative z-10 flex flex-col justify-between h-full">
-          <div>
-            <h3 class="text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-[#E8001C] transition-colors duration-300">WhatsApp & Chatbots con IA</h3>
-            <p class="text-base text-white/60 leading-relaxed font-light">Atiende y vende 24/7 sin contratar personal extra. Asistentes virtuales inteligentes que responden de inmediato a tus clientes a través de WhatsApp y de tu sitio web.</p>
+      <!-- Pilar 3: Campañas Meta Ads -->
+      <article class="group beam-border-wrap relative p-8 rounded-3xl bg-[#000000] text-white border border-white/15 hover:border-white/40 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 flex flex-col justify-between overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.95)]">
+        <span class="beam-line" style="animation-duration:8s;"></span>
+        <div class="relative z-10">
+          <div class="w-13 h-13 rounded-2xl bg-white/10 border border-white/20 text-white flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-white group-hover:text-black transition-all duration-300 shadow-xl">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
           </div>
+          <span class="text-[0.68rem] font-bold uppercase tracking-[0.25em] text-white/50 mb-2 block">Pilar 03</span>
+          <h3 class="text-xl font-black text-white mb-3 tracking-tight leading-snug">Campañas Meta Ads</h3>
+          <p class="text-sm text-white/70 leading-relaxed font-normal">
+            Estrategias publicitarias de alta rentabilidad en Facebook e Instagram. Segmentación precisa para llevar prospectos directos a tus canales de venta.
+          </p>
         </div>
       </article>
 
-      <!-- Card 4 (Span 2) -->
-      <article class="bento-card md:col-span-2 p-10 md:p-12 group fade-up bg-[#0a0a0a] border border-white/5 hover:border-[#E8001C]/30 shadow-md hover:shadow-[0_20px_50px_rgba(232,0,28,0.15)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 relative overflow-hidden" style="transition-delay: 0.45s">
-        <!-- Background Graphic -->
-        <div class="absolute inset-0 bg-cover bg-center grayscale opacity-25 group-hover:opacity-45 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 pointer-events-none" style="background-image: url('/images/service-erp-new.png');"></div>
-        <div class="absolute inset-0 bg-gradient-to-tr from-[#0a0a0a] via-[#0a0a0a]/85 to-transparent pointer-events-none"></div>
-
-        <div class="relative z-10 flex flex-col justify-between h-full">
-          <div>
-            <h3 class="text-3xl font-bold text-white mb-4 tracking-tight group-hover:text-[#E8001C] transition-colors duration-300">Sistemas y Automatizaciones</h3>
-            <p class="text-base text-white/60 leading-relaxed font-light max-w-xl">
-              Elimina el papeleo y las tareas manuales repetitivas. Diseñamos sistemas a medida que conectan tu negocio y controlan tus procesos automáticamente para ahorrarte valiosas horas de trabajo cada día.
-            </p>
+      <!-- Pilar 4: Automatización & IA -->
+      <article class="group beam-border-wrap relative p-8 rounded-3xl bg-[#000000] text-white border border-white/15 hover:border-white/40 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 flex flex-col justify-between overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.95)]">
+        <span class="beam-line" style="animation-duration:9s;"></span>
+        <div class="relative z-10">
+          <div class="w-13 h-13 rounded-2xl bg-white/10 border border-white/20 text-white flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-white group-hover:text-black transition-all duration-300 shadow-xl">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
+          <span class="text-[0.68rem] font-bold uppercase tracking-[0.25em] text-white/50 mb-2 block">Pilar 04</span>
+          <h3 class="text-xl font-black text-white mb-3 tracking-tight leading-snug">Agentes IA &amp; WhatsApp</h3>
+          <p class="text-sm text-white/70 leading-relaxed font-normal">
+            Agentes conversacionales en WhatsApp Business 24/7 entrenados para cualificar prospectos, cotizar en automático y agendar reuniones comerciales.
+          </p>
         </div>
       </article>
 
@@ -88,21 +162,55 @@
   </div>
 </section>
 
-<script>
-  import { setupTextRotation } from '../utils/rotator';
-
-  const phrases = [
-    "el futuro de tu negocio.",
-    "la confianza de tus clientes.",
-    "el nivel de tus ventas.",
-    "el éxito de tu marca."
-  ];
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      setupTextRotation('rotate-services-text', phrases, 800);
-    });
-  } else {
-    setupTextRotation('rotate-services-text', phrases, 800);
+<style>
+  /* ── Border Beam — Blanco y Plata luminosa ── */
+  .beam-border-wrap {
+    position: relative;
   }
-</script>
+
+  .beam-line {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: 20;
+    overflow: hidden;
+  }
+
+  .beam-line::before {
+    content: '';
+    position: absolute;
+    width: 140px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+    animation: beam-move var(--beam-dur, 7s) linear infinite;
+    top: 0;
+    left: -140px;
+  }
+
+  .beam-line::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 140px;
+    background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+    animation: beam-move-v var(--beam-dur, 7s) linear infinite;
+    animation-delay: calc(var(--beam-dur, 7s) * 0.25);
+    top: -140px;
+    right: 0;
+  }
+
+  @keyframes beam-move {
+    0%   { left: -140px; top: 0; }
+    50%  { left: calc(100% + 140px); top: 0; }
+    51%  { left: calc(100% - 2px); top: -140px; }
+    100% { left: calc(100% - 2px); top: 140px; }
+  }
+
+  @keyframes beam-move-v {
+    0%   { top: -140px; right: 0; }
+    50%  { top: calc(100% + 140px); right: 0; }
+    51%  { top: calc(100% - 2px); right: calc(100% + 140px); }
+    100% { top: calc(100% - 2px); right: calc(100% - 2px); }
+  }
+</style>

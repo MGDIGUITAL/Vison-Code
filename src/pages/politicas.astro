@@ -7,16 +7,16 @@ import Footer from '../components/Footer.astro';
 <Layout title="Políticas de Privacidad y Términos — Vision Code" description="Términos del servicio y políticas de privacidad para los servicios de desarrollo web, e-commerce, sistemas SaaS y agentes de Inteligencia Artificial de Vision Code.">
   <Navbar />
   
-  <div class="fixed inset-0 z-0 opacity-[0.02] pointer-events-none">
-    <div class="absolute inset-0 bg-gradient-to-br from-[#E8001C]/10 to-transparent"></div>
+  <div class="fixed inset-0 z-0 opacity-20 pointer-events-none">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.06),transparent_70%)]"></div>
   </div>
 
-  <main class="min-h-screen pt-32 pb-20 relative z-10 bg-white text-black">
+  <main class="min-h-screen pt-32 pb-20 relative z-10 bg-[#000000] text-white">
     <div class="max-w-4xl mx-auto px-6 lg:px-10">
       
       <!-- Back button -->
       <div class="mb-10 fade-up">
-        <a href="/" class="inline-flex items-center gap-2 text-black/50 hover:text-black text-sm font-bold tracking-widest uppercase transition-colors">
+        <a href="/" class="inline-flex items-center gap-2 text-neutral-400 hover:text-white text-xs font-bold tracking-widest uppercase transition-colors">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           Volver al Inicio
         </a>
@@ -25,75 +25,75 @@ import Footer from '../components/Footer.astro';
       <!-- Header -->
       <div class="mb-16 fade-up">
         <div class="flex items-center gap-4 mb-6">
-          <div class="h-px bg-[#E8001C] w-12"></div>
-          <div class="saas-badge border-none text-[#E8001C] tracking-[0.2em] text-[0.7rem] px-0 uppercase font-bold">Documentación Legal</div>
+          <div class="h-px bg-white/40 w-12"></div>
+          <div class="saas-badge border border-white/20 text-neutral-300 tracking-[0.2em] text-[0.7rem] px-3 py-1 uppercase font-bold rounded-full bg-white/5">Documentación Legal</div>
         </div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-black mb-6">
-          Políticas y <span class="text-transparent bg-clip-text bg-gradient-to-r from-black to-black/40">Condiciones.</span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6">
+          Políticas y <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-300 to-neutral-500">Condiciones.</span>
         </h1>
-        <p class="text-sm text-black/60 font-light max-w-xl">
+        <p class="text-sm text-neutral-400 font-light max-w-xl">
           Última actualización: Julio de 2026. Al solicitar o contratar nuestros servicios, aceptas las siguientes condiciones y políticas de tratamiento de información.
         </p>
       </div>
 
       <!-- Content -->
-      <div class="space-y-12 text-sm text-black/80 font-light leading-relaxed fade-up" style="transition-delay: 0.1s">
+      <div class="space-y-12 text-sm text-neutral-300 font-light leading-relaxed fade-up" style="transition-delay: 0.1s">
         
         <!-- Section 1 -->
-        <section class="border-t border-neutral-100 pt-8">
-          <h2 class="text-xl font-bold text-black mb-4 uppercase tracking-wider">1. Términos de los Servicios</h2>
+        <section class="border-t border-white/10 pt-8">
+          <h2 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">1. Términos de los Servicios</h2>
           <div class="space-y-4">
             <p>
               Vision Code provee servicios de diseño web, implementación de tiendas de comercio electrónico (E-Commerce), desarrollo de plataformas SaaS (Software as a Service), integraciones de sistemas ERP/CRM a medida y configuración de Agentes de Inteligencia Artificial para WhatsApp Business.
             </p>
-            <ul class="list-disc pl-5 space-y-2">
-              <li><strong>Tiempos de Entrega:</strong> Los tiempos de desarrollo oscilan entre 7 y 21 días hábiles según el plan contratado. Estos plazos inician una vez que el cliente provee el material inicial completo.</li>
-              <li><strong>Condiciones de Pago:</strong> Las Landings, E-Commerce y Sistemas se pagan en modalidad de pago único, salvo hosting y renovación de dominio anual. Los agentes de IA de WhatsApp Business contemplan un costo de implementación inicial y una mensualidad por concepto de servidor, mantenimiento y tokens de consulta.</li>
-              <li><strong>Soporte Técnico:</strong> Se incluye soporte técnico gratuito posterior al lanzamiento durante 30 días para planes estándar y 60 días para planes corporativos/ERP.</li>
+            <ul class="list-disc pl-5 space-y-2 text-neutral-400">
+              <li><strong class="text-white">Tiempos de Entrega:</strong> Los tiempos de desarrollo oscilan entre 7 y 21 días hábiles según el plan contratado. Estos plazos inician una vez que el cliente provee el material inicial completo.</li>
+              <li><strong class="text-white">Condiciones de Pago:</strong> Las Landings, E-Commerce y Sistemas se pagan en modalidad de pago único, salvo hosting y renovación de dominio anual. Los agentes de IA de WhatsApp Business contemplan un costo de implementación inicial y una mensualidad por concepto de servidor, mantenimiento y tokens de consulta.</li>
+              <li><strong class="text-white">Soporte Técnico:</strong> Se incluye soporte técnico gratuito posterior al lanzamiento durante 30 días para planes estándar y 60 días para planes corporativos/ERP.</li>
             </ul>
           </div>
         </section>
 
         <!-- Section SaaS -->
-        <section class="border-t border-neutral-100 pt-8">
-          <h2 class="text-xl font-bold text-black mb-4 uppercase tracking-wider">2. Desarrollo de Sistemas SaaS</h2>
+        <section class="border-t border-white/10 pt-8">
+          <h2 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">2. Desarrollo de Sistemas SaaS</h2>
           <div class="space-y-4">
             <p>
               Vision Code diseña y desarrolla plataformas de Software como Servicio (SaaS) a medida: aplicaciones web multiusuario con autenticación, roles, paneles de control, módulos de facturación, APIs REST y arquitecturas escalables en la nube.
             </p>
-            <ul class="list-disc pl-5 space-y-2">
-              <li><strong>Licenciamiento:</strong> El código fuente desarrollado a medida pasa a ser propiedad del cliente una vez completado el pago acordado. Vision Code retiene el derecho de uso de componentes genéricos reutilizables de su stack interno.</li>
-              <li><strong>Infraestructura y Escalabilidad:</strong> Los sistemas SaaS se despliegan sobre infraestructura cloud (Vercel, AWS, Railway u otros según requerimiento). Los costos de hosting, bases de datos y servicios de terceros asociados son responsabilidad del cliente a partir de la entrega.</li>
-              <li><strong>Mantenimiento y Soporte:</strong> Los proyectos SaaS contemplan un período de soporte técnico incluido de 60 días desde el lanzamiento. Pasado este período, el cliente puede contratar un plan de mantenimiento mensual.</li>
-              <li><strong>Confidencialidad:</strong> Todo sistema SaaS desarrollado está sujeto a un acuerdo tácito de confidencialidad (NDA). Vision Code no divulga ni comparte la lógica de negocio, los datos de usuarios ni la arquitectura técnica del sistema con terceros.</li>
-              <li><strong>Actualizaciones:</strong> Cambios de alcance o nuevas funcionalidades solicitadas fuera del contrato inicial serán cotizadas de forma separada como sprints de desarrollo adicionales.</li>
+            <ul class="list-disc pl-5 space-y-2 text-neutral-400">
+              <li><strong class="text-white">Licenciamiento:</strong> El código fuente desarrollado a medida pasa a ser propiedad del cliente una vez completado el pago acordado. Vision Code retiene el derecho de uso de componentes genéricos reutilizables de su stack interno.</li>
+              <li><strong class="text-white">Infraestructura y Escalabilidad:</strong> Los sistemas SaaS se despliegan sobre infraestructura cloud (Vercel, AWS, Railway u otros según requerimiento). Los costos de hosting, bases de datos y servicios de terceros asociados son responsabilidad del cliente a partir de la entrega.</li>
+              <li><strong class="text-white">Mantenimiento y Soporte:</strong> Los proyectos SaaS contemplan un período de soporte técnico incluido de 60 días desde el lanzamiento. Pasado este período, el cliente puede contratar un plan de mantenimiento mensual.</li>
+              <li><strong class="text-white">Confidencialidad:</strong> Todo sistema SaaS desarrollado está sujeto a un acuerdo tácito de confidencialidad (NDA). Vision Code no divulga ni comparte la lógica de negocio, los datos de usuarios ni la arquitectura técnica del sistema con terceros.</li>
+              <li><strong class="text-white">Actualizaciones:</strong> Cambios de alcance o nuevas funcionalidades solicitadas fuera del contrato inicial serán cotizadas de forma separada como sprints de desarrollo adicionales.</li>
             </ul>
           </div>
         </section>
 
         <!-- Section 3 -->
-        <section class="border-t border-neutral-100 pt-8">
-          <h2 class="text-xl font-bold text-black mb-4 uppercase tracking-wider">3. Integraciones de Terceros</h2>
+        <section class="border-t border-white/10 pt-8">
+          <h2 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">3. Integraciones de Terceros</h2>
           <p>
             Nuestros desarrollos interactúan con servicios externos oficiales. El cliente es responsable de cumplir con las políticas y costos derivados de las siguientes plataformas:
           </p>
-          <ul class="list-disc pl-5 mt-4 space-y-2">
-            <li><strong>Meta (WhatsApp Business API):</strong> Para los Agentes de WhatsApp Premium, la verificación de marca y el consumo de mensajes de la API de Cloud WhatsApp dependen de las políticas de Meta y sus tarifas de conversación oficiales.</li>
-            <li><strong>Pasarelas de Pago:</strong> Las integraciones de Transbank Webpay Plus y Mercado Pago se configuran utilizando las credenciales provistas por el cliente. Las comisiones por transacción son cobradas directamente por dichos proveedores.</li>
-            <li><strong>Supabase / Firebase:</strong> Los sistemas web que utilicen bases de datos o autenticación se rigen bajo los límites de almacenamiento y uso de dichos proveedores.</li>
+          <ul class="list-disc pl-5 mt-4 space-y-2 text-neutral-400">
+            <li><strong class="text-white">Meta (WhatsApp Business API):</strong> Para los Agentes de WhatsApp Premium, la verificación de marca y el consumo de mensajes de la API de Cloud WhatsApp dependen de las políticas de Meta y sus tarifas de conversación oficiales.</li>
+            <li><strong class="text-white">Pasarelas de Pago:</strong> Las integraciones de Transbank Webpay Plus y Mercado Pago se configuran utilizando las credenciales provistas por el cliente. Las comisiones por transacción son cobradas directamente por dichos proveedores.</li>
+            <li><strong class="text-white">Supabase / Firebase:</strong> Los sistemas web que utilicen bases de datos o autenticación se rigen bajo los límites de almacenamiento y uso de dichos proveedores.</li>
           </ul>
         </section>
 
-        <!-- Section 3 -->
-        <section class="border-t border-neutral-100 pt-8">
-          <h2 class="text-xl font-bold text-black mb-4 uppercase tracking-wider">3. Política de Privacidad</h2>
+        <!-- Section 4 -->
+        <section class="border-t border-white/10 pt-8">
+          <h2 class="text-xl font-bold text-white mb-4 uppercase tracking-wider">4. Política de Privacidad</h2>
           <p>
             En Vision Code nos tomamos muy en serio la seguridad de tu información comercial y de tus clientes:
           </p>
-          <ul class="list-disc pl-5 mt-4 space-y-2">
-            <li><strong>Recopilación de Leads:</strong> La información recolectada a través de nuestros formularios de contacto (nombre de empresa, teléfonos, correos y servicios de interés) es de carácter estrictamente comercial y confidencial. Jamás compartiremos ni venderemos estos datos a terceros.</li>
-            <li><strong>Propiedad Intelectual:</strong> Al completarse el pago del proyecto contratado, el código de la landing page o e-commerce y las configuraciones del agente pasan a ser propiedad exclusiva del cliente.</li>
-            <li><strong>Seguridad de Datos:</strong> Implementamos cifrado SSL en todos nuestros portales web y conexiones API robustas para garantizar que la comunicación entre tu sitio web y las plataformas externas se realice de manera segura.</li>
+          <ul class="list-disc pl-5 mt-4 space-y-2 text-neutral-400">
+            <li><strong class="text-white">Recopilación de Leads:</strong> La información recolectada a través de nuestros formularios de contacto (nombre de empresa, teléfonos, correos y servicios de interés) es de carácter estrictamente comercial y confidencial. Jamás compartiremos ni venderemos estos datos a terceros.</li>
+            <li><strong class="text-white">Propiedad Intelectual:</strong> Al completarse el pago del proyecto contratado, el código de la landing page o e-commerce y las configuraciones del agente pasan a ser propiedad exclusiva del cliente.</li>
+            <li><strong class="text-white">Seguridad de Datos:</strong> Implementamos cifrado SSL en todos nuestros portales web y conexiones API robustas para garantizar que la comunicación entre tu sitio web y las plataformas externas se realice de manera segura.</li>
           </ul>
         </section>
 

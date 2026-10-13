@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 70" width="240" height="70">
+  <g>
+    <!-- Cloud / Box mark -->
+    <path d="M 15 42 C 10 42 6 38 6 33 C 6 29 9 25 13 24 C 15 19 20 16 26 16 C 32 16 37 19 39 24 C 43 24 46 28 46 33 C 46 38 42 42 37 42 Z" fill="#00B2A9"/>
+    <text x="54" y="49" font-family="'Montserrat', sans-serif" font-weight="900" font-size="40" letter-spacing="-1.5"><tspan fill="#00B2A9">nu</tspan><tspan fill="#002D42">box</tspan></text>
+  </g>
+</svg>

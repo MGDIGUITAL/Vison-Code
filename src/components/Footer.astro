@@ -2,43 +2,46 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="relative z-10 pt-0 pb-10 px-6 lg:px-10 bg-black border-t-0" id="footer">
+<footer class="relative z-10 pt-0 pb-12 px-6 lg:px-10 bg-black border-t-0 text-white" id="footer">
   
-  <!-- Línea roja superior Vision Code -->
-  <div class="h-[3px] w-full bg-gradient-to-r from-[#B8000E] via-[#E8001C] to-[#B8000E] mb-16"></div>
+  <!-- Línea superior monocromática -->
+  <div class="h-[1px] w-full bg-gradient-to-r from-transparent via-white/30 to-transparent mb-16"></div>
 
   <div class="max-w-7xl mx-auto">
     
-    <!-- Top: Logo + Links -->
+    <!-- Top: Logo + Info + Links -->
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-10 mb-14">
       
-      <!-- Brand -->
-      <div class="flex items-center">
+      <!-- Brand & Tagline -->
+      <div class="flex flex-col gap-3">
         <img 
-          src="/images/logo-blanco.png" 
-          alt="VisionCode Logo" 
-          class="h-48 md:h-56 w-auto object-contain my-[-45px] select-none" 
+          src="/images/NAVAR TITULO.png" 
+          alt="Vision Code Logo" 
+          class="h-10 md:h-12 w-auto object-contain select-none" 
         />
+        <p class="text-xs uppercase tracking-[0.2em] text-white/60 font-bold">
+          Agencia de Marketing Digital &amp; Desarrollo Web
+        </p>
       </div>
 
       <!-- Nav Links -->
       <nav class="flex flex-wrap gap-x-10 gap-y-4">
-        <a href="/#servicios" class="text-xs font-bold uppercase tracking-widest text-white/50 hover:text-[#E8001C] transition-colors">Soluciones</a>
-        <a href="/#impacto" class="text-xs font-bold uppercase tracking-widest text-white/50 hover:text-[#E8001C] transition-colors">Impacto</a>
-        <a href="/tienda" class="text-xs font-bold uppercase tracking-widest text-white/50 hover:text-[#E8001C] transition-colors">Servicios</a>
-        <a href="/#contacto" class="text-xs font-bold uppercase tracking-widest text-[#E8001C] hover:text-white transition-colors">Contacto</a>
+        <a href="/#servicios" class="text-xs font-bold uppercase tracking-widest text-white/60 hover:text-white transition-colors">Servicios</a>
+        <a href="/proyectos" class="text-xs font-bold uppercase tracking-widest text-white/60 hover:text-white transition-colors">Proyectos</a>
+        <a href="/#marcas" class="text-xs font-bold uppercase tracking-widest text-white/60 hover:text-white transition-colors">Clientes</a>
+        <a href="/cotizar" class="text-xs font-bold uppercase tracking-widest text-white hover:text-neutral-300 transition-colors">Cotizar</a>
       </nav>
     </div>
 
     <!-- Bottom Divider -->
     <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div class="text-xs text-white/30 uppercase tracking-widest">
-        &copy; {year} Vision Code. Todos los derechos reservados.
+      <div class="text-xs text-white/40 uppercase tracking-widest font-medium">
+        &copy; {year} Vision Code — Agencia de Marketing Digital. Todos los derechos reservados.
       </div>
-      <div class="flex gap-6 text-xs text-white/40 uppercase tracking-widest font-bold">
-        <a href="/politicas" class="hover:text-[#E8001C] transition-colors">Políticas</a>
-        <a href="https://web.facebook.com/profile.php?id=61591906443953&locale=es_LA" target="_blank" rel="noopener noreferrer" class="hover:text-[#E8001C] transition-colors">Facebook</a>
-        <a href="https://api.whatsapp.com/send?phone=56929645522" target="_blank" rel="noopener noreferrer" class="hover:text-[#E8001C] transition-colors">WhatsApp</a>
+      <div class="flex gap-6 text-xs text-white/50 uppercase tracking-widest font-bold">
+        <a href="https://web.facebook.com/profile.php?id=61591906443953&locale=es_LA" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Facebook</a>
+        <a href="https://www.instagram.com/vision_code_vc/?hl=es" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Instagram</a>
+        <a href="https://api.whatsapp.com/send?phone=56929645522" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">WhatsApp</a>
       </div>
     </div>
   </div>

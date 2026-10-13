@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <g fill="#80276C">
+    <!-- Casaideas House Icon & Text -->
+    <path d="M 25 18 L 45 32 L 40 32 L 40 54 L 10 54 L 10 32 L 5 32 Z M 20 40 L 30 40 L 30 54 L 20 54 Z" fill="#80276C"/>
+    <text x="55" y="52" font-family="'Century Gothic', 'Montserrat', sans-serif" font-weight="800" font-size="40" letter-spacing="-1">casa<tspan font-family="'Georgia', serif" font-weight="400" font-style="italic">ideas</tspan></text>
+  </g>
+</svg>

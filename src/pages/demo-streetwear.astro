@@ -1,0 +1,278 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Datos de la colección de gorros streetwear
+const capProducts = [
+  {
+    id: "vc-crimson-snapback",
+    title: "VC Crimson Monogram Snapback",
+    price: "$45 USD",
+    tag: "NUEVO DROP",
+    isFeatured: true,
+    image: "/images/streetwear_cap_hero.png",
+    description: "Gorro snapback de algodón twill pesado con el monograma VC bordado en relieve 3D carmesí intenso.",
+    features: ["Algodón twill 100% heavy weight", "Bordado 3D de alta densidad", "Broche de presión ajustable de metal"]
+  },
+  {
+    id: "vc-night-lookbook-cap",
+    title: "Vision Code Urban Dad Hat",
+    price: "$38 USD",
+    tag: "BESTSELLER",
+    isFeatured: false,
+    image: "/images/streetwear_cap_model.png",
+    description: "Corte relax vintage streetwear con lavado oscuro y bordado en contraste carmesí y negro.",
+    features: ["Estructura suave de 6 paneles", "Visera curvisima de perfil bajo", "Herrajes metálicos personalizados VC"]
+  },
+  {
+    id: "vc-cyber-beanie",
+    title: "VC Cyberpunk Heavy Beanie",
+    price: "$32 USD",
+    tag: "LIMITADO",
+    isFeatured: false,
+    image: "/images/streetwear_cap_hero.png",
+    description: "Gorro de tejido de punto acrílico ultra denso con parche engomado del monograma VC.",
+    features: ["Punto acrílico térmico premium", "Parche de goma 3D micro-inyectado", "Ajuste anatómico elástico"]
+  }
+];
+
+// JSON-LD para Google SEO
+const schemaData = {
+  "@context": "https://schema.org/",
+  "@type": "ProductCollection",
+  "name": "Colección Gorros Streetwear Vision Code",
+  "description": "Tienda oficial de gorros de corte urbano streetwear con bordados 3D de lujo y estética nocturna.",
+  "url": "https://visioncode.com/demo-streetwear",
+  "brand": {
+    "@type": "Brand",
+    "name": "VISION CODE"
+  }
+};
+---
+
+<Layout 
+  title="VISION CODE | Gorros Streetwear & Ropa Urbana - Demo Oficial" 
+  description="Colección exclusiva de gorros estilo streetwear con bordado 3D monograma VC carmesí y negro. Diseño urbano premium optimizado SEO para Google."
+>
+  <!-- Schema.org JSON-LD para Google SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+
+  <div class="bg-[#000000] text-white min-h-screen font-sans selection:bg-white selection:text-black">
+    
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#000000]/80 backdrop-blur-xl border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        
+        <!-- Logo Brand -->
+        <a href="/" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white font-serif font-black text-xl group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+            VC
+          </div>
+          <div class="flex flex-col">
+            <span class="font-extrabold tracking-[0.25em] text-sm text-white font-mono">VISION CODE</span>
+            <span class="text-[0.6rem] text-neutral-400 font-semibold tracking-widest uppercase">Streetwear Lab</span>
+          </div>
+        </a>
+
+        <!-- Nav Navigation -->
+        <nav class="hidden md:flex items-center gap-8 text-xs tracking-widest uppercase font-semibold text-white/70">
+          <a href="#coleccion" class="hover:text-white transition-colors">Colección</a>
+          <a href="#prompts-ia" class="hover:text-white transition-colors">Prompts Google Labs</a>
+          <a href="#seo-specs" class="hover:text-white transition-colors">Normas SEO</a>
+        </nav>
+
+        <!-- CTA Button -->
+        <a href="#coleccion" class="px-5 py-2.5 text-xs font-bold uppercase tracking-widest rounded-full bg-white text-black hover:bg-neutral-200 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all">
+          Ver Drop
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+      
+      <!-- HERO SECTION -->
+      <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden border-b border-white/10 px-6 py-20">
+        
+        <!-- Glow accents -->
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-white/5 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-white/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+          
+          <!-- Text Content -->
+          <div class="space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/15 text-neutral-300 text-xs font-mono font-bold tracking-widest uppercase">
+              <span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
+              Streetwear Cap Collection 2026
+            </div>
+            
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05]">
+              URBAN <br/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-300 to-neutral-500">
+                STREETWEAR
+              </span> <br/>
+              ATTITUDE.
+            </h1>
+
+            <p class="text-white/60 text-sm sm:text-base max-w-lg leading-relaxed font-light">
+              Diseño de alta costura urbana impulsado con IA. Gorros confeccionados con bordado 3D de alta densidad en monocromo puro sobre algodón twill premium.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4 pt-4">
+              <a href="#coleccion" class="px-8 py-4 rounded-full bg-white text-black font-extrabold text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all shadow-lg">
+                Explorar Gorros ↗
+              </a>
+              <a href="#prompts-ia" class="px-8 py-4 rounded-full border border-white/20 text-white font-bold text-xs uppercase tracking-widest hover:border-white transition-all">
+                Ver Prompts IA
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Image Visual Showcase -->
+          <div class="relative group">
+            <div class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent rounded-3xl blur-2xl group-hover:scale-105 transition-transform duration-500"></div>
+            <div class="relative bg-[#000000] border border-white/10 rounded-3xl overflow-hidden p-3 shadow-2xl">
+              <img 
+                src="/images/streetwear_cap_hero.png" 
+                alt="Gorro streetwear negro con monograma VC bordado en relieve 3D - Vision Code" 
+                class="w-full h-[480px] object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700"
+              />
+              <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-black/80 backdrop-blur-md border border-white/10 flex justify-between items-center">
+                <div>
+                  <h2 class="text-sm font-bold tracking-wide">VC Monogram Snapback Noir</h2>
+                  <p class="text-xs text-neutral-400 font-mono">Generado en Google Labs • Edición Especial</p>
+                </div>
+                <span class="text-xs font-extrabold text-black bg-white px-3 py-1 rounded-full">$45 USD</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PRODUCTS CATALOG -->
+      <section id="coleccion" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
+          <div>
+            <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest font-bold">Catálogo Oficial</span>
+            <h2 class="text-4xl font-extrabold tracking-tight mt-2">Colección de Gorros Streetwear</h2>
+          </div>
+          <p class="text-xs text-white/50 max-w-md">
+            Optimizado bajo los estándares de renderizado visual de Google Labs y optimización para rastreadores web SEO.
+          </p>
+        </div>
+
+        <!-- Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {capProducts.map(product => (
+            <article class="bg-[#000000] border border-white/10 rounded-2xl p-5 hover:border-white/40 transition-all duration-300 group flex flex-col justify-between">
+              <div>
+                <div class="relative overflow-hidden rounded-xl mb-5">
+                  <span class="absolute top-3 left-3 z-10 text-[0.65rem] font-bold tracking-widest uppercase px-3 py-1 rounded-full bg-white text-black border border-white/20">
+                    {product.tag}
+                  </span>
+                  <img 
+                    src={product.image} 
+                    alt={`${product.title} - Gorro streetwear Vision Code`} 
+                    class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                
+                <h3 class="text-xl font-bold text-white mb-2">{product.title}</h3>
+                <p class="text-xs text-white/60 leading-relaxed mb-4">{product.description}</p>
+                
+                <ul class="space-y-1.5 mb-6 text-[0.7rem] text-white/40 font-mono">
+                  {product.features.map(f => (
+                    <li class="flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                <span class="text-lg font-extrabold text-white">{product.price}</span>
+                <button class="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-white/10 text-white rounded-lg hover:bg-white hover:text-black transition-colors">
+                  Agregar al Carrito
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- PROMPTS GOOGLE LABS SECTION -->
+      <section id="prompts-ia" class="py-20 px-6 bg-[#000000] border-t border-b border-white/10">
+        <div class="max-w-7xl mx-auto">
+          <div class="mb-12">
+            <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest font-bold">Instrucciones de Generación</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-2">Prompts de Imagen para Google Labs</h2>
+            <p class="text-sm text-white/60 mt-2 max-w-2xl">
+              Copia estos prompts directamente en Google Labs (ImageFX / Imagen 3) adjuntando la foto de tu logo y producto para replicar la línea de diseño.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- Prompt Box 1 -->
+            <div class="p-6 rounded-2xl bg-[#000000] border border-white/15 space-y-4">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-bold text-neutral-300 uppercase tracking-wider font-mono">1. Prompt Foto Estudio (Hero Product)</h3>
+                <span class="text-[0.65rem] bg-white/5 px-2.5 py-1 rounded text-white/50">Google Labs / Imagen 3</span>
+              </div>
+              <div class="bg-black/90 p-4 rounded-xl font-mono text-xs text-white/80 border border-white/10 select-all leading-relaxed">
+                High-fashion luxury streetwear baseball cap, deep matte black heavy cotton twill, featuring a 3D raised embroidered monogram logo on the front panel with bold monochrome silver and black threads matching the reference image. Placed on a minimalist dark graphite metallic surface with subtle white rim lighting from behind. Studio lighting, dramatic side shadows, ultra-sharp texture detail, 8k resolution, e-commerce high-end product photography.
+              </div>
+            </div>
+
+            <!-- Prompt Box 2 -->
+            <div class="p-6 rounded-2xl bg-[#000000] border border-white/15 space-y-4">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-bold text-neutral-300 uppercase tracking-wider font-mono">2. Prompt Lookbook Urbano (Night Life)</h3>
+                <span class="text-[0.65rem] bg-white/5 px-2.5 py-1 rounded text-white/50">Google Labs / Imagen 3</span>
+              </div>
+              <div class="bg-black/90 p-4 rounded-xl font-mono text-xs text-white/80 border border-white/10 select-all leading-relaxed">
+                Cinematic urban streetwear lifestyle photograph of a trendy young model in a dark Tokyo-style alleyway at night, wearing a premium black streetwear dad-hat with bold silver embroidered logo on the front matching reference 1. Atmospheric wet asphalt reflections, subtle monochrome neon signs in blurred background bokeh, raw aesthetic, shot on 35mm lens, f/1.8, Balenciaga / Off-White style visual aesthetic.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- GOOGLE SEO SPECS -->
+      <section id="seo-specs" class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="p-8 rounded-3xl bg-gradient-to-r from-white/5 to-[#000000] border border-white/10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+          <div class="lg:col-span-2 space-y-4">
+            <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest font-bold">Google Indexation Ready</span>
+            <h2 class="text-3xl font-extrabold text-white">Cumplimiento con Normas SEO de Google</h2>
+            <p class="text-xs sm:text-sm text-white/70 leading-relaxed font-light">
+              Este sitio demo incluye etiquetas semánticas HTML5 (`<main>`, `<article>`, `<header>`), esquema de datos estructurados JSON-LD `Schema.org/Product`, atributo `alt` enriquecido con palabras clave de moda urbana y una tasa de contraste accesible bajo las recomendaciones de Google Lighthouse.
+            </p>
+          </div>
+          <div class="flex justify-start lg:justify-end">
+            <div class="p-6 rounded-2xl bg-[#000000] border border-white/10 text-center space-y-2">
+              <span class="text-4xl font-black text-white font-mono">100%</span>
+              <p class="text-xs font-bold text-white uppercase tracking-wider">SEO Google Score</p>
+              <p class="text-[0.65rem] text-white/40">Performance & Accessibility</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-12 px-6 bg-[#000000] text-xs text-white/40">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-white"></span>
+          <span class="font-mono font-bold text-white">VISION CODE URBAN LAB</span>
+        </div>
+        <p>© 2026 Vision Code. Todos los derechos reservados. Marca registrada.</p>
+      </div>
+    </footer>
+
+  </div>
+</Layout>

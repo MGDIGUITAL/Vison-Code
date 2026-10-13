@@ -1,18 +1,295 @@
 ---
+// Logos oficiales de grandes marcas chilenas y corporativas (Estilo Nexbu.com)
+const brandLogos = [
+  { name: "Mercado Libre", logo: "/images/CARUSSEL%20MARCAS/logo-mercadolibre.svg" },
+  { name: "Sodimac", logo: "/images/CARUSSEL%20MARCAS/logo-sodimac.svg" },
+  { name: "Casaideas", logo: "/images/CARUSSEL%20MARCAS/logo-casaideas.svg" },
+  { name: "Mallplaza", logo: "/images/CARUSSEL%20MARCAS/logo-mallplaza.svg" },
+  { name: "Entel", logo: "/images/CARUSSEL%20MARCAS/logo-entel.svg" },
+  { name: "Falabella", logo: "/images/CARUSSEL%20MARCAS/logo-falabella.svg" },
+  { name: "Copec", logo: "/images/CARUSSEL%20MARCAS/logo-copec.svg" },
+  { name: "LATAM Airlines", logo: "/images/CARUSSEL%20MARCAS/logo-latam.svg" },
+  { name: "Cencosud", logo: "/images/CARUSSEL%20MARCAS/logo-cencosud.svg" },
+  { name: "Makita", logo: "/images/CARUSSEL%20MARCAS/logo-makita.svg" },
+];
 ---
 
-<section id="marcas" class="py-12 bg-white border-t border-black/5 relative z-10">
-  <div class="max-w-6xl mx-auto px-6 lg:px-12 text-center">
-    <h2 class="sr-only">Empresas y marcas asociadas</h2>
-    <div class="fade-up flex justify-center">
-      <div class="max-w-5xl w-full">
-        <img 
-          src="/images/nuestros-clientes.png" 
-          alt="Marcas y empresas líderes que confían en las soluciones y sistemas de Vision Code" 
-          class="w-full h-auto object-contain mx-auto select-none"
-          loading="lazy"
-        />
+<section id="marcas" class="py-28 bg-black border-t border-white/10 border-b border-white/10 relative z-10 overflow-hidden text-white">
+  
+  <!-- Fondo de sección: 2.png ubicada en /images/fondos/2.png -->
+  <div class="absolute inset-0 z-0 pointer-events-none select-none bg-cover bg-center" style="background-image: url('/images/fondos/2.png');"></div>
+  <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/85 via-black/70 to-black/90 pointer-events-none"></div>
+
+  <!-- Aura de degradado ambiente radial -->
+  <div class="absolute inset-0 z-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,255,255,0.06),rgba(0,0,0,0))] pointer-events-none"></div>
+
+  <!-- Encabezado Ejecutivo: Estilo Navbar Blanco y Negro Monocromático -->
+  <div class="max-w-4xl mx-auto px-6 text-center mb-12 relative z-10">
+    
+    <!-- Badge Estilo Navbar -->
+    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#000000]/90 border border-white/15 text-white/90 text-[0.65rem] font-bold uppercase tracking-[0.22em] mb-5 shadow-xl backdrop-blur-xl">
+      <span class="w-2 h-2 rounded-full bg-white animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+      INGENIERÍA &amp; SOLUCIONES CORPORATIVAS
+    </div>
+
+    <!-- Título Principal Prestige Corporate (Montserrat/Inter) -->
+    <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-4 drop-shadow-lg">
+      Arquitectura Digital para <span class="text-white">Marcas Líderes</span>
+    </h2>
+
+    <!-- Subtítulo ejecutivo completo -->
+    <p class="text-base sm:text-lg text-white/85 max-w-3xl mx-auto font-normal leading-relaxed drop-shadow">
+      Construimos <strong class="text-white font-black">tecnología de alta fidelidad</strong> para empresas que buscan escala real: plataformas web y comercio electrónico, aplicaciones móviles iOS/Android, formalización legal express, automatizaciones con IA y marketing digital de alto retorno.
+    </p>
+  </div>
+
+  <!-- Carrusel Estilo Nexbu.com (Píldoras Blancas de Alto Contraste) -->
+  <div class="carousel-nexbu-wrap relative w-full overflow-hidden py-6 cursor-pointer">
+    
+    <!-- Fades de degradado laterales sin cortes -->
+    <div class="absolute left-0 top-0 bottom-0 w-32 sm:w-56 bg-gradient-to-r from-black via-black/80 to-transparent z-20 pointer-events-none"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-32 sm:w-56 bg-gradient-to-l from-black via-black/80 to-transparent z-20 pointer-events-none"></div>
+
+    <!-- Pista de animación continua marquee Nexbu -->
+    <div class="marquee-track flex items-center gap-5 sm:gap-6 whitespace-nowrap">
+      
+      <!-- Primera Copia -->
+      <div class="flex items-center gap-5 sm:gap-6 shrink-0">
+        {brandLogos.map(brand => (
+          <div class="nexbu-card h-16 sm:h-20 px-8 sm:px-10 rounded-2xl bg-white border border-white/20 shadow-[0_4px_25px_rgba(0,0,0,0.4)] hover:border-white hover:shadow-[0_10px_35px_rgba(255,255,255,0.2)] transition-all duration-300 flex items-center justify-center group shrink-0">
+            <img
+              src={brand.logo}
+              alt={brand.name}
+              class="max-h-8 sm:max-h-10 max-w-[130px] sm:max-w-[160px] w-auto object-contain select-none opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+
+      <!-- Segunda Copia (Loop continuo sin cortes) -->
+      <div class="flex items-center gap-5 sm:gap-6 shrink-0" aria-hidden="true">
+        {brandLogos.map(brand => (
+          <div class="nexbu-card h-16 sm:h-20 px-8 sm:px-10 rounded-2xl bg-white border border-white/20 shadow-[0_4px_25px_rgba(0,0,0,0.4)] hover:border-white hover:shadow-[0_10px_35px_rgba(255,255,255,0.2)] transition-all duration-300 flex items-center justify-center group shrink-0">
+            <img
+              src={brand.logo}
+              alt={brand.name}
+              class="max-h-8 sm:max-h-10 max-w-[130px] sm:max-w-[160px] w-auto object-contain select-none opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Encabezado de Pilares Estratégicos -->
+  <div class="text-center mt-16 mb-8 relative z-10">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-white text-[0.65rem] font-mono uppercase tracking-[0.25em]">
+      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+      6 Pilares de Servicio &amp; Especialidad
+    </div>
+  </div>
+
+  <!-- Cuadros de los 6 Pilares Estratégicos (Fondos Negros Puros OLED + Tipografía Blanca + Redacción Ejecutiva) -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+    
+    <!-- Pilar 01: Desarrollo Web & E-Commerce Pro -->
+    <div class="border border-white/15 bg-[#000000]/95 backdrop-blur-2xl rounded-2xl p-7 xl:p-8 shadow-[0_12px_40px_rgba(0,0,0,0.95)] hover:border-white/40 hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group flex flex-col justify-between text-center">
+      <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div>
+        <div class="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/15 flex items-center justify-center text-white/80 group-hover:bg-white group-hover:text-black group-hover:scale-105 transition-all duration-300 mx-auto mb-4 shadow-sm">
+          <svg class="w-5.5 h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+          </svg>
+        </div>
+        <div class="text-[0.62rem] font-bold uppercase tracking-[0.25em] text-white/50 mb-1.5 font-mono">Pilar 01 · Plataformas Web</div>
+        <h3 class="text-xl font-black text-white mb-3 tracking-tight leading-snug">Desarrollo Web &amp; E-Commerce Pro</h3>
+        <p class="text-xs sm:text-[0.82rem] text-white/70 leading-relaxed font-normal mb-5">
+          Portales corporativos y tiendas virtuales de alta conversión desarrolladas con arquitecturas modernas (Next.js y Astro). Maximizamos velocidad de carga, experiencia visual y posicionamiento orgánico en Google (SEO).
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-1.5 justify-center pt-4 border-t border-white/10">
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">Next.js &amp; Astro</span>
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">E-Commerce Pro</span>
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">SEO Técnico</span>
+      </div>
+    </div>
+
+    <!-- Pilar 02: Apps Móviles iOS & Android -->
+    <div class="border border-white/15 bg-[#000000]/95 backdrop-blur-2xl rounded-2xl p-7 xl:p-8 shadow-[0_12px_40px_rgba(0,0,0,0.95)] hover:border-white/40 hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group flex flex-col justify-between text-center">
+      <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div>
+        <div class="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/15 flex items-center justify-center text-white/80 group-hover:bg-white group-hover:text-black group-hover:scale-105 transition-all duration-300 mx-auto mb-4 shadow-sm">
+          <svg class="w-5.5 h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <div class="text-[0.62rem] font-bold uppercase tracking-[0.25em] text-white/50 mb-1.5 font-mono">Pilar 02 · Desarrollo Móvil</div>
+        <h3 class="text-xl font-black text-white mb-3 tracking-tight leading-snug">Apps Móviles iOS &amp; Android</h3>
+        <p class="text-xs sm:text-[0.82rem] text-white/70 leading-relaxed font-normal mb-5">
+          Creación y publicación oficial en App Store y Google Play. Aplicaciones escalables con pasarelas de pago transaccionales, autenticación segura, modo offline y notificaciones push estratégicas para fidelización.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-1.5 justify-center pt-4 border-t border-white/10">
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">App Store &amp; Play Store</span>
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">Pasarelas de Pago</span>
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">Push &amp; Auth</span>
+      </div>
+    </div>
+
+    <!-- Pilar 03: Tu Empresa en 1 Día & LegalTech -->
+    <div class="border border-white/15 bg-[#000000]/95 backdrop-blur-2xl rounded-2xl p-7 xl:p-8 shadow-[0_12px_40px_rgba(0,0,0,0.95)] hover:border-white/40 hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group flex flex-col justify-between text-center">
+      <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div>
+        <div class="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/15 flex items-center justify-center text-white/80 group-hover:bg-white group-hover:text-black group-hover:scale-105 transition-all duration-300 mx-auto mb-4 shadow-sm">
+          <svg class="w-5.5 h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <div class="text-[0.62rem] font-bold uppercase tracking-[0.25em] text-white/50 mb-1.5 font-mono">Pilar 03 · Constitución &amp; SII</div>
+        <h3 class="text-xl font-black text-white mb-3 tracking-tight leading-snug">Tu Empresa en 1 Día &amp; SII</h3>
+        <p class="text-xs sm:text-[0.82rem] text-white/70 leading-relaxed font-normal mb-5">
+          Formalización societaria express en Chile. Redacción de estatutos (SpA o Ltda), obtención de RUT empresarial ante el SII, apertura de cuenta bancaria y habilitación técnica de facturación electrónica en 24 horas.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-1.5 justify-center pt-4 border-t border-white/10">
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">Constitución en 24h</span>
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">Inicio Actividades SII</span>
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">Facturación Inmediata</span>
+      </div>
+    </div>
+
+    <!-- Pilar 04: IA & Automatizaciones 24/7 -->
+    <div class="border border-white/15 bg-[#000000]/95 backdrop-blur-2xl rounded-2xl p-7 xl:p-8 shadow-[0_12px_40px_rgba(0,0,0,0.95)] hover:border-white/40 hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group flex flex-col justify-between text-center">
+      <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div>
+        <div class="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/15 flex items-center justify-center text-white/80 group-hover:bg-white group-hover:text-black group-hover:scale-105 transition-all duration-300 mx-auto mb-4 shadow-sm">
+          <svg class="w-5.5 h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <div class="text-[0.62rem] font-bold uppercase tracking-[0.25em] text-white/50 mb-1.5 font-mono">Pilar 04 · Inteligencia Artificial</div>
+        <h3 class="text-xl font-black text-white mb-3 tracking-tight leading-snug">Agentes IA &amp; WhatsApp 24/7</h3>
+        <p class="text-xs sm:text-[0.82rem] text-white/70 leading-relaxed font-normal mb-5">
+          Agentes autónomos impulsados por IA conversacional conectados directamente a tu WhatsApp Business. Calificación de prospectos, cotizaciones instantáneas y agendamiento comercial continuo las 24 horas del día.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-1.5 justify-center pt-4 border-t border-white/10">
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">WhatsApp 24/7</span>
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">Cotización en Vivo</span>
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">Integración CRM</span>
+      </div>
+    </div>
+
+    <!-- Pilar 05: Campañas Meta Ads & Performance -->
+    <div class="border border-white/15 bg-[#000000]/95 backdrop-blur-2xl rounded-2xl p-7 xl:p-8 shadow-[0_12px_40px_rgba(0,0,0,0.95)] hover:border-white/40 hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group flex flex-col justify-between text-center">
+      <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div>
+        <div class="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/15 flex items-center justify-center text-white/80 group-hover:bg-white group-hover:text-black group-hover:scale-105 transition-all duration-300 mx-auto mb-4 shadow-sm">
+          <svg class="w-5.5 h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+          </svg>
+        </div>
+        <div class="text-[0.62rem] font-bold uppercase tracking-[0.25em] text-white/50 mb-1.5 font-mono">Pilar 05 · Growth &amp; Performance</div>
+        <h3 class="text-xl font-black text-white mb-3 tracking-tight leading-snug">Campañas Meta Ads &amp; Pauta Digital</h3>
+        <p class="text-xs sm:text-[0.82rem] text-white/70 leading-relaxed font-normal mb-5">
+          Estrategias de adquisición pagada enfocadas en retorno medible (ROAS). Campañas de conversión y generación de leads en Facebook e Instagram Ads con segmentación precisa para llevar compradores directos a tu embudo.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-1.5 justify-center pt-4 border-t border-white/10">
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">Meta &amp; Google Ads</span>
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">Segmentación B2B/B2C</span>
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">ROAS Positivo</span>
+      </div>
+    </div>
+
+    <!-- Pilar 06: Software a Medida, ERP & CRM -->
+    <div class="border border-white/15 bg-[#000000]/95 backdrop-blur-2xl rounded-2xl p-7 xl:p-8 shadow-[0_12px_40px_rgba(0,0,0,0.95)] hover:border-white/40 hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group flex flex-col justify-between text-center">
+      <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div>
+        <div class="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/15 flex items-center justify-center text-white/80 group-hover:bg-white group-hover:text-black group-hover:scale-105 transition-all duration-300 mx-auto mb-4 shadow-sm">
+          <svg class="w-5.5 h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+          </svg>
+        </div>
+        <div class="text-[0.62rem] font-bold uppercase tracking-[0.25em] text-white/50 mb-1.5 font-mono">Pilar 06 · Software Corporativo</div>
+        <h3 class="text-xl font-black text-white mb-3 tracking-tight leading-snug">Software a Medida, ERP &amp; CRM</h3>
+        <p class="text-xs sm:text-[0.82rem] text-white/70 leading-relaxed font-normal mb-5">
+          Ingeniería de software a la medida exacta de tu modelo de negocios. Centralización operativa, automatización de inventarios, reportes gerenciales en tiempo real y bases de datos en la nube con máxima seguridad y cifrado.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-1.5 justify-center pt-4 border-t border-white/10">
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">Sistemas ERP &amp; CRM</span>
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">Dashboards Cloud</span>
+        <span class="px-2.5 py-1 rounded-full text-[0.65rem] font-bold bg-white/5 border border-white/10 text-white/80">Bases de Datos Seguras</span>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* ── Contenedor principal Nexbu: se agranda suavemente al pasar el mouse ── */
+  .carousel-nexbu-wrap {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .carousel-nexbu-wrap:hover {
+    transform: scale(1.03);
+  }
+
+  /* ── Pista continua gestionada dinámicamente por JS ── */
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    will-change: transform;
+  }
+</style>
+
+<script is:inline>
+  function setupSmoothMarquee() {
+    const wrap = document.querySelector('.carousel-nexbu-wrap');
+    const track = document.querySelector('.marquee-track');
+    if (!wrap || !track) return;
+
+    let offset = 0;
+    // Velocidad normal pausada y fluida (0.45px por frame)
+    const normalSpeed = 0.45;
+    // Velocidad súper lenta (efecto cámara lenta en hover)
+    const slowSpeed = 0.10;
+    
+    let targetSpeed = normalSpeed;
+    let currentSpeed = normalSpeed;
+
+    wrap.addEventListener('mouseenter', () => {
+      targetSpeed = slowSpeed;
+    });
+
+    wrap.addEventListener('mouseleave', () => {
+      targetSpeed = normalSpeed;
+    });
+
+    function step() {
+      // Inercia de desaceleración / aceleración suave (lerp)
+      currentSpeed += (targetSpeed - currentSpeed) * 0.05;
+      offset -= currentSpeed;
+
+      const halfWidth = track.scrollWidth / 2;
+      if (halfWidth > 0 && Math.abs(offset) >= halfWidth) {
+        offset += halfWidth;
+      }
+
+      track.style.transform = `translate3d(${offset}px, 0, 0)`;
+      requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  setupSmoothMarquee();
+  document.addEventListener('astro:page-load', () => {
+    setupSmoothMarquee();
+  });
+</script>

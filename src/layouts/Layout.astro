@@ -25,6 +25,8 @@ const canonicalUrl = new URL(Astro.url.pathname, url).href;
     <meta name="author" content="Vision Code" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalUrl} />
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="WJet6dq1ciR7bKX0QbpTr_on8s-8FmdN3zHaMZqC1_w" />
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -38,18 +40,8 @@ const canonicalUrl = new URL(Astro.url.pathname, url).href;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${url}/images/logo-negro.png`} />
-    <meta name="theme-color" content="#E8001C" />
+    <meta name="theme-color" content="#000000" />
     <link rel="icon" type="image/png" href="/images/logo-negro.png" />
-    {preloadHero && (
-      <>
-        <!-- Preload Hero Background Carousel Images to prevent black/blank flash on transition -->
-        <link rel="preload" href="/images/hero-bg-1.jpeg" as="image" type="image/jpeg" />
-        <link rel="preload" href="/images/hero-bg-2.jpeg" as="image" type="image/jpeg" />
-        <link rel="preload" href="/images/hero-bg-3.jpeg" as="image" type="image/jpeg" />
-        <link rel="preload" href="/images/hero-bg-4.jpeg" as="image" type="image/jpeg" />
-        <link rel="preload" href="/images/hero-bg-5.jpeg" as="image" type="image/jpeg" />
-      </>
-    )}
     <title>{title}</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -58,27 +50,30 @@ const canonicalUrl = new URL(Astro.url.pathname, url).href;
     <!-- Global Styles -->
     <style is:global>
       :root {
-        /* ─── Paleta Vision Code: Blanco + Rojo + Negro ─── */
-        --saas-bg:            #ffffff;
-        --saas-bg-alt:        #F6F6F6;
-        --saas-bg-dark:       #0a0a0a;
-        --saas-surface:       #ffffff;
-        --saas-surface-hover: rgba(232, 0, 28, 0.04);
-        --saas-border:        rgba(0, 0, 0, 0.09);
-        --saas-border-hover:  rgba(232, 0, 28, 0.55);
-        --saas-brand:         #E8001C;
-        --saas-brand-light:   #FF1A2E;
-        --saas-brand-dark:    #B8000E;
-        --saas-text:          #0a0a0a;
-        --saas-text-muted:    rgba(0, 0, 0, 0.50);
-        --saas-text-subtle:   rgba(0, 0, 0, 0.28);
+        /* ─── Paleta Vision Code: Monochrome Luxury (Pure Pitch Black OLED & Crisp Silver/White) ─── */
+        --saas-bg:            #000000;
+        --saas-bg-alt:        #000000;
+        --saas-bg-dark:       #000000;
+        --saas-surface:       #000000;
+        --saas-surface-hover: rgba(255, 255, 255, 0.06);
+        --saas-border:        rgba(255, 255, 255, 0.12);
+        --saas-border-hover:  rgba(255, 255, 255, 0.38);
+        --saas-brand:         #ffffff;
+        --saas-brand-light:   #f4f4f5;
+        --saas-brand-dark:    #e4e4e7;
+        --saas-text:          #ffffff;
+        --saas-text-muted:    rgba(255, 255, 255, 0.70);
+        --saas-text-subtle:   rgba(255, 255, 255, 0.45);
       }
 
       *, *::before, *::after { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
+      html { 
+        scroll-behavior: smooth; 
+        scroll-padding-top: 96px; 
+      }
       body {
         margin: 0;
-        background-color: var(--saas-bg);
+        background-color: #000000;
         color: var(--saas-text);
         font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -87,36 +82,47 @@ const canonicalUrl = new URL(Astro.url.pathname, url).href;
         letter-spacing: -0.01em;
       }
 
-      ::selection { background: var(--saas-brand); color: #fff; }
-      ::-webkit-scrollbar { width: 4px; }
-      ::-webkit-scrollbar-track { background: #f0f0f0; }
-      ::-webkit-scrollbar-thumb { background: rgba(232, 0, 28, 0.4); }
-      ::-webkit-scrollbar-thumb:hover { background: rgba(232, 0, 28, 0.8); }
+      ::selection { background: #ffffff; color: #000000; }
+      ::-webkit-scrollbar { width: 5px; }
+      ::-webkit-scrollbar-track { background: #000000; }
+      ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.25); border-radius: 9999px; }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.6); }
 
-      /* ── Cards blancas con hover rojo ── */
+      /* ── Cards estilo Obsidian Bento (Pitch Black OLED + Spotlight) ── */
       .bento-card {
-        background: #ffffff;
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        border-radius: 0;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        background: #000000;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 1.25rem;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         position: relative;
         overflow: hidden;
         z-index: 10;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
       }
       .bento-card:hover {
-        border-color: rgba(232, 0, 28, 0.45);
-        box-shadow: 0 8px 32px rgba(232, 0, 28, 0.10);
+        border-color: rgba(255, 255, 255, 0.35);
+        box-shadow: 0 16px 50px rgba(0, 0, 0, 0.95), 0 0 30px rgba(255, 255, 255, 0.06);
         transform: translateY(-3px);
       }
+      .bento-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.08), transparent 40%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+        z-index: 1;
+      }
+      .bento-card:hover::before { opacity: 1; }
       .bento-card::after {
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0;
-        height: 3px;
-        background: #E8001C;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
         opacity: 0;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.35s ease;
       }
       .bento-card:hover::after { opacity: 1; }
 
@@ -124,94 +130,94 @@ const canonicalUrl = new URL(Astro.url.pathname, url).href;
       .saas-badge {
         display: inline-flex;
         align-items: center;
-        gap: 0.4rem;
-        padding: 0;
-        background: transparent;
-        border: none;
-        border-radius: 0;
+        gap: 0.5rem;
+        padding: 0.35rem 0.9rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 9999px;
         font-size: 0.65rem;
         font-weight: 800;
         font-family: 'Montserrat', sans-serif;
-        color: var(--saas-brand);
+        color: #ffffff;
         text-transform: uppercase;
-        letter-spacing: 0.25em;
+        letter-spacing: 0.22em;
+        backdrop-filter: blur(8px);
       }
 
-      /* ── Botón rojo principal ── */
+      /* ── Botón blanco principal ── */
       .btn-primary {
         display: inline-flex;
         justify-content: center;
         align-items: center;
         gap: 0.5rem;
-        background: var(--saas-brand);
-        color: #ffffff;
+        background: #ffffff;
+        color: #000000;
         font-weight: 800;
         font-size: 0.72rem;
-        padding: 0.9rem 2.2rem;
-        border-radius: 0;
-        transition: all 0.22s ease;
+        padding: 0.95rem 2.2rem;
+        border-radius: 9999px;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         text-decoration: none;
         text-transform: uppercase;
-        letter-spacing: 0.12em;
-        border: 2px solid var(--saas-brand);
+        letter-spacing: 0.14em;
+        border: 1px solid #ffffff;
         font-family: 'Montserrat', sans-serif;
         cursor: pointer;
       }
       .btn-primary:hover {
-        background: var(--saas-brand-dark);
-        border-color: var(--saas-brand-dark);
-        transform: translateY(-1px);
-        box-shadow: 0 6px 20px rgba(232, 0, 28, 0.35);
+        background: #e4e4e7;
+        color: #000000;
+        border-color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
       }
 
-      /* ── Botón outline negro (para fondos blancos) ── */
+      /* ── Botón outline secundario ── */
       .btn-secondary {
         display: inline-flex;
         justify-content: center;
         align-items: center;
         gap: 0.5rem;
-        background: transparent;
-        color: #0a0a0a;
+        background: rgba(255, 255, 255, 0.04);
+        color: #ffffff;
         font-weight: 700;
         font-size: 0.72rem;
-        padding: 0.9rem 2.2rem;
-        border-radius: 0;
-        border: 2px solid rgba(0,0,0,0.22);
-        transition: all 0.22s ease;
+        padding: 0.95rem 2.2rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(12px);
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         text-decoration: none;
         text-transform: uppercase;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.14em;
         font-family: 'Montserrat', sans-serif;
         cursor: pointer;
       }
       .btn-secondary:hover {
-        border-color: var(--saas-brand);
-        color: var(--saas-brand);
-        transform: translateY(-1px);
+        border-color: #ffffff;
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.12);
       }
 
-      /* ── Sección oscura (contraste) ── */
+      /* ── Sección oscura ── */
       .section-dark {
-        background: #0a0a0a;
+        background: #000000;
         color: #ffffff;
       }
       .section-dark .bento-card {
-        background: rgba(255,255,255,0.04);
-        border-color: rgba(255,255,255,0.08);
+        background: rgba(255, 255, 255, 0.03);
+        border-color: rgba(255, 255, 255, 0.08);
       }
       .section-dark .bento-card:hover {
-        background: rgba(232,0,28,0.06);
-        border-color: rgba(232,0,28,0.4);
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.25);
       }
       .section-dark p,
       .section-dark span,
       .section-dark li {
-        color: rgba(255,255,255,0.7);
-      }
-
-      /* ── Sección gris clara ── */
-      .section-light {
-        background: var(--saas-bg-alt);
+        color: rgba(255, 255, 255, 0.75);
       }
 
       /* ── Marquee animado ── */
@@ -227,14 +233,14 @@ const canonicalUrl = new URL(Astro.url.pathname, url).href;
       /* ── Reveal Animations ── */
       .fade-up {
         opacity: 0;
-        transform: translateY(28px);
-        transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(24px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .fade-up.in-view { opacity: 1; transform: translateY(0); }
 
       /* ── Accessibility Focus Ring ── */
       a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-        outline: 2px solid var(--saas-brand);
+        outline: 2px solid #ffffff;
         outline-offset: 4px;
       }
 
@@ -249,22 +255,65 @@ const canonicalUrl = new URL(Astro.url.pathname, url).href;
     </style>
   </head>
   <body>
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[99999] focus:bg-[#E8001C] focus:text-white focus:px-4 focus:py-2">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[99999] focus:bg-white focus:text-black focus:px-4 focus:py-2 font-bold">
       Saltar al contenido principal
     </a>
     <slot />
-    
-    <script>
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-          }
-        });
-      }, { threshold: 0.1 });
 
-      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    <!-- Reveal Animations Observer -->
+    <script is:inline>
+      function initFadeUpObserver() {
+        const elements = document.querySelectorAll('.fade-up');
+        if (!elements.length) return;
+
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+
+          elements.forEach(el => observer.observe(el));
+        } else {
+          elements.forEach(el => el.classList.add('in-view'));
+        }
+
+        // Safety fallback: ensure nothing stays hidden if scrolled fast or on small viewports
+        setTimeout(() => {
+          elements.forEach(el => el.classList.add('in-view'));
+        }, 1200);
+      }
+
+      // ── Cursor Spotlight Effect for Bento Cards & Cards ──
+      function initSpotlightCards() {
+        const cards = document.querySelectorAll('.bento-card, .service-card, .beam-border-wrap');
+        cards.forEach(card => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+          });
+        });
+      }
+
+      function initAppScripts() {
+        initFadeUpObserver();
+        initSpotlightCards();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAppScripts);
+      } else {
+        initAppScripts();
+      }
+      document.addEventListener('astro:page-load', initAppScripts);
     </script>
+
     <!-- Floating Action Buttons (WhatsApp & Instagram) -->
     <div class="fixed bottom-6 left-6 z-[9999] flex flex-col gap-3">
       <!-- WhatsApp -->
@@ -272,13 +321,13 @@ const canonicalUrl = new URL(Astro.url.pathname, url).href;
         href="https://api.whatsapp.com/send?phone=56929645522" 
         target="_blank" 
         rel="noopener noreferrer" 
-        class="w-12 h-12 bg-[#25D366] hover:bg-[#128C7E] text-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 active:scale-95 group relative"
+        class="w-12 h-12 rounded-full bg-black/95 backdrop-blur-xl border border-white/20 text-white flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.9)] transition-all duration-300 hover:scale-110 hover:border-white hover:text-white hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] active:scale-95 group relative"
         aria-label="Contactar por WhatsApp"
       >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="transition-colors duration-300">
           <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.588 1.977 14.131.953 11.527.953c-5.439 0-9.859 4.373-9.864 9.803-.002 1.83.491 3.62 1.424 5.2l-.931 3.398 3.49-.917zm12.338-7.397c-.272-.136-1.61-.794-1.86-.885-.25-.091-.432-.136-.613.136-.182.271-.703.885-.862 1.066-.158.181-.317.204-.589.068-.272-.136-1.15-.424-2.19-1.352-.809-.721-1.355-1.613-1.514-1.884-.158-.271-.017-.417.119-.553.122-.122.272-.317.408-.475.136-.158.181-.271.272-.452.09-.181.045-.339-.022-.475-.068-.136-.613-1.478-.839-2.02-.22-.53-.442-.458-.607-.466-.157-.008-.339-.008-.521-.008-.181 0-.475.068-.724.339-.249.271-.95 1.04-1.04 2.533s1.085 2.937 1.233 3.14c.149.203 2.136 3.262 5.176 4.57.723.311 1.288.497 1.728.637.726.23 1.387.197 1.91.12.583-.086 1.79-.73 2.046-1.434.256-.704.256-1.31.179-1.434-.076-.124-.277-.197-.549-.333z" />
         </svg>
-        <span class="absolute left-14 bg-black/90 text-white text-[0.65rem] font-bold tracking-wider uppercase px-2.5 py-1.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-white/10">
+        <span class="absolute left-14 bg-black/95 backdrop-blur-md border border-white/20 rounded-full text-white text-[0.65rem] font-extrabold tracking-widest uppercase px-3 py-1.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-xl">
           WhatsApp
         </span>
       </a>
@@ -288,18 +337,46 @@ const canonicalUrl = new URL(Astro.url.pathname, url).href;
         href="https://www.instagram.com/vision_code_vc/?hl=es" 
         target="_blank" 
         rel="noopener noreferrer" 
-        class="w-12 h-12 bg-[#E1306C] hover:bg-[#C13584] text-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 active:scale-95 group relative"
+        class="w-12 h-12 rounded-full bg-black/95 backdrop-blur-xl border border-white/20 text-white flex items-center justify-center shadow-[0_10px_30px_rgba(0,0,0,0.9)] transition-all duration-300 hover:scale-110 hover:border-white hover:text-white hover:shadow-[0_0_25px_rgba(255,255,255,0.4)] active:scale-95 group relative"
         aria-label="Seguir en Instagram"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="transition-colors duration-300">
           <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
         </svg>
-        <span class="absolute left-14 bg-black/90 text-white text-[0.65rem] font-bold tracking-wider uppercase px-2.5 py-1.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-white/10">
+        <span class="absolute left-14 bg-black/95 backdrop-blur-md border border-white/20 rounded-full text-white text-[0.65rem] font-extrabold tracking-widest uppercase px-3 py-1.5 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-xl">
           Instagram
         </span>
       </a>
     </div>
 
-    <SalesAgent />
+    <!-- Floating Back to Top Pill (Luxury Agency Style) -->
+    <div id="quick-back-top" class="fixed bottom-6 right-6 z-[9999] opacity-0 translate-y-6 pointer-events-none transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]">
+      <button 
+        type="button" 
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" 
+        class="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-black/90 backdrop-blur-xl border border-white/20 text-white shadow-[0_10px_30px_rgba(0,0,0,0.9)] hover:border-white hover:shadow-[0_0_25px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 transition-all text-xs font-bold uppercase tracking-wider group"
+        aria-label="Volver arriba"
+      >
+        <span class="w-1.5 h-1.5 rounded-full bg-white group-hover:animate-ping"></span>
+        <span class="text-[0.68rem] tracking-[0.16em]">Subir</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:-translate-y-0.5 transition-transform">
+          <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+      </button>
+    </div>
+
+    <script is:inline>
+      const backTopBtn = document.getElementById('quick-back-top');
+      window.addEventListener('scroll', () => {
+        if (!backTopBtn) return;
+        if (window.scrollY > 350) {
+          backTopBtn.classList.remove('opacity-0', 'translate-y-6', 'pointer-events-none');
+          backTopBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        } else {
+          backTopBtn.classList.add('opacity-0', 'translate-y-6', 'pointer-events-none');
+          backTopBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        }
+      }, { passive: true });
+    </script>
   </body>
 </html>

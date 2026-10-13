@@ -1,145 +1,1075 @@
 ---
 ---
-<section id="contacto" class="py-32 relative z-10 border-t border-black/5 bg-white">
-  <div class="max-w-6xl mx-auto px-6 lg:px-10">
-    <div class="bento-card p-10 md:p-16 fade-up bg-white">
-      <div class="grid lg:grid-cols-2 gap-16">
-        <!-- Info -->
-        <div>
-          <div class="flex items-center gap-4 mb-6">
-            <div class="h-px bg-[#E8001C] w-12"></div>
-            <div class="text-[0.65rem] font-bold uppercase tracking-widest text-[#E8001C]">Canal Corporativo</div>
+
+<section id="contacto" class="py-28 relative z-10 border-t border-white/10 bg-black text-white overflow-hidden">
+  
+  <!-- Fondo de sección: 1.png de fondos nuevos -->
+  <div class="absolute inset-0 z-0 pointer-events-none select-none bg-cover bg-center" style="background-image: url('/images/fondos/1.png');"></div>
+  <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90 pointer-events-none"></div>
+  
+  <!-- Sutil glow de fondo -->
+  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-white/[0.02] rounded-full blur-[140px] pointer-events-none select-none"></div>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Encabezado del Embudo -->
+    <div class="text-center mb-12 fade-up">
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/15 text-[0.68rem] font-black uppercase tracking-[0.25em] text-white/80 mb-5 backdrop-blur-md">
+        <span class="w-2 h-2 rounded-full bg-white animate-pulse shadow-[0_0_10px_rgba(255,255,255,0.9)]"></span>
+        <span>Embudo de Diagnóstico &amp; Cotización Formal</span>
+      </div>
+      
+      <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1] mb-5">
+        Cotiza tu proyecto a medida <br class="hidden sm:block"/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-neutral-400">
+          con nuestro equipo técnico.
+        </span>
+      </h2>
+      
+      <p class="text-sm sm:text-base text-white/70 max-w-2xl mx-auto font-normal leading-relaxed">
+        Cuéntanos tu necesidad técnica y la escala de tu negocio. Con esta información te enviaremos una <strong>propuesta formal detallada</strong> vía WhatsApp o correo electrónico.
+      </p>
+    </div>
+
+    <!-- Contenedor Maestro del Embudo (Pure Black OLED #000000) -->
+    <div class="bg-[#000000] border border-white/20 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-[0_30px_90px_rgba(0,0,0,0.95)] backdrop-blur-2xl relative overflow-hidden">
+      
+      <!-- Barra de Progreso y Pasos -->
+      <div class="mb-10 pb-8 border-b border-white/15" id="funnel-progress-wrap">
+        <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider mb-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white font-mono text-[0.7rem] tracking-widest">
+            <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+            <span id="funnel-step-badge">PASO 01 / 05</span>
           </div>
-          <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black text-black tracking-tight mb-6 leading-[1.1]">
-            Inicia tu transformación <br/>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-black to-black/40">digital hoy mismo.</span>
-          </h2>
-          <p class="text-sm text-black/60 mb-12 max-w-sm font-light leading-relaxed">
-            Solicita una evaluación técnica gratuita con nuestro equipo de ingeniería. Analizaremos tus procesos y diseñaremos una arquitectura orientada a escalar tus ventas.
-          </p>
-          <div class="flex flex-col gap-6 border-t border-black/10 pt-8">
-            <a href="mailto:Vision.code.vs@gmail.com" class="group">
-              <div class="text-[0.65rem] font-bold uppercase tracking-widest text-black/40 mb-1">Correo Electrónico</div>
-              <div class="text-lg text-black font-medium group-hover:text-[#E8001C] transition-colors">Vision.code.vs@gmail.com</div>
-            </a>
-            <a href="https://api.whatsapp.com/send?phone=56929645522" target="_blank" class="group">
-              <div class="text-[0.65rem] font-bold uppercase tracking-widest text-black/40 mb-1">Línea Directa (WhatsApp)</div>
-              <div class="text-lg text-black font-medium group-hover:text-[#E8001C] transition-colors">+56 9 2964 5522</div>
-            </a>
-          </div>
+          <span id="funnel-step-title" class="text-white/90 font-black tracking-wider text-xs uppercase">
+            TIPO DE ENTIDAD
+          </span>
         </div>
 
-        <!-- Formulario -->
-        <div class="bg-neutral-50 p-8 border border-neutral-200/80 rounded-none shadow-sm relative overflow-hidden group">
-          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#E8001C]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-          
-          <form id="contactForm" class="flex flex-col gap-6 relative z-10">
-            <!-- Honeypot anti-spam field -->
-            <input type="text" id="_honeypot" class="hidden" autocomplete="off" tabindex="-1" />
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="relative">
-                <label for="empresa" class="text-[10px] font-bold uppercase tracking-widest text-black/60 block mb-2">Empresa o Negocio</label>
-                <input type="text" id="empresa" required class="w-full bg-white border border-neutral-200 rounded-none px-4 py-3 text-sm text-black placeholder:text-neutral-400 focus:border-[#E8001C] focus:bg-white focus:ring-2 focus:ring-[#E8001C]/10 outline-none transition-all shadow-sm" placeholder="Ej. Tu Empresa SpA" />
-              </div>
-              <div class="relative">
-                <label for="telefono_empresa" class="text-[10px] font-bold uppercase tracking-widest text-black/60 block mb-2">Teléfono Empresa</label>
-                <input type="tel" id="telefono_empresa" required pattern="^(\+?56)?\s?[92-9]\s?[0-9]{8}$|^[+0-9\s-]{9,15}$" title="Ingrese un número de teléfono válido (ej: +56 9 1234 5678)" class="w-full bg-white border border-neutral-200 rounded-none px-4 py-3 text-sm text-black placeholder:text-neutral-400 focus:border-[#E8001C] focus:bg-white focus:ring-2 focus:ring-[#E8001C]/10 outline-none transition-all shadow-sm" placeholder="+56 9 XXXX XXXX" />
-              </div>
-            </div>
+        <!-- Barra de llenado -->
+        <div class="relative w-full h-1.5 bg-white/15 rounded-full overflow-hidden">
+          <div id="funnel-progress-fill" class="absolute left-0 top-0 h-full w-1/5 bg-gradient-to-r from-white via-neutral-200 to-white rounded-full transition-all duration-500 ease-out shadow-[0_0_15px_rgba(255,255,255,0.7)]"></div>
+        </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="relative">
-                <label for="solicitante" class="text-[10px] font-bold uppercase tracking-widest text-black/60 block mb-2">Nombre Solicitante</label>
-                <input type="text" id="solicitante" required class="w-full bg-white border border-neutral-200 rounded-none px-4 py-3 text-sm text-black placeholder:text-neutral-400 focus:border-[#E8001C] focus:bg-white focus:ring-2 focus:ring-[#E8001C]/10 outline-none transition-all shadow-sm" placeholder="Tu nombre" />
-              </div>
-              <div class="relative">
-                <label for="telefono_solicitante" class="text-[10px] font-bold uppercase tracking-widest text-black/60 block mb-2">Tu Teléfono Personal</label>
-                <input type="tel" id="telefono_solicitante" required pattern="^(\+?56)?\s?[92-9]\s?[0-9]{8}$|^[+0-9\s-]{9,15}$" title="Ingrese un número de teléfono válido (ej: +56 9 1234 5678)" class="w-full bg-white border border-neutral-200 rounded-none px-4 py-3 text-sm text-black placeholder:text-neutral-400 focus:border-[#E8001C] focus:bg-white focus:ring-2 focus:ring-[#E8001C]/10 outline-none transition-all shadow-sm" placeholder="+56 9 XXXX XXXX" />
-              </div>
-            </div>
-
-            <div class="relative">
-              <label for="correo" class="text-[10px] font-bold uppercase tracking-widest text-black/60 block mb-2">Correo Electrónico Corporativo</label>
-              <input type="email" id="correo" required class="w-full bg-white border border-neutral-200 rounded-none px-4 py-3 text-sm text-black placeholder:text-neutral-400 focus:border-[#E8001C] focus:bg-white focus:ring-2 focus:ring-[#E8001C]/10 outline-none transition-all shadow-sm" placeholder="contacto@empresa.com" />
-            </div>
-
-            <div class="relative">
-              <label for="servicio" class="text-[10px] font-bold uppercase tracking-widest text-black/60 block mb-2">Servicio de Interés Principal</label>
-              <select id="servicio" required class="w-full bg-white border border-neutral-200 rounded-none px-4 py-3 text-sm text-black focus:border-[#E8001C] focus:bg-white focus:ring-2 focus:ring-[#E8001C]/10 outline-none transition-all appearance-none cursor-pointer">
-                <option value="" disabled selected class="bg-white text-neutral-400">Seleccione el ecosistema a integrar</option>
-                <option value="Landing Page Básica" class="bg-white text-black">Landing Page Básica ($60k)</option>
-                <option value="Landing + Portal Corporativo" class="bg-white text-black">Landing + Portal Corporativo ($80k)</option>
-                <option value="E-Commerce Básico" class="bg-white text-black">E-Commerce Básico ($150k)</option>
-                <option value="E-Commerce Intermedio" class="bg-white text-black">E-Commerce Intermedio ($160k)</option>
-                <option value="E-Commerce Profesional" class="bg-white text-black">E-Commerce Profesional ($200k)</option>
-                <option value="Plan Vision Code Pro (ERP)" class="bg-white text-black">Plan Vision Code Pro / ERP ($350k)</option>
-                <option value="Agente IA WhatsApp (Estándar)" class="bg-white text-black">Agente IA WhatsApp (Estándar)</option>
-                <option value="Agente IA WhatsApp (Premium)" class="bg-white text-black">Agente IA WhatsApp (Premium)</option>
-                <option value="Consultoría Personalizada" class="bg-white text-black">Consultoría / Desarrollo a Medida</option>
-              </select>
-              <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none mt-6">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-black/40"><path d="M6 9l6 6 6-6"/></svg>
-              </div>
-            </div>
-
-            <div id="formMsg" class="text-sm hidden"></div>
-            <button type="submit" id="submitBtn" class="btn-primary w-full mt-2 text-xs tracking-widest uppercase py-4">
-              Enviar Solicitud
-            </button>
-          </form>
+        <!-- Indicador de pasos conectados -->
+        <div class="grid grid-cols-5 gap-2 text-center mt-6">
+          <div class="step-nav-dot cursor-pointer group" data-step-target="1">
+            <div class="dot-circle w-7 h-7 mx-auto rounded-full flex items-center justify-center text-[0.7rem] font-black border-2 border-white bg-white text-black transition-all shadow-[0_0_15px_rgba(255,255,255,0.6)]">1</div>
+            <span class="dot-label hidden sm:block text-[0.62rem] font-bold uppercase tracking-wider mt-1.5 text-white">Entidad</span>
+          </div>
+          <div class="step-nav-dot cursor-pointer group" data-step-target="2">
+            <div class="dot-circle w-7 h-7 mx-auto rounded-full flex items-center justify-center text-[0.7rem] font-bold border border-white/30 bg-black text-white/70 transition-all">2</div>
+            <span class="dot-label hidden sm:block text-[0.62rem] font-bold uppercase tracking-wider mt-1.5 text-white/50">Escala</span>
+          </div>
+          <div class="step-nav-dot cursor-pointer group" data-step-target="3">
+            <div class="dot-circle w-7 h-7 mx-auto rounded-full flex items-center justify-center text-[0.7rem] font-bold border border-white/30 bg-black text-white/70 transition-all">3</div>
+            <span class="dot-label hidden sm:block text-[0.62rem] font-bold uppercase tracking-wider mt-1.5 text-white/50">Servicios</span>
+          </div>
+          <div class="step-nav-dot cursor-pointer group" data-step-target="4">
+            <div class="dot-circle w-7 h-7 mx-auto rounded-full flex items-center justify-center text-[0.7rem] font-bold border border-white/30 bg-black text-white/70 transition-all">4</div>
+            <span class="dot-label hidden sm:block text-[0.62rem] font-bold uppercase tracking-wider mt-1.5 text-white/50">Alcance</span>
+          </div>
+          <div class="step-nav-dot cursor-pointer group" data-step-target="5">
+            <div class="dot-circle w-7 h-7 mx-auto rounded-full flex items-center justify-center text-[0.7rem] font-bold border border-white/30 bg-black text-white/70 transition-all">5</div>
+            <span class="dot-label hidden sm:block text-[0.62rem] font-bold uppercase tracking-wider mt-1.5 text-white/50">Contacto</span>
+          </div>
         </div>
       </div>
+
+      <!-- FORMULARIO INTERACTIVO MULTI-PASO -->
+      <form id="funnelForm" onsubmit="return false;" class="relative">
+        <input type="text" id="funnel_honeypot" class="hidden" autocomplete="off" tabindex="-1" />
+
+        <!-- ══════════════════════════════════════════════
+             PASO 1: PERSONA NATURAL VS EMPRESA
+        ══════════════════════════════════════════════ -->
+        <div class="funnel-step" id="f-step-1">
+          <div class="mb-6">
+            <span class="text-[0.68rem] font-black uppercase tracking-[0.25em] text-white/50 block mb-1">Paso 01</span>
+            <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight mb-2">¿Cómo deseas solicitar este proyecto?</h3>
+            <p class="text-sm text-white/70 font-normal">Indica si operas como Persona Natural con un proyecto personal o como Empresa / Persona Jurídica formal.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 my-8">
+            <!-- Opción Persona Natural -->
+            <label class="entidad-card is-selected group p-6 rounded-2xl border-2 border-white bg-white/[0.08] cursor-pointer transition-all duration-300 relative flex flex-col justify-between hover:-translate-y-1 shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+              <input type="radio" name="f-entidad" value="persona" class="sr-only" checked />
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                  </div>
+                  <span class="card-check w-6 h-6 rounded-full bg-white text-black text-xs font-bold flex items-center justify-center shadow-md">✓</span>
+                </div>
+                <h4 class="text-xl font-black text-white mb-2">Persona Natural</h4>
+                <p class="text-xs text-white/70 leading-relaxed font-normal">Profesional independiente, creador, o persona iniciando un nuevo proyecto sin razón social aún.</p>
+              </div>
+              <div class="mt-6 pt-3 border-t border-white/15 text-[0.68rem] font-bold uppercase tracking-wider text-white/90">
+                Proyecto Personal o Emprendedor &rarr;
+              </div>
+            </label>
+
+            <!-- Opción Empresa -->
+            <label class="entidad-card group p-6 rounded-2xl border border-white/20 bg-black cursor-pointer transition-all duration-300 relative flex flex-col justify-between hover:-translate-y-1 hover:border-white/40">
+              <input type="radio" name="f-entidad" value="empresa" class="sr-only" />
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m3 0h1m-1-4h.01M9 16h.01M9 12h.01M9 8h.01M15 16h.01M15 12h.01M15 8h.01"/>
+                    </svg>
+                  </div>
+                  <span class="card-check hidden w-6 h-6 rounded-full bg-white text-black text-xs font-bold flex items-center justify-center shadow-md">✓</span>
+                </div>
+                <h4 class="text-xl font-black text-white mb-2">Empresa / Jurídica</h4>
+                <p class="text-xs text-white/70 leading-relaxed font-normal">Sociedad SpA, EIRL, Ltda. o entidad con RUT tributario que requiere factura o contratos comerciales.</p>
+              </div>
+              <div class="mt-6 pt-3 border-t border-white/15 text-[0.68rem] font-bold uppercase tracking-wider text-white/60 group-hover:text-white">
+                Razón Social &amp; Facturación &rarr;
+              </div>
+            </label>
+          </div>
+
+          <div class="mt-8 flex justify-end">
+            <button type="button" class="btn-step-next bg-white hover:bg-neutral-200 text-black px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_0_25px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 flex items-center gap-2">
+              <span>Continuar a Escala de Operación</span>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════
+             PASO 2: RANGO / ESCALA (Emprendimiento, Empresa, Corporación)
+        ══════════════════════════════════════════════ -->
+        <div class="funnel-step hidden" id="f-step-2">
+          <div class="mb-6">
+            <span class="text-[0.68rem] font-black uppercase tracking-[0.25em] text-white/50 block mb-1">Paso 02</span>
+            <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight mb-2">¿En qué rango u escala opera tu negocio?</h3>
+            <p class="text-sm text-white/70 font-normal">Esto nos permite estructurar la arquitectura y dimensionar los recursos exactos para tu cotización.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5 my-8">
+            <!-- Emprendimiento -->
+            <label class="escala-card is-selected group p-6 rounded-2xl border-2 border-white bg-white/[0.08] cursor-pointer transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+              <input type="radio" name="f-escala" value="Emprendimiento" class="sr-only" checked />
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-[0.62rem] font-black uppercase tracking-widest text-white/60">Rango 01</span>
+                  <span class="card-check w-5 h-5 rounded-full bg-white text-black text-[0.65rem] font-bold flex items-center justify-center">✓</span>
+                </div>
+                <h4 class="text-lg font-black text-white mb-2">Emprendimiento</h4>
+                <p class="text-xs text-white/70 leading-relaxed font-normal">En fase inicial, validando mercado, captando primeros clientes y optimizando presupuesto de lanzamiento.</p>
+              </div>
+              <div class="mt-5 pt-3 border-t border-white/15 text-[0.65rem] font-bold uppercase tracking-wider text-white/70">
+                Lanzamiento Ágil
+              </div>
+            </label>
+
+            <!-- Empresa / PYME -->
+            <label class="escala-card group p-6 rounded-2xl border border-white/20 bg-black cursor-pointer transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 hover:border-white/40">
+              <input type="radio" name="f-escala" value="Empresa / PYME" class="sr-only" />
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-[0.62rem] font-black uppercase tracking-widest text-white/60">Rango 02</span>
+                  <span class="card-check hidden w-5 h-5 rounded-full bg-white text-black text-[0.65rem] font-bold flex items-center justify-center">✓</span>
+                </div>
+                <h4 class="text-lg font-black text-white mb-2">Empresa / PYME</h4>
+                <p class="text-xs text-white/70 leading-relaxed font-normal">Negocio en marcha consolidado, equipo de trabajo activo, buscando escalar ventas y automatizar procesos.</p>
+              </div>
+              <div class="mt-5 pt-3 border-t border-white/15 text-[0.65rem] font-bold uppercase tracking-wider text-white/70">
+                Crecimiento Comercial
+              </div>
+            </label>
+
+            <!-- Corporación -->
+            <label class="escala-card group p-6 rounded-2xl border border-white/20 bg-black cursor-pointer transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 hover:border-white/40">
+              <input type="radio" name="f-escala" value="Corporación" class="sr-only" />
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-[0.62rem] font-black uppercase tracking-widest text-white/60">Rango 03</span>
+                  <span class="card-check hidden w-5 h-5 rounded-full bg-white text-black text-[0.65rem] font-bold flex items-center justify-center">✓</span>
+                </div>
+                <h4 class="text-lg font-black text-white mb-2">Corporación</h4>
+                <p class="text-xs text-white/70 leading-relaxed font-normal">Alto volumen operacional, infraestructura de alta seguridad, integraciones complejas ERP/CRM y apps dedicadas.</p>
+              </div>
+              <div class="mt-5 pt-3 border-t border-white/15 text-[0.65rem] font-bold uppercase tracking-wider text-white/70">
+                Soluciones Enterprise
+              </div>
+            </label>
+          </div>
+
+          <div class="mt-8 flex justify-between items-center">
+            <button type="button" class="btn-step-prev border border-white/30 text-white/80 hover:text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-white/5 transition-all">
+              &larr; Volver
+            </button>
+            <button type="button" class="btn-step-next bg-white hover:bg-neutral-200 text-black px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_0_25px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 flex items-center gap-2">
+              <span>Continuar a Servicios</span>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════
+             PASO 3: SELECCIÓN DE SERVICIOS
+        ══════════════════════════════════════════════ -->
+        <div class="funnel-step hidden" id="f-step-3">
+          <div class="mb-5 flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+            <div>
+              <span class="text-[0.68rem] font-black uppercase tracking-[0.25em] text-white/50 block mb-1">Paso 03</span>
+              <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight mb-1.5">¿Qué servicio o solución requieres?</h3>
+              <p class="text-sm text-white/70 font-normal">Puedes marcar <strong class="text-white">uno o varios servicios</strong> simultáneamente para cotizar un paquete o solución integral.</p>
+            </div>
+            <div id="services-counter-badge" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-mono font-bold text-white shrink-0 self-start md:self-auto">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span id="services-count-text">1 servicio seleccionado</span>
+            </div>
+          </div>
+
+          <!-- Quick Combo Presets -->
+          <div class="mb-6 p-4 rounded-2xl bg-white/[0.03] border border-white/15">
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="text-[0.65rem] font-black uppercase tracking-wider text-white/70 flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span>Armar Paquete / Combo Rápido:</span>
+              </span>
+              <button type="button" id="btn-clear-services" class="text-[0.65rem] font-bold text-white/40 hover:text-white transition-colors underline cursor-pointer">
+                Desmarcar todos
+              </button>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" class="btn-service-preset px-3 py-1.5 rounded-full text-xs font-bold bg-black border border-white/25 hover:border-white text-white/90 hover:text-white transition-all flex items-center gap-2 hover:scale-[1.02] cursor-pointer" data-services="web,app,ia">
+                <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+                <span>Combo: E-Commerce + App Móvil + Agente IA</span>
+              </button>
+              <button type="button" class="btn-service-preset px-3 py-1.5 rounded-full text-xs font-bold bg-black border border-white/25 hover:border-white text-white/90 hover:text-white transition-all flex items-center gap-2 hover:scale-[1.02] cursor-pointer" data-services="web,ads">
+                <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+                <span>Pack Growth: Web E-Commerce + Meta Ads</span>
+              </button>
+              <button type="button" class="btn-service-preset px-3 py-1.5 rounded-full text-xs font-bold bg-black border border-white/25 hover:border-white text-white/90 hover:text-white transition-all flex items-center gap-2 hover:scale-[1.02] cursor-pointer" data-services="web,app,erp,ia">
+                <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m3 0h1m-1-4h.01M9 16h.01M9 12h.01M9 8h.01M15 16h.01M15 12h.01M15 8h.01" />
+                </svg>
+                <span>Ecosistema Total (Web + App + ERP + IA)</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4.5 my-6" id="services-checklist">
+            
+            <!-- 1. Apps Móviles iOS & Android (NUEVO) -->
+            <div class="service-pill-card group p-5 rounded-2xl border border-white/20 bg-black cursor-pointer transition-all duration-200 flex items-start gap-4 hover:border-white/40 hover:-translate-y-0.5 select-none" data-service-key="app">
+              <input type="checkbox" name="f-servicios" value="Aplicaciones Móviles (iOS & Android)" class="sr-only service-check" />
+              <div class="pill-check-indicator w-5 h-5 rounded-md border border-white/30 bg-black flex items-center justify-center shrink-0 mt-0.5 transition-all text-black font-bold text-xs"></div>
+              <div>
+                <span class="text-[0.62rem] font-black uppercase tracking-wider text-emerald-400 block mb-1">Ecosistema Móvil</span>
+                <h4 class="text-sm font-black text-white mb-1">Apps iOS &amp; Android</h4>
+                <p class="text-xs text-white/60 leading-relaxed font-normal">Desarrollo nativo e híbrido publicado en App Store y Google Play.</p>
+              </div>
+            </div>
+
+            <!-- 2. Desarrollo Web & SEO -->
+            <div class="service-pill-card is-selected group p-5 rounded-2xl border-2 border-white bg-white/[0.08] cursor-pointer transition-all duration-200 flex items-start gap-4 hover:border-white hover:-translate-y-0.5 select-none" data-service-key="web">
+              <input type="checkbox" name="f-servicios" value="Desarrollo Web & E-Commerce con SEO" class="sr-only service-check" checked />
+              <div class="pill-check-indicator w-5 h-5 rounded-md border border-white bg-white flex items-center justify-center shrink-0 mt-0.5 transition-all text-black font-bold text-xs">✓</div>
+              <div>
+                <span class="text-[0.62rem] font-black uppercase tracking-wider text-white/60 block mb-1">Presencia Digital</span>
+                <h4 class="text-sm font-black text-white mb-1">Desarrollo Web &amp; E-Commerce</h4>
+                <p class="text-xs text-white/60 leading-relaxed font-normal">Páginas de alta velocidad optimizadas para posicionamiento SEO en Google.</p>
+              </div>
+            </div>
+
+            <!-- 3. Campañas Meta Ads -->
+            <div class="service-pill-card group p-5 rounded-2xl border border-white/20 bg-black cursor-pointer transition-all duration-200 flex items-start gap-4 hover:border-white/40 hover:-translate-y-0.5 select-none" data-service-key="ads">
+              <input type="checkbox" name="f-servicios" value="Campañas Publicitarias Meta Ads (FB & IG)" class="sr-only service-check" />
+              <div class="pill-check-indicator w-5 h-5 rounded-md border border-white/30 bg-black flex items-center justify-center shrink-0 mt-0.5 transition-all text-black font-bold text-xs"></div>
+              <div>
+                <span class="text-[0.62rem] font-black uppercase tracking-wider text-white/60 block mb-1">Adquisición</span>
+                <h4 class="text-sm font-black text-white mb-1">Campañas Meta Ads (FB/IG)</h4>
+                <p class="text-xs text-white/60 leading-relaxed font-normal">Anuncios de alta conversión para atraer clientes cualificados a tus canales.</p>
+              </div>
+            </div>
+
+            <!-- 4. Agentes IA & WhatsApp -->
+            <div class="service-pill-card group p-5 rounded-2xl border border-white/20 bg-black cursor-pointer transition-all duration-200 flex items-start gap-4 hover:border-white/40 hover:-translate-y-0.5 select-none" data-service-key="ia">
+              <input type="checkbox" name="f-servicios" value="Agentes IA & Automatización en WhatsApp" class="sr-only service-check" />
+              <div class="pill-check-indicator w-5 h-5 rounded-md border border-white/30 bg-black flex items-center justify-center shrink-0 mt-0.5 transition-all text-black font-bold text-xs"></div>
+              <div>
+                <span class="text-[0.62rem] font-black uppercase tracking-wider text-white/60 block mb-1">Automatización 24/7</span>
+                <h4 class="text-sm font-black text-white mb-1">Agentes IA WhatsApp</h4>
+                <p class="text-xs text-white/60 leading-relaxed font-normal">Asistentes inteligentes que atienden, cotizan y agendan citas día y noche.</p>
+              </div>
+            </div>
+
+            <!-- 5. Software a Medida & ERP -->
+            <div class="service-pill-card group p-5 rounded-2xl border border-white/20 bg-black cursor-pointer transition-all duration-200 flex items-start gap-4 hover:border-white/40 hover:-translate-y-0.5 select-none" data-service-key="erp">
+              <input type="checkbox" name="f-servicios" value="Software a Medida & Sistemas ERP/CRM" class="sr-only service-check" />
+              <div class="pill-check-indicator w-5 h-5 rounded-md border border-white/30 bg-black flex items-center justify-center shrink-0 mt-0.5 transition-all text-black font-bold text-xs"></div>
+              <div>
+                <span class="text-[0.62rem] font-black uppercase tracking-wider text-white/60 block mb-1">Ingeniería</span>
+                <h4 class="text-sm font-black text-white mb-1">Software a Medida &amp; ERP</h4>
+                <p class="text-xs text-white/60 leading-relaxed font-normal">Sistemas de inventario, facturación, pasarelas API y CRM corporativo.</p>
+              </div>
+            </div>
+
+            <!-- 6. Formalización Tu Empresa en 1 Día -->
+            <div class="service-pill-card group p-5 rounded-2xl border border-white/20 bg-black cursor-pointer transition-all duration-200 flex items-start gap-4 hover:border-white/40 hover:-translate-y-0.5 select-none" data-service-key="legal">
+              <input type="checkbox" name="f-servicios" value="Formalización: Tu Empresa en 1 Día + SII" class="sr-only service-check" />
+              <div class="pill-check-indicator w-5 h-5 rounded-md border border-white/30 bg-black flex items-center justify-center shrink-0 mt-0.5 transition-all text-black font-bold text-xs"></div>
+              <div>
+                <span class="text-[0.62rem] font-black uppercase tracking-wider text-white/60 block mb-1">Legal &amp; Tributario</span>
+                <h4 class="text-sm font-black text-white mb-1">Tu Empresa en 1 Día</h4>
+                <p class="text-xs text-white/60 leading-relaxed font-normal">Constitución legal, RUT, inicio de actividades SII y habilitación para facturar.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="mt-8 flex justify-between items-center">
+            <button type="button" class="btn-step-prev border border-white/30 text-white/80 hover:text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-white/5 transition-all">
+              &larr; Volver
+            </button>
+            <button type="button" class="btn-step-next bg-white hover:bg-neutral-200 text-black px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_0_25px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 flex items-center gap-2">
+              <span>Continuar a Alcance &amp; Plazo</span>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════
+             PASO 4: ALCANCE, PLAZO & PRESUPUESTO
+        ══════════════════════════════════════════════ -->
+        <div class="funnel-step hidden" id="f-step-4">
+          <div class="mb-6">
+            <span class="text-[0.68rem] font-black uppercase tracking-[0.25em] text-white/50 block mb-1">Paso 04</span>
+            <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight mb-2">Alcance, Plazos &amp; Presupuesto</h3>
+            <p class="text-sm text-white/70 font-normal">Define la urgencia y el rango de inversión proyectado para formular la propuesta exacta.</p>
+          </div>
+
+          <div class="space-y-6 my-8">
+            <!-- Plazo Requerido -->
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-white/70 mb-3">Plazo Estimado de Entrega</label>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <label class="plazo-pill is-selected p-3.5 rounded-xl border-2 border-white bg-white/10 text-center cursor-pointer transition-all">
+                  <input type="radio" name="f-plazo" value="Urgente (Menos de 15 días)" class="sr-only" checked />
+                  <span class="text-xs font-bold text-white block">Urgente (&lt; 15 días)</span>
+                </label>
+                <label class="plazo-pill p-3.5 rounded-xl border border-white/20 bg-black text-center cursor-pointer transition-all hover:border-white/40">
+                  <input type="radio" name="f-plazo" value="Estándar (1 a 2 Meses)" class="sr-only" />
+                  <span class="text-xs font-bold text-white/80 block">Estándar (1 a 2 Meses)</span>
+                </label>
+                <label class="plazo-pill p-3.5 rounded-xl border border-white/20 bg-black text-center cursor-pointer transition-all hover:border-white/40">
+                  <input type="radio" name="f-plazo" value="Flexible / Planificación previa" class="sr-only" />
+                  <span class="text-xs font-bold text-white/80 block">Planificación Flexible</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Nivel de Capital Pensado -->
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-white/70 mb-3">Rango de Inversión / Capital Proyectado</label>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <label class="capital-pill is-selected p-3.5 rounded-xl border-2 border-white bg-white/10 text-center cursor-pointer transition-all">
+                  <input type="radio" name="f-capital" value="inicial" class="sr-only" checked />
+                  <span class="text-xs font-bold text-white block">Capital Inicial</span>
+                  <span class="text-[0.65rem] text-white/60 block mt-0.5">Solución de entrada</span>
+                </label>
+                <label class="capital-pill p-3.5 rounded-xl border border-white/20 bg-black text-center cursor-pointer transition-all hover:border-white/40">
+                  <input type="radio" name="f-capital" value="medio" class="sr-only" />
+                  <span class="text-xs font-bold text-white/80 block">Capital Mediano</span>
+                  <span class="text-[0.65rem] text-white/60 block mt-0.5">Crecimiento y escala</span>
+                </label>
+                <label class="capital-pill p-3.5 rounded-xl border border-white/20 bg-black text-center cursor-pointer transition-all hover:border-white/40">
+                  <input type="radio" name="f-capital" value="alto" class="sr-only" />
+                  <span class="text-xs font-bold text-white/80 block">Corporativo / Alto</span>
+                  <span class="text-[0.65rem] text-white/60 block mt-0.5">Desarrollo integral</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Descripción específica del requerimiento -->
+            <div>
+              <label for="f-detalles" class="block text-xs font-bold uppercase tracking-wider text-white/70 mb-2">
+                Detalles del Requerimiento (Opcional pero recomendado)
+              </label>
+              <textarea 
+                id="f-detalles" 
+                rows="3" 
+                placeholder="Ej: Necesitamos una app móvil para iOS y Android sincronizada con nuestra tienda web y atención en WhatsApp..."
+                class="w-full bg-[#000000] border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all resize-none shadow-sm"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="mt-8 flex justify-between items-center">
+            <button type="button" class="btn-step-prev border border-white/30 text-white/80 hover:text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-white/5 transition-all">
+              &larr; Volver
+            </button>
+            <button type="button" class="btn-step-next bg-white hover:bg-neutral-200 text-black px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_0_25px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 flex items-center gap-2">
+              <span>Continuar a Datos de Contacto</span>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════
+             PASO 5: DATOS DE CONTACTO (DINÁMICO SEGÚN ENTIDAD)
+        ══════════════════════════════════════════════ -->
+        <div class="funnel-step hidden" id="f-step-5">
+          <div class="mb-6">
+            <span class="text-[0.68rem] font-black uppercase tracking-[0.25em] text-white/50 block mb-1">Paso 05</span>
+            <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight mb-2">Datos para emitir la Cotización Formal</h3>
+            <p class="text-sm text-white/70 font-normal">Ingresa tus datos de contacto para hacerte llegar el documento oficial con el presupuesto detallado.</p>
+          </div>
+
+          <!-- Campos Persona Natural -->
+          <div id="fields-wrap-persona" class="grid grid-cols-1 md:grid-cols-2 gap-5 my-8">
+            <div>
+              <label for="p_nombre" class="text-[10px] font-bold uppercase tracking-widest text-white/60 block mb-2">Nombre Completo *</label>
+              <input type="text" id="p_nombre" class="w-full bg-[#000000] border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-white outline-none transition-all" placeholder="Ej: Juan Pérez" />
+            </div>
+            <div>
+              <label for="p_rut" class="text-[10px] font-bold uppercase tracking-widest text-white/60 block mb-2">RUT Personal (Opcional)</label>
+              <input type="text" id="p_rut" class="w-full bg-[#000000] border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-white outline-none transition-all" placeholder="Ej: 16.789.012-3" />
+            </div>
+            <div>
+              <label for="p_proyecto" class="text-[10px] font-bold uppercase tracking-widest text-white/60 block mb-2">Nombre del Proyecto / Marca *</label>
+              <input type="text" id="p_proyecto" class="w-full bg-[#000000] border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-white outline-none transition-all" placeholder="Ej: MiApp Store / Proyecto Tech" />
+            </div>
+            <div>
+              <label for="p_fono" class="text-[10px] font-bold uppercase tracking-widest text-white/60 block mb-2">Teléfono / WhatsApp *</label>
+              <input type="tel" id="p_fono" class="w-full bg-[#000000] border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-white outline-none transition-all" placeholder="+56 9 XXXX XXXX" />
+            </div>
+            <div class="md:col-span-2">
+              <label for="p_correo" class="text-[10px] font-bold uppercase tracking-widest text-white/60 block mb-2">Correo Electrónico *</label>
+              <input type="email" id="p_correo" class="w-full bg-[#000000] border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-white outline-none transition-all" placeholder="tu.correo@gmail.com" />
+            </div>
+          </div>
+
+          <!-- Campos Empresa -->
+          <div id="fields-wrap-empresa" class="grid grid-cols-1 md:grid-cols-2 gap-5 my-8 hidden">
+            <div>
+              <label for="e_razon" class="text-[10px] font-bold uppercase tracking-widest text-white/60 block mb-2">Razón Social / Nombre Empresa *</label>
+              <input type="text" id="e_razon" class="w-full bg-[#000000] border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-white outline-none transition-all" placeholder="Ej: Inversiones y Tecnología SpA" />
+            </div>
+            <div>
+              <label for="e_rut" class="text-[10px] font-bold uppercase tracking-widest text-white/60 block mb-2">RUT Empresa *</label>
+              <input type="text" id="e_rut" class="w-full bg-[#000000] border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-white outline-none transition-all" placeholder="Ej: 77.123.456-7" />
+            </div>
+            <div>
+              <label for="e_contacto" class="text-[10px] font-bold uppercase tracking-widest text-white/60 block mb-2">Nombre Representante / Contacto *</label>
+              <input type="text" id="e_contacto" class="w-full bg-[#000000] border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-white outline-none transition-all" placeholder="Ej: María José Silva" />
+            </div>
+            <div>
+              <label for="e_fono" class="text-[10px] font-bold uppercase tracking-widest text-white/60 block mb-2">Teléfono / WhatsApp Empresa *</label>
+              <input type="tel" id="e_fono" class="w-full bg-[#000000] border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-white outline-none transition-all" placeholder="+56 9 XXXX XXXX" />
+            </div>
+            <div class="md:col-span-2">
+              <label for="e_correo" class="text-[10px] font-bold uppercase tracking-widest text-white/60 block mb-2">Correo Corporativo de la Empresa *</label>
+              <input type="email" id="e_correo" class="w-full bg-[#000000] border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-white outline-none transition-all" placeholder="contacto@tuempresa.cl" />
+            </div>
+          </div>
+
+          <div class="mt-8 flex justify-between items-center">
+            <button type="button" class="btn-step-prev border border-white/30 text-white/80 hover:text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-white/5 transition-all">
+              &larr; Volver
+            </button>
+            <button type="button" id="btn-generate-final-summary" class="bg-white hover:bg-neutral-200 text-black px-8 py-3.5 rounded-full font-black text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.35)] hover:scale-105 active:scale-95 flex items-center gap-2">
+              <span>Ver Resumen &amp; Solicitar Cotización</span>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+      <!-- ══════════════════════════════════════════════
+           PANTALLA FINAL: RESUMEN Y DOBLE BOTÓN DE COTIZACIÓN
+      ══════════════════════════════════════════════ -->
+      <div id="funnel-summary-panel" class="hidden">
+        <div class="text-center mb-8 pb-6 border-b border-white/15">
+          <span class="px-4 py-1.5 text-[0.68rem] font-black uppercase tracking-widest bg-white text-black rounded-full mb-3 inline-block shadow-md">
+            Diagnóstico Comercial Completado
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-black text-white mb-2">
+            Resumen de tu Solicitud de Cotización
+          </h3>
+          <p class="text-sm text-white/70 max-w-xl mx-auto font-normal">
+            Hemos consolidado tus requerimientos. Elige cómo deseas solicitar tu cotización formal:
+          </p>
+        </div>
+
+        <!-- Ficha Resumen -->
+        <div class="p-6 rounded-2xl bg-white/[0.04] border border-white/20 mb-8 space-y-3.5 text-sm">
+          <div class="flex flex-col sm:flex-row sm:justify-between py-1.5 border-b border-white/10">
+            <span class="text-white/50 text-xs uppercase font-bold">Tipo de Solicitante:</span>
+            <span id="sum-entidad" class="text-white font-bold"></span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between py-1.5 border-b border-white/10">
+            <span class="text-white/50 text-xs uppercase font-bold">Rango / Escala:</span>
+            <span id="sum-escala" class="text-white font-bold"></span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between py-1.5 border-b border-white/10">
+            <span class="text-white/50 text-xs uppercase font-bold">Servicios Solicitados:</span>
+            <span id="sum-servicios" class="text-white font-bold text-right max-w-md"></span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between py-1.5 border-b border-white/10">
+            <span class="text-white/50 text-xs uppercase font-bold">Plazo &amp; Capital Estimado:</span>
+            <span id="sum-plazo-capital" class="text-white font-bold"></span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between py-1.5">
+            <span class="text-white/50 text-xs uppercase font-bold">Datos de Contacto:</span>
+            <span id="sum-contacto" class="text-white font-bold text-right"></span>
+          </div>
+        </div>
+
+        <!-- Alerta informativa -->
+        <div class="p-4 rounded-xl bg-black border border-white/20 text-xs text-white/80 mb-8 flex items-center gap-3">
+          <svg class="w-4 h-4 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>
+            Recibirás un documento formal con el desglose técnico, tiempos de entrega y presupuesto adaptado a tu escala.
+          </span>
+        </div>
+
+        <!-- DOBLE ACCIÓN: BOTÓN WHATSAPP O BOTÓN WEB -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-w-xl mx-auto">
+          <!-- Botón 1: WhatsApp Inmediato -->
+          <a
+            id="btn-cotizar-whatsapp"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="h-12 px-5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.35)] hover:scale-[1.02] active:scale-98 flex items-center justify-center gap-2 text-center whitespace-nowrap"
+          >
+            <svg width="18" height="18" class="shrink-0 fill-current" style="width: 18px; height: 18px; min-width: 18px; max-width: 18px;" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.588 1.977 14.131.953 11.527.953c-5.439 0-9.859 4.373-9.864 9.803-.002 1.83.491 3.62 1.424 5.2l-.931 3.398 3.49-.917zm12.338-7.397c-.272-.136-1.61-.794-1.86-.885-.25-.091-.432-.136-.613.136-.182.271-.703.885-.862 1.066-.158.181-.317.204-.589.068-.272-.136-1.15-.424-2.19-1.352-.809-.721-1.355-1.613-1.514-1.884-.158-.271-.017-.417.119-.553.122-.122.272-.317.408-.475.136-.158.181-.271.272-.452.09-.181.045-.339-.022-.475-.068-.136-.613-1.478-.839-2.02-.22-.53-.442-.458-.607-.466-.157-.008-.339-.008-.521-.008-.181 0-.475.068-.724.339-.249.271-.95 1.04-1.04 2.533s1.085 2.937 1.233 3.14c.149.203 2.136 3.262 5.176 4.57.723.311 1.288.497 1.728.637.726.23 1.387.197 1.91.12.583-.086 1.79-.73 2.046-1.434.256-.704.256-1.31.179-1.434-.076-.124-.277-.197-.549-.333z"/>
+            </svg>
+            <span>Solicitar por WhatsApp</span>
+          </a>
+
+          <!-- Botón 2: Correo Web Oficial -->
+          <button
+            type="button"
+            id="btn-cotizar-web"
+            class="h-12 px-5 rounded-full bg-white hover:bg-neutral-200 text-black font-extrabold text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.25)] hover:scale-[1.02] active:scale-98 flex items-center justify-center gap-2 text-center whitespace-nowrap"
+          >
+            <svg width="18" height="18" class="shrink-0 text-black" style="width: 18px; height: 18px; min-width: 18px; max-width: 18px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <span>Solicitar por Correo</span>
+          </button>
+        </div>
+
+        <div class="mt-6 text-center">
+          <button type="button" id="btn-edit-funnel" class="text-xs font-bold text-white/50 hover:text-white transition-colors underline">
+            &larr; Modificar datos del embudo
+          </button>
+        </div>
+      </div>
+
+      <!-- PANEL DE ÉXITO WEB -->
+      <div id="funnel-success-panel" class="hidden text-center py-8">
+        <div class="w-16 h-16 mx-auto mb-5 rounded-full bg-white/10 border-2 border-white flex items-center justify-center text-white shadow-[0_0_25px_rgba(255,255,255,0.3)]">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+        <span class="px-4 py-1 text-[0.68rem] font-bold uppercase tracking-widest bg-white/10 text-white rounded-full inline-block mb-3 border border-white/20">
+          Solicitud Registrada con Éxito
+        </span>
+        <h3 class="text-2xl sm:text-3xl font-black text-white mb-3">Hemos recibido tu requerimiento</h3>
+        <p class="text-sm text-white/70 max-w-lg mx-auto leading-relaxed mb-6">
+          Te enviamos una confirmación oficial a <span id="succ-display-email" class="text-white font-bold underline"></span>. Nuestro equipo preparará tu cotización formal a la brevedad.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3.5 max-w-md mx-auto">
+          <a id="succ-direct-wa" href="#" target="_blank" rel="noopener noreferrer" class="flex-1 py-3.5 px-6 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs uppercase tracking-widest transition-all text-center">
+            Conversar por WhatsApp Ahora
+          </a>
+          <button type="button" id="btn-new-funnel" class="py-3.5 px-6 rounded-full border border-white/30 text-white/80 hover:text-white font-bold text-xs uppercase tracking-widest transition-all">
+            Nueva Solicitud
+          </button>
+        </div>
+      </div>
+
     </div>
+
   </div>
 </section>
 
-<script>
-  const form = document.getElementById('contactForm') as HTMLFormElement;
-  const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
-  const formMsg = document.getElementById('formMsg') as HTMLDivElement;
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    let currentStep = 1;
+    let selectedEntidad = 'persona';
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+    const stepTitles = {
+      1: 'TIPO DE ENTIDAD',
+      2: 'ESCALA DE OPERACIÓN',
+      3: 'SELECCIÓN DE SERVICIOS',
+      4: 'ALCANCE & INVERSIÓN',
+      5: 'DATOS DE CONTACTO'
+    };
 
-    const empresa = (document.getElementById('empresa') as HTMLInputElement).value;
-    const telefono_empresa = (document.getElementById('telefono_empresa') as HTMLInputElement).value;
-    const solicitante = (document.getElementById('solicitante') as HTMLInputElement).value;
-    const telefono_solicitante = (document.getElementById('telefono_solicitante') as HTMLInputElement).value;
-    const correo = (document.getElementById('correo') as HTMLInputElement).value;
-    const servicio = (document.getElementById('servicio') as HTMLSelectElement).value;
-    const _honeypot = (document.getElementById('_honeypot') as HTMLInputElement).value;
+    const stepWidths = {
+      1: 'w-1/5',
+      2: 'w-2/5',
+      3: 'w-3/5',
+      4: 'w-4/5',
+      5: 'w-full'
+    };
 
-    submitBtn.textContent = 'Enviando...';
-    submitBtn.disabled = true;
+    const stepBadge = document.getElementById('funnel-step-badge');
+    const stepTitle = document.getElementById('funnel-step-title');
+    const progressFill = document.getElementById('funnel-progress-fill');
+    const form = document.getElementById('funnelForm');
+    const progressWrap = document.getElementById('funnel-progress-wrap');
+    const summaryPanel = document.getElementById('funnel-summary-panel');
+    const successPanel = document.getElementById('funnel-success-panel');
 
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ empresa, telefono_empresa, solicitante, telefono_solicitante, correo, servicio, _honeypot }),
+    // Toggle Entidad (Persona vs Empresa)
+    const entidadCards = document.querySelectorAll('.entidad-card');
+    const fieldsWrapPersona = document.getElementById('fields-wrap-persona');
+    const fieldsWrapEmpresa = document.getElementById('fields-wrap-empresa');
+
+    entidadCards.forEach(card => {
+      card.addEventListener('click', () => {
+        entidadCards.forEach(c => {
+          c.classList.remove('is-selected', 'border-2', 'border-white', 'bg-white/[0.08]', 'shadow-[0_0_30px_rgba(255,255,255,0.1)]');
+          c.classList.add('border-white/20', 'bg-black');
+          const chk = c.querySelector('.card-check');
+          if (chk) chk.classList.add('hidden');
+        });
+
+        card.classList.add('is-selected', 'border-2', 'border-white', 'bg-white/[0.08]', 'shadow-[0_0_30px_rgba(255,255,255,0.1)]');
+        card.classList.remove('border-white/20', 'bg-black');
+        const chk = card.querySelector('.card-check');
+        if (chk) chk.classList.remove('hidden');
+
+        const radio = card.querySelector('input[type="radio"]');
+        if (radio) {
+          radio.checked = true;
+          selectedEntidad = radio.value;
+        }
+
+        if (selectedEntidad === 'persona') {
+          fieldsWrapPersona?.classList.remove('hidden');
+          fieldsWrapEmpresa?.classList.add('hidden');
+        } else {
+          fieldsWrapEmpresa?.classList.remove('hidden');
+          fieldsWrapPersona?.classList.add('hidden');
+        }
       });
+    });
 
-      if (res.ok) {
-        formMsg.textContent = '✅ Solicitud enviada. Te contactaremos a la brevedad.';
-        formMsg.className = 'text-sm text-green-600 font-medium block';
-        form.reset();
+    // Toggle Escala
+    const escalaCards = document.querySelectorAll('.escala-card');
+    escalaCards.forEach(card => {
+      card.addEventListener('click', () => {
+        escalaCards.forEach(c => {
+          c.classList.remove('is-selected', 'border-2', 'border-white', 'bg-white/[0.08]');
+          c.classList.add('border-white/20', 'bg-black');
+          const chk = c.querySelector('.card-check');
+          if (chk) chk.classList.add('hidden');
+        });
+        card.classList.add('is-selected', 'border-2', 'border-white', 'bg-white/[0.08]');
+        card.classList.remove('border-white/20', 'bg-black');
+        const chk = card.querySelector('.card-check');
+        if (chk) chk.classList.remove('hidden');
+        const radio = card.querySelector('input[type="radio"]');
+        if (radio) radio.checked = true;
+      });
+    });
+
+    // Checkbox Servicios Multi-Select & Combos
+    const servicePillCards = document.querySelectorAll('.service-pill-card');
+    const serviceCountText = document.getElementById('services-count-text');
+
+    function syncServiceCardVisual(card, isChecked) {
+      const indicator = card.querySelector('.pill-check-indicator');
+      if (isChecked) {
+        card.classList.add('is-selected', 'border-2', 'border-white', 'bg-white/[0.12]', 'shadow-[0_0_20px_rgba(255,255,255,0.15)]');
+        card.classList.remove('border-white/20', 'bg-black');
+        if (indicator) {
+          indicator.className = 'pill-check-indicator w-5 h-5 rounded-md border border-white bg-white flex items-center justify-center shrink-0 mt-0.5 transition-all text-black font-black text-xs shadow-[0_0_10px_rgba(255,255,255,0.4)]';
+          indicator.textContent = '✓';
+        }
       } else {
-        throw new Error();
+        card.classList.remove('is-selected', 'border-2', 'border-white', 'bg-white/[0.12]', 'shadow-[0_0_20px_rgba(255,255,255,0.15)]');
+        card.classList.add('border-white/20', 'bg-black');
+        if (indicator) {
+          indicator.className = 'pill-check-indicator w-5 h-5 rounded-md border border-white/30 bg-black flex items-center justify-center shrink-0 mt-0.5 transition-all text-black font-bold text-xs';
+          indicator.textContent = '';
+        }
       }
-    } catch {
-      formMsg.textContent = '❌ Error al enviar. Intente nuevamente.';
-      formMsg.className = 'text-sm text-red-600 font-medium block';
-    } finally {
-      submitBtn.textContent = 'Enviar Solicitud';
-      submitBtn.disabled = false;
     }
+
+    function updateServicesCounter() {
+      const checkedBoxes = document.querySelectorAll('.service-check:checked');
+      const count = checkedBoxes.length;
+      if (serviceCountText) {
+        if (count === 0) {
+          serviceCountText.textContent = '0 servicios seleccionados';
+        } else if (count === 1) {
+          serviceCountText.textContent = '1 servicio seleccionado';
+        } else {
+          serviceCountText.textContent = `${count} servicios en combo`;
+        }
+      }
+    }
+
+    servicePillCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const checkbox = card.querySelector('.service-check');
+        if (!checkbox) return;
+        checkbox.checked = !checkbox.checked;
+        syncServiceCardVisual(card, checkbox.checked);
+        updateServicesCounter();
+      });
+    });
+
+    // Preset Combo Buttons
+    document.querySelectorAll('.btn-service-preset').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const keysStr = btn.getAttribute('data-services') || '';
+        const targetKeys = keysStr.split(',').map(s => s.trim());
+        
+        servicePillCards.forEach(card => {
+          const key = card.getAttribute('data-service-key');
+          const checkbox = card.querySelector('.service-check');
+          if (!checkbox) return;
+          const shouldCheck = targetKeys.includes(key);
+          checkbox.checked = shouldCheck;
+          syncServiceCardVisual(card, shouldCheck);
+        });
+        updateServicesCounter();
+      });
+    });
+
+    // Clear All Services Button
+    document.getElementById('btn-clear-services')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      servicePillCards.forEach(card => {
+        const checkbox = card.querySelector('.service-check');
+        if (checkbox) checkbox.checked = false;
+        syncServiceCardVisual(card, false);
+      });
+      updateServicesCounter();
+    });
+
+    // Initialize services counter on load
+    updateServicesCounter();
+
+    // Plazo & Capital Radio Pills
+    function setupRadioPills(selector, name) {
+      document.querySelectorAll(selector).forEach(pill => {
+        pill.addEventListener('click', () => {
+          document.querySelectorAll(selector).forEach(p => {
+            p.classList.remove('is-selected', 'border-2', 'border-white', 'bg-white/10');
+            p.classList.add('border-white/20', 'bg-black');
+          });
+          pill.classList.add('is-selected', 'border-2', 'border-white', 'bg-white/10');
+          pill.classList.remove('border-white/20', 'bg-black');
+          const radio = pill.querySelector(`input[name="${name}"]`);
+          if (radio) radio.checked = true;
+        });
+      });
+    }
+    setupRadioPills('.plazo-pill', 'f-plazo');
+    setupRadioPills('.capital-pill', 'f-capital');
+
+    function updateStep(step) {
+      document.querySelectorAll('.funnel-step').forEach(s => s.classList.add('hidden'));
+      const activeStep = document.getElementById(`f-step-${step}`);
+      if (activeStep) activeStep.classList.remove('hidden');
+
+      if (stepBadge) stepBadge.textContent = `PASO 0${step} / 05`;
+      if (stepTitle) stepTitle.textContent = stepTitles[step] || '';
+      if (progressFill) {
+        progressFill.className = `absolute left-0 top-0 h-full ${stepWidths[step]} bg-gradient-to-r from-white via-neutral-200 to-white rounded-full transition-all duration-500 ease-out shadow-[0_0_15px_rgba(255,255,255,0.7)]`;
+      }
+
+      document.querySelectorAll('.step-nav-dot').forEach((dot, index) => {
+        const idx = index + 1;
+        const circle = dot.querySelector('.dot-circle');
+        const label = dot.querySelector('.dot-label');
+        if (idx <= step) {
+          if (circle) {
+            circle.className = idx === step 
+              ? 'dot-circle w-7 h-7 mx-auto rounded-full flex items-center justify-center text-[0.7rem] font-black border-2 border-white bg-white text-black transition-all shadow-[0_0_15px_rgba(255,255,255,0.6)] scale-110'
+              : 'dot-circle w-7 h-7 mx-auto rounded-full flex items-center justify-center text-[0.7rem] font-bold border-2 border-white bg-white text-black transition-all';
+            circle.textContent = idx < step ? '✓' : String(idx);
+          }
+          if (label) label.className = 'dot-label hidden sm:block text-[0.62rem] font-bold uppercase tracking-wider mt-1.5 text-white';
+        } else {
+          if (circle) {
+            circle.className = 'dot-circle w-7 h-7 mx-auto rounded-full flex items-center justify-center text-[0.7rem] font-bold border border-white/30 bg-black text-white/70 transition-all';
+            circle.textContent = String(idx);
+          }
+          if (label) label.className = 'dot-label hidden sm:block text-[0.62rem] font-bold uppercase tracking-wider mt-1.5 text-white/50';
+        }
+      });
+    }
+
+    // Step Nav Dot Click
+    document.querySelectorAll('.step-nav-dot').forEach(dot => {
+      dot.addEventListener('click', () => {
+        const target = parseInt(dot.getAttribute('data-step-target') || '1', 10);
+        if (target < currentStep) {
+          currentStep = target;
+          updateStep(currentStep);
+        }
+      });
+    });
+
+    // Next Buttons
+    document.querySelectorAll('.btn-step-next').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (currentStep === 3) {
+          // Verify at least one service selected
+          const checked = document.querySelectorAll('.service-check:checked');
+          if (checked.length === 0) {
+            alert('Por favor selecciona al menos un servicio para cotizar.');
+            return;
+          }
+        }
+        if (currentStep < 5) {
+          currentStep++;
+          updateStep(currentStep);
+        }
+      });
+    });
+
+    // Prev Buttons
+    document.querySelectorAll('.btn-step-prev').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (currentStep > 1) {
+          currentStep--;
+          updateStep(currentStep);
+        }
+      });
+    });
+
+    // Collect Data Function
+    function getFunnelData() {
+      const entidad = (document.querySelector('input[name="f-entidad"]:checked'))?.value || 'persona';
+      const escala = (document.querySelector('input[name="f-escala"]:checked'))?.value || 'Emprendimiento';
+      
+      const checkedBoxes = Array.from(document.querySelectorAll('.service-check:checked'));
+      const serviciosList = checkedBoxes.map(el => el.value);
+      const serviciosStr = serviciosList.length ? serviciosList.join(', ') : 'Servicios Generales';
+      const plazo = (document.querySelector('input[name="f-plazo"]:checked'))?.value || 'Estándar';
+      const capital = (document.querySelector('input[name="f-capital"]:checked'))?.value || 'inicial';
+      const detalles = (document.getElementById('f-detalles'))?.value.trim() || '';
+
+      let nombre = '';
+      let rut = '';
+      let empresa = '';
+      let fono = '';
+      let correo = '';
+
+      if (entidad === 'persona') {
+        nombre = (document.getElementById('p_nombre'))?.value.trim() || '';
+        rut = (document.getElementById('p_rut'))?.value.trim() || 'No informado';
+        empresa = (document.getElementById('p_proyecto'))?.value.trim() || 'Proyecto Personal';
+        fono = (document.getElementById('p_fono'))?.value.trim() || '';
+        correo = (document.getElementById('p_correo'))?.value.trim() || '';
+      } else {
+        empresa = (document.getElementById('e_razon'))?.value.trim() || '';
+        rut = (document.getElementById('e_rut'))?.value.trim() || '';
+        nombre = (document.getElementById('e_contacto'))?.value.trim() || '';
+        fono = (document.getElementById('e_fono'))?.value.trim() || '';
+        correo = (document.getElementById('e_correo'))?.value.trim() || '';
+      }
+
+      return {
+        entidad: entidad === 'persona' ? 'Persona Natural' : 'Empresa / Persona Jurídica',
+        escala,
+        servicios: serviciosStr,
+        serviciosList: serviciosList.length ? serviciosList : ['Servicios Generales'],
+        plazo,
+        capital,
+        detalles,
+        nombre,
+        rut,
+        empresa,
+        fono,
+        correo
+      };
+    }
+
+    // Step 5 Validation & Show Summary
+    const btnGenerateSummary = document.getElementById('btn-generate-final-summary');
+    btnGenerateSummary?.addEventListener('click', () => {
+      const data = getFunnelData();
+
+      if (selectedEntidad === 'persona') {
+        if (!data.nombre || !data.empresa || !data.fono || !data.correo) {
+          alert('Por favor completa los campos obligatorios: Nombre, Nombre de Proyecto, Teléfono y Correo.');
+          return;
+        }
+      } else {
+        if (!data.empresa || !data.rut || !data.nombre || !data.fono || !data.correo) {
+          alert('Por favor completa los campos obligatorios para Empresa: Razón Social, RUT, Nombre Representante, Teléfono y Correo.');
+          return;
+        }
+      }
+
+      // Populate summary fields
+      const sumEntidad = document.getElementById('sum-entidad');
+      const sumEscala = document.getElementById('sum-escala');
+      const sumServicios = document.getElementById('sum-servicios');
+      const sumPlazoCapital = document.getElementById('sum-plazo-capital');
+      const sumContacto = document.getElementById('sum-contacto');
+
+      if (sumEntidad) sumEntidad.textContent = data.entidad;
+      if (sumEscala) sumEscala.textContent = data.escala;
+      if (sumServicios) {
+        sumServicios.innerHTML = data.serviciosList.map(s => 
+          `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 m-1 rounded-lg text-xs font-bold bg-white/10 border border-white/25 text-white shadow-sm"><span class="text-emerald-400 font-black">✓</span> ${s}</span>`
+        ).join('');
+      }
+      
+      let capLabel = 'Capital Inicial';
+      if (data.capital === 'medio') capLabel = 'Capital Mediano';
+      if (data.capital === 'alto') capLabel = 'Capital Alto / Corporativo';
+      if (sumPlazoCapital) sumPlazoCapital.textContent = `${data.plazo} · ${capLabel}`;
+      
+      if (sumContacto) sumContacto.innerHTML = `<span class="font-bold text-white">${data.nombre}</span> <span class="text-white/60">(${data.empresa})</span><br/><span class="text-xs text-white/70">Tel: ${data.fono} &nbsp;|&nbsp; Email: ${data.correo}</span>`;
+
+      // Build WhatsApp message with ultra-clean breakdown of all customer details and services
+      const waServicesFormatted = data.serviciosList.length > 1
+        ? '\n' + data.serviciosList.map(s => `  ✓ ${s}`).join('\n')
+        : ` ${data.servicios}`;
+
+      const waText = 
+        `📋 *SOLICITUD DE COTIZACIÓN FORMAL — VISION CODE*\n` +
+        `━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+        `👤 *DATOS DEL CLIENTE*\n` +
+        `• *Nombre / Solicitante:* ${data.nombre}\n` +
+        `• *Empresa / Proyecto:* ${data.empresa}\n` +
+        `• *RUT / Identificación:* ${data.rut}\n` +
+        `• *Tipo de Solicitante:* ${data.entidad}\n` +
+        `• *Teléfono:* ${data.fono}\n` +
+        `• *Correo:* ${data.correo}\n\n` +
+        `⚙️ *DESGLOSE DE SERVICIOS*\n` +
+        `• *Escala de Operación:* ${data.escala}\n` +
+        `• *Servicios Solicitados:*${waServicesFormatted}\n` +
+        `• *Plazo Estimado:* ${data.plazo}\n` +
+        `• *Rango de Inversión / Capital:* ${capLabel}\n` +
+        (data.detalles ? `• *Requerimientos específicos:* ${data.detalles}\n` : '') +
+        `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+        `💬 _Hola equipo de Vision Code, acabo de completar el embudo de cotización en el sitio web y solicito mi propuesta formal con este desglose._`;
+
+      const waUrl = `https://api.whatsapp.com/send?phone=56929645522&text=${encodeURIComponent(waText)}`;
+      const waBtn = document.getElementById('btn-cotizar-whatsapp');
+      if (waBtn) waBtn.href = waUrl;
+
+      const succWaDirect = document.getElementById('succ-direct-wa');
+      if (succWaDirect) succWaDirect.href = waUrl;
+
+      // Switch view
+      form?.classList.add('hidden');
+      progressWrap?.classList.add('hidden');
+      summaryPanel?.classList.remove('hidden');
+      summaryPanel?.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Modify funnel button
+    document.getElementById('btn-edit-funnel')?.addEventListener('click', () => {
+      summaryPanel?.classList.add('hidden');
+      progressWrap?.classList.remove('hidden');
+      form?.classList.remove('hidden');
+      currentStep = 5;
+      updateStep(5);
+    });
+
+    // Submit via Web (Email)
+    const btnCotizarWeb = document.getElementById('btn-cotizar-web');
+    btnCotizarWeb?.addEventListener('click', async () => {
+      const data = getFunnelData();
+      const honeypot = (document.getElementById('funnel_honeypot'))?.value;
+
+      btnCotizarWeb.setAttribute('disabled', 'true');
+      btnCotizarWeb.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-black inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span>Enviando Solicitud Formal...</span>
+      `;
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            tipo_cliente: selectedEntidad,
+            rango_operacion: data.escala,
+            rut: data.rut,
+            empresa: data.empresa,
+            nombre_fantasia: data.empresa,
+            solicitante: data.nombre,
+            telefono: data.fono,
+            correo: data.correo,
+            modelo_negocio: 'servicios',
+            nivel_capital: data.capital,
+            plazo: data.plazo,
+            servicio: data.servicios,
+            propuesta_detalles: data.detalles,
+            _honeypot: honeypot
+          })
+        });
+
+        const resData = await res.json();
+        if (res.ok && resData.success) {
+          const succEmail = document.getElementById('succ-display-email');
+          if (succEmail) succEmail.textContent = data.correo;
+          summaryPanel?.classList.add('hidden');
+          successPanel?.classList.remove('hidden');
+          successPanel?.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          alert(resData.error || 'Ocurrió un error al enviar. Puedes intentar directamente por WhatsApp.');
+          btnCotizarWeb.removeAttribute('disabled');
+          btnCotizarWeb.innerHTML = `
+            <svg width="18" height="18" class="shrink-0 text-black" style="width: 18px; height: 18px; min-width: 18px; max-width: 18px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <span>Solicitar por Correo</span>
+          `;
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Error de conexión. Intente por WhatsApp o reintente en unos segundos.');
+        btnCotizarWeb.removeAttribute('disabled');
+        btnCotizarWeb.innerHTML = `
+          <svg width="18" height="18" class="shrink-0 text-black" style="width: 18px; height: 18px; min-width: 18px; max-width: 18px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          <span>Solicitar por Correo</span>
+        `;
+      }
+    });
+
+    // Start New Funnel
+    document.getElementById('btn-new-funnel')?.addEventListener('click', () => {
+      form?.reset();
+      currentStep = 1;
+      updateStep(1);
+      successPanel?.classList.add('hidden');
+      summaryPanel?.classList.add('hidden');
+      progressWrap?.classList.remove('hidden');
+      form?.classList.remove('hidden');
+    });
+
   });
 </script>
-
-<style>
-  input:user-invalid, select:user-invalid {
-    border-color: #E8001C !important;
-    background-color: rgba(232, 0, 28, 0.02) !important;
-  }
-</style>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Propuesta Comercial y Estructura de Servicios — Vision Code</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+    @page {
+      size: A4 portrait;
+      margin: 12mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #ffffff;
+      color: #09090b;
+      line-height: 1.5;
+      padding: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #000000;
+      margin-bottom: 30px;
+    }
+
+    .header img {
+      height: 40px;
+      width: auto;
+    }
+
+    .header-info {
+      text-align: right;
+    }
+
+    .doc-title {
+      font-size: 20px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .doc-subtitle {
+      font-size: 11px;
+      color: #666666;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Notice Box */
+    .notice-box {
+      background: #f4f4f5;
+      border: 1px solid #e4e4e7;
+      border-left: 4px solid #000000;
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .notice-box h3 {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .notice-box p {
+      font-size: 12px;
+      color: #3f3f46;
+    }
+
+    /* Tables */
+    .section-heading {
+      font-size: 16px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-top: 35px;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #000000;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 25px;
+      font-size: 12px;
+    }
+
+    th {
+      background: #000000;
+      color: #ffffff;
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #e4e4e7;
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) td {
+      background: #fafafa;
+    }
+
+    .tier-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-basic { background: #e4e4e7; color: #18181b; }
+    .badge-inter { background: #18181b; color: #ffffff; }
+    .badge-pro { background: #000000; color: #ffffff; border: 1px solid #000000; }
+
+    .price {
+      font-weight: 800;
+      color: #000000;
+    }
+
+    /* Diagram Section */
+    .diagram-container {
+      background: #ffffff;
+      border: 1px solid #000000;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 25px;
+      margin-bottom: 35px;
+      text-align: center;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        padding: 0;
+        max-width: 100%;
+      }
+      .no-print {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <img src="/images/NAVAR TITULO.png" alt="Vision Code Logo" />
+    </div>
+    <div class="header-info">
+      <div class="doc-title">Plan de Servicios & Precios</div>
+      <div class="doc-subtitle">Documento Estratégico de Reestructuración — 2026</div>
+    </div>
+  </div>
+
+  <!-- Notice Box Fiscal -->
+  <div class="notice-box">
+    <h3>Condiciones Fiscales y Comerciales Globales</h3>
+    <p>• <strong>Regla Fiscal IVA</strong>: Todos los valores indicados corresponden a precios <strong>NETOS (+ 19% IVA)</strong> a facturar al cliente final.</p>
+    <p>• <strong>Campañas Meta Ads (FB/IG)</strong>: Modelo de gestión por <strong>CPL (Costo Por Lead)</strong> desde <strong>$40 USD CPL + IVA</strong> de referencia.</p>
+    <p>• <strong>Pasarelas de Pago</strong>: Integración técnica oficial de pasarelas de pago según el requerimiento específico del cliente.</p>
+  </div>
+
+  <!-- Diagrama de Flujo Comercial -->
+  <div class="section-heading">Diagrama de Flujo Comercial de Selección</div>
+  <div class="diagram-container">
+    <pre class="mermaid">
+    flowchart TD
+        A["🌐 Cliente Ingresa a Vision Code"] --> B{"¿Qué Comercializa su Empresa?"}
+        
+        %% VENTA DE SERVICIOS
+        B -- "💼 Venta de Servicios" --> C{"¿Nivel de Inversión / Servicio?"}
+        C -- "🟢 Nivel Básico" --> C1["Landing Page Básica ($63 USD + IVA)<br>• Meta Ads Lead Gen ($40 USD CPL + IVA)"]
+        C -- "🟡 Nivel Intermedio" --> C2["Portal Corporativo ($84 USD + IVA)<br>• Agente IA Agendamiento ($105 USD + $32/mo + IVA)"]
+        C -- "🔴 Nivel Avanzado" --> C3["Web Platform a Medida (Cotizar + IVA)<br>• Agente IA Premium Meta Verified"]
+
+        %% VENTA DE PRODUCTOS
+        B -- "📦 Venta de Productos" --> D{"¿Nivel de Inversión / Servicio?"}
+        D -- "🟢 Nivel Básico" --> D1["E-Commerce Básico ($158 USD + IVA)<br>• Meta Ads Tráfico Catálogo"]
+        D -- "🟡 Nivel Intermedio" --> D2["E-Commerce Profesional ($211 USD + IVA)<br>• Vision Code Pro ERP ($368 USD + IVA)"]
+        D -- "🔴 Nivel Avanzado" --> D3["E-Commerce Enterprise (Cotizar + IVA)<br>• Software & ERP a Medida"]
+
+        C1 & C2 & C3 & D1 & D2 & D3 --> E["🚀 Ecosistema Complementario<br>(Branding, SEO, GA4, Servidores, SSL)"]
+        E --> F["🤝 Facturación Legal (+19% IVA) & Inicio del Proyecto"]
+    </pre>
+  </div>
+
+  <!-- Matriz de Servicios A: Venta de Servicios -->
+  <div class="section-heading">Categoría 1: Venta de Servicios (B2B, Consultoría, Salud, Profesional)</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Nivel de Servicio</th>
+        <th>Desarrollo Web & SEO</th>
+        <th>Campañas Meta Ads</th>
+        <th>Automatización IA & WhatsApp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tier-badge badge-basic">Básico</span></td>
+        <td><strong>Landing Page Básica</strong><br><span class="price">$63 USD + IVA</span><br>1 página de alta conversión.</td>
+        <td><strong>Meta Ads Lead Gen</strong><br><span class="price">$40 USD CPL + IVA</span><br>Captación directa de mensajes.</td>
+        <td><strong>Asistente IA Estándar</strong><br><span class="price">$105 USD + $32/mes + IVA</span><br>Respuestas automáticas 24/7.</td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge badge-inter">Intermedio</span></td>
+        <td><strong>Portal Corporativo</strong><br><span class="price">$84 USD + IVA</span><br>6 secciones, blog y SEO técnico.</td>
+        <td><strong>Campaña Embudos</strong><br><span class="price">Cotización + IVA</span><br>Retargeting y público cualificado.</td>
+        <td><strong>Agente IA Agendamiento</strong><br><span class="price">$105 USD + $32/mes + IVA</span><br>Cualificación y agendamiento.</td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge badge-pro">Avanzado</span></td>
+        <td><strong>Web Platform a Medida</strong><br><span class="price">A Cotizar + IVA</span><br>Arquitectura exclusiva + CRM.</td>
+        <td><strong>Meta Ads Escala B2B</strong><br><span class="price">Cotización + IVA</span><br>Gestión de presupuestos altos.</td>
+        <td><strong>Agente IA Premium Meta</strong><br><span class="price">$105 USD + $32/mes + IVA</span><br>WhatsApp Cloud API Oficial.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Matriz de Servicios B: Venta de Productos -->
+  <div class="section-heading">Categoría 2: Venta de Productos (E-Commerce, Retail, Catálogo)</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Nivel de Servicio</th>
+        <th>Plataforma E-Commerce</th>
+        <th>Campañas Meta Ads</th>
+        <th>Sistemas & ERP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tier-badge badge-basic">Básico</span></td>
+        <td><strong>E-Commerce Básico</strong><br><span class="price">$158 USD + IVA</span><br>Hasta 20 productos + Pasarela.</td>
+        <td><strong>Meta Ads Catálogo</strong><br><span class="price">Cotización + IVA</span><br>Tráfico directo a catálogo.</td>
+        <td><strong>Asistente IA Catálogo</strong><br><span class="price">$105 USD + $32/mes + IVA</span><br>Atención sobre stock y envíos.</td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge badge-inter">Intermedio</span></td>
+        <td><strong>E-Commerce Profesional</strong><br><span class="price">$211 USD + IVA</span><br>Catálogo ilimitado + CRO.</td>
+        <td><strong>Meta Ads Conversión</strong><br><span class="price">Cotización + IVA</span><br>Píxel & Carritos abandonados.</td>
+        <td><strong>Vision Code Pro ERP</strong><br><span class="price">$368 USD + IVA</span><br>Web + Tienda + ERP Interno.</td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge badge-pro">Avanzado</span></td>
+        <td><strong>E-Commerce Enterprise</strong><br><span class="price">A Cotizar + IVA</span><br>Solución multicanal dedicada.</td>
+        <td><strong>Meta Ads Scale Retail</strong><br><span class="price">Cotización + IVA</span><br>Conversión masiva de ventas.</td>
+        <td><strong>ERP & Software a Medida</strong><br><span class="price">A Cotizar + IVA</span><br>Desarrollo e integración dedicada.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Ecosistema Complementario -->
+  <div class="section-heading">Ecosistema de Servicios Complementarios</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Servicio</th>
+        <th>Descripción</th>
+        <th>Condición Comercial</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Identidad Visual & Branding</strong></td>
+        <td>Diseño de logotipos corporativos, manual de marca y activos gráficos para campañas.</td>
+        <td>Cotización a Medida + IVA</td>
+      </tr>
+      <tr>
+        <td><strong>SEO Avanzado & GA4</strong></td>
+        <td>Auditorías CRO, optimización de velocidad de carga e integración de Google Analytics 4.</td>
+        <td>Cotización a Medida + IVA</td>
+      </tr>
+      <tr>
+        <td><strong>Infraestructura & Servidores</strong></td>
+        <td>Hosting VPS de alta velocidad, renovación de dominios (.cl / .com) y certificados SSL.</td>
+        <td>Anual / Mensual + IVA</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</body>
+</html>

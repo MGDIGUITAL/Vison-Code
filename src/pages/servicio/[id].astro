@@ -198,14 +198,14 @@ const { service } = Astro.props;
   <Navbar />
   
   <div class="fixed inset-0 z-0 opacity-20 pointer-events-none">
-    <div class="absolute inset-0 bg-gradient-to-br from-[#E8001C]/10 to-transparent"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.06),transparent_70%)]"></div>
   </div>
 
-  <main class="min-h-screen pt-32 pb-20 relative z-10 flex items-center">
+  <main class="min-h-screen pt-32 pb-20 relative z-10 flex items-center bg-[#000000] text-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-10 w-full">
       
       <div class="mb-10">
-        <a href="/tienda" class="inline-flex items-center gap-2 text-black/50 hover:text-black text-sm font-bold tracking-widest uppercase transition-colors">
+        <a href="/tienda" class="inline-flex items-center gap-2 text-neutral-400 hover:text-white text-xs font-bold tracking-widest uppercase transition-colors">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           Volver a la Tienda
         </a>
@@ -216,13 +216,13 @@ const { service } = Astro.props;
         <!-- Left: Redesigned Card -->
         <div class="fade-up flex justify-center w-full">
           <div 
-            class={`w-full max-w-[400px] relative flex flex-col justify-between p-8 min-h-[580px] bg-[#0a0a0a] text-white border ${service.isRecommended ? 'border-[#E8001C] shadow-[0_0_25px_rgba(232,0,28,0.15)] scale-[1.02] md:scale-[1.03] z-10' : 'border-white/10'} hover:border-[#E8001C]/50 hover:shadow-[0_0_25px_rgba(232,0,28,0.08)]`}
+            class={`w-full max-w-[400px] relative flex flex-col justify-between p-8 min-h-[580px] bg-[#000000] text-white border rounded-3xl ${service.isRecommended ? 'border-white/40 shadow-[0_0_30px_rgba(255,255,255,0.12)] scale-[1.02] md:scale-[1.03] z-10' : 'border-white/10'} hover:border-white/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.08)] transition-all duration-300`}
           >
             <div>
               {/* Badge/Tag */}
               <div class="min-h-[28px] mb-4">
                 {service.badge && (
-                  <span class={`inline-block text-[0.62rem] font-black tracking-widest uppercase px-3 py-1 ${service.isRecommended ? 'bg-[#E8001C] text-white font-bold' : 'bg-white/10 text-white/80'}`}>
+                  <span class={`inline-block text-[0.62rem] font-black tracking-widest uppercase px-3 py-1 rounded-full ${service.isRecommended ? 'bg-white text-black font-extrabold' : 'bg-white/10 text-white/80 border border-white/10'}`}>
                     {service.badge}
                   </span>
                 )}
@@ -230,16 +230,16 @@ const { service } = Astro.props;
 
               {/* Title & Description */}
               <h3 class="text-2xl font-bold tracking-tight text-white mb-2">{service.title}</h3>
-              <p class="text-xs text-white/50 leading-relaxed mb-6 font-light">{service.description}</p>
+              <p class="text-xs text-neutral-400 leading-relaxed mb-6 font-light">{service.description}</p>
 
               {/* Price & Delivery */}
-              <div class="mb-6 pb-6 border-b border-white/5">
+              <div class="mb-6 pb-6 border-b border-white/10">
                 <div class="flex items-baseline gap-1.5 flex-wrap">
-                  <span class="text-4xl font-extrabold tracking-tight text-white">{service.price}</span>
-                  {service.monthly && <span class="text-xs font-bold text-white/40 uppercase tracking-wider">{service.monthly}</span>}
+                  <span class="text-4xl font-black tracking-tight text-white">{service.price}</span>
+                  {service.monthly && <span class="text-xs font-bold text-neutral-400 uppercase tracking-wider">{service.monthly}</span>}
                 </div>
                 {service.delivery && (
-                  <div class="text-[0.65rem] text-[#E8001C] font-semibold tracking-wider uppercase mt-2">
+                  <div class="text-[0.65rem] text-neutral-300 font-semibold tracking-wider uppercase mt-2">
                     {service.delivery}
                   </div>
                 )}
@@ -250,8 +250,8 @@ const { service } = Astro.props;
                 {service.features.slice(0, 7).map((feature) => {
                   if (feature === '---' || feature.startsWith('+') || feature.startsWith('Todo lo del')) return null;
                   return (
-                    <li class="flex items-start gap-2.5 text-xs text-white/70 font-light">
-                      <svg class="shrink-0 w-3.5 h-3.5 mt-0.5 text-[#E8001C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                    <li class="flex items-start gap-2.5 text-xs text-neutral-300 font-light">
+                      <svg class="shrink-0 w-3.5 h-3.5 mt-0.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                       <span>{feature}</span>
@@ -267,7 +267,7 @@ const { service } = Astro.props;
                 href={`https://api.whatsapp.com/send?phone=56929645522&text=Hola,%20me%20gustaría%20cotizar%20el%20servicio:%20${encodeURIComponent(service.title)}`} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                class={`w-full py-3.5 text-center text-xs font-bold uppercase tracking-wider block transition-all ${service.isRecommended ? 'bg-[#E8001C] text-white hover:bg-[#b8000e] shadow-[0_0_15px_rgba(232,0,28,0.4)]' : 'bg-transparent text-white border border-white/20 hover:border-[#E8001C] hover:bg-[#E8001C]/10'}`}
+                class={`w-full py-3.5 text-center text-xs font-black uppercase tracking-wider block rounded-xl transition-all ${service.isRecommended ? 'bg-white text-black hover:bg-neutral-200 shadow-[0_0_20px_rgba(255,255,255,0.2)]' : 'bg-transparent text-white border border-white/20 hover:border-white hover:bg-white/10'}`}
               >
                 Cotizar Ahora ↗
               </a>
@@ -279,34 +279,34 @@ const { service } = Astro.props;
         <div class="flex flex-col fade-up" style="transition-delay: 0.2s">
           <div class="mb-8">
             <span class="saas-badge mb-4 inline-block">{service.category}</span>
-            <h1 class="text-4xl md:text-5xl font-bold tracking-tighter text-black mb-2 leading-tight">
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight text-white mb-2 leading-tight">
               {service.title}
             </h1>
-            <p class="text-xl text-black/60 font-light">{service.subtitle}</p>
+            <p class="text-xl text-neutral-400 font-light">{service.subtitle}</p>
           </div>
 
-          <div class="mb-10 p-6 border border-black/10 rounded-none bg-black/5 backdrop-blur-md">
-            <div class="text-3xl font-mono text-black mb-1">{service.price}</div>
-            {service.monthly && <div class="text-sm font-bold text-[#E8001C] uppercase tracking-widest">+ {service.monthly}</div>}
-            {!service.monthly && <div class="text-sm font-bold text-black/40 uppercase tracking-widest">Pago Único</div>}
+          <div class="mb-10 p-6 border border-white/15 rounded-2xl bg-white/5 backdrop-blur-md">
+            <div class="text-3xl font-mono text-white mb-1 font-bold">{service.price}</div>
+            {service.monthly && <div class="text-sm font-bold text-neutral-300 uppercase tracking-widest">+ {service.monthly}</div>}
+            {!service.monthly && <div class="text-sm font-bold text-neutral-400 uppercase tracking-widest">Pago Único</div>}
           </div>
 
-          <h3 class="text-lg font-bold text-black mb-6 tracking-wide uppercase">Características del Plan</h3>
+          <h3 class="text-lg font-bold text-white mb-6 tracking-wide uppercase">Características del Plan</h3>
           <ul class="space-y-4 mb-10">
             {service.features.map(feature => {
               if (feature === '---' || feature.startsWith('+') || feature.startsWith('Todo lo del')) {
-                return <li class="text-[#E8001C] font-bold text-sm uppercase tracking-widest mt-6 mb-2 border-b border-black/10 pb-2">{feature.replace('---', '')}</li>
+                return <li class="text-white font-extrabold text-sm uppercase tracking-widest mt-6 mb-2 border-b border-white/15 pb-2">{feature.replace('---', '')}</li>
               }
               return (
-                <li class="flex items-start gap-3 text-black/75 font-light">
-                  <svg class="shrink-0 mt-1 text-[#E8001C]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <li class="flex items-start gap-3 text-neutral-300 font-light">
+                  <svg class="shrink-0 mt-1 text-white" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
                   {feature}
                 </li>
               )
             })}
           </ul>
 
-          <a href={`https://api.whatsapp.com/send?phone=56929645522&text=Hola,%20me%20interesa%20adquirir%20el%20servicio:%20${encodeURIComponent(service.title + ' - ' + service.subtitle)}`} target="_blank" rel="noopener noreferrer" class="btn-primary w-full text-center py-5 text-sm">
+          <a href={`https://api.whatsapp.com/send?phone=56929645522&text=Hola,%20me%20interesa%20adquirir%20el%20servicio:%20${encodeURIComponent(service.title + ' - ' + service.subtitle)}`} target="_blank" rel="noopener noreferrer" class="btn-primary w-full text-center py-5 text-sm rounded-full">
             Contratar Servicio
           </a>
         </div>
@@ -314,5 +314,6 @@ const { service } = Astro.props;
       </div>
     </div>
   </main>
+
   <Footer />
 </Layout>
