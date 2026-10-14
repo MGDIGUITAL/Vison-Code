@@ -312,15 +312,13 @@ export const POST: APIRoute = async ({ request }) => {
                     <td style="padding: 28px 28px 24px 28px; background-color: #ffffff;">
                       
                       <!-- Imagen Oficial: ¡Gracias por Cotizar con Nosotros! -->
-                      ${hasImage ? `
                       <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 24px;">
                         <tr>
                           <td align="center">
-                            <img src="cid:gracias_image" alt="¡Gracias por cotizar con nosotros! - Vision Code" width="540" style="width: 100%; max-width: 540px; height: auto; display: block; border-radius: 10px; border: 1px solid #e5e7eb; box-shadow: 0 4px 18px rgba(0,0,0,0.08); margin: 0 auto;" />
+                            <img src="${hasImage ? 'cid:gracias_image' : 'https://www.vision-code.cl/CORREO/gracias.png'}" alt="¡Gracias por cotizar con nosotros! - Vision Code" width="540" style="width: 100%; max-width: 540px; height: auto; display: block; border-radius: 10px; border: 1px solid #e5e7eb; box-shadow: 0 4px 18px rgba(0,0,0,0.08); margin: 0 auto;" />
                           </td>
                         </tr>
                       </table>
-                      ` : ''}
 
                       <h1 style="margin: 0 0 10px 0; font-size: 22px; font-weight: 800; color: #111827; line-height: 1.3; text-align: left;">
                         Hola ${cleanSolicitante},
