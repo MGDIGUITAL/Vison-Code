@@ -49,10 +49,11 @@ const links = [
         class="hidden md:flex items-center gap-1 p-1 bg-white/[0.03] border border-white/10 rounded-full relative backdrop-blur-md" 
         aria-label="Navegación principal"
       >
-        <!-- Pastilla indicadora animada que se desliza suavemente -->
+        <!-- Pastilla indicadora animada con aceleración GPU por hardware -->
         <span 
           id="nav-pill" 
-          class="absolute h-[calc(100%-8px)] top-1 rounded-full bg-white/15 border border-white/25 shadow-[0_0_15px_rgba(255,255,255,0.12)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none opacity-0"
+          class="pointer-events-none opacity-0"
+          aria-hidden="true"
         ></span>
 
         {links.map(link => (
@@ -238,7 +239,7 @@ const links = [
   window.addEventListener('scroll', handleNavbarScroll, { passive: true });
   handleNavbarScroll();
 
-  // Magnetic Sliding Pill Indicator & Glitch-Free Navigation
+  // ── High-Precision Magnetic Sliding Pill Indicator (GPU Accelerated) ──
   const desktopNav = document.getElementById('desktop-nav');
   const navPill = document.getElementById('nav-pill');
   const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
@@ -246,64 +247,119 @@ const links = [
 
   let isClickScrolling = false;
   let scrollLockTimeout = null;
+  let scrollLockHardCap = null;
   let spyLastId = null;
   let pillPlaced = false;
+  let leaveTimeout = null;
+  let isNavHovered = false;
 
-  function movePillTo(element) {
+  function movePillTo(element, animate = true) {
     if (!navPill || !desktopNav || !element) return;
     const navRect = desktopNav.getBoundingClientRect();
     const linkRect = element.getBoundingClientRect();
 
-    // Absolute children are positioned from the padding box, so subtract the border.
-    const left = linkRect.left - navRect.left - desktopNav.clientLeft;
-    const width = linkRect.width;
+    if (linkRect.width === 0) return;
 
-    // First placement must not animate (otherwise the pill sweeps in from x=0).
-    if (!pillPlaced) navPill.style.transition = 'none';
+    // Precision calculation relative to desktopNav inner padding edge
+    const left = Math.round(linkRect.left - navRect.left - desktopNav.clientLeft);
+    const width = Math.round(linkRect.width);
 
-    navPill.style.left = `${left}px`;
-    navPill.style.width = `${width}px`;
-    navPill.style.opacity = '1';
-
-    if (!pillPlaced) {
-      void navPill.offsetWidth; // flush styles before re-enabling the transition
+    if (!pillPlaced || !animate) {
+      navPill.style.transition = 'none';
+      navPill.style.transform = `translate3d(${left}px, 0, 0)`;
+      navPill.style.width = `${width}px`;
+      navPill.style.opacity = '1';
+      void navPill.offsetWidth; // flush styles
       navPill.style.transition = '';
       pillPlaced = true;
+    } else {
+      navPill.style.transform = `translate3d(${left}px, 0, 0)`;
+      navPill.style.width = `${width}px`;
+      navPill.style.opacity = '1';
     }
   }
 
-  function setActiveLink(link) {
+  function getActiveLink() {
+    return document.querySelector('#desktop-nav .nav-link.active');
+  }
+
+  function setActiveLink(link, updatePill = true) {
     navLinks.forEach(l => {
-      l.classList.remove('active', 'text-white');
-      l.classList.add('text-white/70');
+      l.classList.remove('active');
+      if (!l.classList.contains('is-hovered')) {
+        l.classList.add('text-white/70');
+        l.classList.remove('text-white');
+      }
     });
+
     if (link) {
-      link.classList.add('active', 'text-white');
+      link.classList.add('active');
+      link.classList.add('text-white');
       link.classList.remove('text-white/70');
-      movePillTo(link);
+      if (updatePill && !isNavHovered) {
+        movePillTo(link, pillPlaced);
+      }
     }
   }
 
-  function hidePillIfNoActive() {
-    const activeLink = document.querySelector('#desktop-nav .nav-link.active');
-    if (activeLink) {
-      movePillTo(activeLink);
-    } else if (navPill) {
-      navPill.style.opacity = '0';
+  function handleLinkHover(link) {
+    if (leaveTimeout) {
+      clearTimeout(leaveTimeout);
+      leaveTimeout = null;
     }
+    isNavHovered = true;
+
+    navLinks.forEach(l => {
+      if (l === link) {
+        l.classList.add('is-hovered', 'text-white');
+        l.classList.remove('text-white/70');
+      } else {
+        l.classList.remove('is-hovered');
+        if (!l.classList.contains('active')) {
+          l.classList.add('text-white/70');
+          l.classList.remove('text-white');
+        }
+      }
+    });
+
+    movePillTo(link, true);
   }
 
-  // Hover preview
+  function handleNavLeave() {
+    if (leaveTimeout) clearTimeout(leaveTimeout);
+
+    // 100ms graceful exit window prevents jitter when crossing gaps or clipping border
+    leaveTimeout = setTimeout(() => {
+      isNavHovered = false;
+
+      navLinks.forEach(l => {
+        l.classList.remove('is-hovered');
+        if (!l.classList.contains('active')) {
+          l.classList.add('text-white/70');
+          l.classList.remove('text-white');
+        } else {
+          l.classList.add('text-white');
+          l.classList.remove('text-white/70');
+        }
+      });
+
+      const activeLink = getActiveLink();
+      if (activeLink) {
+        movePillTo(activeLink, true);
+      } else if (navPill) {
+        navPill.style.opacity = '0';
+      }
+    }, 100);
+  }
+
+  // Hover events
   navLinks.forEach(link => {
-    link.addEventListener('mouseenter', () => movePillTo(link));
+    link.addEventListener('mouseenter', () => handleLinkHover(link));
   });
 
-  desktopNav?.addEventListener('mouseleave', () => {
-    hidePillIfNoActive();
-  });
+  desktopNav?.addEventListener('mouseleave', handleNavLeave);
 
   let lockTargetLink = null;
-  let scrollLockHardCap = null;
 
   function releaseScrollLock() {
     if (!isClickScrolling) return;
@@ -313,8 +369,8 @@ const links = [
     window.removeEventListener('scroll', onLockScroll);
     window.removeEventListener('wheel', releaseScrollLock);
     window.removeEventListener('touchstart', releaseScrollLock);
-    const active = document.querySelector('#desktop-nav .nav-link.active') || lockTargetLink;
-    if (active) movePillTo(active);
+    const active = getActiveLink() || lockTargetLink;
+    if (active && !isNavHovered) movePillTo(active, true);
   }
 
   // Every scroll event while locked postpones the release until scrolling goes idle
@@ -342,16 +398,7 @@ const links = [
 
     // 2. Immediately highlight and glide pill to the target link
     const targetLink = document.querySelector(`#desktop-nav .nav-link[data-nav-id="${targetId}"]`);
-    navLinks.forEach(l => {
-      l.classList.remove('active', 'text-white');
-      l.classList.add('text-white/70');
-    });
-
-    if (targetLink) {
-      targetLink.classList.add('active', 'text-white');
-      targetLink.classList.remove('text-white/70');
-      movePillTo(targetLink);
-    }
+    setActiveLink(targetLink, true);
 
     // 3. Precise smooth scroll destination accounting for fixed header height
     const headerOffset = 76;
@@ -387,7 +434,6 @@ const links = [
     });
   });
 
-
   // Mobile nav links
   document.querySelectorAll('.mobile-nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
@@ -405,7 +451,7 @@ const links = [
     });
   });
 
-  // Scroll-position ScrollSpy: one deterministic active section (no observer flicker)
+  // Scroll-position ScrollSpy: deterministic active section with hover protection
   function initScrollSpy() {
     const isHomePage = window.location.pathname === '/' || window.location.pathname === '';
     if (!isHomePage) return;
@@ -429,7 +475,9 @@ const links = [
       spyLastId = current;
 
       const link = document.querySelector(`#desktop-nav .nav-link[data-nav-id="${current}"]`);
-      if (link) setActiveLink(link);
+      if (link) {
+        setActiveLink(link, !isNavHovered);
+      }
     }
 
     window.addEventListener('scroll', () => {
@@ -444,7 +492,7 @@ const links = [
 
   // Initial active link based on current route
   function setInitialActive() {
-    const path = window.location.pathname;
+    const path = window.location.pathname.replace(/\/$/, '') || '/';
     const hash = window.location.hash;
     let target = null;
 
@@ -456,16 +504,29 @@ const links = [
             || document.querySelector('#desktop-nav .nav-link[data-nav-id="inicio"]');
     }
 
-    if (target) setActiveLink(target);
+    if (target) {
+      setActiveLink(target, false);
+      movePillTo(target, false);
+    }
   }
 
   window.addEventListener('resize', () => {
-    hidePillIfNoActive();
+    const active = getActiveLink();
+    if (active && !isNavHovered) movePillTo(active, false);
   }, { passive: true });
 
   // Re-measure once web fonts / images settle so the pill never drifts
-  window.addEventListener('load', hidePillIfNoActive);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(hidePillIfNoActive);
+  window.addEventListener('load', () => {
+    const active = getActiveLink();
+    if (active && !isNavHovered) movePillTo(active, false);
+  });
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => {
+      const active = getActiveLink();
+      if (active && !isNavHovered) movePillTo(active, false);
+    });
+  }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
@@ -486,11 +547,27 @@ const links = [
   }
 
   #nav-pill {
-    transition: left 0.28s cubic-bezier(0.16, 1, 0.3, 1), width 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
-    will-change: left, width;
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 0;
+    pointer-events: none;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.14);
+    transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+                width 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.18s ease;
+    will-change: transform, width, opacity;
   }
 
-  .nav-link.active {
+  .nav-link {
+    transition: color 0.18s ease;
+  }
+
+  .nav-link.active,
+  .nav-link.is-hovered {
     color: #ffffff !important;
   }
 </style>
