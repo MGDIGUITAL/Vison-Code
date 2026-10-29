@@ -5,167 +5,251 @@ import Footer from '../components/Footer.astro';
 
 const storeItems = [
   {
-    id: "campana-meta-ads-cpl",
-    title: "Campañas Meta Ads (FB & IG)",
-    price: 40,
-    priceFormatted: "$40 USD CPL",
-    monthly: "+ IVA",
-    category: "Marketing",
-    description: "Generación de clientes cualificados por campaña en Facebook e Instagram con modelo CPL.",
-    delivery: "Lanzamiento en 48 horas",
-    badge: "ALTA CONVERSIÓN",
+    id: "pack-promocional-emprendimiento",
+    title: "Pack Promocional Emprendimiento",
+    price: 210000,
+    priceFormatted: "$210.000 CLP",
+    originalPriceFormatted: "$420.000 CLP",
+    discount: "50% OFF",
+    monthly: "+ IVA (Cupo Limitado)",
+    category: "Promociones",
+    description: "Landing Corporativa de alta velocidad + Sistema SaaS de flujo en vivo + 1er mes de Plan Vision Core de regalo.",
+    delivery: "Entrega en 5 a 7 días",
+    badge: "5 CUPOS / MES",
     isRecommended: true,
     features: [
-      "Estrategia de captación por Costo Por Lead (CPL)",
-      "Segmentación avanzada de público objetivo",
-      "Creativos de alto impacto para FB e IG",
-      "Píxel de seguimiento y analíticas en tiempo real",
-      "Optimización continua de embudo de ventas",
-      "Soporte y reporte semanal de rendimiento"
+      "Landing Page Corporativa de alta velocidad",
+      "Hosting Ultra Rápido + Dominio .CL por 1 año",
+      "Botón directo a WhatsApp y formulario",
+      "Sistema SaaS de Flujo (visitas y clics en vivo)",
+      "1er Mes GRATIS del Plan Vision Core ($29.990/mes)",
+      "Optimización SEO inicial para Google",
+      "Soporte preventivo y respaldo semanal"
     ]
   },
   {
-    id: "ecommerce-profesional",
-    title: "E-Commerce Profesional",
-    price: 211,
-    priceFormatted: "$211 USD",
-    monthly: "+ IVA",
-    category: "E-Commerce",
-    description: "Tu tienda online a medida, sin límites de categorías y lista para facturar en piloto automático.",
+    id: "pack-promocional-pyme",
+    title: "Pack Promocional Pyme",
+    price: 260000,
+    priceFormatted: "$260.000 CLP",
+    originalPriceFormatted: "$520.000 CLP",
+    discount: "50% OFF",
+    monthly: "+ IVA (Cupo Limitado)",
+    category: "Promociones",
+    description: "A tu elección: Tienda Online O Portal Corporativo + Píxel de Meta + Sistema SaaS de administración.",
+    delivery: "Entrega en 10 días",
+    badge: "CUPOS LIMITADOS",
+    isRecommended: true,
+    features: [
+      "A ELECCIÓN: E-Commerce Intermedio O Portal Corporativo B2B",
+      "Pasarelas de pago Webpay Plus y Mercado Pago",
+      "Configuración oficial de Píxel de Meta & CAPI",
+      "Sistema SaaS de Administración (leads y pedidos)",
+      "1er Mes GRATIS del Plan Vision Scale ($59.990/mes)",
+      "Subida y actualización mensual de catálogo/banners",
+      "Soporte prioritario directo vía WhatsApp"
+    ]
+  },
+  {
+    id: "pack-promocional-corporativo",
+    title: "Pack Promocional Corporativo",
+    price: 310000,
+    priceFormatted: "$310.000 CLP",
+    originalPriceFormatted: "$620.000 CLP",
+    discount: "50% OFF",
+    monthly: "+ IVA (Cupo Limitado)",
+    category: "Promociones",
+    description: "E-Commerce Profesional Ilimitado + Campaña completa en Meta Ads montada + Sistema SaaS & ERP de stock.",
     delivery: "Entrega en 14 días",
-    badge: "RECOMENDADO",
+    badge: "SOLO 2 CUPOS · ENTERPRISE",
     isRecommended: true,
     features: [
-      "Landing + Tienda Online completa",
-      "Catálogo de más de 50 productos",
-      "Integración de pasarelas de pago",
-      "Hosting + Dominio (.cl o .com) por 1 año",
-      "Diseño de identidad visual & brand assets",
-      "Panel de administración autogestionable",
-      "Soporte técnico por 30 días"
+      "E-Commerce Profesional Ilimitado (tallas/colores)",
+      "Integración logística automática Starken/Chilexpress",
+      "Campaña completa en Meta Ads (FB & IG) montada",
+      "Sistema SaaS & ERP de Gestión de Inventario y Ventas",
+      "Píxel de Meta y CAPI blindado en el sistema",
+      "1er Mes GRATIS del Plan Partner Pro ($119.990/mes)",
+      "Soporte VIP 24/7 y soluciones técnicas continuas"
     ]
   },
   {
-    id: "agente-ia-whatsapp-estandar",
-    title: "Agente IA WhatsApp Estándar",
-    price: 105,
-    priceFormatted: "$105 USD",
-    monthly: "+ $32/mes + IVA",
-    category: "IA",
-    description: "Automatiza tu atención al cliente y responde consultas 24/7 de forma inteligente y fluida.",
-    delivery: "Configuración en 5 días",
+    id: "empresa-en-un-dia",
+    title: "Empresa en un Día (Inicia tu Pyme)",
+    price: 100000,
+    priceFormatted: "$100.000 CLP",
+    originalPriceFormatted: "$200.000 CLP",
+    discount: "50% OFF",
+    monthly: "+ IVA",
+    category: "Legal & Pyme",
+    description: "Constitución oficial, RUT en SII, inicio de actividades y certificado digital lista para facturar.",
+    delivery: "Listo en 48 a 72 horas",
+    badge: "PACK INICIAL",
+    isRecommended: true,
     features: [
-      "Responde automáticamente 24/7",
-      "Entrenado con la información de tu empresa",
-      "Atención más rápida, clientes felices",
-      "Hasta 4 dispositivos conectados",
-      "Soporte técnico y monitoreo continuo"
+      "Constitución de sociedad SpA o EIRL",
+      "Obtención de RUT Empresa en el SII",
+      "Inicio de actividades en 1ª categoría",
+      "Certificado digital de facturación (1 año)",
+      "Acreditación de domicilio y actividad en SII",
+      "Habilitación de Factura y Boleta Electrónica"
     ]
   },
   {
-    id: "agente-ia-whatsapp-premium",
-    title: "Agente IA WhatsApp Premium",
-    price: 105,
-    priceFormatted: "$105 USD",
-    monthly: "+ $32/mes + IVA",
-    category: "IA",
-    description: "La solución definitiva con API oficial de WhatsApp Cloud, Meta Verified y multiagente.",
-    delivery: "Configuración en 10 días",
-    badge: "API OFICIAL",
+    id: "landing-basica",
+    title: "Landing Page Express",
+    price: 180000,
+    priceFormatted: "$180.000 CLP",
+    originalPriceFormatted: "$360.000 CLP",
+    discount: "50% OFF",
+    monthly: "+ IVA",
+    category: "Web",
+    description: "Página de aterrizaje de ultra velocidad orientada 100% a convertir visitantes en clientes.",
+    delivery: "Entrega en 5 a 7 días",
+    badge: "OFERTA PYME",
+    isRecommended: true,
     features: [
-      "Integración oficial con WhatsApp Cloud API",
-      "Meta Verified Business Standard",
-      "Respuestas inteligentes ilimitadas 24/7",
-      "Multidispositivo y multiagent certificado",
-      "Protección contra suplantación y baneo"
+      "1 a 3 secciones de alta conversión",
+      "Botón directo a WhatsApp y formulario",
+      "Hosting ultrarrápido + Dominio .CL (1 año)",
+      "Optimización SEO inicial para Google",
+      "Certificado SSL de seguridad",
+      "Diseño adaptable a móviles y PC"
     ]
   },
   {
     id: "landing-portal-corporativo",
-    title: "Landing + Portal Corporativo",
-    price: 84,
-    priceFormatted: "$84 USD",
+    title: "Portal Web Corporativo",
+    price: 250000,
+    priceFormatted: "$250.000 CLP",
+    originalPriceFormatted: "$500.000 CLP",
+    discount: "50% OFF",
     monthly: "+ IVA",
     category: "Web",
-    description: "Sitio web corporativo de alto estándar para posicionar tu marca y captar leads calificados.",
+    description: "Sitio web corporativo de alto estándar para posicionar tu marca institucional y captar clientes B2B.",
     delivery: "Entrega en 10 días",
     badge: "B2B RECOMENDADO",
     features: [
-      "Landing + 6 páginas internas",
-      "Diseño de Identidad Visual (Logotipo)",
-      "Blog o sección de noticias integrada",
-      "Optimización SEO y Google Analytics",
-      "Diseño responsive premium y soporte"
-    ]
-  },
-  {
-    id: "plan-vision-code-pro",
-    title: "Vision Code Pro (Web + ERP)",
-    price: 368,
-    priceFormatted: "$368 USD",
-    monthly: "+ IVA",
-    category: "Sistemas",
-    description: "Ecosistema integral con Tienda Online y software ERP de inventario y facturación integrado.",
-    delivery: "Entrega en 21 días",
-    badge: "SISTEMA INTEGRAL",
-    features: [
-      "Todo lo del Plan E-Commerce Profesional",
-      "Sistema ERP / CRM interno a medida",
-      "Gestión de inventario, ventas y compras",
-      "Panel para clientes y proveedores",
-      "Capacitación completa y soporte de 60 días"
-    ]
-  },
-  {
-    id: "ecommerce-basico",
-    title: "E-Commerce Básico",
-    price: 158,
-    priceFormatted: "$158 USD",
-    monthly: "+ IVA",
-    category: "E-Commerce",
-    description: "Tu tienda virtual inicial para comenzar a vender tus productos en internet rápidamente.",
-    delivery: "Entrega en 7 días",
-    features: [
-      "Landing + Tienda online básica",
-      "Hasta 20 productos en catálogo",
-      "Carrito de compras integrado",
-      "Integración de pasarelas de pago",
-      "Hosting + Dominio por 1 año"
+      "Hasta 6 secciones completas (Inicio, Nosotros, Servicios, Blog, Contacto)",
+      "Diseño de Identidad Visual y Logotipo",
+      "Optimización SEO avanzada y Google Analytics",
+      "Hosting ultrarrápido + Dominio .CL (1 año)",
+      "Panel de administración autogestionable",
+      "Soporte técnico prioritario por 30 días"
     ]
   },
   {
     id: "ecommerce-intermedio",
     title: "E-Commerce Intermedio",
-    price: 168,
-    priceFormatted: "$168 USD",
+    price: 280000,
+    priceFormatted: "$280.000 CLP",
+    originalPriceFormatted: "$560.000 CLP",
+    discount: "50% OFF",
     monthly: "+ IVA",
     category: "E-Commerce",
-    description: "Ideal para marcas en crecimiento que necesitan expandir su catálogo y opciones de pago.",
+    description: "Ideal para marcas en crecimiento que necesitan expandir su catálogo y opciones de pago automatizadas.",
     delivery: "Entrega en 10 días",
     features: [
-      "Landing + Tienda online completa",
-      "Hasta 40 productos en catálogo",
-      "Carrito de compras avanzado",
-      "Pasarelas de pago integradas",
-      "Hosting + Dominio por 1 año"
+      "Tienda online completa con pasarelas de pago",
+      "Catálogo de hasta 40 productos",
+      "Integración Webpay Plus (Transbank) y Mercado Pago",
+      "Carrito de compras y cálculo de envíos",
+      "Hosting + Dominio .CL por 1 año",
+      "Panel de gestión de pedidos e inventario"
     ]
   },
   {
-    id: "landing-basica",
-    title: "Landing Page Básica",
-    price: 63,
-    priceFormatted: "$63 USD",
+    id: "ecommerce-profesional",
+    title: "E-Commerce Profesional",
+    price: 390000,
+    priceFormatted: "$390.000 CLP",
+    originalPriceFormatted: "$780.000 CLP",
+    discount: "50% OFF",
     monthly: "+ IVA",
-    category: "Web",
-    description: "Una página de aterrizaje profesional orientada 100% a convertir visitantes en clientes.",
-    delivery: "Entrega en 7 días",
-    badge: "OFERTA PYME",
+    category: "E-Commerce",
+    description: "Tu tienda online a medida, sin límite de categorías ni productos, lista para facturar en piloto automático.",
+    delivery: "Entrega en 14 días",
+    badge: "RECOMENDADO",
+    isRecommended: true,
     features: [
-      "1 página landing profesional",
-      "Formulario de contacto integrado",
-      "Diseño responsive adaptable",
-      "Logotipo oficial básico",
-      "Hosting + Dominio por 1 año"
+      "Catálogo ilimitado de productos y variaciones (tallas/colores)",
+      "Integración Webpay, Mercado Pago y métodos locales",
+      "Sincronización con Píxel de Meta y catálogo dinámico",
+      "Cupones de descuento y promociones automáticas",
+      "Hosting de alta capacidad + Dominio por 1 año",
+      "Panel de administración avanzado y capacitación"
+    ]
+  },
+  {
+    id: "agente-ia-whatsapp-estandar",
+    title: "Agente IA WhatsApp & Automatización",
+    price: 0,
+    priceFormatted: "A Cotizar",
+    monthly: "Según requerimientos",
+    category: "IA",
+    description: "Automatiza tu atención al cliente y responde consultas 24/7 de forma inteligente y fluida.",
+    delivery: "Configuración en 5 a 10 días",
+    badge: "A MEDIDA",
+    features: [
+      "Respuestas inteligentes automáticas 24/7",
+      "Entrenado con la información y catálogo de tu empresa",
+      "Cualificación automática de prospectos",
+      "Integración oficial con WhatsApp Cloud API",
+      "Soporte, monitoreo y optimización continua"
+    ]
+  },
+  {
+    id: "plan-vision-code-pro",
+    title: "Soluciones Empresariales (Apps & Software)",
+    price: 0,
+    priceFormatted: "A Cotizar",
+    monthly: "A Medida",
+    category: "Sistemas",
+    description: "Desarrollo de Apps móviles nativas para iOS y Android, sistemas ERP a medida y plataformas complejas.",
+    delivery: "Según alcance del proyecto",
+    badge: "ENTERPRISE",
+    features: [
+      "Aplicaciones móviles nativas e híbridas (iOS & Android)",
+      "Desarrollo de software dedicado y sistemas ERP",
+      "Módulos CRM y control comercial de ventas",
+      "Integraciones API y pasarelas de pago corporativas",
+      "Contrato con soporte prioritario SLA"
+    ]
+  },
+  {
+    id: "campana-meta-ads-cpl",
+    title: "Campañas de Marketing & Meta Ads",
+    price: 0,
+    priceFormatted: "A Cotizar",
+    monthly: "Gestión mensual",
+    category: "Marketing",
+    description: "Estrategias de alta rentabilidad en Facebook e Instagram Ads para captar prospectos cualificados.",
+    delivery: "Lanzamiento en 48 horas",
+    badge: "CONVERSIÓN",
+    features: [
+      "Estrategia de captación y segmentación de audiencias",
+      "Diseño de creativos y copys persuasivos de alto impacto",
+      "Píxel de seguimiento y Conversions API (CAPI)",
+      "Optimización continua de costo por lead (CPL)",
+      "Reportes semanales de rendimiento y ventas"
+    ]
+  },
+  {
+    id: "mantencion-soporte",
+    title: "Planes de Mantención Mensual & Soporte",
+    price: 0,
+    priceFormatted: "A Cotizar",
+    monthly: "Suscripción mensual",
+    category: "Soporte",
+    description: "Acompañamiento técnico continuo, hosting prioritario, copias de seguridad y optimizaciones de conversión.",
+    delivery: "Servicio continuo",
+    badge: "RECURRENTE",
+    features: [
+      "Hosting ultrarrápido y certificados SSL",
+      "Copias de seguridad semanales automáticas",
+      "Soporte técnico prioritario para ajustes y cambios",
+      "Monitoreo 24/7 y prevención de caídas",
+      "Mejoras continuas de velocidad y SEO"
     ]
   }
 ];
@@ -214,7 +298,9 @@ const storeItems = [
         <!-- Category Pills -->
         <div class="flex flex-wrap items-center gap-2">
           <button class="filter-btn active px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-black text-white border border-black shadow-sm" data-filter="all">Todas</button>
+          <button class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-lime/15 text-neutral-900 border border-lime shadow-sm font-black" data-filter="Promociones">⭐ Packs Promoción</button>
           <button class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-black/5 text-black/60 border border-black/10 hover:border-black/30 hover:text-black backdrop-blur-md" data-filter="Marketing">Meta Ads</button>
+          <button class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-black/5 text-black/60 border border-black/10 hover:border-black/30 hover:text-black backdrop-blur-md" data-filter="Legal & Pyme">Constitución Legal (SII)</button>
           <button class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-black/5 text-black/60 border border-black/10 hover:border-black/30 hover:text-black backdrop-blur-md" data-filter="Web">Web Corporativa</button>
           <button class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-black/5 text-black/60 border border-black/10 hover:border-black/30 hover:text-black backdrop-blur-md" data-filter="E-Commerce">E-Commerce</button>
           <button class="filter-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-black/5 text-black/60 border border-black/10 hover:border-black/30 hover:text-black backdrop-blur-md" data-filter="Sistemas">Sistemas & ERP</button>
@@ -257,6 +343,16 @@ const storeItems = [
 
               {/* Price & Delivery */}
               <div class="mb-6 pb-6 border-b border-white/5">
+                {item.originalPriceFormatted && (
+                  <div class="flex items-center gap-2 mb-1.5">
+                    <span class="text-xs text-white/40 line-through font-bold">
+                      {item.originalPriceFormatted}
+                    </span>
+                    <span class="px-2 py-0.5 rounded-full bg-lime text-black text-[9px] font-black tracking-wider uppercase">
+                      {item.discount || "50% OFF"}
+                    </span>
+                  </div>
+                )}
                 <div class="flex items-baseline gap-1.5 flex-wrap">
                   <span class="text-4xl font-extrabold tracking-tight text-white">{item.priceFormatted}</span>
                   {item.monthly && <span class="text-xs font-bold text-white/40 uppercase tracking-wider">{item.monthly}</span>}

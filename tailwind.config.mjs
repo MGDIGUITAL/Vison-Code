@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        lime: { DEFAULT: '#D7F55A', soft: '#EEFBC0', deep: '#B8DD2E' },
         brand: {
           // Paleta Vision Code — Obsidian & Pure White Monochrome
           accent: '#FFFFFF',

@@ -1,4 +1,8 @@
+# Vision Code — Robots.txt Oficial
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/admin/
+Disallow: /api/track
 
 Sitemap: https://www.vision-code.cl/sitemap.xml

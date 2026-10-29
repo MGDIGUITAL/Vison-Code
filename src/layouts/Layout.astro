@@ -1,5 +1,8 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import SalesAgent from '../components/SalesAgent.astro';
+import Tracker from '../components/Tracker.astro';
+import CheckoutModal from '../components/CheckoutModal.astro';
 export interface Props {
   title?: string;
   description?: string;
@@ -14,6 +17,7 @@ const {
   url = "https://vision-code.cl"
 } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, url).href;
+const metaPixelId = import.meta.env.PUBLIC_META_PIXEL_ID || '2153421501952376';
 ---
 
 <!DOCTYPE html>
@@ -44,8 +48,9 @@ const canonicalUrl = new URL(Astro.url.pathname, url).href;
     <meta name="theme-color" content="#000000" />
     <link rel="icon" type="image/png" href="/images/logo-negro.png" />
     <title>{title}</title>
+    <ViewTransitions />
     <!-- Meta Pixel Code -->
-    <script is:inline>
+    <script is:inline define:vars={{ metaPixelId }}>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -54,14 +59,15 @@ const canonicalUrl = new URL(Astro.url.pathname, url).href;
       t.src=v;s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '2153421501952376');
+      fbq('init', metaPixelId);
       fbq('track', 'PageView');
     </script>
     <noscript>
       <img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=2153421501952376&ev=PageView&noscript=1" />
+        src={`https://www.facebook.com/tr?id=${metaPixelId}&ev=PageView&noscript=1`} />
     </noscript>
     <!-- End Meta Pixel Code -->
+    <Tracker />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -88,7 +94,7 @@ const canonicalUrl = new URL(Astro.url.pathname, url).href;
       *, *::before, *::after { box-sizing: border-box; }
       html { 
         scroll-behavior: smooth; 
-        scroll-padding-top: 96px; 
+        scroll-padding-top: 100px; 
       }
       body {
         margin: 0;
@@ -397,5 +403,6 @@ const canonicalUrl = new URL(Astro.url.pathname, url).href;
         }
       }, { passive: true });
     </script>
+    <CheckoutModal />
   </body>
 </html>

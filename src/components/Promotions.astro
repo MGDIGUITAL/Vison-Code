@@ -1,0 +1,232 @@
+---
+const packs = [
+  {
+    tier: "01",
+    name: "Pack Emprendimiento",
+    badge: "5 CUPOS / MES",
+    isRecommended: false,
+    price: "$210.000",
+    period: "Pago Único Especial",
+    regularPrice: "$420.000",
+    discount: "50% OFF",
+    saving: "50% DCTO",
+    desc: "Para emprendedores y profesionales que necesitan presencia corporativa seria, captar clientes y medir quién entra a su web.",
+    features: [
+      "Landing Page Corporativa de ultra velocidad",
+      "Hosting Ultra Rápido + Dominio .CL por 1 año",
+      "Formulario interactivo y botón flotante a WhatsApp",
+      "Sistema SaaS de Flujo: visitas y clics WhatsApp en vivo",
+      "1er Mes GRATIS del Plan Vision Core ($29.990/mes)",
+      "SEO técnico inicial para indexar en Google",
+      "Soporte preventivo ante caídas y respaldo semanal"
+    ],
+    waMessage: "Hola Vision Code, quiero reservar un cupo para el Pack Promocional Emprendimiento ($210.000 CLP en oferta 50% OFF)."
+  },
+  {
+    tier: "02",
+    name: "Pack Pyme",
+    badge: "CUPOS LIMITADOS",
+    isRecommended: true,
+    price: "$260.000",
+    period: "Pago Único Especial",
+    regularPrice: "$520.000",
+    discount: "50% OFF",
+    saving: "50% DCTO",
+    desc: "A tu elección: Tienda online con pasarelas de pago o Portal institucional con software de administración de clientes.",
+    features: [
+      "A ELECCIÓN: E-Commerce Intermedio (40 productos, Webpay/Mercado Pago) O Portal Corporativo B2B (6 páginas)",
+      "Control de inventario con alertas de stock y cálculo de envíos",
+      "Configuración e instalación oficial de Píxel de Meta & CAPI",
+      "Sistema SaaS de Administración: control de prospectos y pedidos",
+      "1er Mes GRATIS del Plan Vision Scale ($59.990/mes)",
+      "Subida y actualización mensual de productos o banners",
+      "Soporte prioritario directo vía WhatsApp"
+    ],
+    waMessage: "Hola Vision Code, quiero reservar un cupo para el Pack Promocional Pyme ($260.000 CLP en oferta 50% OFF)."
+  },
+  {
+    tier: "03",
+    name: "Pack Corporativo",
+    badge: "SOLO 2 CUPOS · ESCALA TOTAL",
+    isRecommended: false,
+    price: "$310.000",
+    period: "Pago Único Especial",
+    regularPrice: "$620.000",
+    discount: "50% OFF",
+    saving: "50% DCTO",
+    desc: "Ecosistema total de ventas: tienda online sin límites, campaña publicitaria montada en Meta Ads y ERP de productos.",
+    features: [
+      "E-Commerce Profesional Ilimitado: matriz tallas/colores y cupones",
+      "Integración logística automática con Starken y Chilexpress",
+      "Campaña completa en Meta Ads (FB & IG) montada y optimizada",
+      "Píxel de Meta & API Conversiones CAPI blindado en el sistema",
+      "Sistema SaaS & ERP de Gestión de Inventario, Productos y Ventas",
+      "1er Mes GRATIS del Plan Partner Pro ($119.990/mes)",
+      "Soporte VIP 24/7 y soluciones técnicas continuas",
+      "* El saldo de inversión en anuncios lo financia el cliente directo a Meta"
+    ],
+    waMessage: "Hola Vision Code, quiero postular al Pack Promocional Corporativo ($310.000 CLP en oferta 50% OFF) con E-Commerce Pro, ERP y Meta Ads."
+  }
+];
+---
+
+<section id="promociones" class="py-32 relative z-10 border-t border-white/10 bg-black text-white overflow-hidden">
+  
+  <!-- Fondos de sección con sutil brillo -->
+  <div class="absolute inset-0 z-0 pointer-events-none select-none bg-cover bg-center" style="background-image: url('/images/fondos/3.png');"></div>
+  <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/90 via-black/80 to-black/95 pointer-events-none"></div>
+  
+  <div class="max-w-[90rem] mx-auto px-6 lg:px-12 relative z-10">
+    
+    <!-- Encabezado de Sección -->
+    <div class="mb-16 text-center max-w-3xl mx-auto fade-up">
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/15 text-[0.68rem] font-black uppercase tracking-[0.25em] text-white/80 mb-5 backdrop-blur-md">
+        <span class="w-2 h-2 rounded-full bg-lime animate-pulse shadow-[0_0_10px_rgba(184,221,46,0.9)]"></span>
+        <span>Oferta Especial · Cupos Limitados 2026</span>
+      </div>
+      
+      <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15] mb-5">
+        Packs Promocionales <br class="hidden sm:block"/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-neutral-400">
+          con Tecnología SaaS Incluida.
+        </span>
+      </h2>
+      
+      <p class="text-base sm:text-lg text-white/70 font-normal leading-relaxed">
+        Soluciones integrales de alto impacto para formalizar, vender y escalar. Cada pack incluye <strong>tu plataforma digital + tu software SaaS de control propio + tu 1er mes de soporte y analítica de regalo</strong>.
+      </p>
+    </div>
+
+    <!-- Grid de los 3 Packs -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+      {packs.map((pack) => (
+        <div class={`group relative p-8 sm:p-10 rounded-3xl bg-[#000000] border transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.95)] ${
+          pack.isRecommended 
+            ? 'border-white/50 shadow-[0_0_40px_rgba(255,255,255,0.15)] scale-[1.02] z-20' 
+            : 'border-white/15 hover:border-white/40'
+        }`}>
+          
+          {/* Top highlight bar */}
+          <div class={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${
+            pack.isRecommended ? 'from-lime via-white to-lime' : 'from-transparent via-white/40 to-transparent'
+          }`}></div>
+
+          <div>
+            {/* Header Card */}
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-xs font-black tracking-[0.2em] text-white/50 uppercase">NIVEL {pack.tier}</span>
+              <span class={`px-3 py-1 text-[0.65rem] font-extrabold uppercase tracking-widest rounded-full border shadow-sm ${
+                pack.isRecommended 
+                  ? 'bg-lime text-black border-lime font-black' 
+                  : 'bg-white/10 text-white/90 border-white/20'
+              }`}>
+                {pack.badge}
+              </span>
+            </div>
+
+            <h3 class="text-2xl font-black text-white mb-2 tracking-tight">{pack.name}</h3>
+            <p class="text-xs text-white/60 font-normal leading-relaxed mb-6 min-h-[48px]">{pack.desc}</p>
+
+            {/* Price Box */}
+            <div class="p-5 rounded-2xl bg-white/[0.04] border border-white/10 mb-8">
+              {pack.regularPrice && (
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="text-xs text-white/40 line-through font-bold">
+                    {pack.regularPrice}
+                  </span>
+                  <span class="px-2 py-0.5 rounded-full bg-lime text-black text-[9px] font-black tracking-wider uppercase">
+                    {pack.discount || "50% OFF"}
+                  </span>
+                </div>
+              )}
+              <div class="flex items-baseline gap-2 mb-1">
+                <span class="text-4xl sm:text-5xl font-black text-white tracking-tighter">{pack.price}</span>
+                <span class="text-xs font-bold text-white/50 uppercase tracking-wider">CLP</span>
+              </div>
+              <div class="flex items-center justify-between text-[11px] pt-2 border-t border-white/10">
+                <span class="text-white/40">Valor regular: <span class="line-through">{pack.regularPrice}</span></span>
+                <span class="text-lime font-bold uppercase tracking-wide">{pack.saving}</span>
+              </div>
+            </div>
+
+            {/* Features List */}
+            <div class="space-y-3 mb-8">
+              <div class="text-[11px] font-bold uppercase tracking-wider text-white/50 mb-3">Qué incluye el Pack:</div>
+              {pack.features.map((feat) => (
+                <div class="flex items-start gap-2.5 text-xs text-white/80 leading-snug">
+                  <span class="w-4 h-4 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white shrink-0 mt-0.5 text-[9px] font-bold">
+                    ✓
+                  </span>
+                  <span>{feat}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Action */}
+          <div class="pt-4 border-t border-white/10 space-y-2.5">
+            <button
+              type="button"
+              data-flow-trigger
+              data-subject={`Vision Code - ${pack.name}`}
+              data-amount={pack.price.replace(/[^0-9]/g, '')}
+              data-plan={pack.tier}
+              class={`w-full py-3.5 px-6 rounded-full text-center text-xs font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 shadow-lg cursor-pointer ${
+                pack.isRecommended
+                  ? 'bg-lime text-black hover:bg-lime/90 hover:scale-[1.02] shadow-[0_0_25px_rgba(184,221,46,0.4)]'
+                  : 'bg-white text-black hover:bg-neutral-200 hover:scale-[1.02]'
+              }`}
+            >
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <span>Contratar Servicio</span>
+            </button>
+
+            <a
+              href={`https://api.whatsapp.com/send?phone=56929645522&text=${encodeURIComponent(pack.waMessage)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full py-3 px-6 rounded-full text-center text-[11px] font-bold uppercase tracking-wider text-white/70 hover:text-white bg-white/5 hover:bg-white/10 border border-white/15 transition-all flex items-center justify-center gap-2"
+            >
+              <span>Hablar con un Especialista &rarr;</span>
+            </a>
+
+            <p class="text-[10px] text-center text-white/40 pt-1 tracking-wider uppercase font-medium">
+              Pago Seguro · Webpay Plus · Tarjetas de Crédito y Débito
+            </p>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    {/* Bottom Retention Bridge Banner */}
+    <div class="mt-14 p-6 sm:p-8 rounded-3xl bg-white/[0.03] border border-white/15 flex flex-col md:flex-row items-center justify-between gap-6 backdrop-blur-xl">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-neutral-900 border border-lime/40 text-lime flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(215,245,90,0.15)] group">
+          <svg class="w-6 h-6 text-lime transition-transform group-hover:scale-110 duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <path d="m9 12 2 2 4-4" stroke-width="2.2" />
+          </svg>
+        </div>
+        <div>
+          <h4 class="text-base sm:text-[1.05rem] font-bold text-white mb-0.5">
+            Todos los packs incluyen <span class="text-lime font-black">Prime de Mantención y Soporte GRATIS</span>
+          </h4>
+          <p class="text-xs text-white/60">
+            A partir del mes 2, continúa con el soporte de tu plataforma, servidor blindado y actualizaciones continuas desde solo $29.990 CLP/mes.
+          </p>
+        </div>
+      </div>
+      <a 
+        href="/servicios"
+        class="shrink-0 px-6 py-3 rounded-full text-xs font-extrabold uppercase tracking-widest bg-transparent hover:bg-white/10 text-white border border-white/30 transition-all duration-200 hover:border-white/60"
+      >
+        Ver Todos los Servicios &rarr;
+      </a>
+    </div>
+
+  </div>
+</section>

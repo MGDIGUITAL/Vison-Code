@@ -1,0 +1,751 @@
+---
+const plans = [
+  {
+    id: "vision-core",
+    type: "SUSCRIPCIÓN",
+    badge: "ESENCIAL",
+    isRecommended: false,
+    name: "Plan VISION CORE",
+    subtitle: "Mantenimiento, SEO & Seguridad Activa",
+    desc: "Diseñado para empresas y marcas que exigen una plataforma blindada, tiempos de carga ultra veloces y posicionamiento continuo en Google.",
+    price: "$29.990",
+    originalPrice: "$59.980",
+    discount: "50% OFF",
+    period: "CLP / MES",
+    deliveryLabel: "ENTREGA",
+    deliveryValue: "Servicio Mensual",
+    features: [
+      "Suite SaaS VC·OS Analytics: Monitoreo en vivo de tráfico, clics y conversión WhatsApp",
+      "Optimización de SEO Técnico continuo e indexación prioritaria en Google Search Console",
+      "Infraestructura Cloud de Alta Velocidad con Certificado SSL y blindaje WAF anti-ataques",
+      "Copias de seguridad semanales automatizadas con almacenamiento redundante en la nube",
+      "1 requerimiento mensual de mantenimiento, actualización de contenido o banners",
+      "Monitoreo preventivo de disponibilidad 24/7 y resolución técnica de incidentes"
+    ],
+    buttonClass: "bg-white hover:bg-neutral-200 text-black font-extrabold shadow-[0_0_20px_rgba(255,255,255,0.15)]",
+    cardClass: "border-white/15 hover:border-white/40",
+    badgeClass: "bg-white/10 text-white/90 border-white/20",
+    waMessage: "Hola Vision Code, me interesa contratar el Plan Mensual VISION CORE ($29.990 CLP/mes) para el mantenimiento y soporte de mi sitio web.",
+    specifications: {
+      uptime: "99.9% Uptime garantizado con certificación SSL activa",
+      backup: "Respaldos semanales automáticos con retención redundante en la nube",
+      sla: "Tiempo de respuesta técnico garantizado en menos de 12 horas hábiles",
+      saas: "Plataforma VC·OS Live Traffic (Visitas, orígenes y clics WhatsApp)",
+      modifications: "1 solicitud de actualización de contenido, textos o banners al mes",
+      contract: "Sin contratos forzosos. Flexibilidad total de renovación mensual"
+    }
+  },
+  {
+    id: "vision-scale",
+    type: "SUSCRIPCIÓN",
+    badge: "CRECIMIENTO",
+    isRecommended: true,
+    name: "Plan VISION SCALE",
+    subtitle: "Gestión Comercial, Catálogo & Conversión",
+    desc: "La solución definitiva para tiendas online y negocios en crecimiento que demandan rotación ágil de inventario, campañas activas y soporte continuo.",
+    price: "$59.990",
+    originalPrice: "$119.980",
+    discount: "50% OFF",
+    period: "CLP / MES",
+    deliveryLabel: "ENTREGA",
+    deliveryValue: "Servicio Mensual",
+    features: [
+      "Incluye todas las capacidades y servicios del Plan Vision Core",
+      "Gestión activa de catálogo: Carga, edición y parametrización de hasta 15 productos al mes",
+      "Diseño publicitario profesional y despliegue de banners comerciales para campañas",
+      "Auditoría mensual de UX/UI y optimización estratégica de embudos de venta (CRO)",
+      "Suite SaaS de Gestión Comercial: Control centralizado de prospectos (CRM) y pedidos en vivo",
+      "Asistencia técnica y comercial preferencial con canal directo por WhatsApp Business"
+    ],
+    buttonClass: "bg-[#b8dd2e] hover:bg-[#a6ca25] text-black font-black shadow-[0_0_30px_rgba(184,221,46,0.35)]",
+    cardClass: "border-[#b8dd2e]/70 shadow-[0_0_40px_rgba(184,221,46,0.15)] scale-[1.02] z-20",
+    badgeClass: "bg-[#b8dd2e] text-black border-[#b8dd2e] font-black shadow-[0_0_15px_rgba(184,221,46,0.5)]",
+    waMessage: "Hola Vision Code, quiero suscribirme al Plan Mensual VISION SCALE ($59.990 CLP/mes) con gestión de catálogo y SaaS.",
+    specifications: {
+      uptime: "99.95% Uptime de alta concurrencia para venta continua",
+      backup: "Respaldos automáticos bi-semanales con restauración inmediata",
+      sla: "Respuesta técnica y comercial preferencial en menos de 4 horas hábiles vía WhatsApp",
+      saas: "Suite VC·OS Analytics + CRM de Prospectos y Gestión de Pedidos en vivo",
+      modifications: "Hasta 15 productos nuevos/editados al mes + diseño de banners comerciales",
+      contract: "Sin cláusula de permanencia forzada. Cancelación libre con 15 días de aviso"
+    }
+  },
+  {
+    id: "partner-pro",
+    type: "SUSCRIPCIÓN",
+    badge: "PARTNER",
+    isRecommended: false,
+    name: "Plan PARTNER PRO",
+    subtitle: "Socio Tecnológico Integral & Meta Ads",
+    desc: "Tu departamento externo de tecnología y marketing digital de alto rendimiento: innovación continua, pauta publicitaria y software empresarial.",
+    price: "$119.990",
+    originalPrice: "$239.980",
+    discount: "50% OFF",
+    period: "CLP / MES",
+    deliveryLabel: "ENTREGA",
+    deliveryValue: "Servicio Mensual",
+    features: [
+      "Incluye todas las capacidades y servicios del Plan Vision Scale",
+      "Partner Tecnológico Dedicado: Desarrollo continuo de nuevas funciones, páginas e integraciones",
+      "Gestión estratégica y optimización experta de Campañas Publicitarias en Meta Ads (FB & IG)",
+      "Administración y actualización ilimitada de catálogo, fichas de producto e inventario",
+      "Suite SaaS Enterprise & ERP Integral: Gestión operativa de ventas, stock y analítica avanzada",
+      "Mesa de soporte VIP 24/7 de atención inmediata con asignación de un Tech Lead exclusivo"
+    ],
+    buttonClass: "bg-white hover:bg-neutral-200 text-black font-extrabold shadow-[0_0_20px_rgba(255,255,255,0.15)]",
+    cardClass: "border-white/15 hover:border-white/40",
+    badgeClass: "bg-white/10 text-white/90 border-white/20",
+    waMessage: "Hola Vision Code, quiero contratar el Plan Mensual PARTNER PRO ($119.990 CLP/mes) con Meta Ads y desarrollo continuo.",
+    specifications: {
+      uptime: "99.99% Enterprise Uptime de misión crítica y tolerancia a fallos",
+      backup: "Respaldos diarios integrales automatizados con almacenamiento redundante",
+      sla: "Atención VIP 24/7 inmediata y asignación de Tech Lead dedicado",
+      saas: "Ecosistema Integral SaaS & ERP + Píxel de Meta & Conversions API (CAPI) verificado",
+      modifications: "Gestión de catálogo ilimitada + desarrollo continuo de nuevas funcionalidades",
+      contract: "Alianza estratégica mensual sin contratos forzosos. Escala con total tranquilidad"
+    }
+  }
+];
+---
+
+<section id="planes" class="py-32 relative z-10 border-t border-white/10 bg-black text-white overflow-hidden">
+  
+  <!-- Fondos de sección con sutil brillo atmosférico Pitch Black OLED -->
+  <div class="absolute inset-0 z-0 pointer-events-none select-none bg-cover bg-center opacity-40" style="background-image: url('/images/fondos/3.png');"></div>
+  <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/95 via-black/85 to-black/98 pointer-events-none"></div>
+  
+  <div class="max-w-[90rem] mx-auto px-6 lg:px-12 relative z-10">
+    
+    <!-- Encabezado de Sección -->
+    <div class="mb-12 text-center max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/15 text-[0.68rem] font-black uppercase tracking-[0.25em] text-white/80 mb-5 backdrop-blur-md">
+        <span class="w-2 h-2 rounded-full bg-[#b8dd2e] animate-pulse shadow-[0_0_10px_rgba(184,221,46,0.9)]"></span>
+        <span>Acompañamiento Estratégico & Escala Continua</span>
+      </div>
+      
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15] mb-5">
+        Planes de Mantención & Escala <br class="hidden sm:block"/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-neutral-400">
+          de Alto Rendimiento Tecnológico.
+        </span>
+      </h1>
+      
+      <p class="text-base sm:text-lg text-white/70 font-normal leading-relaxed">
+        Elige el nivel de respaldo técnico y comercial que tu empresa requiere. Sin cláusulas forzosas: 
+        <strong>ciberseguridad activa, software SaaS propio, optimización de ventas y soporte preferencial continuo</strong>.
+      </p>
+    </div>
+
+    <!-- Selector Interactivo de Ciclo de Facturación (Mensual, Trimestral, Semestral, Anual) -->
+    <div class="flex flex-col items-center justify-center mb-16">
+      <div class="inline-flex p-1.5 rounded-full bg-white/[0.04] border border-white/15 backdrop-blur-xl shadow-2xl overflow-x-auto max-w-full gap-1">
+        <button
+          type="button"
+          data-billing-cycle="mensual"
+          class="billing-cycle-btn active px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 cursor-pointer font-bold"
+        >
+          <span class="btn-text">Mensual</span>
+        </button>
+
+        <button
+          type="button"
+          data-billing-cycle="trimestral"
+          class="billing-cycle-btn px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 cursor-pointer font-bold"
+        >
+          <span class="btn-text">Trimestral</span>
+          <span class="billing-badge text-[9px] font-black uppercase px-2 py-0.5 rounded-full transition-all duration-300">
+            -10%
+          </span>
+        </button>
+
+        <button
+          type="button"
+          data-billing-cycle="semestral"
+          class="billing-cycle-btn px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 cursor-pointer font-bold"
+        >
+          <span class="btn-text">Semestral</span>
+          <span class="billing-badge text-[9px] font-black uppercase px-2 py-0.5 rounded-full transition-all duration-300">
+            1 Mes Gratis
+          </span>
+        </button>
+
+        <button
+          type="button"
+          data-billing-cycle="anual"
+          class="billing-cycle-btn px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 cursor-pointer font-bold"
+        >
+          <span class="btn-text">Anual</span>
+          <span class="billing-badge text-[9px] font-black uppercase px-2 py-0.5 rounded-full transition-all duration-300">
+            3 Meses Gratis
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Grid de los 3 Planes -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mb-20">
+      {plans.map((plan) => (
+        <div class={`group relative p-8 sm:p-10 rounded-3xl bg-[#030303] border transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.95)] ${plan.cardClass}`}>
+          
+          {/* Top highlight bar */}
+          <div class={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${
+            plan.isRecommended ? 'from-[#b8dd2e] via-white to-[#b8dd2e]' : 'from-transparent via-white/30 to-transparent'
+          }`}></div>
+
+          <div>
+            {/* Header Card */}
+            <div class="flex items-center justify-between mb-5">
+              <span class="text-[0.68rem] font-black tracking-[0.22em] text-white/45 uppercase">{plan.type}</span>
+              <span class={`px-3 py-1 text-[0.65rem] font-extrabold uppercase tracking-widest rounded-full border shadow-sm ${plan.badgeClass}`}>
+                {plan.badge}
+              </span>
+            </div>
+
+            {/* Title & Subtitle */}
+            <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight mb-1 group-hover:text-neutral-100 transition-colors">
+              {plan.name}
+            </h2>
+            <p class="text-xs sm:text-sm font-bold text-[#b8dd2e] tracking-wide mb-4">
+              {plan.subtitle}
+            </p>
+
+            <p class="text-xs sm:text-sm text-white/60 leading-relaxed mb-6">
+              {plan.desc}
+            </p>
+
+            {/* Price Card */}
+            <div class="p-4 sm:p-5 rounded-2xl bg-[#0c0c0c] border border-white/10 mb-8 flex flex-col justify-between">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-2">
+                  <span id={`original-price-${plan.id}`} class="text-xs text-white/40 line-through font-bold">
+                    {plan.originalPrice}
+                  </span>
+                  <span id={`discount-badge-${plan.id}`} class="px-2 py-0.5 rounded-full bg-[#b8dd2e] text-black text-[9px] font-black tracking-wider uppercase shadow-[0_0_10px_rgba(184,221,46,0.3)]">
+                    {plan.discount || "50% OFF"}
+                  </span>
+                </div>
+                <div class="text-right">
+                  <span class="text-[0.62rem] font-extrabold uppercase tracking-[0.2em] text-white/40 block">
+                    {plan.deliveryLabel}
+                  </span>
+                  <span id={`delivery-val-${plan.id}`} class="text-xs sm:text-sm font-bold text-white block mt-0.5">
+                    {plan.deliveryValue}
+                  </span>
+                </div>
+              </div>
+
+              <div class="flex items-baseline gap-1.5 pt-1">
+                <span id={`price-${plan.id}`} class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight block">
+                  {plan.price}
+                </span>
+                <span id={`period-${plan.id}`} class="text-[0.65rem] font-bold text-white/45 uppercase tracking-[0.16em] block mt-0.5">
+                  {plan.period}
+                </span>
+              </div>
+
+              <div class="mt-2 pt-2 border-t border-white/5">
+                <span id={`total-breakdown-${plan.id}`} class="text-[11px] text-lime font-mono block">
+                  Facturación mensual flexible
+                </span>
+              </div>
+            </div>
+
+            {/* Features List */}
+            <div class="mb-8">
+              <span class="text-[0.68rem] font-extrabold tracking-[0.2em] text-white/50 uppercase block mb-4">
+                LO QUE INCLUYE:
+              </span>
+              <ul class="space-y-3.5">
+                {plan.features.map((feat) => (
+                  <li class="flex items-start gap-3 text-xs sm:text-sm text-white/80 leading-snug">
+                    <div class="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5 text-white">
+                      <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span>{feat}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Call to Actions */}
+          <div class="pt-6 border-t border-white/10 mt-auto">
+            <a
+              id={`wa-btn-${plan.id}`}
+              href={`https://api.whatsapp.com/send?phone=56929645522&text=${encodeURIComponent(plan.waMessage)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={`w-full py-3.5 px-6 rounded-full text-center text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${plan.buttonClass}`}
+            >
+              <span>COTIZAR POR WHATSAPP</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+
+            <!-- Link Ficha Técnica con Modal -->
+            <button
+              type="button"
+              data-open-modal={plan.id}
+              class="w-full text-center text-xs text-white/45 hover:text-white transition-colors duration-200 mt-3.5 font-medium flex items-center justify-center gap-1.5 cursor-pointer group/link"
+            >
+              <span>Ver Ficha Técnica Completa</span>
+              <span class="transition-transform group-hover/link:translate-x-1">&rarr;</span>
+            </button>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Estándares Corporativos & Garantías de Nivel de Servicio (SLA) -->
+    <div class="p-8 sm:p-12 rounded-3xl bg-[#050505] border border-white/10 backdrop-blur-xl max-w-5xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[0.62rem] font-bold uppercase tracking-[0.2em] text-white/70 mb-3">
+          Continuidad Operativa & Respaldo B2B
+        </div>
+        <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-white mb-3">
+          Estándares de Rendimiento y Garantía Empresarial
+        </h3>
+        <p class="text-xs sm:text-sm text-white/60 leading-relaxed">
+          Los activos digitales de su empresa exigen máxima disponibilidad, seguridad estricta y velocidad de respuesta. Nuestro modelo de operación mensual asegura continuidad y escalabilidad técnica permanente.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition-all duration-300">
+          <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center mb-4">
+            <svg class="w-4 h-4 text-[#b8dd2e]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h4 class="text-sm font-bold text-white mb-2">Flexibilidad Operativa B2B</h4>
+          <p class="text-xs text-white/60 leading-relaxed">
+            Suscripción mensual transparente sin cláusulas de permanencia forzada. La precisión técnica y el valor medible en sus operaciones garantizan alianzas comerciales sostenibles.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition-all duration-300">
+          <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center mb-4">
+            <svg class="w-4 h-4 text-[#b8dd2e]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h4 class="text-sm font-bold text-white mb-2">Ciberseguridad & Uptime</h4>
+          <p class="text-xs text-white/60 leading-relaxed">
+            Supervisión preventiva 24/7, protección activa contra vulnerabilidades, respaldos automatizados en la nube y certificados SSL de alta seguridad siempre operativos.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition-all duration-300">
+          <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center mb-4">
+            <svg class="w-4 h-4 text-[#b8dd2e]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h4 class="text-sm font-bold text-white mb-2">SLA de Respuesta Directa</h4>
+          <p class="text-xs text-white/60 leading-relaxed">
+            Canal de comunicación técnico preferencial y atención ejecutiva. Implementación ágil de ajustes, actualización de contenidos y soporte prioritario sin fricciones.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  {/* Modales de Ficha Técnica Completa */}
+  {plans.map((plan) => (
+    <div
+      id={`modal-${plan.id}`}
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300"
+      aria-hidden="true"
+    >
+      <div class="relative w-full max-w-2xl bg-[#090909] border border-white/20 rounded-3xl p-6 sm:p-8 shadow-[0_25px_70px_rgba(0,0,0,0.95)] max-h-[90vh] overflow-y-auto">
+        
+        {/* Close Button */}
+        <button
+          type="button"
+          data-close-modal
+          class="absolute top-5 right-5 text-white/60 hover:text-white bg-white/5 hover:bg-white/10 p-2 rounded-full transition-colors"
+          aria-label="Cerrar modal"
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        {/* Modal Header */}
+        <div class="mb-6">
+          <span class={`px-3 py-1 text-[0.65rem] font-extrabold uppercase tracking-widest rounded-full border mb-3 inline-block ${plan.badgeClass}`}>
+            {plan.badge}
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            Ficha Técnica · {plan.name}
+          </h3>
+          <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+            <span class="text-xs sm:text-sm text-[#b8dd2e] font-bold">
+              {plan.subtitle}
+            </span>
+            <span class="text-white/30">&bull;</span>
+            <span id={`modal-original-price-${plan.id}`} class="text-xs text-white/40 line-through font-bold">
+              {plan.originalPrice}
+            </span>
+            <span id={`modal-discount-badge-${plan.id}`} class="px-2 py-0.5 rounded-full bg-[#b8dd2e] text-black text-[9px] font-black tracking-wider uppercase">
+              {plan.discount || "50% OFF"}
+            </span>
+            <span id={`modal-price-${plan.id}`} class="text-xs sm:text-sm font-bold text-white">
+              {plan.price} <span class="text-[0.65rem] text-white/50">{plan.period}</span>
+            </span>
+          </div>
+        </div>
+
+        {/* Especificaciones Técnicas Detalladas */}
+        <div class="space-y-4 mb-8">
+          <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 flex items-start justify-between gap-4">
+            <div>
+              <span class="text-[0.65rem] font-bold uppercase tracking-wider text-white/40 block">Disponibilidad (SLA)</span>
+              <span class="text-xs sm:text-sm text-white font-medium">{plan.specifications.uptime}</span>
+            </div>
+            <span class="text-xs font-bold text-[#b8dd2e]">Garantizado</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 flex items-start justify-between gap-4">
+            <div>
+              <span class="text-[0.65rem] font-bold uppercase tracking-wider text-white/40 block">Tiempo de Respuesta</span>
+              <span class="text-xs sm:text-sm text-white font-medium">{plan.specifications.sla}</span>
+            </div>
+            <span class="text-xs font-bold text-white/70">WhatsApp</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 flex items-start justify-between gap-4">
+            <div>
+              <span class="text-[0.65rem] font-bold uppercase tracking-wider text-white/40 block">Respaldo de Seguridad</span>
+              <span class="text-xs sm:text-sm text-white font-medium">{plan.specifications.backup}</span>
+            </div>
+            <span class="text-xs font-bold text-white/70">Nube AWS / Vercel</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 flex items-start justify-between gap-4">
+            <div>
+              <span class="text-[0.65rem] font-bold uppercase tracking-wider text-white/40 block">Acceso Software SaaS</span>
+              <span class="text-xs sm:text-sm text-white font-medium">{plan.specifications.saas}</span>
+            </div>
+            <span class="text-xs font-bold text-[#b8dd2e]">Incluido</span>
+          </div>
+
+          <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 flex items-start justify-between gap-4">
+            <div>
+              <span class="text-[0.65rem] font-bold uppercase tracking-wider text-white/40 block">Alcance por Ciclo</span>
+              <span class="text-xs sm:text-sm text-white font-medium">{plan.specifications.modifications}</span>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 flex items-start justify-between gap-4">
+            <div>
+              <span class="text-[0.65rem] font-bold uppercase tracking-wider text-white/40 block">Términos de Contratación</span>
+              <span id={`modal-contract-${plan.id}`} class="text-xs sm:text-sm text-white font-medium">{plan.specifications.contract}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Modal Action CTA */}
+        <div class="flex flex-col sm:flex-row gap-3 pt-4 border-t border-white/10">
+          <a
+            id={`modal-wa-btn-${plan.id}`}
+            href={`https://api.whatsapp.com/send?phone=56929645522&text=${encodeURIComponent(plan.waMessage)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`flex-1 py-3.5 px-6 rounded-full text-center text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all ${plan.buttonClass}`}
+          >
+            <span>CONTRATAR VÍA WHATSAPP</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <button
+            type="button"
+            data-close-modal
+            class="py-3.5 px-6 rounded-full text-center text-xs uppercase tracking-wider text-white/70 hover:text-white bg-white/5 hover:bg-white/10 transition-colors font-bold cursor-pointer"
+          >
+            Cerrar
+          </button>
+        </div>
+
+      </div>
+    </div>
+  ))}
+
+</section>
+
+<script is:inline>
+  // Technical Datasheet Modal Logic
+  document.querySelectorAll('[data-open-modal]').forEach(button => {
+    button.addEventListener('click', () => {
+      const modalId = button.getAttribute('data-open-modal');
+      const modal = document.getElementById(`modal-${modalId}`);
+      if (modal) {
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modal.classList.add('opacity-100', 'pointer-events-auto');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-close-modal]').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('[id^="modal-"]').forEach(modal => {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        modal.classList.remove('opacity-100', 'pointer-events-auto');
+      });
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Close modal when clicking on backdrop
+  document.querySelectorAll('[id^="modal-"]').forEach(modal => {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        modal.classList.remove('opacity-100', 'pointer-events-auto');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+
+  // Dynamic Billing Cycle Selector Logic (Mensual, Trimestral, Semestral, Anual)
+  const PLANS_DATA = {
+    "vision-core": {
+      mensual: {
+        price: "$29.990",
+        originalPrice: "$59.980",
+        discount: "50% OFF",
+        period: "CLP / MES",
+        breakdown: "Facturación mensual flexible",
+        delivery: "Servicio Mensual",
+        contract: "Sin contratos forzosos. Flexibilidad total de renovación mensual.",
+        waMessage: "Hola Vision Code, me interesa contratar el Plan Mensual VISION CORE ($29.990 CLP/mes) para el mantenimiento y soporte de mi sitio web."
+      },
+      trimestral: {
+        price: "$80.970",
+        originalPrice: "$179.940",
+        discount: "10% DCTO EXTRA",
+        period: "CLP TOTAL / 3 MESES",
+        breakdown: "Pago total del periodo (Equivale a $26.990/mes)",
+        delivery: "Pago Total Trimestral",
+        contract: "Cancelación total anticipada de $80.970 CLP por los 3 meses completos. Ahorro del 10% preferencial.",
+        waMessage: "Hola Vision Code, me interesa contratar el Plan Trimestral VISION CORE. Cancelando el monto total de $80.970 CLP por los 3 meses (equivale a $26.990/mes con 10% de ahorro)."
+      },
+      semestral: {
+        price: "$149.940",
+        originalPrice: "$359.880",
+        discount: "1 MES GRATIS (15% OFF)",
+        period: "CLP TOTAL / 6 MESES",
+        breakdown: "Pago total del periodo (Equivale a $24.990/mes · 1 Mes Gratis)",
+        delivery: "Pago Total Semestral",
+        contract: "Cancelación total anticipada de $149.940 CLP por los 6 meses completos. Incluye 1 mes de mantención 100% bonificado.",
+        waMessage: "Hola Vision Code, me interesa contratar el Plan Semestral VISION CORE. Cancelando el monto total de $149.940 CLP por los 6 meses (equivale a $24.990/mes con 1 Mes Gratis)."
+      },
+      anual: {
+        price: "$263.880",
+        originalPrice: "$719.760",
+        discount: "3 MESES GRATIS (25% OFF)",
+        period: "CLP TOTAL / 1 AÑO",
+        breakdown: "Pago total del periodo (Equivale a $21.990/mes · 3 Meses Gratis)",
+        delivery: "Pago Total Anual",
+        contract: "Cancelación total anticipada de $263.880 CLP por el año completo. Incluye 3 meses de mantención 100% bonificados y soporte prioritario.",
+        waMessage: "Hola Vision Code, me interesa contratar el Plan Anual VISION CORE. Cancelando el monto total de $263.880 CLP por el año completo (equivale a $21.990/mes con 3 Meses Gratis)."
+      }
+    },
+    "vision-scale": {
+      mensual: {
+        price: "$59.990",
+        originalPrice: "$119.980",
+        discount: "50% OFF",
+        period: "CLP / MES",
+        breakdown: "Facturación mensual flexible",
+        delivery: "Servicio Mensual",
+        contract: "Sin cláusula de permanencia forzada. Cancelación libre con 15 días de aviso.",
+        waMessage: "Hola Vision Code, quiero suscribirme al Plan Mensual VISION SCALE ($59.990 CLP/mes) con gestión de catálogo y SaaS."
+      },
+      trimestral: {
+        price: "$161.970",
+        originalPrice: "$359.940",
+        discount: "10% DCTO EXTRA",
+        period: "CLP TOTAL / 3 MESES",
+        breakdown: "Pago total del periodo (Equivale a $53.990/mes)",
+        delivery: "Pago Total Trimestral",
+        contract: "Cancelación total anticipada de $161.970 CLP por los 3 meses completos. Ahorro del 10% en gestión comercial y catálogo.",
+        waMessage: "Hola Vision Code, quiero contratar el Plan Trimestral VISION SCALE. Cancelando el monto total de $161.970 CLP por los 3 meses (equivale a $53.990/mes con 10% de ahorro)."
+      },
+      semestral: {
+        price: "$299.940",
+        originalPrice: "$719.880",
+        discount: "1 MES GRATIS (15% OFF)",
+        period: "CLP TOTAL / 6 MESES",
+        breakdown: "Pago total del periodo (Equivale a $49.990/mes · 1 Mes Gratis)",
+        delivery: "Pago Total Semestral",
+        contract: "Cancelación total anticipada de $299.940 CLP por los 6 meses completos. Incluye 1 mes de gestión de catálogo y CRM bonificado.",
+        waMessage: "Hola Vision Code, quiero contratar el Plan Semestral VISION SCALE. Cancelando el monto total de $299.940 CLP por los 6 meses (equivale a $49.990/mes con 1 Mes Gratis)."
+      },
+      anual: {
+        price: "$539.880",
+        originalPrice: "$1.439.760",
+        discount: "3 MESES GRATIS (25% OFF)",
+        period: "CLP TOTAL / 1 AÑO",
+        breakdown: "Pago total del periodo (Equivale a $44.990/mes · 3 Meses Gratis)",
+        delivery: "Pago Total Anual",
+        contract: "Cancelación total anticipada de $539.880 CLP por el año completo. Acuerdo anual con 3 meses bonificados y soporte prioritario WhatsApp.",
+        waMessage: "Hola Vision Code, quiero contratar el Plan Anual VISION SCALE. Cancelando el monto total de $539.880 CLP por el año completo (equivale a $44.990/mes con 3 Meses Gratis)."
+      }
+    },
+    "partner-pro": {
+      mensual: {
+        price: "$119.990",
+        originalPrice: "$239.980",
+        discount: "50% OFF",
+        period: "CLP / MES",
+        breakdown: "Facturación mensual flexible",
+        delivery: "Servicio Mensual",
+        contract: "Alianza estratégica mensual sin contratos forzosos. Escala con total tranquilidad.",
+        waMessage: "Hola Vision Code, quiero contratar el Plan Mensual PARTNER PRO ($119.990 CLP/mes) con Meta Ads y desarrollo continuo."
+      },
+      trimestral: {
+        price: "$323.970",
+        originalPrice: "$719.940",
+        discount: "10% DCTO EXTRA",
+        period: "CLP TOTAL / 3 MESES",
+        breakdown: "Pago total del periodo (Equivale a $107.990/mes)",
+        delivery: "Pago Total Trimestral",
+        contract: "Cancelación total anticipada de $323.970 CLP por los 3 meses completos. Alianza con desarrollo continuo y pauta Meta Ads.",
+        waMessage: "Hola Vision Code, quiero contratar el Plan Trimestral PARTNER PRO. Cancelando el monto total de $323.970 CLP por los 3 meses (equivale a $107.990/mes con 10% de ahorro)."
+      },
+      semestral: {
+        price: "$599.940",
+        originalPrice: "$1.439.880",
+        discount: "1 MES GRATIS (15% OFF)",
+        period: "CLP TOTAL / 6 MESES",
+        breakdown: "Pago total del periodo (Equivale a $99.990/mes · 1 Mes Gratis)",
+        delivery: "Pago Total Semestral",
+        contract: "Cancelación total anticipada de $599.940 CLP por los 6 meses completos. Alianza semestral con Tech Lead asignado y 1 mes bonificado.",
+        waMessage: "Hola Vision Code, quiero contratar el Plan Semestral PARTNER PRO. Cancelando el monto total de $599.940 CLP por los 6 meses (equivale a $99.990/mes con 1 Mes Gratis)."
+      },
+      anual: {
+        price: "$1.079.880",
+        originalPrice: "$2.879.760",
+        discount: "3 MESES GRATIS (25% OFF)",
+        period: "CLP TOTAL / 1 AÑO",
+        breakdown: "Pago total del periodo (Equivale a $89.990/mes · 3 Meses Gratis)",
+        delivery: "Pago Total Anual",
+        contract: "Cancelación total anticipada de $1.079.880 CLP por el año completo. Socio tecnológico anual con soporte VIP 24/7 y 3 meses 100% bonificados.",
+        waMessage: "Hola Vision Code, quiero contratar el Plan Anual PARTNER PRO. Cancelando el monto total de $1.079.880 CLP por los 12 meses (equivale a $89.990/mes con 3 Meses Gratis)."
+      }
+    }
+  };
+
+  function setBillingCycle(cycle) {
+    // Update button states
+    document.querySelectorAll('.billing-cycle-btn').forEach(btn => {
+      const c = btn.getAttribute('data-billing-cycle');
+      if (c === cycle) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    // Update plans
+    Object.keys(PLANS_DATA).forEach(planId => {
+      const data = PLANS_DATA[planId][cycle];
+      if (!data) return;
+
+      const priceEl = document.getElementById(`price-${planId}`);
+      if (priceEl) priceEl.textContent = data.price;
+
+      const origPriceEl = document.getElementById(`original-price-${planId}`);
+      if (origPriceEl) origPriceEl.textContent = data.originalPrice;
+
+      const badgeEl = document.getElementById(`discount-badge-${planId}`);
+      if (badgeEl) badgeEl.textContent = data.discount;
+
+      const periodEl = document.getElementById(`period-${planId}`);
+      if (periodEl) periodEl.textContent = data.period;
+
+      const breakdownEl = document.getElementById(`total-breakdown-${planId}`);
+      if (breakdownEl) breakdownEl.textContent = data.breakdown;
+
+      const deliveryValEl = document.getElementById(`delivery-val-${planId}`);
+      if (deliveryValEl) deliveryValEl.textContent = data.delivery;
+
+      const waBtn = document.getElementById(`wa-btn-${planId}`);
+      if (waBtn) {
+        waBtn.setAttribute('href', `https://api.whatsapp.com/send?phone=56929645522&text=${encodeURIComponent(data.waMessage)}`);
+      }
+
+      // Modals
+      const modalPriceEl = document.getElementById(`modal-price-${planId}`);
+      if (modalPriceEl) modalPriceEl.innerHTML = `${data.price} <span class="text-[0.65rem] text-white/50">${data.period}</span>`;
+
+      const modalOrigEl = document.getElementById(`modal-original-price-${planId}`);
+      if (modalOrigEl) modalOrigEl.textContent = data.originalPrice;
+
+      const modalBadgeEl = document.getElementById(`modal-discount-badge-${planId}`);
+      if (modalBadgeEl) modalBadgeEl.textContent = data.discount;
+
+      const modalContractEl = document.getElementById(`modal-contract-${planId}`);
+      if (modalContractEl) modalContractEl.textContent = data.contract;
+
+      const modalWaBtn = document.getElementById(`modal-wa-btn-${planId}`);
+      if (modalWaBtn) {
+        modalWaBtn.setAttribute('href', `https://api.whatsapp.com/send?phone=56929645522&text=${encodeURIComponent(data.waMessage)}`);
+      }
+    });
+  }
+
+  document.querySelectorAll('.billing-cycle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cycle = btn.getAttribute('data-billing-cycle');
+      if (cycle) setBillingCycle(cycle);
+    });
+  });
+</script>
+
+<style>
+  .billing-cycle-btn {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .billing-cycle-btn.active {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.25) !important;
+  }
+  .billing-cycle-btn.active .btn-text {
+    color: #000000 !important;
+    font-weight: 900 !important;
+  }
+  .billing-cycle-btn.active .billing-badge {
+    background-color: #000000 !important;
+    color: #b8dd2e !important;
+    border: 1px solid rgba(0, 0, 0, 0.9) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+  }
+  .billing-cycle-btn:not(.active) {
+    color: rgba(255, 255, 255, 0.65) !important;
+    background-color: transparent !important;
+  }
+  .billing-cycle-btn:not(.active) .btn-text {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+  .billing-cycle-btn:not(.active):hover {
+    background-color: rgba(255, 255, 255, 0.06) !important;
+  }
+  .billing-cycle-btn:not(.active):hover .btn-text {
+    color: #ffffff !important;
+  }
+  .billing-cycle-btn:not(.active) .billing-badge {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    color: #b8dd2e !important;
+    border: 1px solid rgba(184, 221, 46, 0.25) !important;
+  }
+</style>

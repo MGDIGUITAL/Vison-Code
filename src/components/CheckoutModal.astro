@@ -1,0 +1,216 @@
+---
+// Componente de Checkout Modal para Flow.cl
+---
+
+<div id="flow-checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl animate-fade-in">
+  <div class="relative w-full max-w-md rounded-3xl bg-[#0a0a0a] border border-white/20 p-6 sm:p-8 shadow-[0_25px_80px_rgba(0,0,0,0.9)] overflow-hidden">
+    
+    <!-- Botón Cerrar -->
+    <button 
+      id="flow-modal-close" 
+      class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white flex items-center justify-center transition-all"
+    >
+      &times;
+    </button>
+
+    <!-- Encabezado Modal -->
+    <div class="flex items-center gap-3 mb-6">
+      <div class="w-10 h-10 rounded-xl bg-lime/20 border border-lime/40 text-lime flex items-center justify-center font-black text-sm shrink-0">
+        <svg class="w-5 h-5 text-lime" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+        </svg>
+      </div>
+      <div>
+        <h3 class="text-lg font-black text-white tracking-wide uppercase">Contratación Segura</h3>
+        <p class="text-xs text-white/50">Transacción protegida SSL · Webpay Plus &amp; Tarjetas</p>
+      </div>
+    </div>
+
+    <!-- Resumen del Item a Pagar -->
+    <div class="p-4 rounded-2xl bg-white/5 border border-white/10 mb-6">
+      <div class="text-[11px] font-mono text-white/40 uppercase tracking-widest mb-1">Servicio / Plan</div>
+      <div id="flow-summary-title" class="text-sm font-bold text-white mb-2 leading-snug">Pack Promocional</div>
+      <div class="flex items-baseline justify-between pt-2 border-t border-white/10">
+        <span class="text-xs text-white/60">Total a pagar:</span>
+        <span id="flow-summary-amount" class="text-xl font-mono font-black text-lime">$0 CLP</span>
+      </div>
+    </div>
+
+    <!-- Formulario de Datos -->
+    <form id="flow-checkout-form" class="space-y-4">
+      <input type="hidden" id="flow-input-subject" name="subject" value="" />
+      <input type="hidden" id="flow-input-amount" name="amount" value="" />
+      <input type="hidden" id="flow-input-plan" name="planId" value="" />
+
+      <div>
+        <label for="flow-input-email" class="block text-xs font-bold uppercase tracking-wider text-white/70 mb-1.5">
+          Tu Correo Electrónico <span class="text-lime">*</span>
+        </label>
+        <input 
+          type="email" 
+          id="flow-input-email" 
+          name="email" 
+          required 
+          placeholder="tu@correo.com"
+          class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder-white/30 text-sm focus:outline-none focus:border-lime focus:ring-1 focus:ring-lime transition-all"
+        />
+        <span class="text-[10px] text-white/40 mt-1 block">Aquí recibirás el comprobante oficial y respaldo del pago.</span>
+      </div>
+
+      <div>
+        <label for="flow-input-name" class="block text-xs font-bold uppercase tracking-wider text-white/70 mb-1.5">
+          Nombre o Razón Social (Opcional)
+        </label>
+        <input 
+          type="text" 
+          id="flow-input-name" 
+          name="name" 
+          placeholder="Ej: Juan Pérez / Mi Empresa SpA"
+          class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/40 transition-all"
+        />
+      </div>
+
+      <div>
+        <label for="flow-input-phone" class="block text-xs font-bold uppercase tracking-wider text-white/70 mb-1.5">
+          Teléfono / WhatsApp (Opcional)
+        </label>
+        <input 
+          type="tel" 
+          id="flow-input-phone" 
+          name="phone" 
+          placeholder="+56 9 1234 5678"
+          class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder-white/30 text-sm focus:outline-none focus:border-white/40 transition-all"
+        />
+      </div>
+
+      <!-- Mensaje de Error si falla -->
+      <div id="flow-error-msg" class="hidden p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-xs text-red-400"></div>
+
+      <!-- Botón de Pago -->
+      <button 
+        type="submit" 
+        id="flow-submit-btn"
+        class="w-full py-4 px-6 rounded-full bg-lime hover:bg-lime/90 text-black font-black text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_0_25px_rgba(184,221,46,0.4)] hover:scale-[1.01] flex items-center justify-center gap-2 disabled:opacity-50"
+      >
+        <span id="flow-btn-text">Proceder a la Contratación Segura &rarr;</span>
+        <svg id="flow-btn-spinner" class="w-4 h-4 animate-spin hidden text-black" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+        </svg>
+      </button>
+
+      <p class="text-[10px] text-center text-white/40 flex items-center justify-center gap-1.5 pt-1">
+        <svg class="w-3 h-3 text-lime" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+        <span>Transbank Webpay Plus · Servipag · Tarjetas de Crédito / Débito</span>
+      </p>
+    </form>
+
+  </div>
+</div>
+
+<script is:inline>
+  // Inicializador global para abrir checkout de Flow desde cualquier botón
+  window.openFlowCheckout = function(data) {
+    var modal = document.getElementById('flow-checkout-modal');
+    if (!modal) return;
+
+    var titleEl = document.getElementById('flow-summary-title');
+    var amountEl = document.getElementById('flow-summary-amount');
+    var inputSubject = document.getElementById('flow-input-subject');
+    var inputAmount = document.getElementById('flow-input-amount');
+    var inputPlan = document.getElementById('flow-input-plan');
+    var errorEl = document.getElementById('flow-error-msg');
+
+    if (titleEl) titleEl.textContent = data.title || data.subject || 'Servicio Digital';
+    if (amountEl) {
+      var num = typeof data.amount === 'number' ? data.amount : parseInt(String(data.amount).replace(/[^0-9]/g, ''), 10);
+      amountEl.textContent = '$' + num.toLocaleString('es-CL') + ' CLP';
+    }
+
+    if (inputSubject) inputSubject.value = data.title || data.subject || '';
+    if (inputAmount) inputAmount.value = data.amount || '';
+    if (inputPlan) inputPlan.value = data.planId || data.serviceId || '';
+    if (errorEl) {
+      errorEl.classList.add('hidden');
+      errorEl.textContent = '';
+    }
+
+    modal.classList.remove('hidden');
+  };
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var modal = document.getElementById('flow-checkout-modal');
+    var closeBtn = document.getElementById('flow-modal-close');
+    var form = document.getElementById('flow-checkout-form');
+    var submitBtn = document.getElementById('flow-submit-btn');
+    var btnText = document.getElementById('flow-btn-text');
+    var btnSpinner = document.getElementById('flow-btn-spinner');
+    var errorEl = document.getElementById('flow-error-msg');
+
+    function closeModal() {
+      if (modal) modal.classList.add('hidden');
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeModal);
+    }
+
+    if (modal) {
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    // Escuchar cualquier elemento con atributo data-flow-trigger
+    document.addEventListener('click', function(e) {
+      var trigger = e.target.closest('[data-flow-trigger]');
+      if (!trigger) return;
+      e.preventDefault();
+
+      var subject = trigger.getAttribute('data-subject') || '';
+      var amount = trigger.getAttribute('data-amount') || '';
+      var planId = trigger.getAttribute('data-plan') || '';
+
+      window.openFlowCheckout({ subject: subject, amount: amount, planId: planId });
+    });
+
+    if (form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        if (errorEl) errorEl.classList.add('hidden');
+
+        var formData = new FormData(form);
+        var data = Object.fromEntries(formData.entries());
+
+        if (submitBtn) submitBtn.disabled = true;
+        if (btnText) btnText.textContent = 'Generando Orden en Flow...';
+        if (btnSpinner) btnSpinner.classList.remove('hidden');
+
+        try {
+          var res = await fetch('/api/pay/create', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+
+          var result = await res.json();
+
+          if (!res.ok || !result.success) {
+            throw new Error(result.error || 'No se pudo iniciar el proceso de pago');
+          }
+
+          // Redirección inmediata a Flow
+          window.location.href = result.redirectUrl;
+        } catch (err) {
+          if (errorEl) {
+            errorEl.textContent = err.message || 'Error al conectar con Flow';
+            errorEl.classList.remove('hidden');
+          }
+          if (submitBtn) submitBtn.disabled = false;
+          if (btnText) btnText.textContent = 'Proceder a la Contratación Segura →';
+          if (btnSpinner) btnSpinner.classList.add('hidden');
+        }
+      });
+    }
+  });
+</script>

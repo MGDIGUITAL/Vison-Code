@@ -1009,6 +1009,7 @@
       `;
 
       try {
+        const leadEventId = 'lead_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
         const res = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -1026,12 +1027,17 @@
             plazo: data.plazo,
             servicio: data.servicios,
             propuesta_detalles: data.detalles,
-            _honeypot: honeypot
+            _honeypot: honeypot,
+            _attr: (window.vcAttribution ? window.vcAttribution() : {}),
+            _event_id: leadEventId,
+            _source_url: location.href
           })
         });
 
         const resData = await res.json();
         if (res.ok && resData.success) {
+          if (window.fbq) fbq('track', 'Lead', { content_name: String(data.servicios || 'cotizacion'), content_category: 'cotizacion_web' }, { eventID: leadEventId });
+          if (window.vcTrack) window.vcTrack('lead_submit', { label: String(data.servicios || 'cotizacion').slice(0, 150), section: 'cotizar', event_id: leadEventId }, true);
           const succEmail = document.getElementById('succ-display-email');
           if (succEmail) succEmail.textContent = data.correo;
           summaryPanel?.classList.add('hidden');

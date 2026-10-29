@@ -1,25 +1,26 @@
 ---
 const links = [
   { text: "Inicio", href: "/#inicio", id: "inicio" },
-  { text: "Servicios", href: "/#servicios", id: "servicios" },
+  { text: "Planes", href: "/planes", id: "planes" },
+  { text: "Servicios", href: "/servicios", id: "servicios" },
+  { text: "Promociones", href: "/promociones", id: "promociones" },
   { text: "Proyectos", href: "/proyectos", id: "impacto" },
   { text: "Clientes", href: "/#marcas", id: "marcas" },
-  { text: "Cotizar", href: "/cotizar", id: "cotizar" },
 ];
 ---
 
-<header class="fixed top-0 left-0 right-0 w-full z-50 select-none transition-all duration-300" id="navbar">
+<header class="fixed top-0 left-0 right-0 w-full z-50 select-none" id="navbar" transition:persist>
   <!-- Barra de anuncio superior — 100% De Borde a Borde -->
   <div 
     id="top-bar" 
-    class="w-full bg-black py-2 px-4 sm:px-6 text-center overflow-hidden transition-all duration-300 border-b border-white/[0.08]"
+    class="w-full bg-black py-1.5 px-4 sm:px-6 text-center overflow-hidden border-b border-white/[0.08]"
   >
     <div class="max-w-7xl mx-auto flex items-center justify-center">
       <p class="text-[0.62rem] font-medium uppercase tracking-[0.25em] text-white/60 flex items-center justify-center gap-3">
         <span class="w-1.5 h-1.5 rounded-full bg-white/70 animate-pulse"></span>
         <span>Evaluación digital y consultoría técnica personalizada</span>
         <span class="hidden sm:inline w-px h-3 bg-white/20"></span>
-        <a href="/cotizar" class="text-white font-bold hover:underline transition-all flex items-center gap-1">
+        <a href="/cotizar" class="text-white font-bold hover:underline transition-colors flex items-center gap-1">
           Cotizar Ahora &rarr;
         </a>
       </p>
@@ -29,79 +30,125 @@ const links = [
   <!-- Barra Principal de Navegación — 100% DE BORDE A BORDE (Edge-to-Edge) -->
   <div 
     id="main-nav" 
-    class="w-full bg-black/90 backdrop-blur-2xl border-b border-white/10 transition-all duration-300"
+    class="w-full bg-black/95 backdrop-blur-2xl border-b border-white/10"
   >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[70px] transition-all duration-300" id="nav-inner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[70px] gap-4" id="nav-inner">
 
-      <!-- Logo con micro-glow al interactuar -->
-      <a href="/#inicio" class="flex items-center group shrink-0 relative" aria-label="Vision Code - Inicio">
-        <div class="absolute -inset-2 bg-white/5 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <img
-          src="/images/NAVAR TITULO.png"
-          alt="VisionCode Logo"
-          class="h-8 sm:h-9 w-auto object-contain transition-all duration-300 group-hover:scale-105 relative z-10"
-        />
-      </a>
+      <!-- Left: Logo -->
+      <div class="flex items-center shrink-0">
+        <a href="/#inicio" class="flex items-center group relative" aria-label="Vision Code - Inicio">
+          <div class="absolute -inset-2 bg-white/5 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <img
+            src="/images/NAVAR TITULO.png"
+            alt="VisionCode Logo"
+            class="h-7 sm:h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-105 relative z-10"
+          />
+        </a>
+      </div>
 
-      <!-- Desktop Links con Indicador Magnético Deslizante -->
+      <!-- Center: Desktop Links (Perfectamente centrado, con padding simétrico y sin deformaciones) -->
       <nav 
         id="desktop-nav"
-        class="hidden md:flex items-center gap-1 p-1 bg-white/[0.03] border border-white/10 rounded-full relative backdrop-blur-md" 
+        class="hidden md:flex items-center gap-0.5 lg:gap-1 px-3 py-1.5 bg-white/[0.03] border border-white/10 rounded-full backdrop-blur-md shrink-0" 
         aria-label="Navegación principal"
       >
-        <!-- Pastilla indicadora animada con aceleración GPU por hardware -->
-        <span 
-          id="nav-pill" 
-          class="pointer-events-none opacity-0"
-          aria-hidden="true"
-        ></span>
-
-        {links.map(link => (
-          <a
-            href={link.href}
-            data-nav-id={link.id}
-            class="nav-link px-4 py-1.5 rounded-full text-[0.72rem] font-bold uppercase tracking-[0.16em] text-white/70 hover:text-white transition-colors duration-200 relative z-10"
-          >
-            {link.text}
-          </a>
-        ))}
+        {links.map(link => {
+          const isPromo = link.id === 'promociones';
+          return (
+            <a
+              href={link.href}
+              data-nav-id={link.id}
+              class={`nav-link px-3 py-1 rounded-full text-[0.67rem] lg:text-[0.70rem] uppercase tracking-[0.10em] transition-all duration-200 whitespace-nowrap ${
+                isPromo
+                  ? 'text-lime font-black bg-lime/10 border border-lime/40 hover:bg-lime hover:text-black hover:border-lime shadow-[0_0_14px_rgba(215,245,90,0.25)] flex items-center gap-1.5'
+                  : 'text-white/70 hover:text-white font-bold'
+              }`}
+            >
+              {isPromo && (
+                <span class="w-1.5 h-1.5 rounded-full bg-lime animate-pulse shadow-[0_0_8px_#D7F55A]"></span>
+              )}
+              <span>{link.text}</span>
+            </a>
+          );
+        })}
       </nav>
 
-      <!-- Desktop CTA & Social Actions -->
-      <div class="hidden md:flex items-center gap-3">
-        <!-- Social icons -->
-        <a href="https://www.instagram.com/vision_code_vc/?hl=es" target="_blank" rel="noopener noreferrer"
-          class="text-white/40 hover:text-white hover:bg-white/5 transition-all duration-200 p-2 rounded-full border border-transparent hover:border-white/15"
-          aria-label="Instagram">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+      <!-- Right: Desktop CTA & Direct Actions -->
+      <div class="hidden md:flex items-center gap-1.5 lg:gap-2 shrink-0">
+        <!-- SaaS / CRM User Portal Button -->
+        <a 
+          href="/admin" 
+          class="text-white/60 hover:text-white hover:bg-white/10 transition-all duration-200 p-2 rounded-full border border-white/10 hover:border-white/30 flex items-center justify-center group relative"
+          aria-label="Acceso Portal SaaS y CRM"
+          title="Acceso Portal de Gestión / VC·OS"
+        >
+          <svg class="w-3.5 h-3.5 transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
           </svg>
-        </a>
-        <a href="https://web.facebook.com/profile.php?id=61591906443953&locale=es_LA" target="_blank" rel="noopener noreferrer"
-          class="text-white/40 hover:text-white hover:bg-white/5 transition-all duration-200 p-2 rounded-full border border-transparent hover:border-white/15"
-          aria-label="Facebook">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
-          </svg>
+          <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/95 text-white text-[9px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg z-50">
+            Portal SaaS
+          </span>
         </a>
 
-        <!-- Phone pill -->
-        <a href="https://api.whatsapp.com/send?phone=56929645522" target="_blank" rel="noopener noreferrer"
-          class="hidden lg:flex items-center gap-2 text-[0.65rem] font-bold text-white/60 hover:text-white transition-all duration-200 border border-white/10 hover:border-white/30 rounded-full px-3 py-1.5 bg-white/[0.02]">
-          <svg class="w-3 h-3 text-white/80" fill="currentColor" viewBox="0 0 24 24">
+        <!-- Instagram Button -->
+        <a 
+          href="https://www.instagram.com/vision_code_vc/?hl=es" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="text-white/60 hover:text-white hover:bg-white/10 transition-all duration-200 p-2 rounded-full border border-white/10 hover:border-white/30 flex items-center justify-center group relative"
+          aria-label="Instagram"
+          title="Instagram: @vision_code_vc"
+        >
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+          <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/95 text-white text-[9px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg z-50">
+            Instagram
+          </span>
+        </a>
+
+        <!-- Facebook Button -->
+        <a 
+          href="https://web.facebook.com/profile.php?id=61591906443953&locale=es_LA" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="text-white/60 hover:text-white hover:bg-white/10 transition-all duration-200 p-2 rounded-full border border-white/10 hover:border-white/30 flex items-center justify-center group relative"
+          aria-label="Facebook"
+          title="Facebook: Vision Code"
+        >
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+          </svg>
+          <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/95 text-white text-[9px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg z-50">
+            Facebook
+          </span>
+        </a>
+
+        <!-- WhatsApp Quick Icon Button -->
+        <a 
+          href="https://api.whatsapp.com/send?phone=56929645522" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="text-white/60 hover:text-white hover:bg-white/10 transition-all duration-200 p-2 rounded-full border border-white/10 hover:border-white/30 flex items-center justify-center group relative"
+          aria-label="Contactar por WhatsApp"
+          title="WhatsApp: +56 9 2964 5522"
+        >
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.588 1.977 14.131.953 11.527.953c-5.439 0-9.859 4.373-9.864 9.803-.002 1.83.491 3.62 1.424 5.2l-.931 3.398 3.49-.917zm12.338-7.397c-.272-.136-1.61-.794-1.86-.885-.25-.091-.432-.136-.613.136-.182.271-.703.885-.862 1.066-.158.181-.317.204-.589.068-.272-.136-1.15-.424-2.19-1.352-.809-.721-1.355-1.613-1.514-1.884-.158-.271-.017-.417.119-.553.122-.122.272-.317.408-.475.136-.158.181-.271.272-.452.09-.181.045-.339-.022-.475-.068-.136-.613-1.478-.839-2.02-.22-.53-.442-.458-.607-.466-.157-.008-.339-.008-.521-.008-.181 0-.475.068-.724.339-.249.271-.95 1.04-1.04 2.533s1.085 2.937 1.233 3.14c.149.203 2.136 3.262 5.176 4.57.723.311 1.288.497 1.728.637.726.23 1.387.197 1.91.12.583-.086 1.79-.73 2.046-1.434.256-.704.256-1.31.179-1.434-.076-.124-.277-.197-.549-.333z"/>
           </svg>
-          +56 9 2964 5522
+          <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/95 text-white text-[9px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-lg z-50">
+            WhatsApp
+          </span>
         </a>
 
         <!-- CTA principal — Luxury White Button -->
         <a
           href="/cotizar"
           id="nav-cta"
-          class="inline-flex items-center gap-2 bg-white hover:bg-neutral-200 text-black font-extrabold text-[0.68rem] uppercase tracking-[0.16em] px-5 py-2.5 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-[1.03] active:scale-[0.98]"
+          class="inline-flex items-center gap-2 bg-white hover:bg-neutral-200 text-black font-extrabold text-[0.67rem] uppercase tracking-[0.12em] px-4 py-2 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap"
         >
           <span>Cotizar Proyecto</span>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </a>
@@ -130,17 +177,46 @@ const links = [
     id="mobile-menu"
   >
     <div class="max-w-7xl mx-auto flex flex-col px-6 py-6 gap-2">
-      {links.map(link => (
-        <a
-          href={link.href}
-          data-nav-id={link.id}
-          class="mobile-nav-link text-[0.8rem] font-bold uppercase tracking-[0.18em] text-white/80 hover:text-white hover:bg-white/10 rounded-xl px-4 py-3 transition-all duration-200 flex items-center justify-between group"
-        >
-          <span>{link.text}</span>
-          <span class="text-white/30 group-hover:text-white group-hover:translate-x-1 transition-all text-xs">&rarr;</span>
-        </a>
-      ))}
+      {links.map(link => {
+        const isPromo = link.id === 'promociones';
+        return (
+          <a
+            href={link.href}
+            data-nav-id={link.id}
+            class={`mobile-nav-link text-[0.8rem] font-bold uppercase tracking-[0.18em] rounded-xl px-4 py-3 transition-all duration-200 flex items-center justify-between group ${
+              isPromo
+                ? 'text-lime font-black bg-lime/10 border border-lime/30 hover:bg-lime/20 shadow-[0_0_12px_rgba(215,245,90,0.15)]'
+                : 'text-white/80 hover:text-white hover:bg-white/10'
+            }`}
+          >
+            <span class="flex items-center gap-2">
+              {isPromo && (
+                <span class="w-2 h-2 rounded-full bg-lime animate-pulse shadow-[0_0_8px_#D7F55A]"></span>
+              )}
+              <span>{link.text}</span>
+              {isPromo && (
+                <span class="text-[9px] font-black uppercase tracking-wider bg-lime text-black px-2 py-0.5 rounded-full">
+                  50% OFF
+                </span>
+              )}
+            </span>
+            <span class={`${isPromo ? 'text-lime' : 'text-white/30'} group-hover:text-white group-hover:translate-x-1 transition-all text-xs`}>&rarr;</span>
+          </a>
+        );
+      })}
       <div class="h-px bg-white/10 my-3"></div>
+      <a
+        href="/admin"
+        class="text-[0.75rem] font-bold uppercase tracking-widest text-white/80 hover:text-white flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/10"
+      >
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+          <span>Portal de Gestión SaaS</span>
+        </span>
+        <span class="text-xs text-white/40">&rarr;</span>
+      </a>
       <div class="flex flex-col gap-2.5 text-[0.72rem] text-white/60 px-4">
         <a href="https://api.whatsapp.com/send?phone=56929645522" target="_blank" rel="noopener noreferrer"
           class="hover:text-white transition-colors flex items-center gap-2.5">
@@ -198,376 +274,71 @@ const links = [
     });
   });
 
-  // Solid Edge-to-Edge Sticky Navbar Logic on Scroll (Stable Height — No Vertical Shift)
-  const topBar = document.getElementById('top-bar');
-  const mainNav = document.getElementById('main-nav');
+  // Desktop and mobile nav smooth scrolling for anchors
+  function setupAnchorLinks() {
+    document.querySelectorAll('#desktop-nav .nav-link, .mobile-nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href') || '';
+        const isAnchor = href.startsWith('/#') || href.startsWith('#');
+        const isHomePage = window.location.pathname === '/' || window.location.pathname === '';
 
-  function handleNavbarScroll() {
-    const y = window.scrollY;
-    if (y > 20) {
-      if (topBar) {
-        topBar.style.maxHeight = '0px';
-        topBar.style.opacity = '0';
-        topBar.style.borderBottomWidth = '0px';
-      }
-      if (mainNav) {
-        mainNav.classList.remove('bg-black/90');
-        mainNav.classList.add(
-          'bg-black/98',
-          'border-b',
-          'border-white/15',
-          'shadow-[0_12px_40px_rgba(0,0,0,0.9)]'
-        );
-      }
-    } else {
-      if (topBar) {
-        topBar.style.maxHeight = '42px';
-        topBar.style.opacity = '1';
-        topBar.style.borderBottomWidth = '1px';
-      }
-      if (mainNav) {
-        mainNav.classList.remove(
-          'bg-black/98',
-          'border-white/15',
-          'shadow-[0_12px_40px_rgba(0,0,0,0.9)]'
-        );
-        mainNav.classList.add('bg-black/90');
-      }
-    }
-  }
-
-  window.addEventListener('scroll', handleNavbarScroll, { passive: true });
-  handleNavbarScroll();
-
-  // ── High-Precision Magnetic Sliding Pill Indicator (GPU Accelerated) ──
-  const desktopNav = document.getElementById('desktop-nav');
-  const navPill = document.getElementById('nav-pill');
-  const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
-  const navCta = document.getElementById('nav-cta');
-
-  let isClickScrolling = false;
-  let scrollLockTimeout = null;
-  let scrollLockHardCap = null;
-  let spyLastId = null;
-  let pillPlaced = false;
-  let leaveTimeout = null;
-  let isNavHovered = false;
-
-  function movePillTo(element, animate = true) {
-    if (!navPill || !desktopNav || !element) return;
-    const navRect = desktopNav.getBoundingClientRect();
-    const linkRect = element.getBoundingClientRect();
-
-    if (linkRect.width === 0) return;
-
-    // Precision calculation relative to desktopNav inner padding edge
-    const left = Math.round(linkRect.left - navRect.left - desktopNav.clientLeft);
-    const width = Math.round(linkRect.width);
-
-    if (!pillPlaced || !animate) {
-      navPill.style.transition = 'none';
-      navPill.style.transform = `translate3d(${left}px, 0, 0)`;
-      navPill.style.width = `${width}px`;
-      navPill.style.opacity = '1';
-      void navPill.offsetWidth; // flush styles
-      navPill.style.transition = '';
-      pillPlaced = true;
-    } else {
-      navPill.style.transform = `translate3d(${left}px, 0, 0)`;
-      navPill.style.width = `${width}px`;
-      navPill.style.opacity = '1';
-    }
-  }
-
-  function getActiveLink() {
-    return document.querySelector('#desktop-nav .nav-link.active');
-  }
-
-  function setActiveLink(link, updatePill = true) {
-    navLinks.forEach(l => {
-      l.classList.remove('active');
-      if (!l.classList.contains('is-hovered')) {
-        l.classList.add('text-white/70');
-        l.classList.remove('text-white');
-      }
-    });
-
-    if (link) {
-      link.classList.add('active');
-      link.classList.add('text-white');
-      link.classList.remove('text-white/70');
-      if (updatePill && !isNavHovered) {
-        movePillTo(link, pillPlaced);
-      }
-    }
-  }
-
-  function handleLinkHover(link) {
-    if (leaveTimeout) {
-      clearTimeout(leaveTimeout);
-      leaveTimeout = null;
-    }
-    isNavHovered = true;
-
-    navLinks.forEach(l => {
-      if (l === link) {
-        l.classList.add('is-hovered', 'text-white');
-        l.classList.remove('text-white/70');
-      } else {
-        l.classList.remove('is-hovered');
-        if (!l.classList.contains('active')) {
-          l.classList.add('text-white/70');
-          l.classList.remove('text-white');
-        }
-      }
-    });
-
-    movePillTo(link, true);
-  }
-
-  function handleNavLeave() {
-    if (leaveTimeout) clearTimeout(leaveTimeout);
-
-    // 100ms graceful exit window prevents jitter when crossing gaps or clipping border
-    leaveTimeout = setTimeout(() => {
-      isNavHovered = false;
-
-      navLinks.forEach(l => {
-        l.classList.remove('is-hovered');
-        if (!l.classList.contains('active')) {
-          l.classList.add('text-white/70');
-          l.classList.remove('text-white');
-        } else {
-          l.classList.add('text-white');
-          l.classList.remove('text-white/70');
+        if (isAnchor && isHomePage) {
+          const hash = href.substring(href.indexOf('#') + 1);
+          const targetElement = document.getElementById(hash);
+          if (targetElement) {
+            e.preventDefault();
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.replaceState(null, '', `#${hash}`);
+          }
         }
       });
-
-      const activeLink = getActiveLink();
-      if (activeLink) {
-        movePillTo(activeLink, true);
-      } else if (navPill) {
-        navPill.style.opacity = '0';
-      }
-    }, 100);
-  }
-
-  // Hover events
-  navLinks.forEach(link => {
-    link.addEventListener('mouseenter', () => handleLinkHover(link));
-  });
-
-  desktopNav?.addEventListener('mouseleave', handleNavLeave);
-
-  let lockTargetLink = null;
-
-  function releaseScrollLock() {
-    if (!isClickScrolling) return;
-    isClickScrolling = false;
-    clearTimeout(scrollLockTimeout);
-    clearTimeout(scrollLockHardCap);
-    window.removeEventListener('scroll', onLockScroll);
-    window.removeEventListener('wheel', releaseScrollLock);
-    window.removeEventListener('touchstart', releaseScrollLock);
-    const active = getActiveLink() || lockTargetLink;
-    if (active && !isNavHovered) movePillTo(active, true);
-  }
-
-  // Every scroll event while locked postpones the release until scrolling goes idle
-  function onLockScroll() {
-    clearTimeout(scrollLockTimeout);
-    scrollLockTimeout = setTimeout(releaseScrollLock, 160);
-  }
-
-  function scrollToSection(targetId) {
-    const targetElement = document.getElementById(targetId);
-    if (!targetElement) return false;
-
-    // 1. Lock ScrollSpy so the pill does not twitch or jump across intermediate sections
-    isClickScrolling = true;
-    spyLastId = targetId;
-    lockTargetLink = document.querySelector(`#desktop-nav .nav-link[data-nav-id="${targetId}"]`);
-    clearTimeout(scrollLockTimeout);
-    clearTimeout(scrollLockHardCap);
-    window.removeEventListener('scroll', onLockScroll);
-    window.removeEventListener('wheel', releaseScrollLock);
-    window.removeEventListener('touchstart', releaseScrollLock);
-    window.addEventListener('scroll', onLockScroll, { passive: true });
-    window.addEventListener('wheel', releaseScrollLock, { passive: true, once: true });
-    window.addEventListener('touchstart', releaseScrollLock, { passive: true, once: true });
-
-    // 2. Immediately highlight and glide pill to the target link
-    const targetLink = document.querySelector(`#desktop-nav .nav-link[data-nav-id="${targetId}"]`);
-    setActiveLink(targetLink, true);
-
-    // 3. Precise smooth scroll destination accounting for fixed header height
-    const headerOffset = 76;
-    const elementTop = targetElement.getBoundingClientRect().top + window.pageYOffset;
-    const finalScrollY = Math.max(0, elementTop - headerOffset);
-
-    window.scrollTo({
-      top: finalScrollY,
-      behavior: 'smooth'
     });
-
-    // 4. Release the lock only once the smooth scroll has really stopped
-    scrollLockTimeout = setTimeout(releaseScrollLock, 300);   // covers "already at target"
-    scrollLockHardCap = setTimeout(releaseScrollLock, 5000);  // safety net
-
-    return true;
   }
 
-  // Intercept desktop nav link clicks on home page anchors
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href') || '';
-      const isAnchor = href.startsWith('/#') || href.startsWith('#');
-      const isHomePage = window.location.pathname === '/' || window.location.pathname === '';
-
-      if (isAnchor && isHomePage) {
-        const hash = href.substring(href.indexOf('#') + 1);
-        if (scrollToSection(hash)) {
-          e.preventDefault();
-          history.pushState(null, '', `#${hash}`);
-        }
-      }
-    });
-  });
-
-  // Mobile nav links
-  document.querySelectorAll('.mobile-nav-link').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href') || '';
-      const isAnchor = href.startsWith('/#') || href.startsWith('#');
-      const isHomePage = window.location.pathname === '/' || window.location.pathname === '';
-
-      if (isAnchor && isHomePage) {
-        const hash = href.substring(href.indexOf('#') + 1);
-        if (scrollToSection(hash)) {
-          e.preventDefault();
-          history.pushState(null, '', `#${hash}`);
-        }
-      }
-    });
-  });
-
-  // Scroll-position ScrollSpy: deterministic active section with hover protection
-  function initScrollSpy() {
-    const isHomePage = window.location.pathname === '/' || window.location.pathname === '';
-    if (!isHomePage) return;
-
-    const ids = ['inicio', 'servicios', 'marcas', 'impacto'];
-    const els = ids.map(id => document.getElementById(id)).filter(Boolean);
-    if (!els.length) return;
-
-    let ticking = false;
-
-    function update() {
-      ticking = false;
-      if (isClickScrolling) return;
-
-      const line = window.innerHeight * 0.35;
-      let current = els[0].id;
-      for (const el of els) {
-        if (el.getBoundingClientRect().top <= line) current = el.id;
-      }
-      if (current === spyLastId) return;
-      spyLastId = current;
-
-      const link = document.querySelector(`#desktop-nav .nav-link[data-nav-id="${current}"]`);
-      if (link) {
-        setActiveLink(link, !isNavHovered);
-      }
-    }
-
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(update);
-      }
-    }, { passive: true });
-
-    update();
-  }
-
-  // Initial active link based on current route
-  function setInitialActive() {
+  // Active link text highlighting based on current URL path
+  function highlightActiveRoute() {
     const path = window.location.pathname.replace(/\/$/, '') || '/';
-    const hash = window.location.hash;
-    let target = null;
+    document.querySelectorAll('#desktop-nav .nav-link').forEach(link => {
+      const href = link.getAttribute('href');
+      const isPromo = link.getAttribute('data-nav-id') === 'promociones';
+      const isActive = href === path || (path === '/' && (href === '/#inicio' || href === '#inicio'));
 
-    if (path === '/proyectos') target = document.querySelector('#desktop-nav .nav-link[href="/proyectos"]');
-    else if (path === '/cotizar') target = document.querySelector('#desktop-nav .nav-link[href="/cotizar"]');
-    else if (path === '/' || path === '') {
-      const id = hash ? hash.substring(1) : 'inicio';
-      target = document.querySelector(`#desktop-nav .nav-link[data-nav-id="${id}"]`)
-            || document.querySelector('#desktop-nav .nav-link[data-nav-id="inicio"]');
-    }
+      if (isPromo) {
+        if (isActive) {
+          link.classList.add('bg-lime', '!text-black', 'border-lime', 'shadow-[0_0_18px_rgba(215,245,90,0.45)]');
+          link.classList.remove('bg-lime/10', 'text-lime', 'border-lime/40');
+        } else {
+          link.classList.remove('bg-lime', '!text-black', 'border-lime', 'shadow-[0_0_18px_rgba(215,245,90,0.45)]');
+          link.classList.add('bg-lime/10', 'text-lime', 'border-lime/40');
+        }
+        return;
+      }
 
-    if (target) {
-      setActiveLink(target, false);
-      movePillTo(target, false);
-    }
+      if (isActive) {
+        link.classList.remove('text-white/70');
+        link.classList.add('text-white', 'font-black');
+      } else {
+        link.classList.remove('text-white', 'font-black');
+        link.classList.add('text-white/70');
+      }
+    });
   }
 
-  window.addEventListener('resize', () => {
-    const active = getActiveLink();
-    if (active && !isNavHovered) movePillTo(active, false);
-  }, { passive: true });
-
-  // Re-measure once web fonts / images settle so the pill never drifts
-  window.addEventListener('load', () => {
-    const active = getActiveLink();
-    if (active && !isNavHovered) movePillTo(active, false);
-  });
-
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(() => {
-      const active = getActiveLink();
-      if (active && !isNavHovered) movePillTo(active, false);
-    });
+  function initNav() {
+    setupAnchorLinks();
+    highlightActiveRoute();
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      setInitialActive();
-      initScrollSpy();
-    });
+    document.addEventListener('DOMContentLoaded', initNav);
   } else {
-    setInitialActive();
-    initScrollSpy();
+    initNav();
   }
+  document.addEventListener('astro:page-load', initNav);
 </script>
 
 <style>
-  #top-bar {
-    transition: max-height 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
-    max-height: 42px;
-    overflow: hidden;
-  }
-
-  #nav-pill {
-    position: absolute;
-    top: 4px;
-    bottom: 4px;
-    left: 0;
-    pointer-events: none;
-    border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.14);
-    border: 1px solid rgba(255, 255, 255, 0.24);
-    box-shadow: 0 0 18px rgba(255, 255, 255, 0.14);
-    transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1),
-                width 0.26s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.18s ease;
-    will-change: transform, width, opacity;
-  }
-
   .nav-link {
     transition: color 0.18s ease;
-  }
-
-  .nav-link.active,
-  .nav-link.is-hovered {
-    color: #ffffff !important;
   }
 </style>

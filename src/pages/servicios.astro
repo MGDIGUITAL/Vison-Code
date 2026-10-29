@@ -1,0 +1,512 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const services = [
+  // ── CONSTITUCIÓN & FORMALIZACIÓN LEGAL ──
+  {
+    id: "empresa-en-un-dia",
+    title: "Empresa en un Día",
+    subtitle: "Formalización Completa SII",
+    category: "legal",
+    categoryLabel: "Constitución & Legal",
+    price: "$100.000",
+    originalPrice: "$200.000",
+    discount: "50% OFF",
+    unit: "CLP",
+    badge: "INICIO SEGURO",
+    isRecommended: false,
+    delivery: "48 a 72 hrs",
+    desc: "Constitución de sociedad SpA o EIRL, obtención de RUT en el SII, inicio de actividades y habilitación de factura electrónica lista.",
+    features: [
+      "Constitución en Registro de Empresas",
+      "Obtención oficial de RUT en el SII",
+      "Inicio de Actividades en 1ª Categoría",
+      "Certificado Digital tributario por 1 año",
+      "Acreditación de Domicilio y Actividad en SII",
+      "Factura y Boleta Electrónica lista",
+      "Asesoría para cuenta bancaria empresa"
+    ],
+    waMessage: "Hola Vision Code, me interesa contratar el servicio Empresa en un Día ($100.000 CLP en oferta 50% OFF)."
+  },
+
+  // ── DESARROLLO WEB ──
+  {
+    id: "landing-basica",
+    title: "Landing Page Express",
+    subtitle: "Página de Alta Conversión",
+    category: "web",
+    categoryLabel: "Desarrollo Web",
+    price: "$180.000",
+    originalPrice: "$360.000",
+    discount: "50% OFF",
+    unit: "CLP",
+    badge: "OFERTA PYME",
+    isRecommended: false,
+    delivery: "5 a 7 días hábiles",
+    desc: "Página web de 1 a 3 secciones de ultra velocidad orientada 100% a convertir visitantes en llamadas y WhatsApps.",
+    features: [
+      "1 a 3 secciones de alta conversión",
+      "Hosting Ultra Rápido + Dominio .CL (1 año)",
+      "Botón directo a WhatsApp y formulario a correo",
+      "Optimización SEO inicial para Google",
+      "Certificado SSL de máxima seguridad",
+      "Diseño adaptable a móviles y PC",
+      "Soporte técnico post-entrega por 30 días"
+    ],
+    waMessage: "Hola Vision Code, quiero cotizar la Landing Page Express ($180.000 CLP en oferta 50% OFF)."
+  },
+  {
+    id: "landing-portal-corporativo",
+    title: "Portal Web Corporativo",
+    subtitle: "Sitio Institucional B2B (Hasta 6 Secciones)",
+    category: "web",
+    categoryLabel: "Desarrollo Web",
+    price: "$250.000",
+    originalPrice: "$500.000",
+    discount: "50% OFF",
+    unit: "CLP",
+    badge: "B2B RECOMENDADO",
+    isRecommended: true,
+    delivery: "10 días hábiles",
+    desc: "Sitio web corporativo de alto estándar para posicionar tu marca institucional y captar clientes calificados.",
+    features: [
+      "Hasta 6 páginas internas (Nosotros, Servicios, Blog, Contacto)",
+      "Diseño exclusivo adaptado a la identidad de tu empresa",
+      "Optimización SEO avanzada y Google Analytics 4",
+      "Píxel de Meta instalado y verificado",
+      "Hosting de alta velocidad + Dominio .CL (1 año)",
+      "Panel autoadministrable de contenido",
+      "Soporte técnico prioritario por 30 días"
+    ],
+    waMessage: "Hola Vision Code, quiero cotizar el Portal Web Corporativo ($250.000 CLP en oferta 50% OFF)."
+  },
+
+  // ── TIENDAS ONLINE & E-COMMERCE ──
+  {
+    id: "ecommerce-basico",
+    title: "E-Commerce Básico",
+    subtitle: "Tienda Inicial (Hasta 20 Productos)",
+    category: "ecommerce",
+    categoryLabel: "E-Commerce",
+    price: "$260.000",
+    originalPrice: "$520.000",
+    discount: "50% OFF",
+    unit: "CLP",
+    badge: "TIENDA INICIAL",
+    isRecommended: false,
+    delivery: "7 días hábiles",
+    desc: "Tu tienda virtual inicial para comenzar a vender tus productos en internet rápidamente con pasarelas de pago oficiales.",
+    features: [
+      "Tienda online con catálogo de hasta 20 productos simples",
+      "Pasarelas de pago Webpay Plus y Mercado Pago",
+      "Carrito de compras integrado y seguro",
+      "Panel de gestión de pedidos y ventas",
+      "Hosting + Dominio .CL por 1 año",
+      "Notificación de pedidos por correo electrónico"
+    ],
+    waMessage: "Hola Vision Code, quiero cotizar el E-Commerce Básico ($260.000 CLP en oferta 50% OFF)."
+  },
+  {
+    id: "ecommerce-intermedio",
+    title: "E-Commerce Intermedio",
+    subtitle: "Tienda Online (Hasta 40 Productos)",
+    category: "ecommerce",
+    categoryLabel: "E-Commerce",
+    price: "$280.000",
+    originalPrice: "$560.000",
+    discount: "50% OFF",
+    unit: "CLP",
+    badge: "MÁS POPULAR",
+    isRecommended: true,
+    delivery: "10 días hábiles",
+    desc: "Ideal para marcas en crecimiento: control de stock con alertas automáticas y cálculo de costos de envío por región.",
+    features: [
+      "Catálogo de hasta 40 productos con variaciones",
+      "Control de stock inteligente con alertas de quiebre",
+      "Cálculo de envíos diferenciado por región o comuna",
+      "Pasarelas de pago Webpay Plus y Mercado Pago",
+      "Hosting de alta capacidad + Dominio .CL por 1 año",
+      "Panel autogestionable avanzado de ventas e inventario",
+      "Soporte técnico por 30 días"
+    ],
+    waMessage: "Hola Vision Code, quiero cotizar el E-Commerce Intermedio ($280.000 CLP en oferta 50% OFF)."
+  },
+  {
+    id: "ecommerce-profesional",
+    title: "E-Commerce Profesional",
+    subtitle: "Catálogo Ilimitado & Logística",
+    category: "ecommerce",
+    categoryLabel: "E-Commerce",
+    price: "$390.000",
+    originalPrice: "$780.000",
+    discount: "50% OFF",
+    unit: "CLP",
+    badge: "SIN LÍMITES",
+    isRecommended: false,
+    delivery: "14 días hábiles",
+    desc: "Tienda online a medida sin límites de productos ni categorías, con variantes complejas y seguimiento automatizado.",
+    features: [
+      "Catálogo ilimitado de productos y variantes (tallas/colores)",
+      "Seguimiento automático de envíos con Starken y Chilexpress",
+      "Pasarelas de pago completas (Webpay, Mercado Pago)",
+      "Sincronización con Píxel de Meta para catálogo dinámico",
+      "Sistema de cupones de descuento y promociones",
+      "Panel de administración avanzado y capacitación completa",
+      "Hosting de alta capacidad + Dominio por 1 año"
+    ],
+    waMessage: "Hola Vision Code, quiero cotizar el E-Commerce Profesional ($390.000 CLP)."
+  },
+
+  // ── SOFTWARE, APPS & IA ──
+  {
+    id: "agente-ia-whatsapp",
+    title: "Agente IA WhatsApp 24/7",
+    subtitle: "Atención y Ventas Automatizadas",
+    category: "software-ia",
+    categoryLabel: "Automatización",
+    price: "A Cotizar",
+    unit: "A Medida",
+    badge: "IA AUTOMATIZADA",
+    isRecommended: true,
+    delivery: "5 a 10 días hábiles",
+    desc: "Asistente inteligente con IA entrenado con el catálogo de tu empresa para responder y cualificar clientes sin descanso.",
+    features: [
+      "Respuestas automáticas fluidas 24/7 sin esperas",
+      "Entrenado con información, precios y preguntas frecuentes",
+      "Cualificación automática de prospectos comerciales",
+      "Integración oficial con WhatsApp Cloud API",
+      "Soporte multiagente y hasta 4 dispositivos",
+      "Monitoreo preventivo y optimización de respuestas"
+    ],
+    waMessage: "Hola Vision Code, quiero cotizar un Agente de Inteligencia Artificial para WhatsApp."
+  },
+  {
+    id: "apps-moviles",
+    title: "Apps Móviles (iOS & Android)",
+    subtitle: "Aplicaciones Nativas & Híbridas",
+    category: "software-ia",
+    categoryLabel: "Software",
+    price: "A Cotizar",
+    unit: "A Medida",
+    badge: "MÓVIL NATIVO",
+    isRecommended: false,
+    delivery: "Según alcance técnico",
+    desc: "Creación y publicación de aplicaciones móviles en App Store y Google Play con notificaciones push y pasarelas de pago.",
+    features: [
+      "Desarrollo para App Store (Apple) y Google Play (Android)",
+      "Sistema de notificaciones push automáticas",
+      "Pasarelas de pago dentro de la aplicación móvil",
+      "Base de datos sincronizada en tiempo real en la nube",
+      "Diseño UI/UX de alta fidelidad y rendimiento nativo",
+      "Panel de control web administrativo"
+    ],
+    waMessage: "Hola Vision Code, quiero cotizar el desarrollo de una Aplicación Móvil (iOS/Android)."
+  },
+  {
+    id: "campanas-meta-ads",
+    title: "Campañas en Meta Ads",
+    subtitle: "Publicidad en Facebook & Instagram",
+    category: "software-ia",
+    categoryLabel: "Marketing",
+    price: "A Cotizar",
+    unit: "Gestión Mensual",
+    badge: "CONVERSIÓN",
+    isRecommended: false,
+    delivery: "Lanzamiento en 48 hrs",
+    desc: "Estrategias de alta rentabilidad en Meta Ads para llevar prospectos directos a tu WhatsApp o tienda online.",
+    features: [
+      "Estrategia de captación y segmentación de audiencias",
+      "Diseño de creativos y copys persuasivos de alto impacto",
+      "Configuración de Píxel de Meta y API Conversiones (CAPI)",
+      "Optimización continua para bajar el costo por cliente potencial",
+      "Informes semanales de rendimiento y ventas generadas",
+      "* Saldo de inversión publicitaria a cargo del cliente"
+    ],
+    waMessage: "Hola Vision Code, quiero cotizar la gestión de Campañas en Meta Ads (Facebook e Instagram)."
+  },
+
+  // ── PLANES MENSUALES (MRR) ──
+  {
+    id: "plan-vision-core",
+    title: "Plan VISION CORE",
+    subtitle: "Mantenimiento, SEO & Seguridad",
+    category: "mensuales",
+    categoryLabel: "Suscripción",
+    price: "$29.990",
+    originalPrice: "$59.980",
+    discount: "50% OFF",
+    unit: "CLP / mes",
+    badge: "ESENCIAL",
+    isRecommended: false,
+    delivery: "Servicio Mensual",
+    desc: "Para webs que necesitan estar blindadas, cargar rápido y escalar posiciones en Google mes a mes.",
+    features: [
+      "Acceso al Panel SaaS de Flujo en vivo (visitas y clics WA)",
+      "SEO Técnico mensual para posicionar en Google",
+      "Hosting Ultra Rápido blindado y certificado SSL",
+      "Copias de seguridad semanales automáticas",
+      "1 solicitud de ajuste o cambio de contenido al mes",
+      "Soporte preventivo ante cualquier caída"
+    ],
+    waMessage: "Hola Vision Code, quiero suscribirme al Plan Mensual VISION CORE ($29.990 CLP/mes en oferta 50% OFF)."
+  },
+  {
+    id: "plan-vision-scale",
+    title: "Plan VISION SCALE",
+    subtitle: "Gestión de Catálogo & Ventas",
+    category: "mensuales",
+    categoryLabel: "Suscripción",
+    price: "$59.990",
+    originalPrice: "$119.980",
+    discount: "50% OFF",
+    unit: "CLP / mes",
+    badge: "CRECIMIENTO",
+    isRecommended: true,
+    delivery: "Servicio Mensual",
+    desc: "Para tiendas online y negocios que rotan productos, lanzan ofertas y necesitan soporte comercial continuo.",
+    features: [
+      "Todo lo incluido en el Plan Vision Core",
+      "Subida y actualización mensual de hasta 15 productos",
+      "Diseño y publicación de banners de ofertas comerciales",
+      "Auditoría continua de conversión para vender más",
+      "Sistema SaaS de Administración de prospectos y pedidos",
+      "Soporte técnico prioritario por WhatsApp"
+    ],
+    waMessage: "Hola Vision Code, quiero suscribirme al Plan Mensual VISION SCALE ($59.990 CLP/mes en oferta 50% OFF)."
+  },
+  {
+    id: "plan-partner-pro",
+    title: "Plan PARTNER PRO",
+    subtitle: "Soluciones Continuas & Meta Ads",
+    category: "mensuales",
+    categoryLabel: "Suscripción",
+    price: "$119.990",
+    originalPrice: "$239.980",
+    discount: "50% OFF",
+    unit: "CLP / mes",
+    badge: "PARTNER",
+    isRecommended: false,
+    delivery: "Servicio Mensual",
+    desc: "Tu socio tecnológico: si necesitas una solución nueva o hacer publicidad, está incluida sin cobrar proyectos nuevos.",
+    features: [
+      "Todo lo incluido en el Plan Vision Scale",
+      "Desarrollo de nuevas soluciones e integraciones continuas",
+      "Gestión de Campañas en Meta Ads (FB & IG) incluida",
+      "Actualización ilimitada de catálogo y productos",
+      "Sistema SaaS & ERP de gestión integral",
+      "Soporte VIP 24/7 de atención inmediata"
+    ],
+    waMessage: "Hola Vision Code, quiero contratar el Plan Mensual PARTNER PRO ($119.990 CLP/mes en oferta 50% OFF)."
+  }
+];
+---
+
+<Layout 
+  title="Catálogo Oficial de Servicios & Tecnología — Vision Code SpA" 
+  description="Explora todos los servicios oficiales de Vision Code: Desarrollo Web, E-Commerce, Apps Móviles, Agentes IA, Campañas en Meta Ads y Planes de Mantención Mensual con tecnología SaaS propia."
+  url="https://vision-code.cl/servicios"
+>
+  <Navbar />
+  
+  <div class="fixed inset-0 z-0 pointer-events-none select-none bg-cover bg-center opacity-40" style="background-image: url('/images/fondos/1.png');"></div>
+  <div class="fixed inset-0 z-0 bg-gradient-to-b from-black/90 via-black/80 to-black/95 pointer-events-none"></div>
+
+  <main class="min-h-screen pt-36 pb-28 relative z-10 text-white bg-transparent">
+    <div class="max-w-[90rem] mx-auto px-6 lg:px-12">
+      
+      <!-- Encabezado Maestro -->
+      <div class="mb-14 fade-up">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-2.5 h-2.5 rounded-full bg-lime animate-pulse shadow-[0_0_10px_rgba(184,221,46,0.9)]"></span>
+          <span class="text-white/80 font-extrabold tracking-[0.25em] text-[0.72rem] uppercase drop-shadow">
+            Catálogo Oficial de Soluciones Digitales 2026
+          </span>
+        </div>
+        
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-white/15">
+          <div>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-tight mb-4">
+              Servicios <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-neutral-400">&amp; Tecnología.</span>
+            </h1>
+            <p class="text-base sm:text-lg text-white/70 max-w-3xl font-normal leading-relaxed">
+              Desarrollamos el ecosistema digital completo para tu negocio: plataformas web, tiendas con pasarelas de pago, software SaaS propio y planes de acompañamiento mensual.
+            </p>
+          </div>
+          
+          <!-- Banner destacado a promociones -->
+          <a 
+            href="/promociones"
+            class="shrink-0 p-4 rounded-2xl bg-white/[0.05] hover:bg-white/[0.08] border border-lime/40 hover:border-lime transition-all duration-300 flex items-center gap-4 group shadow-[0_0_25px_rgba(184,221,46,0.1)]"
+          >
+            <div class="w-10 h-10 rounded-xl bg-lime text-black flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(184,221,46,0.35)] group-hover:scale-105 transition-transform">
+              <svg class="w-5 h-5 text-black" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l2.9 6.26 6.9.72-5.1 4.71 1.39 6.81L12 17.14l-6.09 3.36 1.39-6.81-5.1-4.71 6.9-.72L12 2z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-[11px] font-black text-lime uppercase tracking-widest">¿Buscas un Pack con Descuento?</div>
+              <div class="text-xs text-white/90 font-bold group-hover:text-white">Ver 3 Packs Promocionales con SaaS &rarr;</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Filtros de Categoría -->
+      <div class="flex flex-wrap items-center gap-2 mb-12">
+        <button class="cat-filter-btn active px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-wider transition-all bg-white text-black border border-white shadow-md" data-category="all">
+          Todos los Servicios
+        </button>
+        <button class="cat-filter-btn px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-wider transition-all bg-white/5 text-white/70 border border-white/15 hover:border-white/40 hover:text-white" data-category="web">
+          Desarrollo Web
+        </button>
+        <button class="cat-filter-btn px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-wider transition-all bg-white/5 text-white/70 border border-white/15 hover:border-white/40 hover:text-white" data-category="legal">
+          Constitución &amp; Legal (SII)
+        </button>
+        <button class="cat-filter-btn px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-wider transition-all bg-white/5 text-white/70 border border-white/15 hover:border-white/40 hover:text-white" data-category="ecommerce">
+          Tiendas E-Commerce
+        </button>
+        <button class="cat-filter-btn px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-wider transition-all bg-white/5 text-white/70 border border-white/15 hover:border-white/40 hover:text-white" data-category="software-ia">
+          Software &amp; IA
+        </button>
+        <button class="cat-filter-btn px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-wider transition-all bg-white/5 text-white/70 border border-white/15 hover:border-white/40 hover:text-white" data-category="mensuales">
+          Planes Mensuales (MRR)
+        </button>
+      </div>
+
+      <!-- Grid de Servicios (Estilo Promociones de Lujo) -->
+      <div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        {services.map((item) => (
+          <div 
+            class={`service-card group relative p-8 rounded-3xl bg-[#000000] border transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.95)] ${
+              item.isRecommended 
+                ? 'border-white/50 shadow-[0_0_35px_rgba(255,255,255,0.12)] scale-[1.02] z-10' 
+                : 'border-white/15 hover:border-white/40'
+            }`}
+            data-cat={item.category}
+          >
+            {/* Top highlight bar */}
+            <div class={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${
+              item.isRecommended ? 'from-lime via-white to-lime' : 'from-transparent via-white/30 to-transparent'
+            }`}></div>
+
+            <div>
+              {/* Card Header */}
+              <div class="flex items-center justify-between mb-5">
+                <span class="text-[10px] font-black tracking-[0.2em] text-white/40 uppercase">
+                  {item.categoryLabel}
+                </span>
+                <span class={`px-3 py-1 text-[0.62rem] font-extrabold uppercase tracking-widest rounded-full border shadow-xs ${
+                  item.isRecommended 
+                    ? 'bg-lime text-black border-lime font-black' 
+                    : 'bg-white/10 text-white/90 border-white/20'
+                }`}>
+                  {item.badge}
+                </span>
+              </div>
+
+              <h2 class="text-2xl font-black text-white mb-1 tracking-tight">{item.title}</h2>
+              <div class="text-xs text-lime font-bold mb-3">{item.subtitle}</div>
+              <p class="text-xs text-white/60 font-normal leading-relaxed mb-6 min-h-[44px]">
+                {item.desc}
+              </p>
+
+              {/* Price Box con Descuento 50% OFF */}
+              <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 mb-6 flex items-center justify-between">
+                <div>
+                  {item.originalPrice && (
+                    <div class="flex items-center gap-2 mb-1">
+                      <span class="text-xs text-white/40 line-through font-bold">
+                        {item.originalPrice}
+                      </span>
+                      <span class="px-2 py-0.5 rounded-full bg-lime text-black text-[9px] font-black tracking-wider uppercase">
+                        {item.discount || "50% OFF"}
+                      </span>
+                    </div>
+                  )}
+                  <div class="text-3xl font-black text-white tracking-tight">{item.price}</div>
+                  <div class="text-[10px] text-white/40 uppercase tracking-widest">{item.unit}</div>
+                </div>
+                <div class="text-right">
+                  <div class="text-[10px] font-bold text-white/50 uppercase tracking-wider">Entrega</div>
+                  <div class="text-xs text-white font-bold">{item.delivery}</div>
+                </div>
+              </div>
+
+              {/* Features List */}
+              <div class="space-y-2.5 mb-8">
+                <div class="text-[10.5px] font-bold uppercase tracking-wider text-white/50 mb-2">Lo que incluye:</div>
+                {item.features.map((feat) => (
+                  <div class="flex items-start gap-2 text-xs text-white/80 leading-snug">
+                    <span class="w-3.5 h-3.5 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white shrink-0 mt-0.5 text-[8.5px] font-bold">
+                      ✓
+                    </span>
+                    <span>{feat}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div class="pt-4 border-t border-white/10 flex flex-col gap-2">
+              <a
+                href={`https://api.whatsapp.com/send?phone=56929645522&text=${encodeURIComponent(item.waMessage)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`w-full py-3 px-5 rounded-full text-center text-xs font-extrabold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 shadow-md ${
+                  item.isRecommended
+                    ? 'bg-lime text-black hover:bg-lime/90 hover:scale-[1.02] shadow-[0_0_20px_rgba(184,221,46,0.3)]'
+                    : 'bg-white text-black hover:bg-neutral-200 hover:scale-[1.02]'
+                }`}
+              >
+                <span>Cotizar por WhatsApp</span>
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+
+              <a
+                href={`/servicio/${item.id}`}
+                class="w-full py-2 text-center text-[11px] font-bold text-white/50 hover:text-white transition-colors"
+              >
+                Ver Ficha Técnica Completa &rarr;
+              </a>
+            </div>
+
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Filtros interactivos de categoría
+  const buttons = document.querySelectorAll('.cat-filter-btn');
+  const cards = document.querySelectorAll('.service-card');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => {
+        b.classList.remove('active', 'bg-white', 'text-black', 'border-white', 'shadow-md');
+        b.classList.add('bg-white/5', 'text-white/70', 'border-white/15');
+      });
+      btn.classList.add('active', 'bg-white', 'text-black', 'border-white', 'shadow-md');
+      btn.classList.remove('bg-white/5', 'text-white/70', 'border-white/15');
+
+      const cat = btn.getAttribute('data-category');
+
+      cards.forEach((card: any) => {
+        const itemCat = card.getAttribute('data-cat');
+        if (cat === 'all' || itemCat === cat) {
+          card.style.display = 'flex';
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,145 @@
+---
+// Tracker propio de Vision Code: visitas, secciones vistas, clics de WhatsApp/Instagram/CTA,
+// atribución de campañas (UTM + fbclid) y eventos estándar del Meta Pixel.
+---
+<script is:inline>
+(function () {
+  if (window.vcTrack) return;
+  var ENDPOINT = '/api/track';
+  var path = location.pathname;
+  if (path.indexOf('/admin') === 0) { window.vcTrack = function () {}; return; }
+
+  function uid() {
+    return (Date.now().toString(36) + Math.random().toString(36).slice(2, 10));
+  }
+  function store(k, v, session) {
+    try { (session ? sessionStorage : localStorage).setItem(k, v); } catch (e) {}
+  }
+  function read(k, session) {
+    try { return (session ? sessionStorage : localStorage).getItem(k); } catch (e) { return null; }
+  }
+  function cookie(name) {
+    var m = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+
+  var visitorId = read('vc_vid') || uid(); store('vc_vid', visitorId);
+  var sessionId = read('vc_sid', true) || uid(); store('vc_sid', sessionId, true);
+
+  // ── Atribución: se guarda el último toque con UTM/fbclid durante 30 días ──
+  var qs = new URLSearchParams(location.search);
+  var keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'];
+  var fresh = {}; var hasFresh = false;
+  keys.forEach(function (k) { var v = qs.get(k); if (v) { fresh[k] = v; hasFresh = true; } });
+  if (hasFresh) {
+    if (fresh.fbclid && !fresh.utm_source) { fresh.utm_source = 'facebook'; fresh.utm_medium = fresh.utm_medium || 'paid_social'; }
+    fresh._ts = Date.now();
+    store('vc_attr', JSON.stringify(fresh));
+  }
+  var attr = {};
+  try {
+    attr = JSON.parse(read('vc_attr') || '{}');
+    if (attr._ts && Date.now() - attr._ts > 30 * 864e5) attr = {};
+  } catch (e) { attr = {}; }
+
+  var device = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? 'mobile' : (/iPad|Tablet/i.test(navigator.userAgent) ? 'tablet' : 'desktop');
+  var externalRef = document.referrer && document.referrer.indexOf(location.host) === -1 ? document.referrer : null;
+
+  var queue = [];
+  var flushTimer = null;
+  function base(ev, extra) {
+    var o = {
+      event: ev, visitor_id: visitorId, session_id: sessionId, path: path, url: location.href,
+      referrer: externalRef, device: device, fbp: cookie('_fbp')
+    };
+    keys.forEach(function (k) { if (attr[k]) o[k] = attr[k]; });
+    for (var k in (extra || {})) o[k] = extra[k];
+    return o;
+  }
+  function flush() {
+    flushTimer = null;
+    if (!queue.length) return;
+    var body = JSON.stringify({ events: queue.splice(0, 25) });
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(ENDPOINT, new Blob([body], { type: 'application/json' }));
+    } else {
+      fetch(ENDPOINT, { method: 'POST', body: body, keepalive: true, headers: { 'Content-Type': 'application/json' } });
+    }
+    if (queue.length) flush();
+  }
+  function track(ev, extra, immediate) {
+    queue.push(base(ev, extra));
+    if (immediate) flush();
+    else if (!flushTimer) flushTimer = setTimeout(flush, 1500);
+  }
+  window.vcTrack = track;
+  window.vcAttribution = function () {
+    var o = { visitor_id: visitorId };
+    keys.forEach(function (k) { if (attr[k]) o[k] = attr[k]; });
+    o.fbp = cookie('_fbp');
+    return o;
+  };
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') flush(); });
+  window.addEventListener('pagehide', flush);
+
+  // ── Page view ──
+  track('page_view', { label: document.title });
+
+  // ── Secciones vistas (≥40% visible al menos 1 seg) ──
+  function sectionOf(el) {
+    var s = el && el.closest ? el.closest('section[id], footer, header') : null;
+    if (!s) return null;
+    return s.id || s.tagName.toLowerCase();
+  }
+  function observeSections() {
+    if (!('IntersectionObserver' in window)) return;
+    var seen = {}; var timers = {};
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var id = en.target.id;
+        if (!id || seen[id]) return;
+        if (en.isIntersecting) {
+          timers[id] = setTimeout(function () {
+            seen[id] = true; io.unobserve(en.target);
+            track('section_view', { section: id });
+          }, 1000);
+        } else if (timers[id]) { clearTimeout(timers[id]); }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('section[id]').forEach(function (s) { io.observe(s); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', observeSections);
+  else observeSections();
+
+  // ── Profundidad de scroll (25/50/75/100) ──
+  var depthSent = {};
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - innerHeight;
+    if (h <= 0) return;
+    var pct = Math.round((scrollY / h) * 100);
+    [25, 50, 75, 100].forEach(function (d) {
+      if (pct >= d && !depthSent[d]) { depthSent[d] = true; track('scroll_depth', { label: String(d) }); }
+    });
+  }, { passive: true });
+
+  // ── Clics: WhatsApp / Instagram / CTA cotizar ──
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var label = (a.getAttribute('aria-label') || a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
+    var section = sectionOf(a);
+    if (/wa\.me|api\.whatsapp\.com|whatsapp:\/\//i.test(href)) {
+      var eventId = 'wa_' + uid();
+      if (window.fbq) fbq('track', 'Contact', { content_name: label || 'WhatsApp', content_category: section || path }, { eventID: eventId });
+      track('whatsapp_click', { label: label, section: section, event_id: eventId, props: { href: href.slice(0, 200) } }, true);
+    } else if (/instagram\.com/i.test(href)) {
+      if (window.fbq) fbq('trackCustom', 'InstagramClick', { section: section });
+      track('instagram_click', { label: label, section: section }, true);
+    } else if (/\/cotizar/.test(href)) {
+      if (window.fbq) fbq('trackCustom', 'CotizarClick', { section: section, label: label });
+      track('cta_click', { label: label, section: section }, true);
+    }
+  }, true);
+})();
+</script>

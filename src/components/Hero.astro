@@ -14,19 +14,7 @@
   </div>
 
   <!-- ═══════════════════════════════════════════
-       CAPA 2: Panel de scroll tipo Nexbu
-       Se desliza desde ABAJO cubriendo el fondo
-       mientras el usuario hace scroll DOWN
-       ═══════════════════════════════════════════ -->
-  <div id="hero-scroll-panel" class="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
-    <!-- Barra negra que sube desde abajo al hacer scroll -->
-    <div id="scroll-cover" class="absolute bottom-0 left-0 right-0 bg-black transition-none" style="height: 0%;"></div>
-    <!-- Línea de borde luminosa en el frente de la barra -->
-    <div id="scroll-cover-line" class="absolute left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-none" style="bottom: 100%; opacity: 0;"></div>
-  </div>
-
-  <!-- ═══════════════════════════════════════════
-       CAPA 3: Contenido principal del Hero
+       CAPA 2: Contenido principal del Hero
        ═══════════════════════════════════════════ -->
   <div class="relative z-10 flex flex-col min-h-screen">
 
@@ -384,49 +372,6 @@
   }
 
   /* ════════════════════════════════════════════
-     SCROLL COVER — Animación tipo Nexbu
-     Panel negro que sube desde abajo cubriendo
-     el fondo del Hero al hacer scroll DOWN
-  ════════════════════════════════════════════ */
-  function initScrollCover() {
-    const section = document.getElementById('inicio');
-    const cover   = document.getElementById('scroll-cover');
-    const line    = document.getElementById('scroll-cover-line');
-    if (!section || !cover || !line) return;
-
-    let ticking = false;
-
-    function update() {
-      const sectionH   = section.offsetHeight;
-      const scrollY    = window.scrollY;
-      // La animación empieza desde 0 y cubre el 100% en la mitad del scroll de la sección
-      const progress   = Math.min(1, scrollY / (sectionH * 0.55));
-      const coverPct   = progress * 100;
-
-      cover.style.height  = `${coverPct}%`;
-      line.style.bottom   = `${coverPct}%`;
-      line.style.opacity  = progress > 0.02 && progress < 0.98 ? '1' : '0';
-
-      // Parallax sutil en el canvas
-      const bgCanvas = document.getElementById('hero-bg-canvas');
-      if (bgCanvas) {
-        bgCanvas.style.transform = `translateY(${scrollY * 0.25}px)`;
-      }
-
-      ticking = false;
-    }
-
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(update);
-        ticking = true;
-      }
-    }, { passive: true });
-
-    update();
-  }
-
-  /* ════════════════════════════════════════════
      INIT
   ════════════════════════════════════════════ */
   function init() {
@@ -440,7 +385,6 @@
       'Marketing Digital.',
     ], 600);
     initHeroBackground();
-    initScrollCover();
   }
 
   if (document.readyState === 'loading') {

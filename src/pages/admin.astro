@@ -1,0 +1,35 @@
+---
+export const prerender = false;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VC·OS — Sistema Operativo y CRM Comercial | Vision Code</title>
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="googlebot" content="noindex, nofollow, noarchive" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <link rel="icon" type="image/png" href="/images/logo-negro.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-white text-neutral-900 m-0 p-0 antialiased font-sans">
+    <div id="admin-root"></div>
+
+    <script>
+      import React from 'react';
+      import { createRoot } from 'react-dom/client';
+      import AdminApp from '../admin/AdminApp';
+
+      const container = document.getElementById('admin-root');
+      if (container) {
+        const root = createRoot(container);
+        root.render(React.createElement(AdminApp));
+      }
+    </script>
+  </body>
+</html>

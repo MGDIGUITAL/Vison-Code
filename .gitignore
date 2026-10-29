@@ -30,3 +30,5 @@ fondos nuevos/
 *.pdf
 SKILL_DOC*.md
 tipografia*.avif
+
+.agents/

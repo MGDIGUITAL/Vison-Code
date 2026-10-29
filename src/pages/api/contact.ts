@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import nodemailer from 'nodemailer';
-import { createClient } from '@supabase/supabase-js';
+import { anonClient, sendMetaCapiEvent } from '../../lib/server';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -116,6 +116,58 @@ export const POST: APIRoute = async ({ request }) => {
 
     const cleanServicio = escapeHtml(servicio || 'Propuesta Personalizada de Servicios');
     const cleanPropuestaDetalles = escapeHtml(propuesta_detalles || '');
+
+    // ── CRM: guardar el lead PRIMERO (aunque falle el correo, el lead no se pierde) ──
+    const attr = (body && typeof body._attr === 'object' && body._attr) || {};
+    const s = (v: any, n = 200) => (typeof v === 'string' && v.trim() ? v.trim().slice(0, n) : null);
+    const leadSb = anonClient();
+    if (leadSb) {
+      try {
+        const { error: dbErr } = await leadSb.from('contacts').insert([{
+          name: s(finalSolicitante),
+          company: s(finalEmpresa),
+          email: s(finalCorreo),
+          phone: s(finalPhone),
+          plan: s(Array.isArray(servicio) ? servicio.join(', ') : servicio, 300),
+          message: `Tipo: ${tipo_cliente || '-'} | RUT: ${rut || '-'} | Fantasía: ${nombre_fantasia || '-'} | Capital: ${capitalLabel} | Plazo: ${plazo || '-'} | Escala: ${rango_operacion || '-'}${propuesta_detalles ? `\n\n${String(propuesta_detalles).slice(0, 2000)}` : ''}`,
+          status: 'new',
+          stage: 'nuevo',
+          source: attr.fbclid || attr.utm_source ? (attr.utm_source || 'facebook') : 'web',
+          utm_source: s(attr.utm_source),
+          utm_medium: s(attr.utm_medium),
+          utm_campaign: s(attr.utm_campaign),
+          utm_content: s(attr.utm_content),
+          fbclid: s(attr.fbclid, 255),
+          visitor_id: s(attr.visitor_id, 64),
+        }]);
+        if (dbErr) {
+          // Si la migración 001 aún no se ejecutó, guarda con las columnas originales
+          console.warn('CRM insert (extended) failed, fallback:', dbErr.message);
+          await leadSb.from('contacts').insert([{
+            name: cleanSolicitante, company: cleanEmpresa, email: cleanCorreo, phone: cleanTelefono,
+            plan: cleanServicio, status: 'new',
+            message: `Tipo: ${cleanTipoCliente} | RUT: ${cleanRut} | Fantasía: ${cleanNombreFantasia} | Modelo: ${cleanModelo} | Capital: ${cleanCapital}`,
+          }]);
+        }
+      } catch (dbErr) {
+        console.warn('Supabase insert warning:', dbErr);
+      }
+    }
+
+    // ── Meta Conversions API: Lead (deduplicado con el Pixel vía event_id) ──
+    await sendMetaCapiEvent({
+      eventName: 'Lead',
+      eventId: s(body._event_id, 80) || undefined,
+      sourceUrl: s(body._source_url, 500) || undefined,
+      email: finalCorreo,
+      phone: finalPhone,
+      firstName: finalSolicitante,
+      ip: request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || null,
+      userAgent: request.headers.get('user-agent'),
+      fbclid: s(attr.fbclid, 255),
+      fbp: s(attr.fbp, 120),
+      customData: { content_name: s(Array.isArray(servicio) ? servicio.join(', ') : servicio) || 'cotizacion', content_category: 'cotizacion_web' },
+    });
 
     // ── Embedded 1:1 Banner Image (gracias.png) ──
     const imagePath = path.join(process.cwd(), 'public', 'CORREO', 'gracias.png');
@@ -442,28 +494,7 @@ export const POST: APIRoute = async ({ request }) => {
       console.warn('Auto-reply client email warning:', clientErr);
     }
 
-    // Backup to Supabase DB if credentials present
-    const supabaseUrl = process.env.PUBLIC_SUPABASE_URL || import.meta.env.PUBLIC_SUPABASE_URL;
-    const supabaseKey = process.env.PUBLIC_SUPABASE_ANON_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
-
-    if (supabaseUrl && supabaseKey) {
-      try {
-        const supabase = createClient(supabaseUrl, supabaseKey);
-        await supabase.from('contacts').insert([
-          {
-            name: cleanSolicitante,
-            company: cleanEmpresa,
-            email: cleanCorreo,
-            phone: cleanTelefono,
-            plan: cleanServicio,
-            message: `Tipo: ${cleanTipoCliente} | RUT: ${cleanRut} | Fantasía: ${cleanNombreFantasia} | Modelo: ${cleanModelo} | Capital: ${cleanCapital}`,
-            status: 'new',
-          },
-        ]);
-      } catch (dbErr) {
-        console.warn('Supabase insert warning:', dbErr);
-      }
-    }
+    // (El lead ya se guardó en Supabase/CRM antes del envío de correos)
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
