@@ -173,18 +173,20 @@ function Login({ onMasterLogin }: { onMasterLogin: (user: any) => void }) {
             <img src="/images/NAVAR TITULO.png" alt="Vision Code" className="h-8 w-auto" />
           </div>
           <div className="relative">
-            <div className="text-[13px] text-white/50 mb-3">Sistema operativo comercial</div>
-            <h1 className="text-[40px] leading-[1.05] font-medium tracking-tight">Métricas, campañas<br />y clientes en <span className="text-lime">un solo lugar.</span></h1>
-            <div className="mt-8 grid grid-cols-3 gap-3">
-              {[['CRM', 'Pipeline'], ['Meta', 'Ads + Pixel'], ['Chats', 'WA · IG']].map(([a, b]) => (
-                <div key={a} className="rounded-2xl bg-white/[0.06] border border-white/10 p-3">
-                  <div className="text-sm font-semibold">{a}</div>
-                  <div className="text-[11px] text-white/50">{b}</div>
-                </div>
-              ))}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.06] border border-white/10 text-[11px] font-mono text-white/60 mb-4 uppercase tracking-widest">
+              <span className="w-1.5 h-1.5 rounded-full bg-lime animate-pulse"></span>
+              Conexión Cifrada SSL
             </div>
+            <h1 className="text-[34px] leading-[1.1] font-semibold tracking-tight">
+              Portal de Gestión <br /><span className="text-lime">Corporativa.</span>
+            </h1>
+            <p className="mt-4 text-xs text-white/50 leading-relaxed max-w-sm">
+              Acceso restringido para personal autorizado de Vision Code SpA. Toda actividad dentro del sistema es confidencial y sujeta a protocolos de seguridad.
+            </p>
           </div>
-          <div className="relative text-[11px] text-white/40">© {new Date().getFullYear()} Vision Code SpA</div>
+          <div className="relative text-[11px] text-white/30 font-mono tracking-wider">
+            © {new Date().getFullYear()} Vision Code SpA · Confidencial
+          </div>
         </div>
 
         <form onSubmit={submit} className="p-10 flex flex-col justify-center">

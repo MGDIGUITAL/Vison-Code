@@ -195,11 +195,17 @@
 <script is:inline>
   function setupTypewriter(elementId, phrases, startDelay, typeSpeed, backSpeed, backDelay) {
     startDelay = startDelay || 800;
-    typeSpeed = typeSpeed || 60;
-    backSpeed = backSpeed || 30;
+    typeSpeed = typeSpeed || 65;
+    backSpeed = backSpeed || 32;
     backDelay = backDelay || 2200;
     const el = document.getElementById(elementId);
     if (!el) return;
+
+    // Detener cualquier instancia previa para evitar bucles concurrentes y texto bugeado
+    if (window.__vc_typewriter_timer) {
+      clearTimeout(window.__vc_typewriter_timer);
+      window.__vc_typewriter_timer = null;
+    }
 
     if (!document.getElementById('typewriter-cursor-style')) {
       const style = document.createElement('style');
@@ -222,34 +228,35 @@
     let phraseIndex = 0;
     let charIndex = phrases[0].length;
     let isDeleting = true;
-    let currentText = phrases[0];
-
-    setTimeout(tick, startDelay);
 
     function tick() {
+      const currentEl = document.getElementById(elementId);
+      if (!currentEl) return;
+
       const fullText = phrases[phraseIndex];
       if (isDeleting) {
-        currentText = fullText.substring(0, charIndex - 1);
         charIndex--;
+        currentEl.textContent = fullText.substring(0, Math.max(0, charIndex));
       } else {
-        currentText = fullText.substring(0, charIndex + 1);
         charIndex++;
+        currentEl.textContent = fullText.substring(0, charIndex);
       }
-      el.textContent = currentText;
 
-      let delta = typeSpeed;
-      if (isDeleting) delta = backSpeed;
+      let delta = isDeleting ? backSpeed : typeSpeed;
 
-      if (!isDeleting && charIndex === fullText.length) {
+      if (!isDeleting && charIndex >= fullText.length) {
         delta = backDelay;
         isDeleting = true;
-      } else if (isDeleting && charIndex === 0) {
+      } else if (isDeleting && charIndex <= 0) {
         isDeleting = false;
         phraseIndex = (phraseIndex + 1) % phrases.length;
-        delta = 400;
+        delta = 450;
       }
-      setTimeout(tick, delta);
+      
+      window.__vc_typewriter_timer = setTimeout(tick, delta);
     }
+
+    window.__vc_typewriter_timer = setTimeout(tick, startDelay);
   }
 
   /* ════════════════════════════════════════════
@@ -354,8 +361,12 @@
       currentIndex = nextIndex;
     }
 
-    // Rotar cada 2.5 segundos (2500ms)
-    setInterval(nextSlide, 2500);
+    // Rotar cada 2.5 segundos (2500ms) cancelando cualquier intervalo previo
+    if (window.__vc_hero_bg_interval) {
+      clearInterval(window.__vc_hero_bg_interval);
+      window.__vc_hero_bg_interval = null;
+    }
+    window.__vc_hero_bg_interval = setInterval(nextSlide, 2500);
 
     window.addEventListener('resize', () => {
       const mob = window.innerWidth < 768;
@@ -372,9 +383,24 @@
   }
 
   /* ════════════════════════════════════════════
-     INIT
+     INIT & CLEANUP
   ════════════════════════════════════════════ */
+  function cleanupHero() {
+    if (window.__vc_typewriter_timer) {
+      clearTimeout(window.__vc_typewriter_timer);
+      window.__vc_typewriter_timer = null;
+    }
+    if (window.__vc_hero_bg_interval) {
+      clearInterval(window.__vc_hero_bg_interval);
+      window.__vc_hero_bg_interval = null;
+    }
+  }
+
   function init() {
+    cleanupHero();
+    const rotateEl = document.getElementById('rotate-text');
+    if (!rotateEl) return;
+
     animateHeroEntrance();
     setupTypewriter('rotate-text', [
       'Desarrollo Web.',
@@ -387,10 +413,12 @@
     initHeroBackground();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  document.addEventListener('astro:before-swap', cleanupHero);
   document.addEventListener('astro:page-load', init);
+  if (!window.__vc_hero_init_bound) {
+    window.__vc_hero_init_bound = true;
+    if (document.readyState !== 'loading') {
+      init();
+    }
+  }
 </script>
