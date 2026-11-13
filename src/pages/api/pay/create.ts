@@ -54,11 +54,13 @@ export const POST: APIRoute = async ({ request, url }) => {
     }
 
     // Usar la URL de la petición para asegurar compatibilidad en localhost o producción
-    const origin = url.origin && !url.origin.includes('localhost') ? url.origin : (siteUrl || url.origin);
+    const isLocalhost = url.origin.includes('localhost') || url.origin.includes('127.0.0.1');
+    const origin = !isLocalhost && url.origin ? url.origin : (siteUrl && !siteUrl.includes('localhost') ? siteUrl : 'https://www.vision-code.cl');
     const commerceOrder = `VC-${Date.now().toString(36).toUpperCase()}-${Math.floor(100 + Math.random() * 900)}`;
 
     const urlReturn = `${origin}/pago/retorno`;
-    const urlConfirmation = `${origin}/api/pay/confirm`;
+    // Flow requiere obligatoriamente una URL pública accesible para el webhook de confirmación
+    const urlConfirmation = isLocalhost ? 'https://www.vision-code.cl/api/pay/confirm' : `${origin}/api/pay/confirm`;
 
     const flowOrder = await createFlowPayment({
       commerceOrder,
@@ -91,7 +93,7 @@ export const POST: APIRoute = async ({ request, url }) => {
           subject,
           email,
         },
-      }).then();
+      }).then(() => {}).catch(() => {});
     }
 
     return json({

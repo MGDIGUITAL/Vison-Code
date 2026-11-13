@@ -37,7 +37,7 @@
     </div>
 
     <!-- Formulario de Datos -->
-    <form id="flow-checkout-form" class="space-y-4">
+    <form id="flow-checkout-form" class="space-y-4" action="javascript:void(0);" onsubmit="return false;">
       <input type="hidden" id="flow-input-subject" name="subject" value="" />
       <input type="hidden" id="flow-input-amount" name="amount" value="" />
       <input type="hidden" id="flow-input-plan" name="planId" value="" />
@@ -109,7 +109,7 @@
 </div>
 
 <script is:inline>
-  // Inicializador global para abrir checkout de Flow desde cualquier botón
+  // Función global para abrir el checkout de Flow
   window.openFlowCheckout = function(data) {
     var modal = document.getElementById('flow-checkout-modal');
     if (!modal) return;
@@ -120,11 +120,14 @@
     var inputAmount = document.getElementById('flow-input-amount');
     var inputPlan = document.getElementById('flow-input-plan');
     var errorEl = document.getElementById('flow-error-msg');
+    var submitBtn = document.getElementById('flow-submit-btn');
+    var btnText = document.getElementById('flow-btn-text');
+    var btnSpinner = document.getElementById('flow-btn-spinner');
 
     if (titleEl) titleEl.textContent = data.title || data.subject || 'Servicio Digital';
     if (amountEl) {
       var num = typeof data.amount === 'number' ? data.amount : parseInt(String(data.amount).replace(/[^0-9]/g, ''), 10);
-      amountEl.textContent = '$' + num.toLocaleString('es-CL') + ' CLP';
+      amountEl.textContent = '$' + (isNaN(num) ? '0' : num.toLocaleString('es-CL')) + ' CLP';
     }
 
     if (inputSubject) inputSubject.value = data.title || data.subject || '';
@@ -134,83 +137,126 @@
       errorEl.classList.add('hidden');
       errorEl.textContent = '';
     }
+    if (submitBtn) submitBtn.disabled = false;
+    if (btnText) btnText.textContent = 'Proceder a la Contratación Segura →';
+    if (btnSpinner) btnSpinner.classList.add('hidden');
 
     modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
   };
 
-  document.addEventListener('DOMContentLoaded', function() {
+  window.closeFlowCheckout = function() {
     var modal = document.getElementById('flow-checkout-modal');
-    var closeBtn = document.getElementById('flow-modal-close');
-    var form = document.getElementById('flow-checkout-form');
-    var submitBtn = document.getElementById('flow-submit-btn');
-    var btnText = document.getElementById('flow-btn-text');
-    var btnSpinner = document.getElementById('flow-btn-spinner');
-    var errorEl = document.getElementById('flow-error-msg');
+    if (modal) modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  };
 
-    function closeModal() {
-      if (modal) modal.classList.add('hidden');
-    }
+  // Registrar listeners globales de forma persistente en document (compatible con Astro ViewTransitions)
+  if (!window.__flowCheckoutHandlersAttached) {
+    window.__flowCheckoutHandlersAttached = true;
 
-    if (closeBtn) {
-      closeBtn.addEventListener('click', closeModal);
-    }
-
-    if (modal) {
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) closeModal();
-      });
-    }
-
-    // Escuchar cualquier elemento con atributo data-flow-trigger
+    // 1. Delegación de clics: disparadores, botón cerrar y backdrop
     document.addEventListener('click', function(e) {
+      // Disparador de checkout
       var trigger = e.target.closest('[data-flow-trigger]');
-      if (!trigger) return;
-      e.preventDefault();
+      if (trigger) {
+        e.preventDefault();
+        var subject = trigger.getAttribute('data-subject') || '';
+        var amount = trigger.getAttribute('data-amount') || '';
+        var planId = trigger.getAttribute('data-plan') || '';
+        window.openFlowCheckout({ subject: subject, amount: amount, planId: planId });
+        return;
+      }
 
-      var subject = trigger.getAttribute('data-subject') || '';
-      var amount = trigger.getAttribute('data-amount') || '';
-      var planId = trigger.getAttribute('data-plan') || '';
+      // Botón cerrar
+      if (e.target.closest('#flow-modal-close')) {
+        e.preventDefault();
+        window.closeFlowCheckout();
+        return;
+      }
 
-      window.openFlowCheckout({ subject: subject, amount: amount, planId: planId });
+      // Clic fuera del modal (backdrop)
+      var modal = document.getElementById('flow-checkout-modal');
+      if (modal && e.target === modal) {
+        window.closeFlowCheckout();
+        return;
+      }
     });
 
-    if (form) {
-      form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        if (errorEl) errorEl.classList.add('hidden');
+    // 2. Tecla Escape para cerrar
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        window.closeFlowCheckout();
+      }
+    });
 
-        var formData = new FormData(form);
-        var data = Object.fromEntries(formData.entries());
+    // 3. Delegación de Submit: intercepta el formulario siempre, sin importar la navegación de Astro
+    document.addEventListener('submit', async function(e) {
+      var form = e.target && (e.target.id === 'flow-checkout-form' ? e.target : e.target.closest('#flow-checkout-form'));
+      if (!form) return;
 
-        if (submitBtn) submitBtn.disabled = true;
-        if (btnText) btnText.textContent = 'Generando Orden en Flow...';
-        if (btnSpinner) btnSpinner.classList.remove('hidden');
+      e.preventDefault();
+      e.stopPropagation();
 
-        try {
-          var res = await fetch('/api/pay/create', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-          });
+      var submitBtn = document.getElementById('flow-submit-btn');
+      var btnText = document.getElementById('flow-btn-text');
+      var btnSpinner = document.getElementById('flow-btn-spinner');
+      var errorEl = document.getElementById('flow-error-msg');
 
-          var result = await res.json();
+      if (errorEl) {
+        errorEl.classList.add('hidden');
+        errorEl.textContent = '';
+      }
 
-          if (!res.ok || !result.success) {
-            throw new Error(result.error || 'No se pudo iniciar el proceso de pago');
-          }
+      var formData = new FormData(form);
+      var data = Object.fromEntries(formData.entries());
 
-          // Redirección inmediata a Flow
-          window.location.href = result.redirectUrl;
-        } catch (err) {
-          if (errorEl) {
-            errorEl.textContent = err.message || 'Error al conectar con Flow';
-            errorEl.classList.remove('hidden');
-          }
-          if (submitBtn) submitBtn.disabled = false;
-          if (btnText) btnText.textContent = 'Proceder a la Contratación Segura →';
-          if (btnSpinner) btnSpinner.classList.add('hidden');
+      // Validar email básico
+      if (!data.email || !data.email.includes('@')) {
+        if (errorEl) {
+          errorEl.textContent = 'Por favor ingresa un correo electrónico válido.';
+          errorEl.classList.remove('hidden');
         }
-      });
-    }
-  });
+        return;
+      }
+
+      if (submitBtn) submitBtn.disabled = true;
+      if (btnText) btnText.textContent = 'Generando Orden en Flow...';
+      if (btnSpinner) btnSpinner.classList.remove('hidden');
+
+      try {
+        var res = await fetch('/api/pay/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        var result = await res.json();
+
+        if (!res.ok || !result.success) {
+          throw new Error(result.error || 'No se pudo generar la orden de pago');
+        }
+
+        if (!result.redirectUrl) {
+          throw new Error('Flow no devolvió una URL de redirección válida');
+        }
+
+        // Redirigir a la pasarela de pago oficial de Flow.cl
+        window.location.href = result.redirectUrl;
+      } catch (err) {
+        if (errorEl) {
+          errorEl.textContent = err.message || 'Error al conectar con la pasarela de pago';
+          errorEl.classList.remove('hidden');
+        }
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText) btnText.textContent = 'Proceder a la Contratación Segura →';
+        if (btnSpinner) btnSpinner.classList.add('hidden');
+      }
+    });
+
+    // 4. Limpiar estado en navegaciones de Astro
+    document.addEventListener('astro:page-load', function() {
+      window.closeFlowCheckout();
+    });
+  }
 </script>

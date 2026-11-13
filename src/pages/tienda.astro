@@ -377,17 +377,37 @@ const storeItems = [
 
             {/* CTA Buttons */}
             <div class="space-y-2 mt-auto">
+              {item.price > 0 && (
+                <button
+                  type="button"
+                  data-flow-trigger
+                  data-subject={`Vision Code - ${item.title}`}
+                  data-amount={item.price}
+                  data-plan={item.id}
+                  class={`w-full py-3 text-center text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 transition-all rounded-full cursor-pointer shadow-md ${
+                    item.isRecommended 
+                      ? 'bg-lime text-black hover:bg-lime/90 hover:scale-[1.02]' 
+                      : 'bg-white text-black hover:bg-neutral-200 hover:scale-[1.02]'
+                  }`}
+                >
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <span>Contratar Online</span>
+                </button>
+              )}
               <a 
-                href={`https://api.whatsapp.com/send?phone=56929645522&text=Hola,%20me%20gustaría%20cotizar%20el%20servicio:%20${encodeURIComponent(item.title)}`} 
+                href={`https://api.whatsapp.com/send?phone=56929645522&text=Hola,%20me%20gustaria%20cotizar%20el%20servicio:%20${encodeURIComponent(item.title)}`} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                class={`w-full py-3.5 text-center text-xs font-bold uppercase tracking-wider block transition-all rounded-full ${item.isRecommended ? 'bg-white text-black hover:bg-neutral-200 shadow-md' : 'bg-transparent text-white border border-white/20 hover:border-white hover:bg-white/10'}`}
+                class={`w-full py-2.5 text-center text-xs font-bold uppercase tracking-wider block transition-all rounded-full ${item.price === 0 ? 'bg-white text-black hover:bg-neutral-200 shadow-md' : 'bg-transparent text-white/80 border border-white/20 hover:border-white hover:bg-white/10'}`}
               >
-                Cotizar Ahora ↗
+                Cotizar por WhatsApp ↗
               </a>
               <a 
                 href={`/servicio/${item.id}`} 
-                class="w-full py-2.5 text-center text-[0.68rem] font-semibold uppercase tracking-widest text-white/40 hover:text-white block transition-colors"
+                class="w-full py-2 text-center text-[0.68rem] font-semibold uppercase tracking-widest text-white/40 hover:text-white block transition-colors"
               >
                 Ver Detalles del Plan
               </a>
