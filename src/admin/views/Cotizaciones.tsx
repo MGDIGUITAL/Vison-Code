@@ -140,6 +140,33 @@ const DEFAULT_SERVICES: ServiceItem[] = [
     selected: false,
     agreedPrice: 1190000,
   },
+  {
+    id: 's-9',
+    num: '09',
+    title: 'Campaña B2B Outreach & Prospección Gran Minería',
+    refPrice: '$350.000 + IVA',
+    features: [
+      'Prospección segmentada a tomadores de decisión minería e ingeniería (BHP, Sierra Gorda, SalfaCorp, Besalco).',
+      'Diseño y maquetación de plantilla HTML corporativa responsive optimizada para Outlook / Gmail.',
+      'Configuración de entregabilidad (SPF/DKIM/DMARC) y panel analítico de aperturas e interesados.',
+    ],
+    selected: false,
+    agreedPrice: 350000,
+  },
+  {
+    id: 's-10',
+    num: '10',
+    title: 'Software de Escritorio Windows 11 B2B para Gestión de Bases de Datos & Envíos Outlook',
+    refPrice: '$590.000 + IVA',
+    features: [
+      'Aplicación nativa de escritorio para Windows 11 (.exe) con importación directa de Excel/CSV.',
+      'Integración directa con Microsoft Outlook corporativo o servidor SMTP de la empresa.',
+      'Motor de plantillas dinámicas con variables personalizadas y sistema de envíos anti-spam.',
+      'Licencia perpetua de software on-premise sin costos mensuales de servidor.',
+    ],
+    selected: false,
+    agreedPrice: 590000,
+  },
 ];
 
 const INITIAL_QUOTES: Quote[] = [
@@ -209,6 +236,36 @@ const INITIAL_QUOTES: Quote[] = [
     total: 380776,
     status: 'Enviada',
   },
+  {
+    id: 'q-3',
+    code: 'VC-2026-008',
+    date: '2026-10-29',
+    validity: '15 días',
+    issuerName: 'Matías Espinoza',
+    clientName: 'Singecon – Soluciones de Ingeniería Eléctrica Ltda.',
+    clientRut: '76.418.920-K',
+    clientContact: 'Patricio Espinoza Cortés (Gestor de Negocios)',
+    clientEmail: 'patricio.espinoza@singecon.cl',
+    clientPhone: '+56 9 2093 7495',
+    clientAddress: 'Nataniel Cox 1430, Santiago – Chile',
+    services: [
+      {
+        num: '01',
+        title: 'Software & Plataforma Independiente de Automatización y Envíos Masivos B2B (Minería)',
+        price: 100000,
+        features: [
+          'Plataforma y software independiente para carga masiva y gestión de bases de datos de minería en Excel (.xlsx) y CSV.',
+          'Conexión directa a cuenta de correo corporativo (patricio.espinoza@singecon.cl) o Microsoft Outlook de escritorio.',
+          'Editor de plantillas dinámicas con etiquetas de personalización ({{NOMBRE}}, {{EMPRESA}}) y precarga de las 6 áreas de Singecon y Bombas Goodwin.',
+          'Motor de envíos masivos automatizados con algoritmo anti-spam, bitácora de entregas en tiempo real y licencia perpetua sin costos mensuales.',
+        ],
+      },
+    ],
+    subtotal: 100000,
+    iva: 0,
+    total: 100000,
+    status: 'Borrador',
+  },
 ];
 
 export default function Cotizaciones({ activeProject }: { activeProject?: any }) {
@@ -217,7 +274,16 @@ export default function Cotizaciones({ activeProject }: { activeProject?: any })
       const saved = localStorage.getItem('vc_quotes_list');
       if (saved) {
         const parsed = JSON.parse(saved);
-        return parsed.map((q: any) => ({
+        const combined = parsed.map((q: any) => {
+          if (q.code === 'VC-2026-008') {
+            const initialQ3 = INITIAL_QUOTES.find((iq) => iq.code === 'VC-2026-008');
+            return initialQ3 ? { ...initialQ3, issuerName: q.issuerName || initialQ3.issuerName } : q;
+          }
+          return q;
+        });
+        const existingCodes = new Set(combined.map((q: any) => q.code || q.id));
+        const missingInitial = INITIAL_QUOTES.filter((iq) => !existingCodes.has(iq.code) && !existingCodes.has(iq.id));
+        return [...combined, ...missingInitial].map((q: any) => ({
           ...q,
           issuerName: q.issuerName || 'Matías Espinoza',
         }));
